@@ -1,0 +1,54 @@
+.navbar{
+    width: 1280px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo{
+    color: #446851;   
+}
+
+.nav-center{
+    display: flex;
+    font-weight: 500;
+}
+
+.nav-end{
+    display: flex;
+}
+
+.center-top{
+    margin-right: 100px;
+}
+
+.fav{
+    display: flex;
+    align-items: center;
+}
+
+.heart{
+    color: #ff385c;
+    margin-right: 5px;
+}
+
+.world{
+    margin-right: 20px;
+}
+
+.user{
+    display: flex;
+    align-items: center;
+    border: 1px solid #e4e4e4;
+    border-radius: 16px;
+}
+
+.dots{
+
+}
+
+
+
+
+
