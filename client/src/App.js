@@ -1,13 +1,12 @@
-import './App.css';
-import Navbar from './componnets/Navbar/Navbar';
-import ExampleComponent from './componnets/exampleComponent/ExampleComponent';
-
+import "./App.css";
+import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
-    <div className='main'>
-     <Navbar/>
-     
+    <div className="main">
+      <Navbar />
+      <Footer />
     </div>
   );
 }
