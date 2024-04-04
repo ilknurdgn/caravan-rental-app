@@ -9,7 +9,8 @@ const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.infos}>
         <ul>
-          <li className={styles.content}>Hakkımızda</li>
+          <li className={styles.content}>LUX</li>
+          <li>Hakkımızda</li>
           <li>İletişim</li>
           <li>Hukuk Politikası</li>
           <li>KVKK </li>
