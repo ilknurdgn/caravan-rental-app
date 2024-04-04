@@ -14,7 +14,11 @@
 .infos {
   display: flex;
   justify-content: space-between;
-  width: 1280px;
+  width: 1200px;
+}
+
+.infos li {
+  margin-bottom: 5px;
 }
 
 .bottom {
