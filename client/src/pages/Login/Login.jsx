@@ -8,13 +8,11 @@ const Login = () => {
         <span className={styles.loginTitle}>LOGIN</span>
         <span className={styles.loginText}>Welcome to LUX</span>
         <form className={styles.form}>
-          <label>Username</label>
           <input
             type="text"
-            placeholder="Enter your username..."
+            placeholder="Enter your email..."
             className={styles.loginInput}
           />
-          <label>Password</label>
           <input
             type="password"
             placeholder="Enter your password..."
@@ -22,9 +20,13 @@ const Login = () => {
           />
 
           <button className={styles.loginButton} type="submit">
-            Login
+            Continue
           </button>
         </form>
+        <p className={styles.registerText}>
+          If you don’t have an account,
+          <span> Register</span>
+        </p>
       </div>
     </div>
   );
