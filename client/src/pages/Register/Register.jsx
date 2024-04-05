@@ -1,10 +1,13 @@
 import styles from "./register.module.css";
 const Register = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
   return (
     <div className={styles.register}>
       <div className={styles.registerContainer}>
         <span className={styles.registerTitle}>REGISTER</span>
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="First name"
