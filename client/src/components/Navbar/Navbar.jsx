@@ -1,8 +1,8 @@
-import styles from "./navbar.module.css";
-import { TfiWorld } from "react-icons/tfi";
-import { FaHeart } from "react-icons/fa";
-import { FaUserCircle } from "react-icons/fa";
-import { BsThreeDots } from "react-icons/bs";
+import styles from './navbar.module.css';
+import { TfiWorld } from 'react-icons/tfi';
+import { FaHeart } from 'react-icons/fa';
+import { FaUserCircle } from 'react-icons/fa';
+import { BsThreeDots } from 'react-icons/bs';
 
 const Navbar = () => {
   return (
@@ -12,10 +12,10 @@ const Navbar = () => {
       </div>
 
       <div>
-        <ul className={styles["nav-center"]}>
-          <li className={styles["center-top"]}>Nasıl Kiralanır?</li>
-          <li className={styles["center-top"]}>Blog</li>
-          <li className={styles["fav"]}>
+        <ul className={styles['nav-center']}>
+          <li className={styles['center-top']}>Nasıl Kiralanır?</li>
+          <li className={styles['center-top']}>Blog</li>
+          <li className={styles['fav']}>
             <FaHeart className={styles.heart} />
             Favorilerim
           </li>
@@ -23,7 +23,7 @@ const Navbar = () => {
       </div>
 
       <div>
-        <ul className={styles["nav-end"]}>
+        <ul className={styles['nav-end']}>
           <li className={styles.world}>
             <TfiWorld />
           </li>
