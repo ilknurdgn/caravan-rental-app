@@ -13,12 +13,12 @@ const Login = () => {
         <form className={styles.form} onSubmit={handleSubmit}>
           <input
             type="text"
-            placeholder="Enter your email..."
+            placeholder="Email"
             className={styles.loginInput}
           />
           <input
             type="password"
-            placeholder="Enter your password..."
+            placeholder="Password"
             className={styles.loginInput}
           />
 
