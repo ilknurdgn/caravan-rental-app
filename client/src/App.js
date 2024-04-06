@@ -10,7 +10,7 @@ function App() {
     <div className="main">
       {user && <Navbar />}
       <Login />
-      <Footer />
+      {user && <Footer />}
     </div>
   );
 }
