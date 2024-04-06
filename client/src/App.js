@@ -6,9 +6,9 @@ import Login from "./pages/Login/Login";
 function App() {
   return (
     <div className="main">
+      <Navbar />
       <Login />
-      {/* <Navbar />
-      <Footer /> */}
+      <Footer />
     </div>
   );
 }
