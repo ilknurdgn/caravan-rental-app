@@ -1,5 +1,5 @@
 import styles from './caravan.module.css';
-import { FaHeart } from 'react-icons/fa';
+import { FaRegHeart } from 'react-icons/fa';
 import { FaStar } from 'react-icons/fa';
 const Caravan = () => {
   return (
@@ -9,7 +9,9 @@ const Caravan = () => {
           src='https://images.unsplash.com/photo-1592351763700-b9b35a6465ea?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
           alt=''
         />
-        <FaHeart className={styles.heartIcon} />
+        <div className={styles['heartIcon-div']}>
+          <FaRegHeart className={styles.heartIcon} />
+        </div>
       </div>
       <div className={styles['caravans-info']}>
         <div className={styles['caravans-content']}>
