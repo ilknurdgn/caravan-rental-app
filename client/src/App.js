@@ -5,7 +5,7 @@ import Footer from './components/Footer/Footer';
 import Register from './pages/Register/Register';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './pages/Login/Login';
-import HowToRent from './pages/How-to-rent/HowToRent';
+import HowToRent from './pages/HowToRent/HowToRent';
 
 function App() {
   return (
