@@ -56,7 +56,7 @@
 .registerContainer {
   padding: 15px;
   width: 540px;
-  height: 400px;
+  height: 500px;
   display: flex;
   flex-direction: column;
 }

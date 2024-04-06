@@ -1,4 +1,4 @@
-import styles from "./register.module.css";
+import styles from './register.module.css';
 const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -6,36 +6,32 @@ const Register = () => {
   return (
     <div className={styles.register}>
       <div className={styles.registerContainer}>
-        <span className={styles.registerTitle}>REGISTER</span>
+        <span className={styles.registerTitle}>KAYIT OL</span>
         <form className={styles.form} onSubmit={handleSubmit}>
           <input
-            type="text"
-            placeholder="First name"
+            type='text'
+            placeholder='Ad'
             className={styles.registerInput}
           />
           <input
-            type="password"
-            placeholder="Last name"
+            type='password'
+            placeholder='Soyad'
+            className={styles.registerInput}
+          />
+          <input type='date' className={styles.registerInput} />
+          <input
+            type='email'
+            placeholder='test@test.com'
             className={styles.registerInput}
           />
           <input
-            type="date"
-            placeholder="birthday"
-            className={styles.registerInput}
-          />
-          <input
-            type="email"
-            placeholder="hello@hello.com"
-            className={styles.registerInput}
-          />
-          <input
-            type="password"
-            placeholder="Password"
+            type='password'
+            placeholder='Şifre'
             className={styles.registerInput}
           />
 
-          <button className={styles.registerButton} type="submit">
-            Continue
+          <button className={styles.registerButton} type='submit'>
+            Devam et
           </button>
         </form>
       </div>
