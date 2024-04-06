@@ -1,0 +1,73 @@
+.caravan {
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.caravan-image {
+  position: relative;
+}
+
+.caravan-image > img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.heartIcon-div {
+  background-color: #fff;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.heartIcon {
+  position: absolute;
+  font-size: 18px;
+  color: #222;
+}
+
+.heartIcon:hover {
+  color: #ff385c;
+}
+
+.caravans-info {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.caravans-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.caravans-content > span {
+  color: #717171;
+}
+
+.price {
+  font-weight: 500;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 0;
+}
+
+.starIcon {
+  color: #222;
+  margin-bottom: 3px;
+  margin-right: 3px;
+  font-size: 15px;
+}

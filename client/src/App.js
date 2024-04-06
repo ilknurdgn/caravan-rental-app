@@ -12,6 +12,7 @@ import {
 import Login from './pages/Login/Login';
 import HowToRent from './pages/HowToRent/HowToRent';
 import { useState } from 'react';
+import Caravans from './pages/caravans/Caravans';
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/about' element={<Home />} />
           <Route path='/how-to-rent' element={<HowToRent />} />
-          <Route path='/caravans' element={<Home />} />
+          <Route path='/caravans' element={<Caravans />} />
         </Routes>
       </BrowserRouter>
 
