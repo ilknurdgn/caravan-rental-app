@@ -4,6 +4,20 @@
   color: #ff385c;
   background: #f3f3f3;
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #db0a64;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f3f3f3;
+}
 * {
   margin: 0;
   padding: 0;
