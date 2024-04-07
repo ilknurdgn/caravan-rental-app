@@ -67,7 +67,11 @@ const Register = () => {
             Devam et
           </button>
         </form>
-        {error && <span>Hatalı ya da eksik bilgi girildi.</span>}
+        {error && (
+          <span className={styles.error}>
+            Hatalı ya da eksik bilgi girildi.
+          </span>
+        )}
       </div>
     </div>
   );

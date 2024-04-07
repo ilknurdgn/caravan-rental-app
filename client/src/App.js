@@ -16,6 +16,7 @@ import Caravans from './pages/caravans/Caravans';
 import About from './pages/About/About';
 
 function App() {
+  const user = false;
   return (
     <div className='main'>
       <Navbar />
