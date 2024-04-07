@@ -15,3 +15,10 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 50px;
 }
+
+.caravans-container > .pagination {
+  width: 1280px;
+  display: flex;
+  justify-content: center;
+  margin: 50px 0;
+}
