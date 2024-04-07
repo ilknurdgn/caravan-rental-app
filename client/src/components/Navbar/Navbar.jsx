@@ -13,9 +13,9 @@ const Navbar = () => {
 
       <div>
         <ul className={styles['nav-center']}>
-          <li className={styles['center-top']}>Nasıl Kiralanır?</li>
-          <li className={styles['center-top']}>Blog</li>
-          <li className={styles['fav']}>
+          <li>Nasıl Kiralanır?</li>
+          <li>Blog</li>
+          <li className={styles.fav}>
             <FaHeart className={styles.heart} />
             Favorilerim
           </li>
