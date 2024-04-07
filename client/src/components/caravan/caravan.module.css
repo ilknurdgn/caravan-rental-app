@@ -34,7 +34,7 @@
   color: #222;
 }
 
-.heartIcon:hover {
+.heartIcon-div:hover .heartIcon {
   color: #ff385c;
 }
 
