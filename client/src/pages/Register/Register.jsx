@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styles from './register.module.css';
+import { MdError } from 'react-icons/md';
 import axios from 'axios';
 const Register = () => {
   const [firstName, setFirstName] = useState('');
@@ -69,7 +70,8 @@ const Register = () => {
         </form>
         {error && (
           <span className={styles.error}>
-            Hatalı ya da eksik bilgi girildi.
+            <MdError className={styles.errorIcon} />
+            <span>Hatalı ya da eksik bilgi girildi.</span>
           </span>
         )}
       </div>

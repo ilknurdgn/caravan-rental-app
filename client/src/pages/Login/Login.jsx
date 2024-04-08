@@ -48,7 +48,10 @@ const Login = () => {
         </form>
         <p className={styles.registerText}>
           Eğer bir hesabın yoksa,
-          <Link className={styles.registerLink}> Kayıt ol</Link>
+          <Link to='/register' className={styles.registerLink}>
+            {' '}
+            Kayıt ol
+          </Link>
         </p>
       </div>
     </div>

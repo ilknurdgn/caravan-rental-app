@@ -11,12 +11,13 @@ import {
 } from 'react-router-dom';
 import Login from './pages/Login/Login';
 import HowToRent from './pages/HowToRent/HowToRent';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Caravans from './pages/caravans/Caravans';
 import About from './pages/About/About';
+import { Context } from './context/Contex';
 
 function App() {
-  const user = false;
+  const { user } = useContext(Context);
   return (
     <div className='main'>
       <Navbar />
