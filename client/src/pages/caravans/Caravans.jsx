@@ -1,6 +1,9 @@
 import Caravan from '../../components/caravan/Caravan';
 import styles from './caravans.module.css';
 import { FaRegHeart } from 'react-icons/fa';
+import Pagination from '@mui/material/Pagination';
+import { createTheme } from '@mui/material/styles';
+
 const Caravans = () => {
   return (
     <div className={styles['caravans-container']}>
@@ -12,10 +15,14 @@ const Caravans = () => {
         <Caravan />
         <Caravan />
         <Caravan />
-        <Caravan />
-        <Caravan />
-        <Caravan />
       </div>
+      <Pagination
+        className={styles.pagination}
+        count={10}
+        color='primary'
+        variant='outlined'
+        size='large'
+      />
     </div>
   );
 };

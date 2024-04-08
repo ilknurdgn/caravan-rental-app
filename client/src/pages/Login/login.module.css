@@ -105,6 +105,7 @@
   text-align: center;
 }
 
-.registerText > span {
+.registerText > .registerLink {
   color: #f22b5d;
+  text-decoration: none;
 }
