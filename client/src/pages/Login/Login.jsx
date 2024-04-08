@@ -1,6 +1,7 @@
 import React, { useContext, useRef, useState } from 'react';
 import styles from './login.module.css';
 import { Context } from '../../context/Contex';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const Login = () => {
@@ -47,7 +48,7 @@ const Login = () => {
         </form>
         <p className={styles.registerText}>
           Eğer bir hesabın yoksa,
-          <span> Kayıt ol</span>
+          <Link className={styles.registerLink}> Kayıt ol</Link>
         </p>
       </div>
     </div>
