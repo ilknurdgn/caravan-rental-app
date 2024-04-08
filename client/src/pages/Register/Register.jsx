@@ -26,6 +26,10 @@ const Register = () => {
     } catch (err) {
       setError(true);
       console.log(err);
+
+      setTimeout(() => {
+        setError(false);
+      }, 3000);
     }
   };
 
