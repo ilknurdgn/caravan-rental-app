@@ -1,0 +1,40 @@
+.single-container {
+  width: 1280px;
+}
+
+.caravan-info {
+  display: flex;
+}
+
+.caravan-images {
+  width: 1280px;
+  display: flex;
+  gap: 12px;
+}
+
+.main-image {
+  width: 580px;
+  height: 412px;
+  object-fit: cover;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+.images-container {
+  display: grid;
+  grid-template-columns: repeat(2, 350px);
+  gap: 12px;
+}
+
+.images {
+  width: 350px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.images-container:nth-child(2) {
+  border-top-right-radius: 12px;
+}
+.images-container:nth-child(2) {
+  border-bottom-right-radius: 12px;
+}
