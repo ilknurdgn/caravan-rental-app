@@ -6,8 +6,21 @@ import { IoSettingsOutline } from 'react-icons/io5';
 import { GoPeople } from 'react-icons/go';
 import { IoMdStar } from 'react-icons/io';
 import styles from './singleCaravan.module.css';
+import React, { useState } from 'react';
+import { DateRangePicker } from 'react-date-range';
+import 'react-date-range/dist/styles.css'; // ana css dosyası
+import 'react-date-range/dist/theme/default.css'; // tema css dosyası
+import { addDays } from 'date-fns';
 
 const SingleCaravan = () => {
+  const [state, setState] = useState([
+    {
+      startDate: new Date(),
+      endDate: addDays(new Date(), 3),
+      key: 'selection',
+    },
+  ]);
+
   return (
     <div className={styles['single-container']}>
       <div className={styles['caravan-info']}>
@@ -109,6 +122,20 @@ const SingleCaravan = () => {
                 <li> Karavanımız B tipi ehliyet ile kullanılabilmektedir.</li>
               </ul>
             </p>
+          </div>
+
+          <div className={styles.line}></div>
+
+          <div className={styles.calendar}>
+            <DateRangePicker
+              className={styles.chooseDate}
+              onChange={(item) => setState([item.selection])}
+              showSelectionPreview={true}
+              moveRangeOnFirstSelection={false}
+              months={2}
+              ranges={state}
+              direction='horizontal'
+            />
           </div>
         </div>
         <div className={styles['caravan-right-side']}>300tl</div>
