@@ -4,12 +4,38 @@
 
 .caravan-info {
   display: flex;
+  justify-content: space-between;
+  margin: 10px 0 20px 0;
+}
+
+.caravan-title {
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.icons {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.right-side {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  cursor: pointer;
+  font-weight: 500;
 }
 
 .caravan-images {
   width: 1280px;
   display: flex;
   gap: 12px;
+}
+
+img {
+  cursor: pointer;
 }
 
 .main-image {
@@ -37,4 +63,82 @@
 }
 .images-container:nth-child(2) {
   border-bottom-right-radius: 12px;
+}
+
+.description-section {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  color: #3e3e3e;
+}
+
+.caravan-left-side > span {
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.features {
+  display: flex;
+  gap: 20px;
+}
+
+.features > li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  font-size: 14px;
+}
+
+.review {
+  display: flex;
+  gap: 20px;
+  font-size: 14px;
+}
+
+.review > li {
+  display: flex;
+  align-items: center;
+}
+
+.star-icon {
+  margin-bottom: 2px;
+}
+
+.profile {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.owner-profile-pic {
+  width: 67px;
+  height: 65px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.owner {
+  font-weight: 500;
+}
+
+.line {
+  margin-top: 20px;
+  width: 750px;
+  border: 1px solid #e6e6e6;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+}
+
+.description > span {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+ul li {
+  list-style-type: circle !important;
 }
