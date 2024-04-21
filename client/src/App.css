@@ -33,3 +33,7 @@
   align-items: center;
   flex-direction: column;
 }
+
+.rdrDayNumber {
+  overflow-y: hidden;
+}

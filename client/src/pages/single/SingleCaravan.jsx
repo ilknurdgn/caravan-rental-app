@@ -11,6 +11,8 @@ import { DateRangePicker } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // ana css dosyası
 import 'react-date-range/dist/theme/default.css'; // tema css dosyası
 import { addDays } from 'date-fns';
+import { createTheme } from '@mui/material/styles';
+import Comments from '../../components/comments/Comments';
 
 const SingleCaravan = () => {
   const [state, setState] = useState([
@@ -67,6 +69,7 @@ const SingleCaravan = () => {
         </div>
       </div>
 
+      {/* DESCRIPTION SECTION */}
       <div className={styles['description-section']}>
         <div className={styles['caravan-left-side']}>
           <span>2023 Yapımı 4+ Kişilik, Kiralık Motokaravan</span>
@@ -140,6 +143,9 @@ const SingleCaravan = () => {
         </div>
         <div className={styles['caravan-right-side']}>300tl</div>
       </div>
+
+      {/* COMMENT SECTION */}
+      <Comments />
     </div>
   );
 };

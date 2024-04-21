@@ -1,3 +1,5 @@
+@import url('http://cdn.syncfusion.com/ej2/material.css');
+
 .single-container {
   width: 1280px;
 }
@@ -125,7 +127,7 @@ img {
 
 .line {
   margin-top: 20px;
-  width: 750px;
+  width: 1000px;
   border: 1px solid #e6e6e6;
 }
 
@@ -137,4 +139,12 @@ img {
 .description > span {
   font-size: 24px;
   font-weight: 400;
+}
+
+.calendar {
+  margin-top: 20px;
+  overflow: hidden !important;
+}
+.chooseDate {
+  overflow: hidden !important;
 }
