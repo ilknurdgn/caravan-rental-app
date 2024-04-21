@@ -188,15 +188,110 @@ img {
 }
 
 .reservation {
+  margin-top: 20px;
   width: 330px;
   height: 130px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 1px solid #3e3e3e;
+  border: 1px solid #979797;
+  border-radius: 12px;
+}
+
+.check-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .check {
+  height: 65px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #979797;
+  align-items: center;
+  padding: 0 10px;
+  font-size: 13px;
+}
+
+.checkin {
+  display: flex;
+  flex-direction: column;
+}
+
+.checkout {
+  display: flex;
+  flex-direction: column;
+}
+
+.guest {
+  height: 65px;
+  padding: 0 10px;
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.select-guests {
+  display: flex;
+  flex-direction: column;
+}
+
+.moreIcon {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.button > span {
+  margin-top: 20px;
+}
+
+.reservation-button {
+  margin-top: 20px;
+  width: 330px;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 12px;
+  color: #fff;
+  background: rgb(253, 54, 91);
+  background: linear-gradient(
+    90deg,
+    rgba(253, 54, 91, 1) 0%,
+    rgba(240, 41, 94, 1) 35%,
+    rgba(216, 6, 101, 1) 100%
+  );
+}
+
+.caravan-payment {
+  margin-top: 70px;
+  display: flex;
+  flex-direction: column;
+}
+
+.payment-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.payment-line {
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  border: 1px solid #e6e6e6;
+}
+
+.before-tax {
+  font-weight: 500;
   display: flex;
   justify-content: space-between;
 }

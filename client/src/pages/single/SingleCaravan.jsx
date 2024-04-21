@@ -12,6 +12,7 @@ import 'react-date-range/dist/styles.css'; // ana css dosyası
 import 'react-date-range/dist/theme/default.css'; // tema css dosyası
 import { addDays } from 'date-fns';
 import Comments from '../../components/comments/Comments';
+import { MdExpandMore } from 'react-icons/md';
 
 const SingleCaravan = () => {
   const [guest, setGuest] = useState('1');
@@ -151,14 +152,49 @@ const SingleCaravan = () => {
               4.83 · 1,800 değerlendirme
             </p>
           </div>
-          <div className={styles.reservation}>
-            <div className={styles.check}>
-              <div className={styles.checkin}>in</div>
-              <div className={styles.checkout}>out</div>
+          <div className={styles['check-container']}>
+            <div className={styles.reservation}>
+              <div className={styles.check}>
+                <div className={styles.checkin}>
+                  <span>GİRİŞ</span>
+                  <span>8/5/2023</span>
+                </div>
+                <div className={styles.checkout}>
+                  <span>ÇIKIŞ</span>
+                  <span>12/5/2023</span>
+                </div>
+              </div>
+              <div className={styles.guest}>
+                <div className={styles['select-guests']}>
+                  <span>MİSAFİR</span>
+                  <span>1 misafir</span>
+                </div>
+                <div className={styles.moreIcon}>
+                  {' '}
+                  <MdExpandMore className={styles.moreIcon} />{' '}
+                </div>
+              </div>
             </div>
-            <div className={styles.guest}>guest</div>
           </div>
-          <div className={styles['caravan-payment']}></div>
+          <div className={styles.button}>
+            <button className={styles['reservation-button']} type='submit'>
+              Devam et
+            </button>
+            <span>Henüz ücretlendirilmeyeceksiniz</span>
+          </div>
+          <div className={styles['caravan-payment']}>
+            <div className={styles['payment-info']}>
+              <div className={styles['total-price-info']}>$3000 x 3 gece</div>
+              <div className={styles['total-price']}>$9000</div>
+            </div>
+            <div className={styles['payment-line']}></div>
+            <div className={styles['before-tax']}>
+              <div className={styles['total-price-info']}>
+                Vergi̇ öncesi̇ toplam
+              </div>
+              <div className={styles['total-price']}>$300</div>
+            </div>
+          </div>
         </div>
       </div>
 
