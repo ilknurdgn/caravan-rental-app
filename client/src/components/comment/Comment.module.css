@@ -1,0 +1,31 @@
+.comment {
+  display: flex;
+  flex-direction: column;
+}
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-img {
+  width: 67px;
+  height: 65px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.user {
+  margin-left: 20px;
+}
+
+.user > .name {
+  font-weight: 500;
+}
+
+.date {
+  color: #3e3e3e;
+}
+
+.user-text {
+  margin-top: 20px;
+}

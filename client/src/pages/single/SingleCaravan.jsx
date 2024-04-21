@@ -5,16 +5,16 @@ import { PiGasPump } from 'react-icons/pi';
 import { IoSettingsOutline } from 'react-icons/io5';
 import { GoPeople } from 'react-icons/go';
 import { IoMdStar } from 'react-icons/io';
-import styles from './singleCaravan.module.css';
 import React, { useState } from 'react';
+import styles from './singleCaravan.module.css';
 import { DateRangePicker } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // ana css dosyası
 import 'react-date-range/dist/theme/default.css'; // tema css dosyası
 import { addDays } from 'date-fns';
-import { createTheme } from '@mui/material/styles';
 import Comments from '../../components/comments/Comments';
 
 const SingleCaravan = () => {
+  const [guest, setGuest] = useState('1');
   const [state, setState] = useState([
     {
       startDate: new Date(),
@@ -141,9 +141,28 @@ const SingleCaravan = () => {
             />
           </div>
         </div>
-        <div className={styles['caravan-right-side']}>300tl</div>
+        <div className={styles['caravan-right-side']}>
+          <div className={styles['total-info']}>
+            <p className={styles.price}>
+              3.000₺<span>gece</span>
+            </p>
+            <p className={styles['total-rating']}>
+              <IoMdStar className={styles.icon} />
+              4.83 · 1,800 değerlendirme
+            </p>
+          </div>
+          <div className={styles.reservation}>
+            <div className={styles.check}>
+              <div className={styles.checkin}>in</div>
+              <div className={styles.checkout}>out</div>
+            </div>
+            <div className={styles.guest}>guest</div>
+          </div>
+          <div className={styles['caravan-payment']}></div>
+        </div>
       </div>
 
+      <div className={styles.line}></div>
       {/* COMMENT SECTION */}
       <Comments />
     </div>

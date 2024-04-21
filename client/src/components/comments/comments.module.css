@@ -1,0 +1,37 @@
+.comments-container {
+  margin: 30px 0;
+}
+
+.total-rating {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.comments {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 390px;
+}
+
+.showBtn {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.showBtn > button {
+  padding: 20px 15px;
+  border-radius: 12px;
+  outline: none;
+  border: 1px solid #222;
+  background-color: transparent;
+  font-weight: 500;
+  cursor: pointer;
+}
