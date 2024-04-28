@@ -17,19 +17,51 @@
 
 .icons {
   display: flex;
-  gap: 20px;
   align-items: center;
   justify-content: center;
+  gap: 30px;
 }
 
 .right-side {
   display: flex;
   align-items: center;
-  gap: 2px;
+  justify-content: center;
+  gap: 5px;
   cursor: pointer;
   font-weight: 500;
+  color: #3e3e3e;
 }
 
+.favIcon {
+  font-size: 18px;
+}
+
+.shareIcon {
+  font-size: 18px;
+  color: #222;
+}
+
+.heartIcon {
+  font-size: 18px;
+  color: #222;
+  transition: 0.1s all ease-in;
+}
+
+.heartIcon-div:hover .heartIcon {
+  color: #ff385c;
+  transform: scale(1.1);
+}
+
+.favHeartIcon {
+  color: #ff385c;
+  font-size: 18px;
+  transition: 0.1s all ease-in;
+}
+
+.heartIcon-div:hover .favHeartIcon {
+  color: #ff385c;
+  transform: scale(1.1);
+}
 .caravan-images {
   width: 1280px;
   display: flex;

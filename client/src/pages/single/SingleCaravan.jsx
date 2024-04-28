@@ -1,4 +1,4 @@
-import { CiShare2 } from 'react-icons/ci';
+import { IoMdShare } from 'react-icons/io';
 import { FaRegHeart } from 'react-icons/fa6';
 import { RiCaravanLine } from 'react-icons/ri';
 import { PiGasPump } from 'react-icons/pi';
@@ -13,6 +13,7 @@ import 'react-date-range/dist/theme/default.css'; // tema css dosyası
 import { addDays } from 'date-fns';
 import Comments from '../../components/comments/Comments';
 import { MdExpandMore } from 'react-icons/md';
+import { FaHeart } from 'react-icons/fa';
 
 const SingleCaravan = () => {
   const [guest, setGuest] = useState('1');
@@ -24,17 +25,33 @@ const SingleCaravan = () => {
     },
   ]);
 
+  const [isFavorited, setIsFavorited] = useState(false);
+
+  const toggleFavorite = () => {
+    setIsFavorited(!isFavorited);
+  };
+
   return (
     <div className={styles['single-container']}>
       <div className={styles['caravan-info']}>
         <span className={styles['caravan-title']}>Motocaravan - Antalya</span>
         <div className={styles.icons}>
           <div className={styles['right-side']}>
-            <CiShare2 className={styles.icon} />
+            <IoMdShare className={styles.shareIcon} />
             <p>Paylaş</p>
           </div>
           <div className={styles['right-side']}>
-            <FaRegHeart className={styles.icon} />
+            {isFavorited ? (
+              <FaHeart
+                onClick={toggleFavorite}
+                className={styles.favHeartIcon}
+              />
+            ) : (
+              <FaRegHeart
+                onClick={toggleFavorite}
+                className={styles.heartIcon}
+              />
+            )}
             <p>Ekle</p>
           </div>
         </div>
