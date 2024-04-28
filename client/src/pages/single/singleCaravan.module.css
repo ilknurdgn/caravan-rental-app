@@ -1,0 +1,331 @@
+@import url('http://cdn.syncfusion.com/ej2/material.css');
+
+.single-container {
+  width: 1280px;
+}
+
+.caravan-info {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0 20px 0;
+}
+
+.caravan-title {
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.right-side {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  color: #3e3e3e;
+}
+
+.favIcon {
+  font-size: 18px;
+}
+
+.shareIcon {
+  font-size: 18px;
+  color: #222;
+}
+
+.heartIcon {
+  font-size: 18px;
+  color: #222;
+  transition: 0.1s all ease-in;
+}
+
+.heartIcon-div:hover .heartIcon {
+  color: #ff385c;
+  transform: scale(1.1);
+}
+
+.favHeartIcon {
+  color: #ff385c;
+  font-size: 18px;
+  transition: 0.1s all ease-in;
+}
+
+.heartIcon-div:hover .favHeartIcon {
+  color: #ff385c;
+  transform: scale(1.1);
+}
+.caravan-images {
+  width: 1280px;
+  display: flex;
+  gap: 12px;
+}
+
+img {
+  cursor: pointer;
+}
+
+.main-image {
+  width: 580px;
+  height: 412px;
+  object-fit: cover;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+.images-container {
+  display: grid;
+  grid-template-columns: repeat(2, 350px);
+  gap: 12px;
+}
+
+.images {
+  width: 350px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.images-container:nth-child(2) {
+  border-top-right-radius: 12px;
+}
+.images-container:nth-child(2) {
+  border-bottom-right-radius: 12px;
+}
+
+.description-section {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  color: #3e3e3e;
+}
+
+.caravan-left-side > span {
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.features {
+  display: flex;
+  gap: 20px;
+}
+
+.features > li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  font-size: 14px;
+}
+
+.review {
+  display: flex;
+  gap: 20px;
+  font-size: 14px;
+}
+
+.review > li {
+  display: flex;
+  align-items: center;
+}
+
+.star-icon {
+  margin-bottom: 2px;
+}
+
+.profile {
+  margin-top: 30px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.owner-profile-pic {
+  width: 67px;
+  height: 65px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.owner {
+  font-weight: 500;
+}
+
+.line {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 900px;
+  border: 1px solid #e6e6e6;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+}
+
+.description > span {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.calendar {
+  margin-top: 30px;
+  overflow: hidden !important;
+}
+.chooseDate {
+  overflow: hidden !important;
+}
+
+.rdrDefinedRangesWrapper {
+  background-color: red !important;
+}
+
+.caravan-right-side {
+  position: sticky;
+  top: 10px;
+  width: 370px;
+  height: 520px;
+  border: 2px solid #e6e6e6;
+  border-radius: 12px;
+  padding: 15px 10px;
+}
+
+.total-info {
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.total-info > .price {
+  font-size: 28px;
+  font-weight: 500;
+}
+.total-info > .price > span {
+  font-size: 18px;
+}
+
+.total-rating {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  margin-bottom: 3px;
+}
+
+.reservation {
+  margin-top: 20px;
+  width: 330px;
+  height: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #979797;
+  border-radius: 12px;
+}
+
+.check-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.check {
+  height: 65px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #979797;
+  align-items: center;
+  padding: 0 10px;
+  font-size: 13px;
+}
+
+.checkin {
+  display: flex;
+  flex-direction: column;
+}
+
+.checkout {
+  display: flex;
+  flex-direction: column;
+}
+
+.guest {
+  height: 65px;
+  padding: 0 10px;
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.select-guests {
+  display: flex;
+  flex-direction: column;
+}
+
+.moreIcon {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.button > span {
+  margin-top: 20px;
+}
+
+.reservation-button {
+  margin-top: 20px;
+  width: 330px;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 12px;
+  color: #fff;
+  background: rgb(253, 54, 91);
+  background: linear-gradient(
+    90deg,
+    rgba(253, 54, 91, 1) 0%,
+    rgba(240, 41, 94, 1) 35%,
+    rgba(216, 6, 101, 1) 100%
+  );
+}
+
+.caravan-payment {
+  margin-top: 70px;
+  display: flex;
+  flex-direction: column;
+}
+
+.payment-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.payment-line {
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  border: 1px solid #e6e6e6;
+}
+
+.before-tax {
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+}

@@ -15,6 +15,8 @@ import { useContext, useState } from 'react';
 import Caravans from './pages/caravans/Caravans';
 import About from './pages/About/About';
 import { Context } from './context/Contex';
+import SingleCaravan from './pages/single/SingleCaravan';
+import Favorites from './pages/favorites/Favorites';
 
 function App() {
   const { user } = useContext(Context);
@@ -29,6 +31,8 @@ function App() {
           <Route path='/about' element={<About />} />
           <Route path='/how-to-rent' element={<HowToRent />} />
           <Route path='/caravans' element={<Caravans />} />
+          <Route path='/caravan/:id' element={<SingleCaravan />} />
+          <Route path='/favorites' element={<Favorites />} />
         </Routes>
       </BrowserRouter>
 

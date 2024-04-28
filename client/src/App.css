@@ -25,11 +25,14 @@
   list-style: none;
   font-family: 'Poppins', sans-serif;
   scroll-behavior: smooth;
-  overflow-x: hidden;
 }
 
 .main {
   display: flex;
   align-items: center;
   flex-direction: column;
+}
+
+.rdrDayNumber {
+  overflow-y: hidden;
 }

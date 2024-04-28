@@ -1,11 +1,10 @@
 .login {
-  width: 100vw;
   height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   background-image: linear-gradient(
       305deg,
       rgba(254, 254, 254, 0.02) 0%,
