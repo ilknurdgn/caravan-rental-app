@@ -143,56 +143,58 @@ const SingleCaravan = () => {
           </div>
         </div>
         <div className={styles['caravan-right-side']}>
-          <div className={styles['total-info']}>
-            <p className={styles.price}>
-              3.000₺<span>gece</span>
-            </p>
-            <p className={styles['total-rating']}>
-              <IoMdStar className={styles.icon} />
-              4.83 · 1,800 değerlendirme
-            </p>
-          </div>
-          <div className={styles['check-container']}>
-            <div className={styles.reservation}>
-              <div className={styles.check}>
-                <div className={styles.checkin}>
-                  <span>GİRİŞ</span>
-                  <span>8/5/2023</span>
+          <div>
+            <div className={styles['total-info']}>
+              <p className={styles.price}>
+                3.000₺<span>gece</span>
+              </p>
+              <p className={styles['total-rating']}>
+                <IoMdStar className={styles.icon} />
+                4.83 · 1,800 değerlendirme
+              </p>
+            </div>
+            <div className={styles['check-container']}>
+              <div className={styles.reservation}>
+                <div className={styles.check}>
+                  <div className={styles.checkin}>
+                    <span>GİRİŞ</span>
+                    <span>8/5/2023</span>
+                  </div>
+                  <div className={styles.checkout}>
+                    <span>ÇIKIŞ</span>
+                    <span>12/5/2023</span>
+                  </div>
                 </div>
-                <div className={styles.checkout}>
-                  <span>ÇIKIŞ</span>
-                  <span>12/5/2023</span>
-                </div>
-              </div>
-              <div className={styles.guest}>
-                <div className={styles['select-guests']}>
-                  <span>MİSAFİR</span>
-                  <span>1 misafir</span>
-                </div>
-                <div className={styles.moreIcon}>
-                  {' '}
-                  <MdExpandMore className={styles.moreIcon} />{' '}
+                <div className={styles.guest}>
+                  <div className={styles['select-guests']}>
+                    <span>MİSAFİR</span>
+                    <span>1 misafir</span>
+                  </div>
+                  <div className={styles.moreIcon}>
+                    {' '}
+                    <MdExpandMore className={styles.moreIcon} />{' '}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className={styles.button}>
-            <button className={styles['reservation-button']} type='submit'>
-              Devam et
-            </button>
-            <span>Henüz ücretlendirilmeyeceksiniz</span>
-          </div>
-          <div className={styles['caravan-payment']}>
-            <div className={styles['payment-info']}>
-              <div className={styles['total-price-info']}>$3000 x 3 gece</div>
-              <div className={styles['total-price']}>$9000</div>
+            <div className={styles.button}>
+              <button className={styles['reservation-button']} type='submit'>
+                Devam et
+              </button>
+              <span>Henüz ücretlendirilmeyeceksiniz</span>
             </div>
-            <div className={styles['payment-line']}></div>
-            <div className={styles['before-tax']}>
-              <div className={styles['total-price-info']}>
-                Vergi̇ öncesi̇ toplam
+            <div className={styles['caravan-payment']}>
+              <div className={styles['payment-info']}>
+                <div className={styles['total-price-info']}>$3000 x 3 gece</div>
+                <div className={styles['total-price']}>$9000</div>
               </div>
-              <div className={styles['total-price']}>$300</div>
+              <div className={styles['payment-line']}></div>
+              <div className={styles['before-tax']}>
+                <div className={styles['total-price-info']}>
+                  Vergi̇ öncesi̇ toplam
+                </div>
+                <div className={styles['total-price']}>$300</div>
+              </div>
             </div>
           </div>
         </div>
