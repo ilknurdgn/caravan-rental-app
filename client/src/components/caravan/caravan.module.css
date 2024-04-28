@@ -40,6 +40,17 @@
   transform: scale(1.1);
 }
 
+.favHeartIcon {
+  color: #ff385c;
+  font-size: 18px;
+  transition: 0.1s all ease-in;
+}
+
+.heartIcon-div:hover .favHeartIcon {
+  color: #ff385c;
+  transform: scale(1.1);
+}
+
 .caravans-info {
   display: flex;
   justify-content: space-between;

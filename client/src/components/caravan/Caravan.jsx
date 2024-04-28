@@ -1,7 +1,16 @@
+import { useState } from 'react';
 import styles from './caravan.module.css';
 import { FaRegHeart } from 'react-icons/fa';
 import { FaStar } from 'react-icons/fa';
+import { FaHeart } from 'react-icons/fa';
+
 const Caravan = () => {
+  const [isFavorited, setIsFavorited] = useState(false);
+
+  const toggleFavorite = () => {
+    setIsFavorited(!isFavorited);
+  };
+
   return (
     <div className={styles.caravan}>
       <div className={styles['caravan-image']}>
@@ -10,7 +19,11 @@ const Caravan = () => {
           alt=''
         />
         <div className={styles['heartIcon-div']}>
-          <FaRegHeart className={styles.heartIcon} />
+          {isFavorited ? (
+            <FaHeart onClick={toggleFavorite} className={styles.favHeartIcon} />
+          ) : (
+            <FaRegHeart onClick={toggleFavorite} className={styles.heartIcon} />
+          )}
         </div>
       </div>
       <div className={styles['caravans-info']}>

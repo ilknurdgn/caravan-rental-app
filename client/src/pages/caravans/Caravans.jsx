@@ -3,6 +3,7 @@ import styles from './caravans.module.css';
 import { FaRegHeart } from 'react-icons/fa';
 import Pagination from '@mui/material/Pagination';
 import { createTheme } from '@mui/material/styles';
+import { useState } from 'react';
 
 const Caravans = () => {
   return (
