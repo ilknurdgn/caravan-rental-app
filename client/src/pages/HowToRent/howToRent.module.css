@@ -16,8 +16,13 @@
   gap: 40px;
 }
 
-.img {
+.imgContainer {
   flex: 1;
+  overflow: hidden;
+}
+
+.img {
+  width: 100%;
 }
 
 .subtitle {

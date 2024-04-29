@@ -10,7 +10,9 @@ const HowToRent = () => {
         sürekli çalışıyor ve size en kaliteli hizmeti sunmayı amaçlıyoruz.
       </p>
       <div className={styles.info}>
-        <img className={styles.img} src='/images/how-to-rent-1.jpg' alt='' />
+        <div className={styles.imgContainer}>
+          <img className={styles.img} src='/images/how-to-rent-1.jpg' alt='' />
+        </div>
         <p className={styles.text}>
           <h2 className={styles.subtitle}>Garantili Rezervasyon ve Ödeme</h2>
           Garantili Rezervasyon ile, Lux’un onayladığı sigortalı araçlarımızı
@@ -39,11 +41,15 @@ const HowToRent = () => {
           ek bilgiler talep edebilirler, iletişim kanallarını açık tutmaya
           gayret edin.
         </p>
-        <img className={styles.img} src='/images/how-to-rent-2.jpg' alt='' />
+        <div className={styles.imgContainer}>
+          <img className={styles.img} src='/images/how-to-rent-2.jpg' alt='' />
+        </div>
       </div>
 
       <div className={styles.info}>
-        <img className={styles.img} src='/images/how-to-rent-3.jpg' alt='' />
+        <div className={styles.imgContainer}>
+          <img className={styles.img} src='/images/how-to-rent-3.jpg' alt='' />
+        </div>
         <p className={styles.text}>
           <h2 className={styles.subtitle}>Nelere Dikkat Etmeliyim?</h2>
           <ul className={styles.list}>
