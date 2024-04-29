@@ -148,7 +148,11 @@ const Caravans = () => {
   const visibleCaravans = totalCaravans.slice(startIndex, endIndex);
   return (
     <div className={styles['caravans-container']}>
-      <span className={styles.result}>100'den fazla karavan</span>
+      <span className={styles.result}>
+        {totalCaravans.length > 10
+          ? "10'dan fazla karavan"
+          : totalCaravans.length + ' karavan bulundu'}
+      </span>
       <div className={styles.caravans}>
         {visibleCaravans.map((caravan, index) => (
           <Caravan key={index} {...caravan} />
