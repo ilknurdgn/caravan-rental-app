@@ -1,0 +1,32 @@
+.about {
+  width: 1280px;
+  font-size: 16px;
+}
+
+.title {
+  font-size: 36px;
+  text-align: center;
+  margin: 40px 0px 20px 0px;
+  font-family: inherit;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  margin: 50px 0px;
+  gap: 40px;
+}
+
+.img {
+  flex: 1;
+}
+
+.text {
+  flex: 1.35;
+  font-family: inherit;
+}
+
+.result-text {
+  text-align: center;
+  margin-bottom: 70px;
+}

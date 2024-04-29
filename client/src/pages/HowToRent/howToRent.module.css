@@ -1,0 +1,37 @@
+.container {
+  width: 1280px;
+  font-size: 16px;
+}
+
+.title {
+  font-size: 36px;
+  text-align: center;
+  margin: 40px 0px 20px 0px;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  margin: 50px 0px;
+  gap: 40px;
+}
+
+.img {
+  flex: 1;
+}
+
+.subtitle {
+  margin-bottom: 10px;
+}
+
+.text {
+  flex: 1.35;
+}
+.list {
+  list-style-type: circle;
+}
+
+.result-text {
+  text-align: center;
+  margin-bottom: 70px;
+}
