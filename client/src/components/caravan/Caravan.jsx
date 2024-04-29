@@ -18,11 +18,11 @@ const Caravan = () => {
           src='https://images.unsplash.com/photo-1592351763700-b9b35a6465ea?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
           alt=''
         />
-        <div className={styles['heartIcon-div']}>
+        <div onClick={toggleFavorite} className={styles['heartIcon-div']}>
           {isFavorited ? (
             <FaHeart onClick={toggleFavorite} className={styles.favHeartIcon} />
           ) : (
-            <FaRegHeart onClick={toggleFavorite} className={styles.heartIcon} />
+            <FaRegHeart className={styles.heartIcon} />
           )}
         </div>
       </div>
