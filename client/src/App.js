@@ -18,6 +18,7 @@ import { Context } from './context/Contex';
 import SingleCaravan from './pages/single/SingleCaravan';
 import Favorites from './pages/favorites/Favorites';
 import Blogs from './pages/blogs/Blogs';
+import SingleBlog from './pages/SingleBlog/SingleBlog';
 
 function App() {
   const { user } = useContext(Context);
@@ -35,6 +36,7 @@ function App() {
           <Route path='/caravan/:id' element={<SingleCaravan />} />
           <Route path='/favorites' element={<Favorites />} />
           <Route path='/blogs' element={<Blogs />} />
+          <Route path='/blog/:id' element={<SingleBlog />} />
         </Routes>
       </BrowserRouter>
 
