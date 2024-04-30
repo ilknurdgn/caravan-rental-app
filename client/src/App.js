@@ -17,6 +17,7 @@ import About from './pages/About/About';
 import { Context } from './context/Contex';
 import SingleCaravan from './pages/single/SingleCaravan';
 import Favorites from './pages/favorites/Favorites';
+import Blogs from './pages/blogs/Blogs';
 
 function App() {
   const { user } = useContext(Context);
@@ -33,6 +34,7 @@ function App() {
           <Route path='/caravans' element={<Caravans />} />
           <Route path='/caravan/:id' element={<SingleCaravan />} />
           <Route path='/favorites' element={<Favorites />} />
+          <Route path='/blogs' element={<Blogs />} />
         </Routes>
       </BrowserRouter>
 
