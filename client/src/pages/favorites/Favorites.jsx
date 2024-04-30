@@ -5,7 +5,7 @@ import FavoriteCaravan from '../../components/favoriteCaravan/FavoriteCaravan';
 import { useState } from 'react';
 const Favorites = () => {
   const [page, setPage] = useState(1); //sayfa numarası state'i
-  const caravansPerPage = 6; //sayfada gösterilecek kravan sayısı
+  const caravansPerPage = 9; //sayfada gösterilecek kravan sayısı
   const handlePageChange = (event, newPage) => {
     setPage(newPage);
   };

@@ -163,7 +163,7 @@ const SingleCaravan = () => {
           <div>
             <div className={styles['total-info']}>
               <p className={styles.price}>
-                3.000₺<span>gece</span>
+                3.000₺<span>gün</span>
               </p>
               <p className={styles['total-rating']}>
                 <IoMdStar className={styles.icon} />
@@ -174,11 +174,11 @@ const SingleCaravan = () => {
               <div className={styles.reservation}>
                 <div className={styles.check}>
                   <div className={styles.checkin}>
-                    <span>GİRİŞ</span>
+                    <span>BAŞLANGIÇ</span>
                     <span>8/5/2023</span>
                   </div>
                   <div className={styles.checkout}>
-                    <span>ÇIKIŞ</span>
+                    <span>BİTİŞ</span>
                     <span>12/5/2023</span>
                   </div>
                 </div>
@@ -202,7 +202,7 @@ const SingleCaravan = () => {
             </div>
             <div className={styles['caravan-payment']}>
               <div className={styles['payment-info']}>
-                <div className={styles['total-price-info']}>$3000 x 3 gece</div>
+                <div className={styles['total-price-info']}>$3000 x 3 gün</div>
                 <div className={styles['total-price']}>$9000</div>
               </div>
               <div className={styles['payment-line']}></div>
