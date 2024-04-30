@@ -3,11 +3,14 @@ import Pagination from '@mui/material/Pagination';
 import { FaRegHeart } from 'react-icons/fa';
 import FavoriteCaravan from '../../components/favoriteCaravan/FavoriteCaravan';
 import { useState } from 'react';
+import { useRef } from 'react';
 const Favorites = () => {
+  const containerRef = useRef(null);
   const [page, setPage] = useState(1); //sayfa numarası state'i
   const caravansPerPage = 9; //sayfada gösterilecek kravan sayısı
   const handlePageChange = (event, newPage) => {
     setPage(newPage);
+    containerRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
   const totalCaravans = [
@@ -146,7 +149,7 @@ const Favorites = () => {
   const endIndex = startIndex + caravansPerPage;
   const visibleCaravans = totalCaravans.slice(startIndex, endIndex);
   return (
-    <div className={styles['caravans-container']}>
+    <div ref={containerRef} className={styles['caravans-container']}>
       <span className={styles.name}>Favoriler</span>
       <div className={styles.caravans}>
         {visibleCaravans.map((caravan, index) => (
