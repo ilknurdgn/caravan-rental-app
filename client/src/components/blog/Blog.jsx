@@ -4,7 +4,7 @@ import { FaArrowRightLong } from 'react-icons/fa6';
 
 const Blog = () => {
   return (
-    <div className={styles['blog-container']}>
+    <Link to='/blog/:id' className={styles['blog-container']}>
       <span className={styles.title}>Neden VANCA?</span>
       <img
         className={styles.image}
@@ -37,11 +37,11 @@ const Blog = () => {
       <div className={styles['down-section']}>
         <span>13 Mayıs 2023</span>
 
-        <Link to='/blog/:id' className={styles.more}>
+        <span to='/blog/:id' className={styles.more}>
           DEVAMI <FaArrowRightLong />
-        </Link>
+        </span>
       </div>
-    </div>
+    </Link>
   );
 };
 
