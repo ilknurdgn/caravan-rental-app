@@ -1,5 +1,13 @@
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
+//GENERATE AN ACCESS TOKEN
+const accessToken = (userId) => {
+  return jwt.sign({ id: userId }, process.env.JWT_SECRET, {
+    expiresIn: '1d',
+  });
+};
 
 // REGISTER
 exports.register = async (req, res) => {
@@ -27,18 +35,22 @@ exports.login = async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email });
     if (!user) {
-      return res.status(400).json('Wrong credentials!');
+      return res.status(400).json('There is no such email!');
     }
 
     const validate = await bcrypt.compare(req.body.password, user.password);
 
     if (!validate) {
-      return res.status(400).json('Wrong credentials!');
+      return res.status(400).json('Password not matched!');
     }
 
     const { password, ...others } = user._doc;
 
-    res.status(200).json(others);
+    console.log(others);
+    res.status(200).json({
+      others,
+      token: accessToken(user._id),
+    });
   } catch (error) {
     res.status(500).json(error);
   }
