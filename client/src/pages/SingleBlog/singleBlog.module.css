@@ -80,3 +80,24 @@ br {
   cursor: pointer;
   font-size: 20px;
 }
+
+.singlePostTitleInput {
+  margin-top: 20px;
+  border: none;
+  height: 50px;
+  background-color: transparent;
+  border-bottom: 1px solid #504c4c;
+  width: 1000px;
+  outline: none;
+  font-size: 30px;
+  text-align: center;
+}
+
+.singlePostDescInput {
+  border: none;
+  background-color: transparent;
+  width: 1000px;
+  min-height: 1000px;
+  outline: none;
+  color: #504c4c;
+}
