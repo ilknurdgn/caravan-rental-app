@@ -1,0 +1,82 @@
+.single-blog {
+  position: relative;
+  background-color: #f2f8fa;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  margin-top: 35px;
+  font-size: 36px;
+}
+
+.blog-container {
+  margin-bottom: 100px;
+  width: 1280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #dfdfdf;
+  box-shadow: 0px 0px 19px -3px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 30px;
+}
+
+.blog-container > .image {
+  width: 1000px;
+  height: 580px;
+  object-fit: cover;
+}
+
+.items {
+  margin: 30px 0;
+  width: 1000px;
+  text-align: left;
+  display: flex;
+  gap: 50px;
+}
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.blog-content {
+  width: 1000px;
+  color: #504c4c;
+}
+
+.subtitle {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.blog-entry {
+  margin-top: 10px;
+}
+
+br {
+  display: block;
+  content: '';
+  margin: 10px 0;
+}
+
+.update {
+  width: 1280px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.edit {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.delete {
+  cursor: pointer;
+  font-size: 20px;
+}

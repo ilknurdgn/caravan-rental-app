@@ -149,7 +149,7 @@ const Favorites = () => {
   const endIndex = startIndex + caravansPerPage;
   const visibleCaravans = totalCaravans.slice(startIndex, endIndex);
   return (
-    <div ref={containerRef} className={styles['caravans-container']}>
+    <div zz className={styles['caravans-container']}>
       <span className={styles.name}>Favoriler</span>
       <div className={styles.caravans}>
         {visibleCaravans.map((caravan, index) => (
