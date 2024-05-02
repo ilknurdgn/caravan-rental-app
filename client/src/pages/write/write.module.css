@@ -1,3 +1,71 @@
 .write {
+  width: 100%;
+  background-color: #f2f8fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.writeForm {
   width: 1280px;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  height: 800px;
+  margin: 50px 0;
+  border-radius: 12px;
+  padding: 30px;
+  align-items: center;
+  position: relative;
+}
+
+.writeFormGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.writeInput {
+  border: none;
+  outline: none;
+  font-size: 36px;
+  border-bottom: 1px solid #eeecec;
+  text-align: center;
+}
+
+.fileInput {
+  width: 1000px;
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #757575;
+  font-size: 24px;
+}
+
+.writeText {
+  align-items: center;
+  width: 1000px;
+  height: 500px;
+  font-family: inherit;
+  font-size: 20px;
+  border: 1px solid #eeecec;
+  border-radius: 12px;
+  padding: 20px;
+  outline: none;
+  resize: none;
+}
+
+.writeSubmit {
+  outline: none;
+  align-items: center;
+  position: absolute;
+  width: 100px;
+  padding: 12px;
+  bottom: 30px;
+  background-color: #446851;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
 }
