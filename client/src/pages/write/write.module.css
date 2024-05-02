@@ -25,6 +25,7 @@
 }
 
 .writeInput {
+  color: #444444;
   border: none;
   outline: none;
   font-size: 36px;
@@ -38,11 +39,12 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  color: #757575;
+  color: #444444;
   font-size: 24px;
 }
 
 .writeText {
+  color: #444444;
   align-items: center;
   width: 1000px;
   height: 500px;
