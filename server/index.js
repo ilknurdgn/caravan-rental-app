@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const authRoute = require('./routes/authRoute');
 const userRoute = require('./routes/userRoute');
+const caravanRoute = require('./routes/caravanRoute');
 
 dotenv.config();
 app.use(express.json());
@@ -19,6 +20,7 @@ mongoose
 
 app.use('/api/auth', authRoute);
 app.use('/api/user', userRoute);
+app.use('/api/caravan', caravanRoute);
 
 app.listen('8000', () => {
   console.log('Backend is running.');
