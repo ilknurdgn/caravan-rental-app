@@ -103,6 +103,9 @@ const SingleBlog = () => {
               </p>
             </div>
           )}
+          {updateMode && (
+            <button className={styles.updateButton}>Update</button>
+          )}
         </div>
       </div>
     </div>

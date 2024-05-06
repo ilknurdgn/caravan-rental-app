@@ -10,7 +10,6 @@ const Favorites = () => {
   const caravansPerPage = 9; //sayfada gösterilecek kravan sayısı
   const handlePageChange = (event, newPage) => {
     setPage(newPage);
-    containerRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
   const totalCaravans = [
