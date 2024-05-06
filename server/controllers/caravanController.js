@@ -40,3 +40,18 @@ exports.updateCaravan = async (req, res) => {
     res.status(500).json(error);
   }
 };
+
+//Delete a caravan
+exports.deleteCaravan = async (req, res) => {
+  try {
+    const caravan = await Caravan.findById(req.params.id);
+    try {
+      await Caravan.findByIdAndDelete(req.params.id);
+      res.status(200).json('Caravan has been deleted.');
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  } catch (error) {
+    res.status(404).json('User not found');
+  }
+};
