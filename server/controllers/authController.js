@@ -44,13 +44,16 @@ exports.login = async (req, res) => {
       return res.status(400).json('Password not matched!');
     }
 
+    const token = accessToken(user._id);
+    res.cookie('jwt', token, {
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24,
+    });
+
     const { password, ...others } = user._doc;
 
     console.log(others);
-    res.status(200).json({
-      others,
-      token: accessToken(user._id),
-    });
+    res.status(200).json(others);
   } catch (error) {
     res.status(500).json(error);
   }

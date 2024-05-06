@@ -3,21 +3,20 @@ const jwt = require('jsonwebtoken');
 
 const authenticateToken = async (req, res, next) => {
   try {
-    const authHeader = req.headers['authorization'];
-    const token = authHeader && authHeader.split(' ')[1];
+    const token = req.cookies.jwt;
 
-    if (!token) {
-      res.status(401).json({
-        succeesseded: false,
-        error: 'no token avilable',
+    if (token) {
+      jwt.verify(token, process.env.JWT_SECRET, (err) => {
+        if (err) {
+          console.log(err.message);
+          res.redirect('/login');
+        } else {
+          next();
+        }
       });
+    } else {
+      res.redirect('/login');
     }
-
-    req.user = await User.findById(
-      jwt.verify(token, process.env.JWT_SECRET).id
-    );
-
-    next();
   } catch (error) {
     res.status(401).json('Not authorized');
   }
