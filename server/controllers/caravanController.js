@@ -1,9 +1,10 @@
 const Caravan = require('../models/caravanModel');
 
-//CREATE
+//Add a caravan in the DB
 exports.add = async (req, res) => {
   try {
     const newCaravan = new Caravan({
+      photos: req.body.photos,
       title: req.body.title,
       location: req.body.location,
       type: req.body.type,
@@ -11,7 +12,9 @@ exports.add = async (req, res) => {
       gear: req.body.gear,
       maxGuests: req.body.maxGuests,
       dailyPrice: req.body.dailyPrice,
+      owner: req.body.owner,
       description: req.body.description,
+      notAvailableDates: req.body.notAvailableDates,
     });
 
     const caravan = await newCaravan.save();

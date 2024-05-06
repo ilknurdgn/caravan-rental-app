@@ -2,6 +2,11 @@ const mongoose = require('mongoose');
 
 const caravanSchema = new mongoose.Schema(
   {
+    photos: [
+      {
+        type: String,
+      },
+    ],
     title: {
       type: String,
       required: true,
@@ -28,9 +33,15 @@ const caravanSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    description: {
+    owner: {
       type: String,
+      required: true,
     },
+    description: [
+      {
+        type: String,
+      },
+    ],
     notAvailableDates: [{ start: Date, end: Date }],
   },
   { timestamps: true }
