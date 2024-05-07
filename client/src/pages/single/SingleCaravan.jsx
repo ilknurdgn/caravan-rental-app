@@ -15,8 +15,10 @@ import { MdExpandMore } from 'react-icons/md';
 import Comments from '../../components/comments/Comments';
 import { addDays } from 'date-fns';
 import styles from './singleCaravan.module.css';
+import { useParams } from 'react-router-dom';
 
 const SingleCaravan = () => {
+  const { id } = useParams();
   const [state, setState] = useState([
     {
       startDate: new Date(),
@@ -30,7 +32,7 @@ const SingleCaravan = () => {
   useEffect(() => {
     const getSingleCaravan = async () => {
       try {
-        const res = await axios.get('/caravan/6638df779d296600f594121b');
+        const res = await axios.get(`/caravan/${id}`);
         setCaravanData(res.data);
       } catch (error) {
         console.error('Error fetching caravan data: ', error);
@@ -100,7 +102,7 @@ const SingleCaravan = () => {
               <IoSettingsOutline /> <p>{caravanData?.gear}</p>
             </li>
             <li>
-              <GoPeople /> <p>{caravanData?.maxGuests}</p>
+              <GoPeople /> <p>{caravanData?.maxGuests} Kişilik</p>
             </li>
           </ul>
 
@@ -154,7 +156,7 @@ const SingleCaravan = () => {
           <div>
             <div className={styles['total-info']}>
               <p className={styles.price}>
-                3.000₺<span>gün</span>
+                {caravanData?.dailyPrice}₺<span>gün</span>
               </p>
               <p className={styles['total-rating']}>
                 <IoMdStar className={styles.icon} />
@@ -193,7 +195,9 @@ const SingleCaravan = () => {
             </div>
             <div className={styles['caravan-payment']}>
               <div className={styles['payment-info']}>
-                <div className={styles['total-price-info']}>$3000 x 3 gün</div>
+                <div className={styles['total-price-info']}>
+                  {caravanData?.dailyPrice}₺ x 3 gün
+                </div>
                 <div className={styles['total-price']}>$9000</div>
               </div>
               <div className={styles['payment-line']}></div>

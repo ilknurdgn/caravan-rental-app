@@ -1,7 +1,11 @@
+/* * {
+  text-decoration: none;
+} */
 .caravan {
   display: flex;
   flex-direction: column;
   cursor: pointer;
+  color: #222;
 }
 
 .caravan-image {
@@ -15,7 +19,7 @@
   border-radius: 12px;
 }
 
-.heartIcon-div {
+/* .heartIcon-div {
   background-color: #fff;
   width: 30px;
   height: 30px;
@@ -49,7 +53,7 @@
 .heartIcon-div:hover .favHeartIcon {
   color: #ff385c;
   transform: scale(1.1);
-}
+} */
 
 .caravans-info {
   display: flex;

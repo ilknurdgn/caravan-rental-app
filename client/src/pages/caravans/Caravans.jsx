@@ -4,6 +4,8 @@ import { FaRegHeart } from 'react-icons/fa';
 import Pagination from '@mui/material/Pagination';
 import { createTheme } from '@mui/material/styles';
 import { useRef, useState } from 'react';
+import { FaHeart } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const Caravans = () => {
   const containerRef = useRef(null);
@@ -148,6 +150,14 @@ const Caravans = () => {
   const startIndex = (page - 1) * caravansPerPage;
   const endIndex = startIndex + caravansPerPage;
   const visibleCaravans = totalCaravans.slice(startIndex, endIndex);
+
+  const [isFavorited, setIsFavorited] = useState(false);
+  const [clickedCaravanId, setClickedCaravanId] = useState(null);
+
+  const toggleFavorite = (caravanId) => {
+    setIsFavorited(!isFavorited);
+    setClickedCaravanId(caravanId);
+  };
   return (
     <div ref={containerRef} className={styles['caravans-container']}>
       <span className={styles.result}>
@@ -157,7 +167,22 @@ const Caravans = () => {
       </span>
       <div className={styles.caravans}>
         {visibleCaravans.map((caravan, index) => (
-          <Caravan key={index} {...caravan} />
+          <div className={styles.newDiv} key={index}>
+            <Link to='/caravan/:id'>
+              <Caravan {...caravan} />
+            </Link>
+            {/* Favori butonu */}
+            <div
+              className={styles['heartIcon-div']}
+              onClick={() => toggleFavorite(caravan.id)}
+            >
+              {isFavorited && clickedCaravanId === caravan.id ? (
+                <FaHeart className={styles.favHeartIcon} />
+              ) : (
+                <FaRegHeart className={styles.heartIcon} />
+              )}
+            </div>
+          </div>
         ))}
       </div>
       <Pagination
