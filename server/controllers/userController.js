@@ -1,10 +1,8 @@
-const express = require('express');
-const router = express.Router();
 const bcrypt = require('bcrypt');
-const User = require('../models/User');
+const User = require('../models/userModel');
 
 //UPDATE
-router.put('/:id', async (req, res) => {
+exports.update = async (req, res) => {
   if (req.body.userId === req.params.id) {
     if (req.body.password) {
       const salt = await bcrypt.genSalt(10);
@@ -28,10 +26,10 @@ router.put('/:id', async (req, res) => {
     res.status(401).json('You can update only your account!');
     console.log(req.bodyuserId);
   }
-});
+};
 
 //DELETE
-router.delete('/:id', async (req, res) => {
+exports.delete = async (req, res) => {
   if (req.body.userId === req.params.id) {
     try {
       const user = await User.findById(req.params.id);
@@ -47,10 +45,10 @@ router.delete('/:id', async (req, res) => {
   } else {
     res.status(401).json('You can delete only account!');
   }
-});
+};
 
 //GET USER
-router.get('/:id', async (req, res) => {
+exports.getUser = async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
     const { password, ...others } = user._doc;
@@ -59,6 +57,4 @@ router.get('/:id', async (req, res) => {
   } catch (error) {
     res.status(500).json(error);
   }
-});
-
-module.exports = router;
+};
