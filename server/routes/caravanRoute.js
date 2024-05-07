@@ -6,6 +6,6 @@ router.post('/add', caravanController.add);
 router.put('/:id', caravanController.updateCaravan);
 router.delete('/:id', caravanController.deleteCaravan);
 router.get('/:id', caravanController.getSingleCaravan);
-router.get('/', caravanController.getAllCaravans);
+router.get('/', caravanController.getCaravans);
 
 module.exports = router;

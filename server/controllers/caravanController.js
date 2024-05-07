@@ -67,10 +67,35 @@ exports.getSingleCaravan = async (req, res) => {
   }
 };
 
-//Get all caravans
-exports.getAllCaravans = async (req, res) => {
+//Get caravans
+exports.getCaravans = async (req, res) => {
+  const regexLocation = new RegExp(req.query.location, 'i');
+  const { location, start, end, maxGuests } = req.query;
   try {
-    const caravans = await Caravan.find();
+    let query = {};
+
+    if (location) {
+      query.location = regexLocation;
+    }
+
+    if (start && end) {
+      query.notAvailableDates = {
+        $not: {
+          $elemMatch: {
+            $and: [
+              { start: { $lte: new Date(end) } },
+              { end: { $gte: new Date(start) } },
+            ],
+          },
+        },
+      };
+    }
+
+    if (maxGuests) {
+      query.maxGuests = maxGuests;
+    }
+
+    const caravans = await Caravan.find(query);
 
     res.status(200).json(caravans);
   } catch (error) {
