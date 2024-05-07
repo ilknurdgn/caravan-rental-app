@@ -55,3 +55,14 @@ exports.deleteCaravan = async (req, res) => {
     res.status(404).json('User not found');
   }
 };
+
+//Get a single caravan
+exports.getSingleCaravan = async (req, res) => {
+  try {
+    const caravan = await Caravan.findById(req.params.id);
+
+    res.status(200).json(caravan);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};

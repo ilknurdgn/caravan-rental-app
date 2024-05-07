@@ -5,5 +5,6 @@ const caravanController = require('../controllers/caravanController');
 router.post('/add', caravanController.add);
 router.put('/:id', caravanController.updateCaravan);
 router.delete('/:id', caravanController.deleteCaravan);
+router.get('/:id', caravanController.getSingleCaravan);
 
 module.exports = router;
