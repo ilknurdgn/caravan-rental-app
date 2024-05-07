@@ -18,7 +18,7 @@ import styles from './singleCaravan.module.css';
 import { useParams } from 'react-router-dom';
 
 const SingleCaravan = () => {
-  const { id } = useParams();
+  const { id } = useParams(); //url'den id alır
   const [state, setState] = useState([
     {
       startDate: new Date(),
@@ -33,6 +33,7 @@ const SingleCaravan = () => {
     const getSingleCaravan = async () => {
       try {
         const res = await axios.get(`/caravan/${id}`);
+        console.log(res.data);
         setCaravanData(res.data);
       } catch (error) {
         console.error('Error fetching caravan data: ', error);
@@ -131,9 +132,9 @@ const SingleCaravan = () => {
           <div className={styles.description}>
             <span>AÇIKLAMA</span>
             <ul>
-              {caravanData?.description.map((desc, index) => (
+              {/* {caravanData?.description.map((desc, index) => (
                 <li key={index}>{desc}</li>
-              ))}
+              ))} */}
             </ul>
           </div>
 

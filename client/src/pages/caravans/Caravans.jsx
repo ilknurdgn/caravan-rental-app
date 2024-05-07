@@ -3,9 +3,10 @@ import styles from './caravans.module.css';
 import { FaRegHeart } from 'react-icons/fa';
 import Pagination from '@mui/material/Pagination';
 import { createTheme } from '@mui/material/styles';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { FaHeart } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const Caravans = () => {
   const containerRef = useRef(null);
@@ -15,138 +16,153 @@ const Caravans = () => {
     setPage(newPage);
     containerRef.current.scrollIntoView({ behavior: 'smooth' });
   };
+  const [totalCaravans, setTotalCaravans] = useState([]); // totalCaravans state'i eklenmiş
 
-  const totalCaravans = [
-    {
-      id: 1,
-      title: 'Motocaravan - Antalya',
-      capacity: '4 kişilik',
-      year: 2023,
-      nights: '3 gece',
-      price: '3.500₺ gece',
-      rating: 4.97,
-    },
-    {
-      id: 2,
-      title: 'Karavan - İstanbul',
-      capacity: '6 kişilik',
-      year: 2022,
-      nights: '2 gece',
-      price: '4.000₺ gece',
-      rating: 4.75,
-      // Diğer özellikler...
-    },
-    {
-      id: 3,
-      title: 'Karavan - İstanbul',
-      capacity: '6 kişilik',
-      year: 2022,
-      nights: '2 gece',
-      price: '4.000₺ gece',
-      rating: 4.75,
-      // Diğer özellikler...
-    },
-    {
-      id: 4,
-      title: 'Karavan - İstanbul',
-      capacity: '6 kişilik',
-      year: 2022,
-      nights: '2 gece',
-      price: '4.000₺ gece',
-      rating: 4.75,
-      // Diğer özellikler...
-    },
-    {
-      id: 5,
-      title: 'Karavan - İstanbul',
-      capacity: '6 kişilik',
-      year: 2022,
-      nights: '2 gece',
-      price: '4.000₺ gece',
-      rating: 4.75,
-      // Diğer özellikler...
-    },
-    {
-      id: 6,
-      title: 'Karavan - İstanbul',
-      capacity: '6 kişilik',
-      year: 2022,
-      nights: '2 gece',
-      price: '4.000₺ gece',
-      rating: 4.75,
-      // Diğer özellikler...
-    },
-    {
-      id: 7,
-      title: 'Karavan - İstanbul',
-      capacity: '6 kişilik',
-      year: 2022,
-      nights: '2 gece',
-      price: '4.000₺ gece',
-      rating: 4.75,
-      // Diğer özellikler...
-    },
-    {
-      id: 8,
-      title: 'Karavan - İstanbul',
-      capacity: '6 kişilik',
-      year: 2022,
-      nights: '2 gece',
-      price: '4.000₺ gece',
-      rating: 4.75,
-      // Diğer özellikler...
-    },
-    {
-      id: 9,
-      title: 'Karavan - İstanbul',
-      capacity: '6 kişilik',
-      year: 2022,
-      nights: '2 gece',
-      price: '4.000₺ gece',
-      rating: 4.75,
-      // Diğer özellikler...
-    },
-    {
-      id: 10,
-      title: 'Karavan - İstanbul',
-      capacity: '6 kişilik',
-      year: 2022,
-      nights: '2 gece',
-      price: '4.000₺ gece',
-      rating: 4.75,
-      // Diğer özellikler...
-    },
-    {
-      id: 11,
-      title: 'Karavan - İstanbul',
-      capacity: '6 kişilik',
-      year: 2022,
-      nights: '2 gece',
-      price: '4.000₺ gece',
-      rating: 4.75,
-      // Diğer özellikler...
-    },
-    {
-      id: 12,
-      title: 'Karavan - İstanbul',
-      capacity: '6 kişilik',
-      year: 2022,
-      nights: '2 gece',
-      price: '4.000₺ gece',
-      rating: 4.75,
-      // Diğer özellikler...
-    },
-    {
-      id: 13,
-      title: 'Karavan - İstanbul',
-      capacity: '6 kişilik',
-      year: 2022,
-      nights: '2 gece',
-      price: '4.000₺ gece',
-      rating: 4.75,
-      // Diğer özellikler...
-    },
-  ]; //toplam karavan verisi
+  //   const totalCaravans = [
+  //     {
+  //       id: 1,
+  //       title: 'Motocaravan - Antalya',
+  //       capacity: '4 kişilik',
+  //       year: 2023,
+  //       nights: '3 gece',
+  //       price: '3.500₺ gece',
+  //       rating: 4.97,
+  //     },
+  //     {
+  //       id: 2,
+  //       title: 'Karavan - İstanbul',
+  //       capacity: '6 kişilik',
+  //       year: 2022,
+  //       nights: '2 gece',
+  //       price: '4.000₺ gece',
+  //       rating: 4.75,
+  //       // Diğer özellikler...
+  //     },
+  //     {
+  //       id: 3,
+  //       title: 'Karavan - İstanbul',
+  //       capacity: '6 kişilik',
+  //       year: 2022,
+  //       nights: '2 gece',
+  //       price: '4.000₺ gece',
+  //       rating: 4.75,
+  //       // Diğer özellikler...
+  //     },
+  //     {
+  //       id: 4,
+  //       title: 'Karavan - İstanbul',
+  //       capacity: '6 kişilik',
+  //       year: 2022,
+  //       nights: '2 gece',
+  //       price: '4.000₺ gece',
+  //       rating: 4.75,
+  //       // Diğer özellikler...
+  //     },
+  //     {
+  //       id: 5,
+  //       title: 'Karavan - İstanbul',
+  //       capacity: '6 kişilik',
+  //       year: 2022,
+  //       nights: '2 gece',
+  //       price: '4.000₺ gece',
+  //       rating: 4.75,
+  //       // Diğer özellikler...
+  //     },
+  //     {
+  //       id: 6,
+  //       title: 'Karavan - İstanbul',
+  //       capacity: '6 kişilik',
+  //       year: 2022,
+  //       nights: '2 gece',
+  //       price: '4.000₺ gece',
+  //       rating: 4.75,
+  //       // Diğer özellikler...
+  //     },
+  //     {
+  //       id: 7,
+  //       title: 'Karavan - İstanbul',
+  //       capacity: '6 kişilik',
+  //       year: 2022,
+  //       nights: '2 gece',
+  //       price: '4.000₺ gece',
+  //       rating: 4.75,
+  //       // Diğer özellikler...
+  //     },
+  //     {
+  //       id: 8,
+  //       title: 'Karavan - İstanbul',
+  //       capacity: '6 kişilik',
+  //       year: 2022,
+  //       nights: '2 gece',
+  //       price: '4.000₺ gece',
+  //       rating: 4.75,
+  //       // Diğer özellikler...
+  //     },
+  //     {
+  //       id: 9,
+  //       title: 'Karavan - İstanbul',
+  //       capacity: '6 kişilik',
+  //       year: 2022,
+  //       nights: '2 gece',
+  //       price: '4.000₺ gece',
+  //       rating: 4.75,
+  //       // Diğer özellikler...
+  //     },
+  //     {
+  //       id: 10,
+  //       title: 'Karavan - İstanbul',
+  //       capacity: '6 kişilik',
+  //       year: 2022,
+  //       nights: '2 gece',
+  //       price: '4.000₺ gece',
+  //       rating: 4.75,
+  //       // Diğer özellikler...
+  //     },
+  //     {
+  //       id: 11,
+  //       title: 'Karavan - İstanbul',
+  //       capacity: '6 kişilik',
+  //       year: 2022,
+  //       nights: '2 gece',
+  //       price: '4.000₺ gece',
+  //       rating: 4.75,
+  //       // Diğer özellikler...
+  //     },
+  //     {
+  //       id: 12,
+  //       title: 'Karavan - İstanbul',
+  //       capacity: '6 kişilik',
+  //       year: 2022,
+  //       nights: '2 gece',
+  //       price: '4.000₺ gece',
+  //       rating: 4.75,
+  //       // Diğer özellikler...
+  //     },
+  //     {
+  //       id: 13,
+  //       title: 'Karavan - İstanbul',
+  //       capacity: '6 kişilik',
+  //       year: 2022,
+  //       nights: '2 gece',
+  //       price: '4.000₺ gece',
+  //       rating: 4.75,
+  //       // Diğer özellikler...
+  //     },
+  //   ]; //toplam karavan verisi
+
+  useEffect(() => {
+    const getSingleCaravan = async () => {
+      try {
+        const res = await axios.get('/caravan/');
+        console.log(res.data);
+        setTotalCaravans(res.data);
+      } catch (error) {
+        console.error('Error fetching caravan data: ', error);
+      }
+    };
+    getSingleCaravan();
+  }, []);
+
   const startIndex = (page - 1) * caravansPerPage;
   const endIndex = startIndex + caravansPerPage;
   const visibleCaravans = totalCaravans.slice(startIndex, endIndex);
@@ -168,7 +184,7 @@ const Caravans = () => {
       <div className={styles.caravans}>
         {visibleCaravans.map((caravan, index) => (
           <div className={styles.newDiv} key={index}>
-            <Link to='/caravan/:id'>
+            <Link to={`/caravan/${caravan._id}`}>
               <Caravan {...caravan} />
             </Link>
             {/* Favori butonu */}
