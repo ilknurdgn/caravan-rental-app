@@ -66,3 +66,14 @@ exports.getSingleCaravan = async (req, res) => {
     res.status(500).json(error);
   }
 };
+
+//Get all caravans
+exports.getAllCaravans = async (req, res) => {
+  try {
+    const caravans = await Caravan.find();
+
+    res.status(200).json(caravans);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
