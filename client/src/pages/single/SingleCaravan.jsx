@@ -1,22 +1,22 @@
-import { IoMdShare } from 'react-icons/io';
-import { FaRegHeart } from 'react-icons/fa6';
+import React, { useEffect, useState } from 'react';
+import { DateRangePicker } from 'react-date-range';
+import 'react-date-range/dist/styles.css'; // ana css dosyası
+import 'react-date-range/dist/theme/default.css'; // tema css dosyası
+import axios from 'axios';
 import { RiCaravanLine } from 'react-icons/ri';
 import { PiGasPump } from 'react-icons/pi';
 import { IoSettingsOutline } from 'react-icons/io5';
 import { GoPeople } from 'react-icons/go';
 import { IoMdStar } from 'react-icons/io';
-import React, { useState } from 'react';
-import styles from './singleCaravan.module.css';
-import { DateRangePicker } from 'react-date-range';
-import 'react-date-range/dist/styles.css'; // ana css dosyası
-import 'react-date-range/dist/theme/default.css'; // tema css dosyası
-import { addDays } from 'date-fns';
-import Comments from '../../components/comments/Comments';
-import { MdExpandMore } from 'react-icons/md';
+import { IoMdShare } from 'react-icons/io';
+import { FaRegHeart } from 'react-icons/fa';
 import { FaHeart } from 'react-icons/fa';
+import { MdExpandMore } from 'react-icons/md';
+import Comments from '../../components/comments/Comments';
+import { addDays } from 'date-fns';
+import styles from './singleCaravan.module.css';
 
 const SingleCaravan = () => {
-  const [guest, setGuest] = useState('1');
   const [state, setState] = useState([
     {
       startDate: new Date(),
@@ -24,8 +24,20 @@ const SingleCaravan = () => {
       key: 'selection',
     },
   ]);
-
   const [isFavorited, setIsFavorited] = useState(false);
+  const [caravanData, setCaravanData] = useState(null);
+
+  useEffect(() => {
+    const getSingleCaravan = async () => {
+      try {
+        const res = await axios.get('/caravan/6638df779d296600f594121b');
+        setCaravanData(res.data);
+      } catch (error) {
+        console.error('Error fetching caravan data: ', error);
+      }
+    };
+    getSingleCaravan();
+  }, []);
 
   const toggleFavorite = () => {
     setIsFavorited(!isFavorited);
@@ -34,7 +46,6 @@ const SingleCaravan = () => {
   return (
     <div className={styles['single-container']}>
       <div className={styles['caravan-info']}>
-        <span className={styles['caravan-title']}>Motocaravan - Antalya</span>
         <div className={styles.icons}>
           <div className={styles['right-side']}>
             <IoMdShare className={styles.shareIcon} />
@@ -64,45 +75,32 @@ const SingleCaravan = () => {
           alt=''
         />
         <div className={styles['images-container']}>
-          <img
-            className={styles['images']}
-            src='https://images.unsplash.com/photo-1592351763700-b9b35a6465ea?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-            alt=''
-          />
-          <img
-            className={styles['images']}
-            src='https://images.unsplash.com/photo-1592351763700-b9b35a6465ea?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-            alt=''
-          />
-          <img
-            className={styles['images']}
-            src='https://images.unsplash.com/photo-1592351763700-b9b35a6465ea?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-            alt=''
-          />
-          <img
-            className={styles['images']}
-            src='https://images.unsplash.com/photo-1592351763700-b9b35a6465ea?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-            alt=''
-          />
+          {[1, 2, 3, 4].map((index) => (
+            <img
+              key={index}
+              className={styles['images']}
+              src='https://images.unsplash.com/photo-1592351763700-b9b35a6465ea?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+              alt=''
+            />
+          ))}
         </div>
       </div>
 
-      {/* DESCRIPTION SECTION */}
       <div className={styles['description-section']}>
         <div className={styles['caravan-left-side']}>
-          <span>2023 Yapımı 4+ Kişilik, Kiralık Motokaravan</span>
+          <span>{caravanData?.title}</span>
           <ul className={styles.features}>
             <li>
-              <RiCaravanLine /> <p>Motokaravan</p>
+              <RiCaravanLine /> <p>{caravanData?.type}</p>
             </li>
             <li>
-              <PiGasPump /> <p>Dizel</p>
+              <PiGasPump /> <p>{caravanData?.fuel}</p>
             </li>
             <li>
-              <IoSettingsOutline /> <p>Manuel</p>
+              <IoSettingsOutline /> <p>{caravanData?.gear}</p>
             </li>
             <li>
-              <GoPeople /> <p> 4 Kişilik</p>
+              <GoPeople /> <p>{caravanData?.maxGuests}</p>
             </li>
           </ul>
 
@@ -121,28 +119,20 @@ const SingleCaravan = () => {
                 alt=''
               />
             </div>
-            <div className={styles.owner}> Karavan Sahibi: Işınnur Günay</div>
+            <div className={styles.owner}>
+              Karavan Sahibi: {caravanData?.owner}
+            </div>
           </div>
 
           <div className={styles.line}></div>
 
           <div className={styles.description}>
             <span>AÇIKLAMA</span>
-            <p>
-              Antalya, Döşemealtı bölgesinde bulunan Kiralık Motokaravan; <br />
-              <ul>
-                <li className={styles.mn}>2016 modeldir.</li>
-                <li> 2023 yılında karavan yapılmıştır.</li>
-                <li>
-                  Dizel yakıt kullanılır ve Manuel vites özelliği bulunur.
-                </li>
-                <li>Karavanımız toplam 4 kişiliktir.</li>
-                <li>Sigara kullanımına uygun değildir.</li>
-                <li>Evcil hayvan kabul edilmemektedir.</li>
-                <li>Kiralık karavanımızın kiralama kaskosu bulunmaktadır.</li>
-                <li> Karavanımız B tipi ehliyet ile kullanılabilmektedir.</li>
-              </ul>
-            </p>
+            <ul>
+              {caravanData?.description.map((desc, index) => (
+                <li key={index}>{desc}</li>
+              ))}
+            </ul>
           </div>
 
           <div className={styles.line}></div>
@@ -159,6 +149,7 @@ const SingleCaravan = () => {
             />
           </div>
         </div>
+
         <div className={styles['caravan-right-side']}>
           <div>
             <div className={styles['total-info']}>
