@@ -3,13 +3,15 @@ import styles from './caravans.module.css';
 import { FaRegHeart } from 'react-icons/fa';
 import Pagination from '@mui/material/Pagination';
 import { createTheme } from '@mui/material/styles';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 const Caravans = () => {
+  const containerRef = useRef(null);
   const [page, setPage] = useState(1); //sayfa numarası state'i
-  const caravansPerPage = 6; //sayfada gösterilecek kravan sayısı
+  const caravansPerPage = 9; //sayfada gösterilecek kravan sayısı
   const handlePageChange = (event, newPage) => {
     setPage(newPage);
+    containerRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
   const totalCaravans = [
@@ -147,7 +149,7 @@ const Caravans = () => {
   const endIndex = startIndex + caravansPerPage;
   const visibleCaravans = totalCaravans.slice(startIndex, endIndex);
   return (
-    <div className={styles['caravans-container']}>
+    <div ref={containerRef} className={styles['caravans-container']}>
       <span className={styles.result}>
         {totalCaravans.length > 10
           ? "10'dan fazla karavan"

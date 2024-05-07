@@ -1,0 +1,60 @@
+.blog-container {
+  margin-top: 30px;
+  width: 394px;
+  height: 394px;
+  padding: 15px;
+  border: 1px solid #000;
+  box-shadow: 0px 0px 19px -3px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  background-color: #fff;
+  text-decoration: none;
+  color: #222;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.title {
+  font-size: 20px;
+}
+
+.image {
+  margin: 10px 0;
+  width: 350px;
+  height: 210px;
+  object-fit: cover;
+}
+
+.blog-text {
+  color: #979797;
+  font-size: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Metni kes ve üç nokta (...) ile göster */
+  white-space: nowrap; /* Metni tek bir satırda göster */
+  max-height: 2em; /* İlk iki satırı göster */
+}
+
+.down-section {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  color: #979797;
+  font-size: 15px;
+}
+
+.more {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  color: #979797;
+  transition: 0.1s all ease-in-out;
+  text-decoration: none;
+}
+.more:hover {
+  color: #000;
+}
