@@ -70,12 +70,20 @@ exports.getSingleCaravan = async (req, res) => {
 //Get caravans
 exports.getCaravans = async (req, res) => {
   const regexLocation = new RegExp(req.query.location, 'i');
-  const { location, start, end, maxGuests } = req.query;
+  const { location, maxGuests, start, end } = req.query;
+
+  const page = req.query.page;
+  const limit = req.query.limit;
+
   try {
     let query = {};
 
     if (location) {
       query.location = regexLocation;
+    }
+
+    if (maxGuests) {
+      query.maxGuests = maxGuests;
     }
 
     if (start && end) {
@@ -91,13 +99,14 @@ exports.getCaravans = async (req, res) => {
       };
     }
 
-    if (maxGuests) {
-      query.maxGuests = maxGuests;
-    }
+    const totalCaravans = await Caravan.countDocuments(query);
+    const totalPage = Math.ceil(totalCaravans / limit);
 
-    const caravans = await Caravan.find(query);
+    const caravans = await Caravan.find(query)
+      .skip((page - 1) * limit)
+      .limit(limit);
 
-    res.status(200).json(caravans);
+    res.status(200).json({ caravans, totalPage, currentPage: page });
   } catch (error) {
     res.status(500).json(error);
   }
