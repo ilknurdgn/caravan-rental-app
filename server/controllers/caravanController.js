@@ -13,6 +13,7 @@ exports.add = async (req, res) => {
       maxGuests: req.body.maxGuests,
       dailyPrice: req.body.dailyPrice,
       owner: req.body.owner,
+      yearOfManufacture: req.body.yearOfManufacture,
       description: req.body.description,
       notAvailableDates: req.body.notAvailableDates,
     });
