@@ -39,6 +39,11 @@ const SingleCaravan = () => {
   const [selectedDate, setSelectedDate] = useState([null, null]);
 
   useEffect(() => {
+    // Sayfa yüklendiğinde sayfanın en başına git
+    window.scrollTo(0, 0);
+  }, []); // Boş bağımlılık dizisi, yalnızca bileşen yüklendiğinde bir kere çalışmasını sağlar
+
+  useEffect(() => {
     const getSingleCaravan = async () => {
       try {
         const res = await axios.get(`/caravan/${id}`);
@@ -190,7 +195,7 @@ const SingleCaravan = () => {
           </div>
         </div>
         <div className={styles['caravan-right-side']}>
-          <div>
+          <div className={styles.paymentContainer}>
             <div className={styles['total-info']}>
               <p className={styles.price}>
                 {caravanData?.dailyPrice}₺<span>gün</span>

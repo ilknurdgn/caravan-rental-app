@@ -4,7 +4,7 @@ import { FaRegHeart } from 'react-icons/fa';
 import { FaStar } from 'react-icons/fa';
 import { FaHeart } from 'react-icons/fa';
 
-const Caravan = () => {
+const Caravan = (totalCaravans, setTotalCaravans) => {
   return (
     <div className={styles.caravan}>
       <div className={styles['caravan-image']}>
@@ -15,10 +15,12 @@ const Caravan = () => {
       </div>
       <div className={styles['caravans-info']}>
         <div className={styles['caravans-content']}>
-          <h4>Motocaravan- Mersin</h4>
-          <span>4 kişilik · 2023 yapımı </span>
+          <h4>
+            {totalCaravans.type}- {totalCaravans.location}
+          </h4>
+          <span> {totalCaravans.maxGuests} kişilik · 2023 yapım</span>
           <span>3 gece · 19-23 Nis</span>
-          <p className={styles.price}>3.500₺ gece</p>
+          <p className={styles.price}> {totalCaravans.dailyPrice}₺ gün</p>
         </div>
         <div className={styles.rating}>
           <FaStar className={styles.starIcon} />

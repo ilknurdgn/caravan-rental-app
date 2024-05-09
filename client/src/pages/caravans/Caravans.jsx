@@ -7,148 +7,18 @@ import { useEffect, useRef, useState } from 'react';
 import { FaHeart } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const Caravans = () => {
   const containerRef = useRef(null);
-  const [page, setPage] = useState(1); //sayfa numarası state'i
-  const caravansPerPage = 9; //sayfada gösterilecek kravan sayısı
-  const handlePageChange = (event, newPage) => {
-    setPage(newPage);
-    containerRef.current.scrollIntoView({ behavior: 'smooth' });
-  };
-  const [totalCaravans, setTotalCaravans] = useState([]); // totalCaravans state'i eklenmiş
+  //   const [page, setPage] = useState(1); //sayfa numarası state'i
+  //   const limit = 9; //sayfada gösterilecek kravan
 
-  //   const totalCaravans = [
-  //     {
-  //       id: 1,
-  //       title: 'Motocaravan - Antalya',
-  //       capacity: '4 kişilik',
-  //       year: 2023,
-  //       nights: '3 gece',
-  //       price: '3.500₺ gece',
-  //       rating: 4.97,
-  //     },
-  //     {
-  //       id: 2,
-  //       title: 'Karavan - İstanbul',
-  //       capacity: '6 kişilik',
-  //       year: 2022,
-  //       nights: '2 gece',
-  //       price: '4.000₺ gece',
-  //       rating: 4.75,
-  //       // Diğer özellikler...
-  //     },
-  //     {
-  //       id: 3,
-  //       title: 'Karavan - İstanbul',
-  //       capacity: '6 kişilik',
-  //       year: 2022,
-  //       nights: '2 gece',
-  //       price: '4.000₺ gece',
-  //       rating: 4.75,
-  //       // Diğer özellikler...
-  //     },
-  //     {
-  //       id: 4,
-  //       title: 'Karavan - İstanbul',
-  //       capacity: '6 kişilik',
-  //       year: 2022,
-  //       nights: '2 gece',
-  //       price: '4.000₺ gece',
-  //       rating: 4.75,
-  //       // Diğer özellikler...
-  //     },
-  //     {
-  //       id: 5,
-  //       title: 'Karavan - İstanbul',
-  //       capacity: '6 kişilik',
-  //       year: 2022,
-  //       nights: '2 gece',
-  //       price: '4.000₺ gece',
-  //       rating: 4.75,
-  //       // Diğer özellikler...
-  //     },
-  //     {
-  //       id: 6,
-  //       title: 'Karavan - İstanbul',
-  //       capacity: '6 kişilik',
-  //       year: 2022,
-  //       nights: '2 gece',
-  //       price: '4.000₺ gece',
-  //       rating: 4.75,
-  //       // Diğer özellikler...
-  //     },
-  //     {
-  //       id: 7,
-  //       title: 'Karavan - İstanbul',
-  //       capacity: '6 kişilik',
-  //       year: 2022,
-  //       nights: '2 gece',
-  //       price: '4.000₺ gece',
-  //       rating: 4.75,
-  //       // Diğer özellikler...
-  //     },
-  //     {
-  //       id: 8,
-  //       title: 'Karavan - İstanbul',
-  //       capacity: '6 kişilik',
-  //       year: 2022,
-  //       nights: '2 gece',
-  //       price: '4.000₺ gece',
-  //       rating: 4.75,
-  //       // Diğer özellikler...
-  //     },
-  //     {
-  //       id: 9,
-  //       title: 'Karavan - İstanbul',
-  //       capacity: '6 kişilik',
-  //       year: 2022,
-  //       nights: '2 gece',
-  //       price: '4.000₺ gece',
-  //       rating: 4.75,
-  //       // Diğer özellikler...
-  //     },
-  //     {
-  //       id: 10,
-  //       title: 'Karavan - İstanbul',
-  //       capacity: '6 kişilik',
-  //       year: 2022,
-  //       nights: '2 gece',
-  //       price: '4.000₺ gece',
-  //       rating: 4.75,
-  //       // Diğer özellikler...
-  //     },
-  //     {
-  //       id: 11,
-  //       title: 'Karavan - İstanbul',
-  //       capacity: '6 kişilik',
-  //       year: 2022,
-  //       nights: '2 gece',
-  //       price: '4.000₺ gece',
-  //       rating: 4.75,
-  //       // Diğer özellikler...
-  //     },
-  //     {
-  //       id: 12,
-  //       title: 'Karavan - İstanbul',
-  //       capacity: '6 kişilik',
-  //       year: 2022,
-  //       nights: '2 gece',
-  //       price: '4.000₺ gece',
-  //       rating: 4.75,
-  //       // Diğer özellikler...
-  //     },
-  //     {
-  //       id: 13,
-  //       title: 'Karavan - İstanbul',
-  //       capacity: '6 kişilik',
-  //       year: 2022,
-  //       nights: '2 gece',
-  //       price: '4.000₺ gece',
-  //       rating: 4.75,
-  //       // Diğer özellikler...
-  //     },
-  //   ]; //toplam karavan verisi
+  const [totalCaravans, setTotalCaravans] = useState([]); // totalCaravans state'i eklenmiş
+  const navigate = useNavigate();
+  const { page = 1, limit = 9 } = useParams();
+  console.log(page);
+  console.log(limit);
 
   useEffect(() => {
     const getSingleCaravan = async () => {
@@ -161,38 +31,52 @@ const Caravans = () => {
       }
     };
     getSingleCaravan();
-  }, []);
-
-  const startIndex = (page - 1) * caravansPerPage;
-  const endIndex = startIndex + caravansPerPage;
-  const visibleCaravans = totalCaravans.slice(startIndex, endIndex);
+  }, [page, limit]);
 
   const [isFavorited, setIsFavorited] = useState(false);
   const [clickedCaravanId, setClickedCaravanId] = useState(null);
+  const [favorites, setFavorites] = useState({});
 
+  // Favori durumu
   const toggleFavorite = (caravanId) => {
-    setIsFavorited(!isFavorited);
-    setClickedCaravanId(caravanId);
+    setFavorites((prevFavorites) => ({
+      ...prevFavorites,
+      [caravanId]: !prevFavorites[caravanId], // Karavanın favori durumunu tersine çevir
+    }));
+  };
+
+  const startIndex = (page - 1) * limit;
+  const endIndex = Math.min(startIndex + limit, totalCaravans.length);
+  const visibleCaravans = totalCaravans.slice(startIndex, endIndex);
+
+  const handlePageChange = (event, newPage) => {
+    // setPage(newPage);
+    navigate(`/caravans?limit=${limit}&page=${newPage}`);
   };
   return (
     <div ref={containerRef} className={styles['caravans-container']}>
+      {/* Sayfa başına karavan sayısı */}
       <span className={styles.result}>
-        {totalCaravans.length > 10
-          ? "10'dan fazla karavan"
+        {totalCaravans.length > 20
+          ? "20'dan fazla karavan"
           : totalCaravans.length + ' karavan bulundu'}
       </span>
       <div className={styles.caravans}>
         {visibleCaravans.map((caravan, index) => (
-          <div className={styles.newDiv} key={index}>
-            <Link to={`/caravan/${caravan._id}`}>
-              <Caravan {...caravan} />
+          <div className={styles.iconDiv} key={index}>
+            <Link className={styles.links} to={`/caravan/${caravan._id}`}>
+              <Caravan
+                totalCaravans={totalCaravans}
+                setTotalCaravans={setTotalCaravans}
+                {...caravan}
+              />
             </Link>
-            {/* Favori butonu */}
+            {/* Favori kısmı */}
             <div
               className={styles['heartIcon-div']}
-              onClick={() => toggleFavorite(caravan.id)}
+              onClick={() => toggleFavorite(caravan._id)} // Karavanın ID'si ile favori durumunu güncelle
             >
-              {isFavorited && clickedCaravanId === caravan.id ? (
+              {favorites[caravan._id] ? ( // Favori durumuna göre ikonu değiştir
                 <FaHeart className={styles.favHeartIcon} />
               ) : (
                 <FaRegHeart className={styles.heartIcon} />
@@ -203,10 +87,11 @@ const Caravans = () => {
       </div>
       <Pagination
         className={styles.pagination}
-        count={Math.ceil(totalCaravans.length / caravansPerPage)}
+        count={Math.ceil(totalCaravans.length / parseInt(limit))}
         color='primary'
         variant='outlined'
         size='large'
+        page={parseInt(page)}
         onChange={handlePageChange}
       />
     </div>
