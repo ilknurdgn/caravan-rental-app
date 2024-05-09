@@ -18,7 +18,11 @@ const Caravan = (totalCaravans, setTotalCaravans) => {
           <h4>
             {totalCaravans.type}- {totalCaravans.location}
           </h4>
-          <span> {totalCaravans.maxGuests} kişilik · 2023 yapım</span>
+          <span>
+            {' '}
+            {totalCaravans.maxGuests} kişilik ·{' '}
+            {totalCaravans.yearOfManufacture} yapım
+          </span>
           <span>3 gece · 19-23 Nis</span>
           <p className={styles.price}> {totalCaravans.dailyPrice}₺ gün</p>
         </div>

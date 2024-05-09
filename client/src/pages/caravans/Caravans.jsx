@@ -5,60 +5,60 @@ import Pagination from '@mui/material/Pagination';
 import { createTheme } from '@mui/material/styles';
 import { useEffect, useRef, useState } from 'react';
 import { FaHeart } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useParams, useLocation } from 'react-router-dom';
 import axios from 'axios';
-import { useNavigate, useParams } from 'react-router-dom';
 
 const Caravans = () => {
-  const containerRef = useRef(null);
-  //   const [page, setPage] = useState(1); //sayfa numarası state'i
-  //   const limit = 9; //sayfada gösterilecek kravan
-
-  const [totalCaravans, setTotalCaravans] = useState([]); // totalCaravans state'i eklenmiş
-  const navigate = useNavigate();
-  const { page = 1, limit = 9 } = useParams();
-  console.log(page);
-  console.log(limit);
+  const { search } = useLocation();
+  const queryParams = new URLSearchParams(search);
+  let currentPage = parseInt(queryParams.get('page')) || 1;
+  const caravansPerPage = 9;
+  const [totalCaravans, setTotalCaravans] = useState([]);
+  const [favorites, setFavorites] = useState({});
 
   useEffect(() => {
     const getSingleCaravan = async () => {
       try {
         const res = await axios.get('/caravan/');
-        console.log(res.data);
         setTotalCaravans(res.data);
       } catch (error) {
         console.error('Error fetching caravan data: ', error);
       }
     };
     getSingleCaravan();
-  }, [page, limit]);
 
-  const [isFavorited, setIsFavorited] = useState(false);
-  const [clickedCaravanId, setClickedCaravanId] = useState(null);
-  const [favorites, setFavorites] = useState({});
+    // Varsayılan olarak sayfa 1 ve URL'de page parametresi yok,  URL'ye page parametresini ekler
+    if (!queryParams.has('page') && currentPage === 1) {
+      window.history.replaceState(
+        {},
+        '',
+        `${window.location.pathname}?page=${currentPage}&limit=${caravansPerPage}`
+      );
+    }
+  }, []);
 
-  // Favori durumu
   const toggleFavorite = (caravanId) => {
     setFavorites((prevFavorites) => ({
       ...prevFavorites,
-      [caravanId]: !prevFavorites[caravanId], // Karavanın favori durumunu tersine çevir
+      [caravanId]: !prevFavorites[caravanId],
     }));
   };
 
-  const startIndex = (page - 1) * limit;
-  const endIndex = Math.min(startIndex + limit, totalCaravans.length);
+  const startIndex = (currentPage - 1) * caravansPerPage;
+  const endIndex = startIndex + caravansPerPage;
   const visibleCaravans = totalCaravans.slice(startIndex, endIndex);
 
   const handlePageChange = (event, newPage) => {
-    // setPage(newPage);
-    navigate(`/caravans?limit=${limit}&page=${newPage}`);
+    currentPage = newPage;
+    window.location.search = `?page=${currentPage}&limit=${caravansPerPage}`;
   };
+
   return (
-    <div ref={containerRef} className={styles['caravans-container']}>
+    <div className={styles['caravans-container']}>
       {/* Sayfa başına karavan sayısı */}
       <span className={styles.result}>
         {totalCaravans.length > 20
-          ? "20'dan fazla karavan"
+          ? "20'den fazla karavan"
           : totalCaravans.length + ' karavan bulundu'}
       </span>
       <div className={styles.caravans}>
@@ -74,9 +74,9 @@ const Caravans = () => {
             {/* Favori kısmı */}
             <div
               className={styles['heartIcon-div']}
-              onClick={() => toggleFavorite(caravan._id)} // Karavanın ID'si ile favori durumunu güncelle
+              onClick={() => toggleFavorite(caravan._id)}
             >
-              {favorites[caravan._id] ? ( // Favori durumuna göre ikonu değiştir
+              {favorites[caravan._id] ? (
                 <FaHeart className={styles.favHeartIcon} />
               ) : (
                 <FaRegHeart className={styles.heartIcon} />
@@ -87,11 +87,11 @@ const Caravans = () => {
       </div>
       <Pagination
         className={styles.pagination}
-        count={Math.ceil(totalCaravans.length / parseInt(limit))}
+        count={Math.ceil(totalCaravans.length / caravansPerPage)}
         color='primary'
         variant='outlined'
         size='large'
-        page={parseInt(page)}
+        page={currentPage}
         onChange={handlePageChange}
       />
     </div>

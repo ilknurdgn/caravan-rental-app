@@ -190,6 +190,7 @@ const SingleCaravan = () => {
                 shouldDisableDate={(date) => {
                   return isDisabledDate(date);
                 }}
+                disablePast
               />
             </LocalizationProvider>
           </div>
