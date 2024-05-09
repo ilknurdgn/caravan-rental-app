@@ -16,6 +16,12 @@ import Comments from '../../components/comments/Comments';
 import { addDays } from 'date-fns';
 import styles from './singleCaravan.module.css';
 import { useParams } from 'react-router-dom';
+import { color } from '@mui/system';
+import dayjs from 'dayjs';
+import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DateRangeCalendar } from '@mui/x-date-pickers-pro/DateRangeCalendar';
 
 const SingleCaravan = () => {
   const { id } = useParams(); //url'den id alır
@@ -28,6 +34,7 @@ const SingleCaravan = () => {
   ]);
   const [isFavorited, setIsFavorited] = useState(false);
   const [caravanData, setCaravanData] = useState(null);
+  const [selectedDate, setSelectedDate] = useState([null, null]);
 
   useEffect(() => {
     const getSingleCaravan = async () => {
@@ -44,6 +51,27 @@ const SingleCaravan = () => {
 
   const toggleFavorite = () => {
     setIsFavorited(!isFavorited);
+  };
+
+  const disabledDates =
+    caravanData?.notAvailableDates.map((date) => ({
+      start: new Date(date.start),
+      end: new Date(date.end),
+    })) || [];
+
+  disabledDates.forEach((date) => {
+    date.start.setDate(date.start.getDate() - 1);
+  });
+
+  const isDisabledDate = (date) => {
+    // Tarihin müsait olmayan günler arasında olup olmadığını kontrol et
+    return disabledDates.some((disabledDate) =>
+      isDateInRange(date, disabledDate.start, disabledDate.end)
+    );
+  };
+
+  const isDateInRange = (date, startDate, endDate) => {
+    return dayjs(date).isBetween(startDate, endDate, null, '[]');
   };
 
   return (
@@ -132,27 +160,26 @@ const SingleCaravan = () => {
           <div className={styles.description}>
             <span>AÇIKLAMA</span>
             <ul>
-              {/* {caravanData?.description.map((desc, index) => (
+              {caravanData?.description.map((desc, index) => (
                 <li key={index}>{desc}</li>
-              ))} */}
+              ))}
             </ul>
           </div>
 
           <div className={styles.line}></div>
 
           <div className={styles.calendar}>
-            <DateRangePicker
-              className={styles.chooseDate}
-              onChange={(item) => setState([item.selection])}
-              showSelectionPreview={true}
-              moveRangeOnFirstSelection={false}
-              months={2}
-              ranges={state}
-              direction='horizontal'
-            />
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DateRangeCalendar
+                value={selectedDate}
+                onChange={(newValue) => setSelectedDate(newValue)}
+                shouldDisableDate={(date) => {
+                  return isDisabledDate(date);
+                }}
+              />
+            </LocalizationProvider>
           </div>
         </div>
-
         <div className={styles['caravan-right-side']}>
           <div>
             <div className={styles['total-info']}>
