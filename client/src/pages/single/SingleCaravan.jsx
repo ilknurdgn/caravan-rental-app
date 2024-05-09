@@ -22,6 +22,8 @@ import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateRangeCalendar } from '@mui/x-date-pickers-pro/DateRangeCalendar';
+// import { trTR } from '@mui/lab/locale'; // Türkçe dil desteği
+import { LuDot } from 'react-icons/lu';
 
 const SingleCaravan = () => {
   const { id } = useParams(); //url'den id alır
@@ -161,7 +163,10 @@ const SingleCaravan = () => {
             <span>AÇIKLAMA</span>
             <ul>
               {caravanData?.description.map((desc, index) => (
-                <li key={index}>{desc}</li>
+                <li key={index} className={styles.caravanDesc}>
+                  {' '}
+                  <LuDot /> {desc}
+                </li>
               ))}
             </ul>
           </div>
@@ -169,8 +174,12 @@ const SingleCaravan = () => {
           <div className={styles.line}></div>
 
           <div className={styles.calendar}>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <LocalizationProvider
+              dateAdapter={AdapterDayjs}
+              // locale={trTR}
+            >
               <DateRangeCalendar
+                className={styles.customCalendar}
                 value={selectedDate}
                 onChange={(newValue) => setSelectedDate(newValue)}
                 shouldDisableDate={(date) => {
