@@ -37,6 +37,12 @@ const caravanSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+
+    yearOfManufacture: {
+      type: Number,
+      required: true,
+    },
+
     description: [
       {
         type: String,
