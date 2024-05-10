@@ -7,11 +7,12 @@ const favoriteCaravanSchema = new mongoose.Schema(
       ref: 'User',
       require: true,
     },
-    caravan: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Caravan',
-      require: true,
-    },
+    favoriteCaravans: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Caravan',
+      },
+    ],
   },
   { timestamps: true }
 );
