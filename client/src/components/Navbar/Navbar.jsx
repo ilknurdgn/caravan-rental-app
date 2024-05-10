@@ -8,7 +8,7 @@ const Navbar = () => {
   return (
     <div className={styles.navbar}>
       <div className={styles.logo}>
-        <h1>LUX</h1>
+        <h1>VANCA</h1>
       </div>
 
       <div>
