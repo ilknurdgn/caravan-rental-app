@@ -44,3 +44,40 @@ exports.add = async (req, res) => {
     res.status(500).json(error);
   }
 };
+
+// DELETE FAVORİTE CARAVAN
+exports.delete = async (req, res) => {
+  try {
+    const userId = req.body.userId;
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    const caravanId = req.body.caravanId;
+    const caravan = await Caravan.findById(caravanId);
+
+    if (!caravan) {
+      return res.status(404).json({ message: 'Caravan not found' });
+    }
+
+    const favoriteCaravan = await FavoriteCaravan.findOne({ user: userId });
+
+    if (!favoriteCaravan.favoriteCaravans.includes(caravanId)) {
+      return res
+        .status(404)
+        .json('No such caravan was found among the favorite caravans');
+    }
+
+    const index = favoriteCaravan.favoriteCaravans.indexOf(caravanId);
+    if (index > -1) {
+      favoriteCaravan.favoriteCaravans.splice(index, 1);
+    }
+
+    favoriteCaravan.save();
+    res.status(200).json(favoriteCaravan);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
