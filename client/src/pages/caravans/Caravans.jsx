@@ -9,33 +9,28 @@ import { Link, useParams, useLocation } from 'react-router-dom';
 import axios from 'axios';
 
 const Caravans = () => {
-  const { search } = useLocation();
-  const queryParams = new URLSearchParams(search);
-  let currentPage = parseInt(queryParams.get('page')) || 1;
-  const caravansPerPage = 9;
   const [totalCaravans, setTotalCaravans] = useState([]);
   const [favorites, setFavorites] = useState({});
+  const [fetch, setFetch] = useState({});
+  const [page, setPage] = useState(1);
+  const caravansPerPage = 9;
 
   useEffect(() => {
     const getSingleCaravan = async () => {
       try {
-        const res = await axios.get('/caravan/');
-        setTotalCaravans(res.data);
+        const res = await axios.get(
+          `/caravan/?page=${page}&limit=${caravansPerPage}`
+        );
+        setFetch(res.data);
+        setTotalCaravans(res.data.caravans);
+        console.log(res.data);
+        console.log('useff:', res.data.currentPage);
       } catch (error) {
         console.error('Error fetching caravan data: ', error);
       }
     };
     getSingleCaravan();
-
-    // Varsayılan olarak sayfa 1 ve URL'de page parametresi yok,  URL'ye page parametresini ekler
-    if (!queryParams.has('page') && currentPage === 1) {
-      window.history.replaceState(
-        {},
-        '',
-        `${window.location.pathname}?page=${currentPage}&limit=${caravansPerPage}`
-      );
-    }
-  }, []);
+  }, [page]);
 
   const toggleFavorite = (caravanId) => {
     setFavorites((prevFavorites) => ({
@@ -44,13 +39,8 @@ const Caravans = () => {
     }));
   };
 
-  const startIndex = (currentPage - 1) * caravansPerPage;
-  const endIndex = startIndex + caravansPerPage;
-  const visibleCaravans = totalCaravans.slice(startIndex, endIndex);
-
   const handlePageChange = (event, newPage) => {
-    currentPage = newPage;
-    window.location.search = `?page=${currentPage}&limit=${caravansPerPage}`;
+    setPage(newPage);
   };
 
   return (
@@ -62,7 +52,7 @@ const Caravans = () => {
           : totalCaravans.length + ' karavan bulundu'}
       </span>
       <div className={styles.caravans}>
-        {visibleCaravans.map((caravan, index) => (
+        {totalCaravans.map((caravan, index) => (
           <div className={styles.iconDiv} key={index}>
             <Link className={styles.links} to={`/caravan/${caravan._id}`}>
               <Caravan
@@ -87,11 +77,11 @@ const Caravans = () => {
       </div>
       <Pagination
         className={styles.pagination}
-        count={Math.ceil(totalCaravans.length / caravansPerPage)}
+        count={fetch.totalPage}
         color='primary'
         variant='outlined'
         size='large'
-        page={currentPage}
+        page={page}
         onChange={handlePageChange}
       />
     </div>
