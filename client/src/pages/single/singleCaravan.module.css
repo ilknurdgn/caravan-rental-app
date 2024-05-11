@@ -160,7 +160,7 @@ img {
 .line {
   margin-top: 30px;
   margin-bottom: 30px;
-  width: 900px;
+  width: 800px;
   border: 1px solid #e6e6e6;
 }
 
@@ -174,10 +174,17 @@ img {
   font-weight: 400;
 }
 
+.caravanDesc {
+  display: flex;
+  align-items: center;
+}
 .calendar {
   margin-top: 30px;
   overflow: hidden !important;
+
+  color: #ff385c;
 }
+
 .chooseDate {
   overflow: hidden !important;
 }
@@ -188,7 +195,7 @@ img {
 
 .caravan-right-side {
   position: sticky;
-  top: 10px;
+  top: 20px;
   width: 370px;
   height: 520px;
   border: 2px solid #e6e6e6;
@@ -328,4 +335,18 @@ img {
   font-weight: 500;
   display: flex;
   justify-content: space-between;
+}
+
+.selectedDateRange {
+  color: #3e3e3e;
+  font-size: 24px;
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.selectedDatesContainer {
+  transition: 0.3s all ease-in-out;
 }

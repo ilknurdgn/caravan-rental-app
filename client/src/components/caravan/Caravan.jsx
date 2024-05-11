@@ -4,13 +4,7 @@ import { FaRegHeart } from 'react-icons/fa';
 import { FaStar } from 'react-icons/fa';
 import { FaHeart } from 'react-icons/fa';
 
-const Caravan = () => {
-  const [isFavorited, setIsFavorited] = useState(false);
-
-  const toggleFavorite = () => {
-    setIsFavorited(!isFavorited);
-  };
-
+const Caravan = (totalCaravans, setTotalCaravans) => {
   return (
     <div className={styles.caravan}>
       <div className={styles['caravan-image']}>
@@ -18,20 +12,19 @@ const Caravan = () => {
           src='https://images.unsplash.com/photo-1592351763700-b9b35a6465ea?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
           alt=''
         />
-        <div onClick={toggleFavorite} className={styles['heartIcon-div']}>
-          {isFavorited ? (
-            <FaHeart onClick={toggleFavorite} className={styles.favHeartIcon} />
-          ) : (
-            <FaRegHeart className={styles.heartIcon} />
-          )}
-        </div>
       </div>
       <div className={styles['caravans-info']}>
         <div className={styles['caravans-content']}>
-          <h4>Motocaravan- Mersin</h4>
-          <span>4 kişilik · 2023 yapımı </span>
+          <h4>
+            {totalCaravans.type}- {totalCaravans.location}
+          </h4>
+          <span>
+            {' '}
+            {totalCaravans.maxGuests} kişilik ·{' '}
+            {totalCaravans.yearOfManufacture} yapım
+          </span>
           <span>3 gece · 19-23 Nis</span>
-          <p className={styles.price}>3.500₺ gece</p>
+          <p className={styles.price}> {totalCaravans.dailyPrice}₺ gün</p>
         </div>
         <div className={styles.rating}>
           <FaStar className={styles.starIcon} />

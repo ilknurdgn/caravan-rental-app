@@ -5,6 +5,15 @@
   flex-direction: column;
   align-items: start;
 }
+
+.iconDiv {
+  position: relative;
+  text-decoration: none;
+}
+
+.links {
+  text-decoration: none;
+}
 .result {
   font-size: 24px;
   font-weight: 500;
@@ -22,4 +31,42 @@
   display: flex;
   justify-content: center;
   margin: 50px 0;
+}
+
+.heartIcon-div {
+  background-color: #fff;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  z-index: 99;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.heartIcon {
+  position: absolute;
+  font-size: 18px;
+  color: #222;
+  transition: 0.1s all ease-in;
+}
+
+.heartIcon-div:hover .heartIcon {
+  color: #ff385c;
+  transform: scale(1.1);
+}
+
+.favHeartIcon {
+  color: #ff385c;
+  font-size: 18px;
+  transition: 0.1s all ease-in;
+}
+
+.heartIcon-div:hover .favHeartIcon {
+  color: #ff385c;
+  transform: scale(1.1);
 }
