@@ -83,7 +83,7 @@ exports.delete = async (req, res) => {
 };
 
 // GET ALL FAVORITE CARAVANS
-exports.getFavoriteCaravans = async (req, res) => {
+exports.favoriteCaravansList = async (req, res) => {
   try {
     const userId = req.body.userId;
     const user = await User.findById(userId);
