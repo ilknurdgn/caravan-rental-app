@@ -13,7 +13,7 @@ import { FaRegHeart } from 'react-icons/fa';
 import { FaHeart } from 'react-icons/fa';
 import { MdExpandMore } from 'react-icons/md';
 import Comments from '../../components/comments/Comments';
-import { addDays } from 'date-fns';
+import { addDays, differenceInDays } from 'date-fns';
 import styles from './singleCaravan.module.css';
 import { useParams } from 'react-router-dom';
 import { color } from '@mui/system';
@@ -27,16 +27,17 @@ import { LuDot } from 'react-icons/lu';
 
 const SingleCaravan = () => {
   const { id } = useParams(); //url'den id alır
-  const [state, setState] = useState([
-    {
-      startDate: new Date(),
-      endDate: addDays(new Date(), 3),
-      key: 'selection',
-    },
-  ]);
+  const [state, setState] = useState([]);
   const [isFavorited, setIsFavorited] = useState(false);
   const [caravanData, setCaravanData] = useState(null);
   const [selectedDate, setSelectedDate] = useState([null, null]);
+  //kullanıcının seçtiği tarih aralığınu tutar
+  //başta herhangi bir tarih yok -> null
+
+  const [selectedDateRangeString, setSelectedDateRangeString] = useState('');
+  const [days, setDays] = useState(0);
+  const [startDay, setStartDay] = useState([]);
+  const [endDay, setEndDay] = useState([]);
 
   useEffect(() => {
     // Sayfa yüklendiğinde sayfanın en başına git
@@ -47,7 +48,6 @@ const SingleCaravan = () => {
     const getSingleCaravan = async () => {
       try {
         const res = await axios.get(`/caravan/${id}`);
-        console.log(res.data);
         setCaravanData(res.data);
       } catch (error) {
         console.error('Error fetching caravan data: ', error);
@@ -55,6 +55,30 @@ const SingleCaravan = () => {
     };
     getSingleCaravan();
   }, []);
+
+  //selected date için
+  useEffect(() => {
+    //selectedDate seçildiğinde çalışan:
+    if (selectedDate[0] && selectedDate[1]) {
+      //ilk ve son tarih seçildiyse
+      const startDate = selectedDate[0];
+      setStartDay(startDate.format('DD/MM/YYYY'));
+      const endDate = selectedDate[1];
+      setEndDay(endDate.format('DD/MM/YYYY'));
+      //tarih aralığındaki gün sayısını hesaplar:
+      const days = endDate.diff(startDate, 'day'); // Tarih aralığındaki gün sayısını dayjs ile hesapla
+      setDays(days);
+      // String formatında tarih aralığını ve gün sayısını ayarlar
+      setSelectedDateRangeString(
+        `${startDate.format('DD/MM/YYYY')} - ${endDate.format(
+          'DD/MM/YYYY'
+        )} (${days} gün)`
+      );
+    } else {
+      //seçilmdiyse string boş
+      setSelectedDateRangeString('');
+    }
+  }, [selectedDate]);
 
   const toggleFavorite = () => {
     setIsFavorited(!isFavorited);
@@ -80,6 +104,13 @@ const SingleCaravan = () => {
   const isDateInRange = (date, startDate, endDate) => {
     return dayjs(date).isBetween(startDate, endDate, null, '[]');
   };
+
+  const handleDateChange = (newDate) => {
+    setSelectedDate(newDate);
+  };
+
+  console.log('startDay:', startDay);
+  console.log('endDay:', endDay);
 
   return (
     <div className={styles['single-container']}>
@@ -179,6 +210,10 @@ const SingleCaravan = () => {
           <div className={styles.line}></div>
 
           <div className={styles.calendar}>
+            <div className={styles.selectedDateRange}>
+              {selectedDateRangeString}
+            </div>
+
             <LocalizationProvider
               dateAdapter={AdapterDayjs}
               // locale={trTR}
@@ -186,7 +221,7 @@ const SingleCaravan = () => {
               <DateRangeCalendar
                 className={styles.customCalendar}
                 value={selectedDate}
-                onChange={(newValue) => setSelectedDate(newValue)}
+                onChange={handleDateChange}
                 shouldDisableDate={(date) => {
                   return isDisabledDate(date);
                 }}
@@ -199,7 +234,7 @@ const SingleCaravan = () => {
           <div className={styles.paymentContainer}>
             <div className={styles['total-info']}>
               <p className={styles.price}>
-                {caravanData?.dailyPrice}₺<span>gün</span>
+                {caravanData?.dailyPrice}₺<span>{days} gün</span>
               </p>
               <p className={styles['total-rating']}>
                 <IoMdStar className={styles.icon} />
@@ -211,11 +246,11 @@ const SingleCaravan = () => {
                 <div className={styles.check}>
                   <div className={styles.checkin}>
                     <span>BAŞLANGIÇ</span>
-                    <span>8/5/2023</span>
+                    <span> {startDay} </span>
                   </div>
                   <div className={styles.checkout}>
                     <span>BİTİŞ</span>
-                    <span>12/5/2023</span>
+                    <span> {endDay} </span>
                   </div>
                 </div>
                 <div className={styles.guest}>
@@ -239,16 +274,21 @@ const SingleCaravan = () => {
             <div className={styles['caravan-payment']}>
               <div className={styles['payment-info']}>
                 <div className={styles['total-price-info']}>
-                  {caravanData?.dailyPrice}₺ x 3 gün
+                  {caravanData?.dailyPrice}₺ x {days} gün
                 </div>
-                <div className={styles['total-price']}>$9000</div>
+                <div className={styles['total-price']}>
+                  {caravanData?.dailyPrice * days}₺
+                </div>
               </div>
               <div className={styles['payment-line']}></div>
               <div className={styles['before-tax']}>
                 <div className={styles['total-price-info']}>
                   Vergi̇ öncesi̇ toplam
                 </div>
-                <div className={styles['total-price']}>$300</div>
+                <div className={styles['total-price']}>
+                  {' '}
+                  {caravanData?.dailyPrice}₺
+                </div>
               </div>
             </div>
           </div>
