@@ -338,12 +338,15 @@ img {
 }
 
 .selectedDateRange {
+  color: #3e3e3e;
   font-size: 24px;
+  display: flex;
+  flex-direction: column;
   width: 75%;
-  color: #fff;
-  font-weight: 500;
-  background-color: #ff385c;
-  padding: 15px;
   border-radius: 12px;
   text-align: center;
+}
+
+.selectedDatesContainer {
+  transition: 0.3s all ease-in-out;
 }

@@ -39,6 +39,8 @@ const SingleCaravan = () => {
   const [startDay, setStartDay] = useState([]);
   const [endDay, setEndDay] = useState([]);
 
+  const [showSelectedDateRange, setShowSelectedDateRange] = useState(false);
+
   useEffect(() => {
     // Sayfa yüklendiğinde sayfanın en başına git
     window.scrollTo(0, 0);
@@ -70,8 +72,8 @@ const SingleCaravan = () => {
       setDays(days);
       // String formatında tarih aralığını ve gün sayısını ayarlar
       setSelectedDateRangeString(
-        `${startDate.format('DD/MM/YYYY')} - ${endDate.format(
-          'DD/MM/YYYY'
+        `${startDate.format('DD.MM.YYYY')} - ${endDate.format(
+          'DD.MM.YYYY'
         )} (${days} gün)`
       );
     } else {
@@ -107,6 +109,12 @@ const SingleCaravan = () => {
 
   const handleDateChange = (newDate) => {
     setSelectedDate(newDate);
+    setShowSelectedDateRange(true);
+
+    // 1 saniye sonra showSelectedDateRange state'ini false olarak güncelle
+    setTimeout(() => {
+      setShowSelectedDateRange(false);
+    }, 1000); // 1 saniye
   };
 
   console.log('startDay:', startDay);
@@ -210,24 +218,35 @@ const SingleCaravan = () => {
           <div className={styles.line}></div>
 
           <div className={styles.calendar}>
-            <div className={styles.selectedDateRange}>
-              {selectedDateRangeString}
-            </div>
+            {/* Tarih seçiniz yazısı */}
+            {!selectedDate[0] && !selectedDate[1] && (
+              <div className={styles.selectedDateRange}>Tarih seçiniz</div>
+            )}
 
-            <LocalizationProvider
-              dateAdapter={AdapterDayjs}
-              // locale={trTR}
-            >
-              <DateRangeCalendar
-                className={styles.customCalendar}
-                value={selectedDate}
-                onChange={handleDateChange}
-                shouldDisableDate={(date) => {
-                  return isDisabledDate(date);
-                }}
-                disablePast
-              />
-            </LocalizationProvider>
+            {/* Tarihlerin yer alacağı bölüm */}
+            <div className={styles.selectedDatesContainer}>
+              {selectedDate[0] && selectedDate[1] && (
+                <div
+                  className={`${styles.selectedDateRange} ${
+                    showSelectedDateRange ? styles.show : ''
+                  }`}
+                >
+                  {selectedDateRangeString}
+                </div>
+              )}
+
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DateRangeCalendar
+                  className={styles.customCalendar}
+                  value={selectedDate}
+                  onChange={handleDateChange}
+                  shouldDisableDate={(date) => {
+                    return isDisabledDate(date);
+                  }}
+                  disablePast
+                />
+              </LocalizationProvider>
+            </div>
           </div>
         </div>
         <div className={styles['caravan-right-side']}>
