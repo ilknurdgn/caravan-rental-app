@@ -81,3 +81,21 @@ exports.delete = async (req, res) => {
     res.status(500).json(error);
   }
 };
+
+// GET ALL FAVORITE CARAVANS
+exports.getFavoriteCaravans = async (req, res) => {
+  try {
+    const userId = req.body.userId;
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    const favoriteCaravans = await FavoriteCaravan.findOne({ user: userId });
+
+    res.status(200).json(favoriteCaravans);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
