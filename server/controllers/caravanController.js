@@ -13,6 +13,7 @@ exports.add = async (req, res) => {
       maxGuests: req.body.maxGuests,
       dailyPrice: req.body.dailyPrice,
       owner: req.body.owner,
+      yearOfManufacture: req.body.yearOfManufacture,
       description: req.body.description,
       notAvailableDates: req.body.notAvailableDates,
     });
@@ -67,12 +68,46 @@ exports.getSingleCaravan = async (req, res) => {
   }
 };
 
-//Get all caravans
-exports.getAllCaravans = async (req, res) => {
-  try {
-    const caravans = await Caravan.find();
+//Get caravans
+exports.getCaravans = async (req, res) => {
+  const regexLocation = new RegExp(req.query.location, 'i');
+  const { location, maxGuests, start, end } = req.query;
 
-    res.status(200).json(caravans);
+  const page = req.query.page;
+  const limit = req.query.limit;
+
+  try {
+    let query = {};
+
+    if (location) {
+      query.location = regexLocation;
+    }
+
+    if (maxGuests) {
+      query.maxGuests = maxGuests;
+    }
+
+    if (start && end) {
+      query.notAvailableDates = {
+        $not: {
+          $elemMatch: {
+            $and: [
+              { start: { $lte: new Date(end) } },
+              { end: { $gte: new Date(start) } },
+            ],
+          },
+        },
+      };
+    }
+
+    const totalCaravans = await Caravan.countDocuments(query);
+    const totalPage = Math.ceil(totalCaravans / limit);
+
+    const caravans = await Caravan.find(query)
+      .skip((page - 1) * limit)
+      .limit(limit);
+
+    res.status(200).json({ caravans, totalPage, currentPage: page });
   } catch (error) {
     res.status(500).json(error);
   }
