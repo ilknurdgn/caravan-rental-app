@@ -3,6 +3,9 @@ const favoriteCaravanController = require('../controllers/favoriteCaravanControl
 
 router.post('/add', favoriteCaravanController.add);
 router.delete('/delete', favoriteCaravanController.delete);
-router.get('/get', favoriteCaravanController.getFavoriteCaravans);
+router.get(
+  '/favoriteCaravansList',
+  favoriteCaravanController.favoriteCaravansList
+);
 
 module.exports = router;

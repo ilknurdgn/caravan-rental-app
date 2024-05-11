@@ -83,7 +83,10 @@ exports.delete = async (req, res) => {
 };
 
 // GET ALL FAVORITE CARAVANS
-exports.getFavoriteCaravans = async (req, res) => {
+exports.favoriteCaravansList = async (req, res) => {
+  const page = req.query.page;
+  const limit = req.query.limit;
+
   try {
     const userId = req.body.userId;
     const user = await User.findById(userId);
@@ -92,9 +95,31 @@ exports.getFavoriteCaravans = async (req, res) => {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    const favoriteCaravans = await FavoriteCaravan.findOne({ user: userId });
+    const data = await FavoriteCaravan.findOne({
+      user: userId,
+    });
 
-    res.status(200).json(favoriteCaravans);
+    if (!data) {
+      return res.status(404).json({ message: 'Favorite caravans not found' });
+    }
+
+    const caravansId = data.favoriteCaravans;
+
+    const totalCaravans = caravansId.length;
+    const totalPage = Math.ceil(totalCaravans / limit);
+
+    const caravans = await Caravan.find({ _id: { $in: caravansId } })
+      .skip((page - 1) * limit)
+      .limit(limit);
+
+    res
+      .status(200)
+      .json({
+        caravans,
+        totalPage,
+        currentPage: page,
+        totalCaravan: caravansId.length,
+      });
   } catch (error) {
     res.status(500).json(error);
   }

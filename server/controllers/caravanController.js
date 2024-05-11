@@ -107,7 +107,9 @@ exports.getCaravans = async (req, res) => {
       .skip((page - 1) * limit)
       .limit(limit);
 
-    res.status(200).json({ caravans, totalPage, currentPage: page });
+    res
+      .status(200)
+      .json({ caravans, totalPage, currentPage: page, totalCaravans });
   } catch (error) {
     res.status(500).json(error);
   }
