@@ -2,164 +2,49 @@ import styles from './favorites.module.css';
 import Pagination from '@mui/material/Pagination';
 import { FaRegHeart } from 'react-icons/fa';
 import FavoriteCaravan from '../../components/favoriteCaravan/FavoriteCaravan';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRef } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 const Favorites = () => {
   const containerRef = useRef(null);
   const [page, setPage] = useState(1); //sayfa numarası state'i
   const caravansPerPage = 9; //sayfada gösterilecek kravan sayısı
+  const [favoriteCaravans, setFavoriteCaravans] = useState([]);
+  const [caravans, setCaravans] = useState([]);
+  const userId = '66315255fdacfb81d01bfe0a';
+
+  useEffect(() => {
+    const getFavoriteCaravans = async () => {
+      const res = await axios.get(
+        `/favorites/favoriteCaravansList/${userId}/?page=${page}&limit=${caravansPerPage}`
+      );
+      setFavoriteCaravans(res.data);
+      setCaravans(res.data.caravans);
+    };
+    getFavoriteCaravans();
+  }, [page]);
+
   const handlePageChange = (event, newPage) => {
     setPage(newPage);
   };
-
-  const totalCaravans = [
-    {
-      id: 1,
-      title: 'Motocaravan - Antalya',
-      capacity: '4 kişilik',
-      year: 2023,
-      nights: '3 gece',
-      price: '3.500₺ gece',
-      rating: 4.97,
-    },
-    {
-      id: 2,
-      title: 'Karavan - İstanbul',
-      capacity: '6 kişilik',
-      year: 2022,
-      nights: '2 gece',
-      price: '4.000₺ gece',
-      rating: 4.75,
-      // Diğer özellikler...
-    },
-    {
-      id: 3,
-      title: 'Karavan - İstanbul',
-      capacity: '6 kişilik',
-      year: 2022,
-      nights: '2 gece',
-      price: '4.000₺ gece',
-      rating: 4.75,
-      // Diğer özellikler...
-    },
-    {
-      id: 4,
-      title: 'Karavan - İstanbul',
-      capacity: '6 kişilik',
-      year: 2022,
-      nights: '2 gece',
-      price: '4.000₺ gece',
-      rating: 4.75,
-      // Diğer özellikler...
-    },
-    {
-      id: 5,
-      title: 'Karavan - İstanbul',
-      capacity: '6 kişilik',
-      year: 2022,
-      nights: '2 gece',
-      price: '4.000₺ gece',
-      rating: 4.75,
-      // Diğer özellikler...
-    },
-    {
-      id: 6,
-      title: 'Karavan - İstanbul',
-      capacity: '6 kişilik',
-      year: 2022,
-      nights: '2 gece',
-      price: '4.000₺ gece',
-      rating: 4.75,
-      // Diğer özellikler...
-    },
-    {
-      id: 7,
-      title: 'Karavan - İstanbul',
-      capacity: '6 kişilik',
-      year: 2022,
-      nights: '2 gece',
-      price: '4.000₺ gece',
-      rating: 4.75,
-      // Diğer özellikler...
-    },
-    {
-      id: 8,
-      title: 'Karavan - İstanbul',
-      capacity: '6 kişilik',
-      year: 2022,
-      nights: '2 gece',
-      price: '4.000₺ gece',
-      rating: 4.75,
-      // Diğer özellikler...
-    },
-    {
-      id: 9,
-      title: 'Karavan - İstanbul',
-      capacity: '6 kişilik',
-      year: 2022,
-      nights: '2 gece',
-      price: '4.000₺ gece',
-      rating: 4.75,
-      // Diğer özellikler...
-    },
-    {
-      id: 10,
-      title: 'Karavan - İstanbul',
-      capacity: '6 kişilik',
-      year: 2022,
-      nights: '2 gece',
-      price: '4.000₺ gece',
-      rating: 4.75,
-      // Diğer özellikler...
-    },
-    {
-      id: 11,
-      title: 'Karavan - İstanbul',
-      capacity: '6 kişilik',
-      year: 2022,
-      nights: '2 gece',
-      price: '4.000₺ gece',
-      rating: 4.75,
-      // Diğer özellikler...
-    },
-    {
-      id: 12,
-      title: 'Karavan - İstanbul',
-      capacity: '6 kişilik',
-      year: 2022,
-      nights: '2 gece',
-      price: '4.000₺ gece',
-      rating: 4.75,
-      // Diğer özellikler...
-    },
-    {
-      id: 13,
-      title: 'Karavan - İstanbul',
-      capacity: '6 kişilik',
-      year: 2022,
-      nights: '2 gece',
-      price: '4.000₺ gece',
-      rating: 4.75,
-      // Diğer özellikler...
-    },
-  ];
-
-  const startIndex = (page - 1) * caravansPerPage;
-  const endIndex = startIndex + caravansPerPage;
-  const visibleCaravans = totalCaravans.slice(startIndex, endIndex);
+  console.log(caravans);
   return (
     <div className={styles['caravans-container']}>
       <span className={styles.name}>Favoriler</span>
       <div className={styles.caravans}>
-        {visibleCaravans.map((caravan, index) => (
-          <FavoriteCaravan key={index} {...caravan} />
+        {caravans.map((caravan, index) => (
+          <Link className={styles.links} to={`/caravan/${caravan._id}`}>
+            <FavoriteCaravan key={index} {...caravan} />
+          </Link>
         ))}
       </div>
       <Pagination
         className={styles.pagination}
-        count={Math.ceil(totalCaravans.length / caravansPerPage)}
+        count={favoriteCaravans.totalPage}
         color='primary'
         variant='outlined'
+        page={page}
         size='large'
         onChange={handlePageChange}
       />
