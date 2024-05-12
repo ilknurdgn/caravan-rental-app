@@ -3,11 +3,12 @@ import styles from './caravans.module.css';
 import { FaRegHeart } from 'react-icons/fa';
 import Pagination from '@mui/material/Pagination';
 import { createTheme } from '@mui/material/styles';
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { FaHeart } from 'react-icons/fa';
 import { Link, useParams, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import Loading from '../../components/loading/Loading';
+import { Context } from '../../context/Contex';
 
 const Caravans = () => {
   const [totalCaravans, setTotalCaravans] = useState([]);
@@ -16,6 +17,8 @@ const Caravans = () => {
   const [page, setPage] = useState(1);
   const caravansPerPage = 9;
   const [isLoading, setIsLoading] = useState(false);
+  const { user } = useContext(Context);
+  const userId = user._id;
 
   useEffect(() => {
     const getSingleCaravan = async () => {
@@ -36,15 +39,19 @@ const Caravans = () => {
     getSingleCaravan();
   }, [page]);
 
-  const toggleFavorite = (caravanId) => {
-    setFavorites((prevFavorites) => ({
-      ...prevFavorites,
-      [caravanId]: !prevFavorites[caravanId],
-    }));
-  };
-
   const handlePageChange = (event, newPage) => {
     setPage(newPage);
+  };
+
+  const addFavoriteCaravans = async (caravanId) => {
+    try {
+      await axios.post(`/favorites/add`, {
+        userId: userId,
+        caravanId: caravanId,
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -71,14 +78,10 @@ const Caravans = () => {
                 </Link>
                 {/* Favori kısmı */}
                 <div
+                  onClick={() => addFavoriteCaravans(caravan._id)}
                   className={styles['heartIcon-div']}
-                  onClick={() => toggleFavorite(caravan._id)}
                 >
-                  {favorites[caravan._id] ? (
-                    <FaHeart className={styles.favHeartIcon} />
-                  ) : (
-                    <FaRegHeart className={styles.heartIcon} />
-                  )}
+                  <FaRegHeart className={styles.heartIcon} />
                 </div>
               </div>
             ))}
