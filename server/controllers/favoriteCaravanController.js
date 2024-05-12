@@ -88,7 +88,7 @@ exports.favoriteCaravansList = async (req, res) => {
   const limit = req.query.limit;
 
   try {
-    const userId = req.body.userId;
+    const userId = req.params.id;
     const user = await User.findById(userId);
 
     if (!user) {
@@ -112,14 +112,12 @@ exports.favoriteCaravansList = async (req, res) => {
       .skip((page - 1) * limit)
       .limit(limit);
 
-    res
-      .status(200)
-      .json({
-        caravans,
-        totalPage,
-        currentPage: page,
-        totalCaravan: caravansId.length,
-      });
+    res.status(200).json({
+      caravans,
+      totalPage,
+      currentPage: page,
+      totalCaravan: caravansId.length,
+    });
   } catch (error) {
     res.status(500).json(error);
   }
