@@ -22,7 +22,6 @@ const Login = () => {
       dispatch({ type: 'LOGIN_FAILURE' });
     }
   };
-  console.log(user);
   return (
     <div className={styles.login}>
       <div className={styles.loginContainer}>
