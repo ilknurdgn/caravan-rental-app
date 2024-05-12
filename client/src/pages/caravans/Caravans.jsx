@@ -49,6 +49,7 @@ const Caravans = () => {
         userId: userId,
         caravanId: caravanId,
       });
+      setFavorites({ ...favorites, [caravanId]: true });
     } catch (err) {
       console.log(err);
     }
@@ -81,7 +82,11 @@ const Caravans = () => {
                   onClick={() => addFavoriteCaravans(caravan._id)}
                   className={styles['heartIcon-div']}
                 >
-                  <FaRegHeart className={styles.heartIcon} />
+                  {favorites[caravan._id] ? (
+                    <FaHeart className={styles.favHeartIcon} />
+                  ) : (
+                    <FaRegHeart className={styles.heartIcon} />
+                  )}
                 </div>
               </div>
             ))}
