@@ -122,3 +122,29 @@
   font-size: 15px;
   color: #484848;
 }
+
+.thirdSection {
+  height: calc(100vh - 64px);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.thirdSectionTitle {
+  margin-bottom: 30px;
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.dec {
+  color: #717171;
+}
+
+.blogs {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}

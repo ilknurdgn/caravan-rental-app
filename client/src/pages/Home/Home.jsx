@@ -3,6 +3,7 @@ import { IoSearchCircleSharp } from 'react-icons/io5';
 import { GiCaravan } from 'react-icons/gi';
 import { FaCreditCard } from 'react-icons/fa6';
 import { GiCampingTent } from 'react-icons/gi';
+import Blog from '../../components/blog/Blog';
 
 const Home = () => {
   return (
@@ -83,6 +84,14 @@ const Home = () => {
       </div>
       <div className={styles.thirdSection}>
         <h3 className={styles.thirdSectionTitle}>Karavan Blog</h3>
+        <span className={styles.dec}>
+          VANCA ekibinden ve kullanıcılarımızdan paylaşılan blog yazılarımız.
+        </span>
+        <div className={styles.blogs}>
+          <Blog />
+          <Blog />
+          <Blog />
+        </div>
       </div>
     </div>
   );
