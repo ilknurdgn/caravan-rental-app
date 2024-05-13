@@ -63,3 +63,23 @@ exports.getBookings = async (req, res) => {
     res.status(500).json(error);
   }
 };
+
+// CANCEL BOOKING
+exports.cancelBooking = async (req, res) => {
+  try {
+    const rentalId = req.params.id;
+    const rental = await Rental.findOneAndUpdate(
+      { _id: rentalId },
+      { status: 'cancelled' },
+      { new: true }
+    );
+
+    if (!rental) {
+      return res.status(404).json({ message: 'Rental not found!' });
+    }
+
+    res.status(200).json(rental);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
