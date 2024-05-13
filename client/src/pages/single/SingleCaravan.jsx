@@ -117,8 +117,7 @@ const SingleCaravan = () => {
     }, 1000); // 1 saniye
   };
 
-  console.log('startDay:', startDay);
-  console.log('endDay:', endDay);
+  console.log(caravanData);
 
   return (
     <div className={`${styles['single-container']} fadeIn`}>
@@ -165,7 +164,10 @@ const SingleCaravan = () => {
 
       <div className={styles['description-section']}>
         <div className={styles['caravan-left-side']}>
-          <span>{caravanData?.title}</span>
+          <span>
+            {' '}
+            {caravanData.location} - {caravanData?.title}
+          </span>
           <ul className={styles.features}>
             <li>
               <RiCaravanLine /> <p>{caravanData?.type}</p>
