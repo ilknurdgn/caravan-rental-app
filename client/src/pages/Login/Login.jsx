@@ -1,7 +1,7 @@
 import React, { useContext, useRef, useState } from 'react';
 import styles from './login.module.css';
 import { Context } from '../../context/Contex';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Login = () => {
