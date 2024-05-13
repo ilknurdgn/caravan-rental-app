@@ -50,7 +50,7 @@ const Favorites = () => {
   const handlePageChange = (event, newPage) => {
     setPage(newPage);
   };
-  console.log(caravans);
+  console.log(favoriteCaravans);
 
   return (
     <>
@@ -58,7 +58,9 @@ const Favorites = () => {
         <Loading />
       ) : (
         <div className={styles['caravans-container']}>
-          <span className={styles.name}>Favoriler</span>
+          <span className={styles.name}>
+            {favoriteCaravans.totalCaravan} Favori Karavan
+          </span>
           <div className={styles.caravans}>
             {caravans.map((caravan, index) => (
               <div className={styles.favoritesContainer}>
