@@ -2,15 +2,15 @@ const mongoose = require('mongoose');
 
 const rentalSchema = new mongoose.Schema(
   {
-    user: {
+    userId: {
       type: mongoose.Schema.ObjectId,
       ref: 'User',
-      required: ture,
+      required: true,
     },
-    caravan: {
+    caravanId: {
       type: mongoose.Schema.ObjectId,
       ref: 'Caravan',
-      required: ture,
+      required: true,
     },
     startDate: {
       type: Date,
