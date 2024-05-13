@@ -45,3 +45,7 @@
 .fadeIn {
   animation: fadeIn 0.5s ease-in-out;
 }
+
+.MuiPickersDay-root.Mui-disabled {
+  text-decoration: line-through;
+}

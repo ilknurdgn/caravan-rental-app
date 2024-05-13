@@ -27,7 +27,9 @@ const Favorites = () => {
         `/favorites/favoriteCaravansList/${userId}/?page=${page}&limit=${caravansPerPage}`
       );
       setFavoriteCaravans(res.data);
+      // console.log(res.data);
       setCaravans(res.data.caravans);
+      // console.log(caravans);
       window.scrollTo(0, 0);
       setTimeout(() => setIsLoading(false), 1000);
     };
@@ -48,6 +50,7 @@ const Favorites = () => {
   const handlePageChange = (event, newPage) => {
     setPage(newPage);
   };
+  console.log(caravans);
 
   return (
     <>
@@ -60,7 +63,11 @@ const Favorites = () => {
             {caravans.map((caravan, index) => (
               <div className={styles.favoritesContainer}>
                 <Link className={styles.links} to={`/caravan/${caravan._id}`}>
-                  <FavoriteCaravan key={index} {...caravan} />
+                  <FavoriteCaravan
+                    key={caravan._id}
+                    caravan={caravan}
+                    {...caravan}
+                  />
                 </Link>
 
                 {/* favoriler kısmı */}

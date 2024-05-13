@@ -165,7 +165,6 @@ const SingleCaravan = () => {
       <div className={styles['description-section']}>
         <div className={styles['caravan-left-side']}>
           <span>
-            {' '}
             {caravanData.location} - {caravanData?.title}
           </span>
           <ul className={styles.features}>
