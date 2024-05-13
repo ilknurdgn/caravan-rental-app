@@ -7,6 +7,7 @@ const authRoute = require('./routes/authRoute');
 const userRoute = require('./routes/userRoute');
 const caravanRoute = require('./routes/caravanRoute');
 const favoriteCaravansRoute = require('./routes/favoriteCaravansRoute');
+const rentalRoute = require('./routes/rentalRoute');
 
 dotenv.config();
 app.use(express.json());
@@ -23,6 +24,7 @@ app.use('/api/auth', authRoute);
 app.use('/api/user', userRoute);
 app.use('/api/caravan', caravanRoute);
 app.use('/api/favorites', favoriteCaravansRoute);
+app.use('/api/rental', rentalRoute);
 
 app.listen('8000', () => {
   console.log('Backend is running.');
