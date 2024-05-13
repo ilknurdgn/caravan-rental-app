@@ -1,13 +1,14 @@
 import React, { useContext, useRef, useState } from 'react';
 import styles from './login.module.css';
 import { Context } from '../../context/Contex';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Login = () => {
   const userRef = useRef();
   const passwordRef = useRef();
   const { user, dispatch, isFetching } = useContext(Context);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,6 +19,7 @@ const Login = () => {
         password: passwordRef.current.value,
       });
       dispatch({ type: 'LOGIN_SUCCESS', payload: res.data });
+      navigate('/');
     } catch (err) {
       dispatch({ type: 'LOGIN_FAILURE' });
     }

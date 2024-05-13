@@ -121,7 +121,7 @@ const SingleCaravan = () => {
   console.log('endDay:', endDay);
 
   return (
-    <div className={styles['single-container']}>
+    <div className={`${styles['single-container']} fadeIn`}>
       <div className={styles['caravan-info']}>
         <div className={styles.icons}>
           <div className={styles['right-side']}>

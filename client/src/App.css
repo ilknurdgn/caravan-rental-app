@@ -33,6 +33,15 @@
   flex-direction: column;
 }
 
-.rdrDayNumber {
-  overflow-y: hidden;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  animation: fadeIn 0.5s ease-in-out;
 }
