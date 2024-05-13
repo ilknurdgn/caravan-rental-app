@@ -30,6 +30,41 @@ exports.booking = async (req, res) => {
 
     const rental = await newRental.save();
 
+    caravan.notAvailableDates.push({
+      start: req.body.startDate,
+      end: req.body.endDate,
+    });
+
+    await caravan.save();
+
+    res.status(200).json(rental);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
+// GET BOOKING
+exports.getSingleBooking = async (req, res) => {
+  try {
+    const rentalId = req.params.id;
+    const rental = await Rental.findById(rentalId);
+
+    if (!rental) {
+      return res.status(404).json({ message: 'Rental not found!' });
+    }
+
+    const currentDate = new Date();
+
+    if (
+      currentDate > rental.endDate &&
+      rental.status !== 'completed' &&
+      rental.status !== 'cancelled'
+    ) {
+      rental.status = 'completed';
+
+      await rental.save();
+    }
+
     res.status(200).json(rental);
   } catch (error) {
     res.status(500).json(error);
