@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "lightbox.js-react": "^1.0.7",
+    "react-image-lightbox": "^5.1.4"
+  }
+}

@@ -1,0 +1,3193 @@
+{
+  "id": "xm62",
+  "dependencies": [
+    {
+      "name": "/Users/adc/Developer/ayrton/react-key-handler/package.json",
+      "includedInParent": true,
+      "mtime": 1533459603383
+    },
+    {
+      "name": "/Users/adc/Developer/ayrton/react-key-handler/.babelrc",
+      "includedInParent": true,
+      "mtime": 1533458194366
+    },
+    {
+      "name": "react",
+      "loc": { "line": 3, "column": 18 },
+      "parent": "/Users/adc/Developer/ayrton/react-key-handler/lib/key-handler.js",
+      "resolved": "/Users/adc/Developer/ayrton/react-key-handler/node_modules/react/index.js"
+    },
+    {
+      "name": "prop-types",
+      "loc": { "line": 4, "column": 22 },
+      "parent": "/Users/adc/Developer/ayrton/react-key-handler/lib/key-handler.js",
+      "resolved": "/Users/adc/Developer/ayrton/react-key-handler/node_modules/prop-types/index.js"
+    },
+    {
+      "name": "exenv",
+      "loc": { "line": 5, "column": 24 },
+      "parent": "/Users/adc/Developer/ayrton/react-key-handler/lib/key-handler.js",
+      "resolved": "/Users/adc/Developer/ayrton/react-key-handler/node_modules/exenv/index.js"
+    },
+    {
+      "name": "./constants",
+      "loc": { "line": 137, "column": 14 },
+      "parent": "/Users/adc/Developer/ayrton/react-key-handler/lib/key-handler.js",
+      "resolved": "/Users/adc/Developer/ayrton/react-key-handler/lib/constants.js"
+    },
+    {
+      "name": "./utils",
+      "loc": { "line": 8, "column": 54 },
+      "parent": "/Users/adc/Developer/ayrton/react-key-handler/lib/key-handler.js",
+      "resolved": "/Users/adc/Developer/ayrton/react-key-handler/lib/utils.js"
+    }
+  ],
+  "generated": {
+    "js": "\"use strict\";Object.defineProperty(exports,\"__esModule\",{value:!0}),exports.keyToggleHandler=exports.keyHandler=void 0;var e=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r])}return e},t=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,\"value\"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),n=require(\"./constants\");Object.keys(n).forEach(function(e){\"default\"!==e&&\"__esModule\"!==e&&Object.defineProperty(exports,e,{enumerable:!0,get:function(){return n[e]}})});var r=require(\"react\"),o=y(r),a=require(\"prop-types\"),u=y(a),l=require(\"exenv\"),i=require(\"./utils\");function y(e){return e&&e.__esModule?e:{default:e}}function c(e,t){var n={};for(var r in e)t.indexOf(r)>=0||Object.prototype.hasOwnProperty.call(e,r)&&(n[r]=e[r]);return n}function f(e,t){if(!(e instanceof t))throw new TypeError(\"Cannot call a class as a function\")}function s(e,t){if(!e)throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\");return!t||\"object\"!=typeof t&&\"function\"!=typeof t?e:t}function p(e,t){if(\"function\"!=typeof t&&null!==t)throw new TypeError(\"Super expression must either be null or a function, not \"+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}var d=function(e){function n(e){f(this,n);var t=s(this,(n.__proto__||Object.getPrototypeOf(n)).call(this,e));return t.handleKey=function(e){var n=t.props,r=n.keyValue,o=n.keyCode,a=n.onKeyHandle;if(a){var u=e.target;u instanceof window.HTMLElement&&(0,i.isInput)(u)||(0,i.matchesKeyboardEvent)(e,{keyValue:r,keyCode:o})&&a(e)}},e.keyValue||e.keyCode||console.error(\"Warning: Failed propType: Missing prop `keyValue` or `keyCode` for `KeyHandler`.\"),t}return p(n,o.default.Component),t(n,[{key:\"shouldComponentUpdate\",value:function(){return!1}}]),t(n,[{key:\"componentDidMount\",value:function(){l.canUseDOM&&window.document.addEventListener(this.props.keyEventName,this.handleKey)}},{key:\"componentWillUnmount\",value:function(){l.canUseDOM&&window.document.removeEventListener(this.props.keyEventName,this.handleKey)}},{key:\"render\",value:function(){return null}}]),n}();function k(n){return function(r){var a=r||{},u=a.keyValue,l=a.keyCode,y=a.keyEventName,k=c(a,[\"keyValue\",\"keyCode\",\"keyEventName\"]);return function(r){return function(a){function c(){var e,t,r;f(this,c);for(var o=arguments.length,a=Array(o),u=0;u<o;u++)a[u]=arguments[u];return t=r=s(this,(e=c.__proto__||Object.getPrototypeOf(c)).call.apply(e,[this].concat(a))),r.state={keyCode:null,keyValue:null},r.handleKey=function(e){n&&n(e,r.state)?r.setState({keyValue:null,keyCode:null}):r.setState({keyValue:(0,i.eventKey)(e),keyCode:e.keyCode})},s(r,t)}return p(c,o.default.Component),t(c,[{key:\"render\",value:function(){return o.default.createElement(\"div\",null,o.default.createElement(d,{keyValue:u,keyCode:l,keyEventName:y,onKeyHandle:this.handleKey}),o.default.createElement(r,e({},k,this.state)))}}]),c}()}}}d.propTypes={keyValue:u.default.string,keyCode:u.default.number,keyEventName:u.default.oneOf([n.KEYDOWN,n.KEYPRESS,n.KEYUP]),onKeyHandle:u.default.func},d.defaultProps={keyEventName:n.KEYUP},exports.default=d;var v=exports.keyHandler=k(),h=exports.keyToggleHandler=k(i.matchesKeyboardEvent);",
+    "map": {
+      "mappings": [
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 0 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 13 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 20 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 35 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 43 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 56 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 57 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 64 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 68 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 76 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 93 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 101 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 117 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 119 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 123 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 125 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 132 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 140 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 149 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 152 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 156 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 160 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 162 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 164 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 166 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 176 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 183 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 187 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 188 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 192 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 194 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 204 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 207 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 211 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 215 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 220 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 222 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 229 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 239 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 254 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 259 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 261 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 266 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 268 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 271 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 273 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 277 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 284 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 287 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 289 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 300 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 309 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 311 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 313 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 316 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 320 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 324 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 326 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 328 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 330 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 332 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 339 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 343 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 344 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 348 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 350 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 352 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 355 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 357 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 368 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 370 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 383 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 385 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 387 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 401 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 403 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 413 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 417 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 419 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 429 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 432 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 439 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 454 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 456 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 458 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 462 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 466 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 473 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 482 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 484 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 486 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 489 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 496 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 499 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 501 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 503 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 513 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 516 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 519 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 521 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 523 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 526 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 529 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 7, "column": 0 },
+          "generated": { "line": 1, "column": 532 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 7, "column": 0 },
+          "generated": { "line": 1, "column": 534 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 7, "column": 0 },
+          "generated": { "line": 1, "column": 542 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 137, "column": 0 },
+          "generated": { "line": 1, "column": 557 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 137, "column": 0 },
+          "generated": { "line": 1, "column": 564 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 137, "column": 0 },
+          "generated": { "line": 1, "column": 569 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 137, "column": 0 },
+          "generated": { "line": 1, "column": 572 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 137, "column": 0 },
+          "generated": { "line": 1, "column": 580 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 137, "column": 0 },
+          "generated": { "line": 1, "column": 589 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 137, "column": 0 },
+          "generated": { "line": 1, "column": 592 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 137, "column": 0 },
+          "generated": { "line": 1, "column": 604 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 137, "column": 0 },
+          "generated": { "line": 1, "column": 607 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 137, "column": 0 },
+          "generated": { "line": 1, "column": 622 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 137, "column": 0 },
+          "generated": { "line": 1, "column": 625 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 137, "column": 0 },
+          "generated": { "line": 1, "column": 632 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 137, "column": 0 },
+          "generated": { "line": 1, "column": 647 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 137, "column": 0 },
+          "generated": { "line": 1, "column": 655 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 137, "column": 0 },
+          "generated": { "line": 1, "column": 657 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 137, "column": 0 },
+          "generated": { "line": 1, "column": 658 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 137, "column": 0 },
+          "generated": { "line": 1, "column": 670 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 137, "column": 0 },
+          "generated": { "line": 1, "column": 672 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 137, "column": 0 },
+          "generated": { "line": 1, "column": 676 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 137, "column": 0 },
+          "generated": { "line": 1, "column": 687 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 137, "column": 0 },
+          "generated": { "line": 1, "column": 694 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 137, "column": 0 },
+          "generated": { "line": 1, "column": 696 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 3, "column": 0 },
+          "generated": { "line": 1, "column": 704 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 3, "column": 0 },
+          "generated": { "line": 1, "column": 708 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 3, "column": 0 },
+          "generated": { "line": 1, "column": 710 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 3, "column": 0 },
+          "generated": { "line": 1, "column": 718 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 727 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 729 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 731 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 4, "column": 0 },
+          "generated": { "line": 1, "column": 734 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 4, "column": 0 },
+          "generated": { "line": 1, "column": 736 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 4, "column": 0 },
+          "generated": { "line": 1, "column": 744 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 758 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 760 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 762 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 5, "column": 0 },
+          "generated": { "line": 1, "column": 765 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 5, "column": 0 },
+          "generated": { "line": 1, "column": 767 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 5, "column": 0 },
+          "generated": { "line": 1, "column": 775 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 8, "column": 0 },
+          "generated": { "line": 1, "column": 784 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 8, "column": 0 },
+          "generated": { "line": 1, "column": 786 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 8, "column": 0 },
+          "generated": { "line": 1, "column": 794 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 805 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 814 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 816 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 819 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 826 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 829 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 831 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 842 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 844 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 845 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 853 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 856 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 865 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 867 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 869 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 872 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 876 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 878 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 881 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 885 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 889 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 894 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 896 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 898 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 906 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 910 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 913 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 920 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 930 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 945 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 950 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 952 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 957 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 959 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 962 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 964 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 968 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 975 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 977 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 986 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 988 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 990 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 993 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 998 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1011 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1014 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1020 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1024 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1034 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1071 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1080 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1082 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1084 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1087 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1091 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1093 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1099 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1103 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1118 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1179 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1186 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1189 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1206 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1209 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1228 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1230 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1232 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1234 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1243 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1245 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1247 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1250 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1253 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1272 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1275 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1282 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1284 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1290 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1294 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1304 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1370 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1373 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1375 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1385 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1392 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1399 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1402 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1404 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1414 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1415 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1427 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1428 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1434 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1436 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1448 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1450 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1460 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1462 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1476 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1481 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1485 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1492 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1507 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1514 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1529 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1531 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1534 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1536 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 1546 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "KeyHandler",
+          "original": { "line": 17, "column": 21 },
+          "generated": { "line": 1, "column": 1549 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "KeyHandler",
+          "original": { "line": 17, "column": 21 },
+          "generated": { "line": 1, "column": 1553 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "KeyHandler",
+          "original": { "line": 17, "column": 21 },
+          "generated": { "line": 1, "column": 1555 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "KeyHandler",
+          "original": { "line": 17, "column": 21 },
+          "generated": { "line": 1, "column": 1564 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "props",
+          "original": { "line": 33, "column": 14 },
+          "generated": { "line": 1, "column": 1567 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "props",
+          "original": { "line": 33, "column": 14 },
+          "generated": { "line": 1, "column": 1576 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "props",
+          "original": { "line": 33, "column": 14 },
+          "generated": { "line": 1, "column": 1578 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 33, "column": 21 },
+          "generated": { "line": 1, "column": 1581 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 33, "column": 21 },
+          "generated": { "line": 1, "column": 1583 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 33, "column": 21 },
+          "generated": { "line": 1, "column": 1588 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "props",
+          "original": { "line": 34, "column": 10 },
+          "generated": { "line": 1, "column": 1591 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "props",
+          "original": { "line": 34, "column": 10 },
+          "generated": { "line": 1, "column": 1595 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "props",
+          "original": { "line": 34, "column": 10 },
+          "generated": { "line": 1, "column": 1597 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "props",
+          "original": { "line": 34, "column": 10 },
+          "generated": { "line": 1, "column": 1599 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "props",
+          "original": { "line": 34, "column": 10 },
+          "generated": { "line": 1, "column": 1605 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "props",
+          "original": { "line": 34, "column": 10 },
+          "generated": { "line": 1, "column": 1607 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "props",
+          "original": { "line": 34, "column": 10 },
+          "generated": { "line": 1, "column": 1618 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "props",
+          "original": { "line": 34, "column": 10 },
+          "generated": { "line": 1, "column": 1625 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "props",
+          "original": { "line": 34, "column": 10 },
+          "generated": { "line": 1, "column": 1640 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "props",
+          "original": { "line": 34, "column": 10 },
+          "generated": { "line": 1, "column": 1644 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "props",
+          "original": { "line": 34, "column": 10 },
+          "generated": { "line": 1, "column": 1649 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "props",
+          "original": { "line": 34, "column": 10 },
+          "generated": { "line": 1, "column": 1654 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 33, "column": 21 },
+          "generated": { "line": 1, "column": 1658 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "handleKey",
+          "original": { "line": 61, "column": 2 },
+          "generated": { "line": 1, "column": 1665 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "handleKey",
+          "original": { "line": 61, "column": 2 },
+          "generated": { "line": 1, "column": 1667 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 61, "column": 14 },
+          "generated": { "line": 1, "column": 1677 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "event",
+          "original": { "line": 61, "column": 15 },
+          "generated": { "line": 1, "column": 1686 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 62, "column": 45 },
+          "generated": { "line": 1, "column": 1689 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 62, "column": 45 },
+          "generated": { "line": 1, "column": 1693 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 62, "column": 45 },
+          "generated": { "line": 1, "column": 1695 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "props",
+          "original": { "line": 62, "column": 50 },
+          "generated": { "line": 1, "column": 1697 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "keyValue",
+          "original": { "line": 62, "column": 11 },
+          "generated": { "line": 1, "column": 1703 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "keyValue",
+          "original": { "line": 62, "column": 11 },
+          "generated": { "line": 1, "column": 1705 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "keyValue",
+          "original": { "line": 62, "column": 11 },
+          "generated": { "line": 1, "column": 1707 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "keyCode",
+          "original": { "line": 62, "column": 21 },
+          "generated": { "line": 1, "column": 1716 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "keyCode",
+          "original": { "line": 62, "column": 21 },
+          "generated": { "line": 1, "column": 1718 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "keyCode",
+          "original": { "line": 62, "column": 21 },
+          "generated": { "line": 1, "column": 1720 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "onKeyHandle",
+          "original": { "line": 62, "column": 30 },
+          "generated": { "line": 1, "column": 1728 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "onKeyHandle",
+          "original": { "line": 62, "column": 30 },
+          "generated": { "line": 1, "column": 1730 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "onKeyHandle",
+          "original": { "line": 62, "column": 30 },
+          "generated": { "line": 1, "column": 1732 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 64, "column": 8 },
+          "generated": { "line": 1, "column": 1744 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "onKeyHandle",
+          "original": { "line": 64, "column": 9 },
+          "generated": { "line": 1, "column": 1747 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 64, "column": 8 },
+          "generated": { "line": 1, "column": 1749 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "target",
+          "original": { "line": 68, "column": 11 },
+          "generated": { "line": 1, "column": 1750 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "target",
+          "original": { "line": 68, "column": 11 },
+          "generated": { "line": 1, "column": 1754 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "event",
+          "original": { "line": 68, "column": 21 },
+          "generated": { "line": 1, "column": 1756 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "target",
+          "original": { "line": 68, "column": 11 },
+          "generated": { "line": 1, "column": 1758 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "target",
+          "original": { "line": 70, "column": 8 },
+          "generated": { "line": 1, "column": 1765 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "window",
+          "original": { "line": 70, "column": 26 },
+          "generated": { "line": 1, "column": 1778 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "HTMLElement",
+          "original": { "line": 70, "column": 33 },
+          "generated": { "line": 1, "column": 1785 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 70, "column": 48 },
+          "generated": { "line": 1, "column": 1799 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "target",
+          "original": { "line": 70, "column": 56 },
+          "generated": { "line": 1, "column": 1801 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "target",
+          "original": { "line": 70, "column": 56 },
+          "generated": { "line": 1, "column": 1803 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "target",
+          "original": { "line": 70, "column": 56 },
+          "generated": { "line": 1, "column": 1812 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 74, "column": 9 },
+          "generated": { "line": 1, "column": 1817 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "event",
+          "original": { "line": 74, "column": 30 },
+          "generated": { "line": 1, "column": 1819 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "event",
+          "original": { "line": 74, "column": 30 },
+          "generated": { "line": 1, "column": 1821 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "event",
+          "original": { "line": 74, "column": 30 },
+          "generated": { "line": 1, "column": 1843 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 74, "column": 37 },
+          "generated": { "line": 1, "column": 1845 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "keyValue",
+          "original": { "line": 74, "column": 38 },
+          "generated": { "line": 1, "column": 1846 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 74, "column": 37 },
+          "generated": { "line": 1, "column": 1855 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "keyCode",
+          "original": { "line": 74, "column": 48 },
+          "generated": { "line": 1, "column": 1857 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 74, "column": 37 },
+          "generated": { "line": 1, "column": 1865 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "event",
+          "original": { "line": 78, "column": 16 },
+          "generated": { "line": 1, "column": 1870 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "event",
+          "original": { "line": 78, "column": 16 },
+          "generated": { "line": 1, "column": 1872 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "props",
+          "original": { "line": 38, "column": 9 },
+          "generated": { "line": 1, "column": 1877 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "keyValue",
+          "original": { "line": 38, "column": 15 },
+          "generated": { "line": 1, "column": 1879 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "props",
+          "original": { "line": 38, "column": 28 },
+          "generated": { "line": 1, "column": 1889 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "keyCode",
+          "original": { "line": 38, "column": 34 },
+          "generated": { "line": 1, "column": 1891 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "error",
+          "original": { "line": 39, "column": 14 },
+          "generated": { "line": 1, "column": 1900 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "error",
+          "original": { "line": 39, "column": 14 },
+          "generated": { "line": 1, "column": 1908 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 39, "column": 20 },
+          "generated": { "line": 1, "column": 1914 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 33, "column": 21 },
+          "generated": { "line": 1, "column": 1998 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 2000 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 2007 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 2009 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "React",
+          "original": { "line": 17, "column": 40 },
+          "generated": { "line": 1, "column": 2011 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "Component",
+          "original": { "line": 17, "column": 46 },
+          "generated": { "line": 1, "column": 2013 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "Component",
+          "original": { "line": 17, "column": 46 },
+          "generated": { "line": 1, "column": 2021 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 2032 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 2034 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 2036 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 2037 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 2038 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 2042 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 29, "column": 35 },
+          "generated": { "line": 1, "column": 2066 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 29, "column": 35 },
+          "generated": { "line": 1, "column": 2072 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 30, "column": 11 },
+          "generated": { "line": 1, "column": 2083 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 30, "column": 11 },
+          "generated": { "line": 1, "column": 2090 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 2096 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 2098 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 2100 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 2101 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 2102 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 2106 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 45, "column": 28 },
+          "generated": { "line": 1, "column": 2126 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 45, "column": 28 },
+          "generated": { "line": 1, "column": 2132 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "canUseDOM",
+          "original": { "line": 46, "column": 9 },
+          "generated": { "line": 1, "column": 2143 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 46, "column": 4 },
+          "generated": { "line": 1, "column": 2145 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "document",
+          "original": { "line": 48, "column": 11 },
+          "generated": { "line": 1, "column": 2156 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "document",
+          "original": { "line": 48, "column": 11 },
+          "generated": { "line": 1, "column": 2163 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "addEventListener",
+          "original": { "line": 48, "column": 20 },
+          "generated": { "line": 1, "column": 2172 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 48, "column": 37 },
+          "generated": { "line": 1, "column": 2189 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "props",
+          "original": { "line": 48, "column": 42 },
+          "generated": { "line": 1, "column": 2194 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "keyEventName",
+          "original": { "line": 48, "column": 48 },
+          "generated": { "line": 1, "column": 2200 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 48, "column": 62 },
+          "generated": { "line": 1, "column": 2213 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "handleKey",
+          "original": { "line": 48, "column": 67 },
+          "generated": { "line": 1, "column": 2218 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 2231 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 2232 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 2236 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 51, "column": 31 },
+          "generated": { "line": 1, "column": 2259 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 51, "column": 31 },
+          "generated": { "line": 1, "column": 2265 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "canUseDOM",
+          "original": { "line": 52, "column": 9 },
+          "generated": { "line": 1, "column": 2276 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 52, "column": 4 },
+          "generated": { "line": 1, "column": 2278 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "document",
+          "original": { "line": 54, "column": 11 },
+          "generated": { "line": 1, "column": 2289 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "document",
+          "original": { "line": 54, "column": 11 },
+          "generated": { "line": 1, "column": 2296 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "removeEventListener",
+          "original": { "line": 54, "column": 20 },
+          "generated": { "line": 1, "column": 2305 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 54, "column": 40 },
+          "generated": { "line": 1, "column": 2325 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "props",
+          "original": { "line": 54, "column": 45 },
+          "generated": { "line": 1, "column": 2330 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "keyEventName",
+          "original": { "line": 54, "column": 51 },
+          "generated": { "line": 1, "column": 2336 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 54, "column": 65 },
+          "generated": { "line": 1, "column": 2349 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "handleKey",
+          "original": { "line": 54, "column": 70 },
+          "generated": { "line": 1, "column": 2354 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 2367 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 2368 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 2372 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 57, "column": 17 },
+          "generated": { "line": 1, "column": 2381 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 57, "column": 17 },
+          "generated": { "line": 1, "column": 2387 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 58, "column": 11 },
+          "generated": { "line": 1, "column": 2398 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 58, "column": 11 },
+          "generated": { "line": 1, "column": 2405 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 133, "column": 0 },
+          "generated": { "line": 1, "column": 2414 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "KeyHandler",
+          "original": { "line": 17, "column": 21 },
+          "generated": { "line": 1, "column": 2416 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 97, "column": 0 },
+          "generated": { "line": 1, "column": 2419 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "keyHandleDecorator",
+          "original": { "line": 97, "column": 9 },
+          "generated": { "line": 1, "column": 2428 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "matcher",
+          "original": { "line": 97, "column": 31 },
+          "generated": { "line": 1, "column": 2430 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 98, "column": 9 },
+          "generated": { "line": 1, "column": 2433 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 98, "column": 9 },
+          "generated": { "line": 1, "column": 2440 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "props",
+          "original": { "line": 98, "column": 10 },
+          "generated": { "line": 1, "column": 2449 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "props",
+          "original": { "line": 99, "column": 63 },
+          "generated": { "line": 1, "column": 2452 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "props",
+          "original": { "line": 99, "column": 63 },
+          "generated": { "line": 1, "column": 2456 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "props",
+          "original": { "line": 99, "column": 63 },
+          "generated": { "line": 1, "column": 2458 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 99, "column": 72 },
+          "generated": { "line": 1, "column": 2461 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "keyValue",
+          "original": { "line": 99, "column": 12 },
+          "generated": { "line": 1, "column": 2464 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "keyValue",
+          "original": { "line": 99, "column": 12 },
+          "generated": { "line": 1, "column": 2466 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "keyValue",
+          "original": { "line": 99, "column": 12 },
+          "generated": { "line": 1, "column": 2468 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "keyCode",
+          "original": { "line": 99, "column": 22 },
+          "generated": { "line": 1, "column": 2477 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "keyCode",
+          "original": { "line": 99, "column": 22 },
+          "generated": { "line": 1, "column": 2479 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "keyCode",
+          "original": { "line": 99, "column": 22 },
+          "generated": { "line": 1, "column": 2481 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "keyEventName",
+          "original": { "line": 99, "column": 31 },
+          "generated": { "line": 1, "column": 2489 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "keyEventName",
+          "original": { "line": 99, "column": 31 },
+          "generated": { "line": 1, "column": 2491 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "keyEventName",
+          "original": { "line": 99, "column": 31 },
+          "generated": { "line": 1, "column": 2493 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "otherProps",
+          "original": { "line": 99, "column": 48 },
+          "generated": { "line": 1, "column": 2506 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 98, "column": 51 },
+          "generated": { "line": 1, "column": 2508 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 98, "column": 51 },
+          "generated": { "line": 1, "column": 2510 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 98, "column": 51 },
+          "generated": { "line": 1, "column": 2512 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 98, "column": 51 },
+          "generated": { "line": 1, "column": 2513 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 98, "column": 51 },
+          "generated": { "line": 1, "column": 2524 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 98, "column": 51 },
+          "generated": { "line": 1, "column": 2534 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 2551 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 2558 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "Component",
+          "original": { "line": 101, "column": 12 },
+          "generated": { "line": 1, "column": 2567 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 2570 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 2577 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 2586 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 2589 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 2598 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 2602 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 2606 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 2608 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 2610 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 2612 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 2614 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 2619 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 2622 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 2626 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 2630 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 2632 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 2642 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 2649 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 2651 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 2657 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 2660 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 2662 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 2664 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 2666 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 2668 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 2672 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 2674 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 2677 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 2687 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "state",
+          "original": { "line": 103, "column": 8 },
+          "generated": { "line": 1, "column": 2690 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "state",
+          "original": { "line": 103, "column": 8 },
+          "generated": { "line": 1, "column": 2697 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "state",
+          "original": { "line": 103, "column": 8 },
+          "generated": { "line": 1, "column": 2699 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "state",
+          "original": { "line": 103, "column": 8 },
+          "generated": { "line": 1, "column": 2701 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "state",
+          "original": { "line": 103, "column": 8 },
+          "generated": { "line": 1, "column": 2703 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "state",
+          "original": { "line": 103, "column": 8 },
+          "generated": { "line": 1, "column": 2709 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "state",
+          "original": { "line": 103, "column": 8 },
+          "generated": { "line": 1, "column": 2711 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "state",
+          "original": { "line": 103, "column": 8 },
+          "generated": { "line": 1, "column": 2713 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "state",
+          "original": { "line": 103, "column": 8 },
+          "generated": { "line": 1, "column": 2724 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "state",
+          "original": { "line": 103, "column": 8 },
+          "generated": { "line": 1, "column": 2731 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "state",
+          "original": { "line": 103, "column": 8 },
+          "generated": { "line": 1, "column": 2746 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "state",
+          "original": { "line": 103, "column": 8 },
+          "generated": { "line": 1, "column": 2750 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "state",
+          "original": { "line": 103, "column": 8 },
+          "generated": { "line": 1, "column": 2755 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "state",
+          "original": { "line": 103, "column": 8 },
+          "generated": { "line": 1, "column": 2761 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "state",
+          "original": { "line": 103, "column": 8 },
+          "generated": { "line": 1, "column": 2763 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "state",
+          "original": { "line": 103, "column": 8 },
+          "generated": { "line": 1, "column": 2764 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "state",
+          "original": { "line": 103, "column": 8 },
+          "generated": { "line": 1, "column": 2770 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "state",
+          "original": { "line": 103, "column": 8 },
+          "generated": { "line": 1, "column": 2777 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "state",
+          "original": { "line": 103, "column": 8 },
+          "generated": { "line": 1, "column": 2782 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "state",
+          "original": { "line": 103, "column": 8 },
+          "generated": { "line": 1, "column": 2784 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 103, "column": 41 },
+          "generated": { "line": 1, "column": 2790 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 104, "column": 19 },
+          "generated": { "line": 1, "column": 2791 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 104, "column": 19 },
+          "generated": { "line": 1, "column": 2799 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 105, "column": 20 },
+          "generated": { "line": 1, "column": 2804 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 105, "column": 20 },
+          "generated": { "line": 1, "column": 2813 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "handleKey",
+          "original": { "line": 117, "column": 8 },
+          "generated": { "line": 1, "column": 2819 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "handleKey",
+          "original": { "line": 117, "column": 8 },
+          "generated": { "line": 1, "column": 2821 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 117, "column": 20 },
+          "generated": { "line": 1, "column": 2831 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "event",
+          "original": { "line": 117, "column": 21 },
+          "generated": { "line": 1, "column": 2840 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "matcher",
+          "original": { "line": 118, "column": 14 },
+          "generated": { "line": 1, "column": 2843 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "matcher",
+          "original": { "line": 118, "column": 25 },
+          "generated": { "line": 1, "column": 2846 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "event",
+          "original": { "line": 118, "column": 33 },
+          "generated": { "line": 1, "column": 2848 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 118, "column": 40 },
+          "generated": { "line": 1, "column": 2850 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "state",
+          "original": { "line": 118, "column": 45 },
+          "generated": { "line": 1, "column": 2852 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "setState",
+          "original": { "line": 119, "column": 17 },
+          "generated": { "line": 1, "column": 2859 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "setState",
+          "original": { "line": 119, "column": 17 },
+          "generated": { "line": 1, "column": 2861 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 119, "column": 26 },
+          "generated": { "line": 1, "column": 2870 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "keyValue",
+          "original": { "line": 119, "column": 28 },
+          "generated": { "line": 1, "column": 2871 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 119, "column": 38 },
+          "generated": { "line": 1, "column": 2880 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "keyCode",
+          "original": { "line": 119, "column": 44 },
+          "generated": { "line": 1, "column": 2885 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 119, "column": 53 },
+          "generated": { "line": 1, "column": 2893 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "setState",
+          "original": { "line": 123, "column": 15 },
+          "generated": { "line": 1, "column": 2900 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "setState",
+          "original": { "line": 123, "column": 15 },
+          "generated": { "line": 1, "column": 2902 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 123, "column": 24 },
+          "generated": { "line": 1, "column": 2911 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "keyValue",
+          "original": { "line": 123, "column": 26 },
+          "generated": { "line": 1, "column": 2912 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 123, "column": 36 },
+          "generated": { "line": 1, "column": 2922 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "event",
+          "original": { "line": 123, "column": 45 },
+          "generated": { "line": 1, "column": 2924 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "event",
+          "original": { "line": 123, "column": 45 },
+          "generated": { "line": 1, "column": 2926 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "event",
+          "original": { "line": 123, "column": 45 },
+          "generated": { "line": 1, "column": 2936 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "keyCode",
+          "original": { "line": 123, "column": 53 },
+          "generated": { "line": 1, "column": 2939 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "event",
+          "original": { "line": 123, "column": 62 },
+          "generated": { "line": 1, "column": 2947 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "keyCode",
+          "original": { "line": 123, "column": 68 },
+          "generated": { "line": 1, "column": 2949 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 2960 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 2962 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 2964 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 2967 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 2974 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 2976 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "React",
+          "original": { "line": 102, "column": 39 },
+          "generated": { "line": 1, "column": 2978 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "Component",
+          "original": { "line": 102, "column": 45 },
+          "generated": { "line": 1, "column": 2980 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "Component",
+          "original": { "line": 102, "column": 45 },
+          "generated": { "line": 1, "column": 2988 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 2999 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 3001 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 3003 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 3004 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 3005 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 3009 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 108, "column": 17 },
+          "generated": { "line": 1, "column": 3018 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 108, "column": 17 },
+          "generated": { "line": 1, "column": 3024 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 110, "column": 12 },
+          "generated": { "line": 1, "column": 3035 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 110, "column": 12 },
+          "generated": { "line": 1, "column": 3042 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 110, "column": 12 },
+          "generated": { "line": 1, "column": 3044 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 110, "column": 12 },
+          "generated": { "line": 1, "column": 3052 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 110, "column": 12 },
+          "generated": { "line": 1, "column": 3066 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 110, "column": 12 },
+          "generated": { "line": 1, "column": 3072 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 111, "column": 15 },
+          "generated": { "line": 1, "column": 3077 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 111, "column": 15 },
+          "generated": { "line": 1, "column": 3079 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 111, "column": 15 },
+          "generated": { "line": 1, "column": 3087 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 111, "column": 15 },
+          "generated": { "line": 1, "column": 3101 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 111, "column": 26 },
+          "generated": { "line": 1, "column": 3103 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 111, "column": 26 },
+          "generated": { "line": 1, "column": 3104 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "keyValue",
+          "original": { "line": 111, "column": 36 },
+          "generated": { "line": 1, "column": 3113 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 111, "column": 46 },
+          "generated": { "line": 1, "column": 3115 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "keyCode",
+          "original": { "line": 111, "column": 55 },
+          "generated": { "line": 1, "column": 3123 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 111, "column": 64 },
+          "generated": { "line": 1, "column": 3125 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "keyEventName",
+          "original": { "line": 111, "column": 78 },
+          "generated": { "line": 1, "column": 3138 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 111, "column": 92 },
+          "generated": { "line": 1, "column": 3140 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 111, "column": 105 },
+          "generated": { "line": 1, "column": 3152 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "handleKey",
+          "original": { "line": 111, "column": 110 },
+          "generated": { "line": 1, "column": 3157 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 112, "column": 15 },
+          "generated": { "line": 1, "column": 3169 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 112, "column": 15 },
+          "generated": { "line": 1, "column": 3171 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 112, "column": 15 },
+          "generated": { "line": 1, "column": 3179 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 112, "column": 15 },
+          "generated": { "line": 1, "column": 3193 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "otherProps",
+          "original": { "line": 112, "column": 29 },
+          "generated": { "line": 1, "column": 3195 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "otherProps",
+          "original": { "line": 112, "column": 29 },
+          "generated": { "line": 1, "column": 3197 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "otherProps",
+          "original": { "line": 112, "column": 29 },
+          "generated": { "line": 1, "column": 3200 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 112, "column": 45 },
+          "generated": { "line": 1, "column": 3202 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "state",
+          "original": { "line": 112, "column": 50 },
+          "generated": { "line": 1, "column": 3207 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 3220 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 101, "column": 11 },
+          "generated": { "line": 1, "column": 3222 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "KeyHandler",
+          "original": { "line": 17, "column": 21 },
+          "generated": { "line": 1, "column": 3227 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "propTypes",
+          "original": { "line": 18, "column": 9 },
+          "generated": { "line": 1, "column": 3229 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 18, "column": 21 },
+          "generated": { "line": 1, "column": 3239 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "PropTypes",
+          "original": { "line": 19, "column": 14 },
+          "generated": { "line": 1, "column": 3240 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "PropTypes",
+          "original": { "line": 19, "column": 14 },
+          "generated": { "line": 1, "column": 3249 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "string",
+          "original": { "line": 19, "column": 24 },
+          "generated": { "line": 1, "column": 3251 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "string",
+          "original": { "line": 19, "column": 24 },
+          "generated": { "line": 1, "column": 3259 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "PropTypes",
+          "original": { "line": 20, "column": 13 },
+          "generated": { "line": 1, "column": 3266 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "PropTypes",
+          "original": { "line": 20, "column": 13 },
+          "generated": { "line": 1, "column": 3274 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "number",
+          "original": { "line": 20, "column": 23 },
+          "generated": { "line": 1, "column": 3276 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "number",
+          "original": { "line": 20, "column": 23 },
+          "generated": { "line": 1, "column": 3284 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "PropTypes",
+          "original": { "line": 21, "column": 18 },
+          "generated": { "line": 1, "column": 3291 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "PropTypes",
+          "original": { "line": 21, "column": 18 },
+          "generated": { "line": 1, "column": 3304 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "oneOf",
+          "original": { "line": 21, "column": 28 },
+          "generated": { "line": 1, "column": 3306 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "oneOf",
+          "original": { "line": 21, "column": 28 },
+          "generated": { "line": 1, "column": 3314 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 21, "column": 34 },
+          "generated": { "line": 1, "column": 3320 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "KEYDOWN",
+          "original": { "line": 21, "column": 35 },
+          "generated": { "line": 1, "column": 3321 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 21, "column": 34 },
+          "generated": { "line": 1, "column": 3323 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "KEYPRESS",
+          "original": { "line": 21, "column": 44 },
+          "generated": { "line": 1, "column": 3331 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 21, "column": 34 },
+          "generated": { "line": 1, "column": 3333 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "KEYUP",
+          "original": { "line": 21, "column": 54 },
+          "generated": { "line": 1, "column": 3342 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 21, "column": 34 },
+          "generated": { "line": 1, "column": 3344 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "PropTypes",
+          "original": { "line": 22, "column": 17 },
+          "generated": { "line": 1, "column": 3352 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "PropTypes",
+          "original": { "line": 22, "column": 17 },
+          "generated": { "line": 1, "column": 3364 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "func",
+          "original": { "line": 22, "column": 27 },
+          "generated": { "line": 1, "column": 3366 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "func",
+          "original": { "line": 22, "column": 27 },
+          "generated": { "line": 1, "column": 3374 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "KeyHandler",
+          "original": { "line": 17, "column": 21 },
+          "generated": { "line": 1, "column": 3380 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "defaultProps",
+          "original": { "line": 25, "column": 9 },
+          "generated": { "line": 1, "column": 3382 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 25, "column": 24 },
+          "generated": { "line": 1, "column": 3395 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "KEYUP",
+          "original": { "line": 26, "column": 18 },
+          "generated": { "line": 1, "column": 3396 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "KEYUP",
+          "original": { "line": 26, "column": 18 },
+          "generated": { "line": 1, "column": 3409 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "KEYUP",
+          "original": { "line": 26, "column": 18 },
+          "generated": { "line": 1, "column": 3411 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "KeyHandler",
+          "original": { "line": 17, "column": 21 },
+          "generated": { "line": 1, "column": 3418 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "KeyHandler",
+          "original": { "line": 17, "column": 21 },
+          "generated": { "line": 1, "column": 3426 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "KeyHandler",
+          "original": { "line": 17, "column": 21 },
+          "generated": { "line": 1, "column": 3434 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 130, "column": 7 },
+          "generated": { "line": 1, "column": 3436 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "keyHandler",
+          "original": { "line": 130, "column": 13 },
+          "generated": { "line": 1, "column": 3440 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "keyHandleDecorator",
+          "original": { "line": 130, "column": 26 },
+          "generated": { "line": 1, "column": 3442 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "keyHandleDecorator",
+          "original": { "line": 130, "column": 26 },
+          "generated": { "line": 1, "column": 3450 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "keyHandleDecorator",
+          "original": { "line": 130, "column": 26 },
+          "generated": { "line": 1, "column": 3461 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "keyToggleHandler",
+          "original": { "line": 131, "column": 13 },
+          "generated": { "line": 1, "column": 3465 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "keyHandleDecorator",
+          "original": { "line": 131, "column": 32 },
+          "generated": { "line": 1, "column": 3467 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "keyHandleDecorator",
+          "original": { "line": 131, "column": 32 },
+          "generated": { "line": 1, "column": 3475 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "keyHandleDecorator",
+          "original": { "line": 131, "column": 32 },
+          "generated": { "line": 1, "column": 3492 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "name": "matchesKeyboardEvent",
+          "original": { "line": 131, "column": 51 },
+          "generated": { "line": 1, "column": 3494 }
+        },
+        {
+          "source": "../lib/key-handler.js",
+          "original": { "line": 131, "column": 32 },
+          "generated": { "line": 1, "column": 3496 }
+        }
+      ],
+      "sources": {
+        "../lib/key-handler.js": "/* @flow */\n\nimport React from 'react';\nimport PropTypes from 'prop-types';\nimport {canUseDOM} from 'exenv';\n\nimport {KEYDOWN, KEYPRESS, KEYUP} from './constants';\nimport {isInput, matchesKeyboardEvent, eventKey} from './utils';\n\ntype Props = {|\n  +keyValue?: string,\n  +keyCode?: number,\n  +keyEventName: KEYDOWN | KEYPRESS | KEYUP,\n  +onKeyHandle?: (event: KeyboardEvent) => void,\n|}\n\nexport default class KeyHandler extends React.Component<Props> {\n  static propTypes = {\n    keyValue: PropTypes.string,\n    keyCode: PropTypes.number,\n    keyEventName: PropTypes.oneOf([KEYDOWN, KEYPRESS, KEYUP]),\n    onKeyHandle: PropTypes.func,\n  };\n\n  static defaultProps = {\n    keyEventName: KEYUP,\n  };\n\n  shouldComponentUpdate(): boolean {\n    return false;\n  }\n\n  constructor(props) {\n    super(props);\n\n    /* eslint-disable no-console */\n\n    if (!props.keyValue && !props.keyCode) {\n      console.error('Warning: Failed propType: Missing prop `keyValue` or `keyCode` for `KeyHandler`.');\n    }\n\n    /* eslint-enable */\n  }\n\n  componentDidMount(): void {\n    if (!canUseDOM) return;\n\n    window.document.addEventListener(this.props.keyEventName, this.handleKey);\n  }\n\n  componentWillUnmount(): void {\n    if (!canUseDOM) return;\n\n    window.document.removeEventListener(this.props.keyEventName, this.handleKey);\n  }\n\n  render(): null {\n    return null;\n  }\n\n  handleKey = (event: KeyboardEvent): void => {\n    const {keyValue, keyCode, onKeyHandle} = this.props;\n\n    if (!onKeyHandle) {\n      return;\n    }\n\n    const {target} = event;\n\n    if (target instanceof window.HTMLElement && isInput(target)) {\n      return;\n    }\n\n    if (!matchesKeyboardEvent(event, {keyValue, keyCode})) {\n      return;\n    }\n\n    onKeyHandle(event);\n  };\n}\n\n/**\n * Types.\n */\n\ntype DecoratorProps = {\n  keyValue?: string,\n  keyCode?: number,\n  keyEventName?: string,\n}\n\ntype KeyhandleDecoratorState = {\n  keyValue: ?string,\n  keyCode: ?number,\n};\n\nfunction keyHandleDecorator<T>(matcher?: typeof matchesKeyboardEvent): Function {\n  return (props?: DecoratorProps & T): Function => {\n    const { keyValue, keyCode, keyEventName, ...otherProps } = props || {};\n\n    return (Component) => (\n      class KeyHandleDecorator extends React.Component<T, KeyhandleDecoratorState> {\n        state: KeyhandleDecoratorState = {\n          keyCode: null,\n          keyValue: null,\n        }\n\n        render() {\n          return (\n            <div>\n              <KeyHandler keyValue={keyValue} keyCode={keyCode} keyEventName={keyEventName} onKeyHandle={this.handleKey} />\n              <Component {...otherProps} {...this.state} />\n            </div>\n          );\n        }\n\n        handleKey = (event: KeyboardEvent): void => {\n          if (matcher && matcher(event, this.state)) {\n            this.setState({ keyValue: null, keyCode: null });\n            return;\n          }\n\n          this.setState({ keyValue: eventKey(event), keyCode: event.keyCode });\n        };\n      }\n    );\n  };\n}\n\nexport const keyHandler = keyHandleDecorator();\nexport const keyToggleHandler = keyHandleDecorator(matchesKeyboardEvent);\n\n/**\n * Constants\n */\n\nexport * from './constants';\n"
+      },
+      "lineCount": null
+    }
+  },
+  "hash": "47a654baa6573b32dc108274c8c12209",
+  "cacheData": { "env": {} }
+}
