@@ -1,0 +1,10 @@
+import { PositionType, ReactZoomPanPinchContext, ReactZoomPanPinchState } from "../../models";
+export declare const isPanningStartAllowed: (contextInstance: ReactZoomPanPinchContext, event: MouseEvent | TouchEvent) => boolean;
+export declare const isPanningAllowed: (contextInstance: ReactZoomPanPinchContext) => boolean;
+export declare const handlePanningSetup: (contextInstance: ReactZoomPanPinchContext, event: MouseEvent) => void;
+export declare const handleTouchPanningSetup: (contextInstance: ReactZoomPanPinchContext, event: TouchEvent) => void;
+export declare function handlePanToBounds(contextInstance: ReactZoomPanPinchContext): Omit<ReactZoomPanPinchState, "previousScale"> | undefined;
+export declare function handlePaddingAnimation(contextInstance: ReactZoomPanPinchContext, positionX: number, positionY: number): void;
+export declare function handleNewPosition(contextInstance: ReactZoomPanPinchContext, newPositionX: number, newPositionY: number, paddingValueX: number, paddingValueY: number): void;
+export declare const getPanningClientPosition: (contextInstance: ReactZoomPanPinchContext, clientX: number, clientY: number) => PositionType;
+export declare const getPaddingValue: (contextInstance: ReactZoomPanPinchContext, size: number) => number;

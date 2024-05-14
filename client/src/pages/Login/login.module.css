@@ -90,12 +90,22 @@
   padding: 10px;
   border-radius: 12px;
   color: #fff;
-  background: rgb(253, 54, 91);
   background: linear-gradient(
     90deg,
     rgba(253, 54, 91, 1) 0%,
     rgba(240, 41, 94, 1) 35%,
     rgba(216, 6, 101, 1) 100%
+  );
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.loginButton:hover {
+  background: linear-gradient(
+    90deg,
+    rgb(253, 43, 82) 0%,
+    rgb(235, 29, 84) 35%,
+    rgb(206, 1, 93) 100%
   );
 }
 

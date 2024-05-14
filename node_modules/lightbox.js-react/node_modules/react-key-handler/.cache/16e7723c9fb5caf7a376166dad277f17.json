@@ -1,0 +1,1851 @@
+{
+  "id": "5YRk",
+  "dependencies": [
+    {
+      "name": "/Users/adc/Developer/ayrton/react-key-handler/package.json",
+      "includedInParent": true,
+      "mtime": 1533459603383
+    },
+    {
+      "name": "/Users/adc/Developer/ayrton/react-key-handler/.babelrc",
+      "includedInParent": true,
+      "mtime": 1533458194366
+    },
+    {
+      "name": "react",
+      "loc": { "line": 3, "column": 18 },
+      "parent": "/Users/adc/Developer/ayrton/react-key-handler/demo/components/examples/component/index.js",
+      "resolved": "/Users/adc/Developer/ayrton/react-key-handler/node_modules/react/index.js"
+    },
+    {
+      "name": "../../../../lib",
+      "loc": { "line": 5, "column": 35 },
+      "parent": "/Users/adc/Developer/ayrton/react-key-handler/demo/components/examples/component/index.js",
+      "resolved": "/Users/adc/Developer/ayrton/react-key-handler/lib/index.js"
+    }
+  ],
+  "generated": {
+    "js": "\"use strict\";Object.defineProperty(exports,\"__esModule\",{value:!0});var e=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,\"value\"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),t=require(\"react\"),n=o(t),r=require(\"../../../../lib\"),l=o(r);function o(e){return e&&e.__esModule?e:{default:e}}function u(e,t){if(!(e instanceof t))throw new TypeError(\"Cannot call a class as a function\")}function a(e,t){if(!e)throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\");return!t||\"object\"!=typeof t&&\"function\"!=typeof t?e:t}function c(e,t){if(\"function\"!=typeof t&&null!==t)throw new TypeError(\"Super expression must either be null or a function, not \"+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}var f=function(t){function o(){var e,t,n;u(this,o);for(var r=arguments.length,l=Array(r),c=0;c<r;c++)l[c]=arguments[c];return t=n=a(this,(e=o.__proto__||Object.getPrototypeOf(o)).call.apply(e,[this].concat(l))),n.state={showMenu:!1},n.toggleMenu=function(e){e.preventDefault(),n.setState({showMenu:!n.state.showMenu})},a(n,t)}return c(o,n.default.Component),e(o,[{key:\"render\",value:function(){var e=this.state.showMenu;return n.default.createElement(\"div\",null,n.default.createElement(l.default,{keyEventName:r.KEYPRESS,keyValue:\"s\",onKeyHandle:this.toggleMenu}),n.default.createElement(\"h2\",null,\"Component example:\"),n.default.createElement(\"p\",null,\"Press \",n.default.createElement(\"code\",null,\"s\"),\" to \",n.default.createElement(\"strong\",null,\"toggle\"),\" the menu.\"),e&&n.default.createElement(\"ol\",null,n.default.createElement(\"li\",null,\"hello\"),n.default.createElement(\"li\",null,\"world\")))}}]),o}();exports.default=f;",
+    "map": {
+      "mappings": [
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 0 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 13 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 20 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 35 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 43 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 56 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 57 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 64 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 68 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 72 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 74 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 85 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 94 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 96 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 98 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 101 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 105 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 109 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 111 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 113 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 115 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 117 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 124 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 128 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 129 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 133 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 135 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 137 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 140 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 142 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 153 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 155 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 168 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 170 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 172 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 186 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 188 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 198 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 202 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 204 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 214 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 217 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 224 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 239 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 241 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 243 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 247 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 251 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 258 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 267 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 269 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 271 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 274 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 281 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 284 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 286 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 288 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 298 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 301 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 304 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 306 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 308 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 311 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 314 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 3, "column": 0 },
+          "generated": { "line": 1, "column": 317 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 3, "column": 0 },
+          "generated": { "line": 1, "column": 319 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 3, "column": 0 },
+          "generated": { "line": 1, "column": 327 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 336 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 338 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 340 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 5, "column": 0 },
+          "generated": { "line": 1, "column": 343 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 5, "column": 0 },
+          "generated": { "line": 1, "column": 345 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 5, "column": 0 },
+          "generated": { "line": 1, "column": 353 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 372 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 374 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 376 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 379 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 388 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 390 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 393 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 400 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 403 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 405 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 416 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 418 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 419 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 427 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 430 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 439 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 441 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 443 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 446 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 451 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 464 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 467 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 473 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 477 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 487 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 524 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 533 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 535 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 537 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 540 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 544 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 546 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 552 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 556 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 571 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 632 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 639 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 642 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 659 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 662 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 681 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 683 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 685 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 687 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 696 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 698 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 700 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 703 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 706 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 725 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 728 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 735 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 737 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 743 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 747 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 757 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 823 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 826 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 828 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 838 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 845 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 852 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 855 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 857 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 867 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 868 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 880 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 881 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 887 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 889 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 901 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 903 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 913 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 915 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 929 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 934 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 938 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 945 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 960 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 967 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 982 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 984 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 987 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 989 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 999 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1002 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1006 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1008 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1017 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1020 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1029 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1033 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1037 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1039 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1041 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1043 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1045 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1050 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1053 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1057 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1061 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1063 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1073 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1080 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1082 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1088 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1091 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1093 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1095 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1097 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1099 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1103 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1105 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1108 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1118 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "state",
+          "original": { "line": 12, "column": 2 },
+          "generated": { "line": 1, "column": 1121 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "state",
+          "original": { "line": 12, "column": 2 },
+          "generated": { "line": 1, "column": 1128 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "state",
+          "original": { "line": 12, "column": 2 },
+          "generated": { "line": 1, "column": 1130 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "state",
+          "original": { "line": 12, "column": 2 },
+          "generated": { "line": 1, "column": 1132 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "state",
+          "original": { "line": 12, "column": 2 },
+          "generated": { "line": 1, "column": 1134 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "state",
+          "original": { "line": 12, "column": 2 },
+          "generated": { "line": 1, "column": 1140 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "state",
+          "original": { "line": 12, "column": 2 },
+          "generated": { "line": 1, "column": 1142 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "state",
+          "original": { "line": 12, "column": 2 },
+          "generated": { "line": 1, "column": 1144 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "state",
+          "original": { "line": 12, "column": 2 },
+          "generated": { "line": 1, "column": 1155 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "state",
+          "original": { "line": 12, "column": 2 },
+          "generated": { "line": 1, "column": 1162 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "state",
+          "original": { "line": 12, "column": 2 },
+          "generated": { "line": 1, "column": 1177 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "state",
+          "original": { "line": 12, "column": 2 },
+          "generated": { "line": 1, "column": 1181 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "state",
+          "original": { "line": 12, "column": 2 },
+          "generated": { "line": 1, "column": 1186 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "state",
+          "original": { "line": 12, "column": 2 },
+          "generated": { "line": 1, "column": 1192 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "state",
+          "original": { "line": 12, "column": 2 },
+          "generated": { "line": 1, "column": 1194 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "state",
+          "original": { "line": 12, "column": 2 },
+          "generated": { "line": 1, "column": 1195 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "state",
+          "original": { "line": 12, "column": 2 },
+          "generated": { "line": 1, "column": 1201 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "state",
+          "original": { "line": 12, "column": 2 },
+          "generated": { "line": 1, "column": 1208 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "state",
+          "original": { "line": 12, "column": 2 },
+          "generated": { "line": 1, "column": 1213 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "state",
+          "original": { "line": 12, "column": 2 },
+          "generated": { "line": 1, "column": 1215 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 12, "column": 17 },
+          "generated": { "line": 1, "column": 1221 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "showMenu",
+          "original": { "line": 12, "column": 19 },
+          "generated": { "line": 1, "column": 1222 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 12, "column": 29 },
+          "generated": { "line": 1, "column": 1232 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "toggleMenu",
+          "original": { "line": 35, "column": 2 },
+          "generated": { "line": 1, "column": 1235 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "toggleMenu",
+          "original": { "line": 35, "column": 2 },
+          "generated": { "line": 1, "column": 1237 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 35, "column": 15 },
+          "generated": { "line": 1, "column": 1248 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "event",
+          "original": { "line": 35, "column": 16 },
+          "generated": { "line": 1, "column": 1257 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "preventDefault",
+          "original": { "line": 36, "column": 10 },
+          "generated": { "line": 1, "column": 1260 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "preventDefault",
+          "original": { "line": 36, "column": 10 },
+          "generated": { "line": 1, "column": 1262 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "setState",
+          "original": { "line": 38, "column": 9 },
+          "generated": { "line": 1, "column": 1279 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "setState",
+          "original": { "line": 38, "column": 9 },
+          "generated": { "line": 1, "column": 1281 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 38, "column": 18 },
+          "generated": { "line": 1, "column": 1290 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "showMenu",
+          "original": { "line": 38, "column": 20 },
+          "generated": { "line": 1, "column": 1291 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 38, "column": 31 },
+          "generated": { "line": 1, "column": 1301 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "state",
+          "original": { "line": 38, "column": 36 },
+          "generated": { "line": 1, "column": 1303 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "showMenu",
+          "original": { "line": 38, "column": 42 },
+          "generated": { "line": 1, "column": 1309 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 39, "column": 3 },
+          "generated": { "line": 1, "column": 1321 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 39, "column": 3 },
+          "generated": { "line": 1, "column": 1323 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 39, "column": 3 },
+          "generated": { "line": 1, "column": 1325 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1328 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1335 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1337 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "React",
+          "original": { "line": 11, "column": 39 },
+          "generated": { "line": 1, "column": 1339 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 45 },
+          "generated": { "line": 1, "column": 1341 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 45 },
+          "generated": { "line": 1, "column": 1349 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1360 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1362 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1364 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1365 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1366 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1370 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 14, "column": 11 },
+          "generated": { "line": 1, "column": 1379 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 14, "column": 11 },
+          "generated": { "line": 1, "column": 1385 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "showMenu",
+          "original": { "line": 15, "column": 12 },
+          "generated": { "line": 1, "column": 1396 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "showMenu",
+          "original": { "line": 15, "column": 12 },
+          "generated": { "line": 1, "column": 1400 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 15, "column": 25 },
+          "generated": { "line": 1, "column": 1402 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "state",
+          "original": { "line": 15, "column": 30 },
+          "generated": { "line": 1, "column": 1407 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "showMenu",
+          "original": { "line": 15, "column": 12 },
+          "generated": { "line": 1, "column": 1413 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 18, "column": 6 },
+          "generated": { "line": 1, "column": 1422 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 18, "column": 6 },
+          "generated": { "line": 1, "column": 1429 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 18, "column": 6 },
+          "generated": { "line": 1, "column": 1431 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 18, "column": 6 },
+          "generated": { "line": 1, "column": 1439 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 18, "column": 6 },
+          "generated": { "line": 1, "column": 1453 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 18, "column": 6 },
+          "generated": { "line": 1, "column": 1459 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 19, "column": 9 },
+          "generated": { "line": 1, "column": 1464 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 19, "column": 9 },
+          "generated": { "line": 1, "column": 1466 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 19, "column": 9 },
+          "generated": { "line": 1, "column": 1474 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 19, "column": 9 },
+          "generated": { "line": 1, "column": 1488 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 19, "column": 8 },
+          "generated": { "line": 1, "column": 1490 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 19, "column": 20 },
+          "generated": { "line": 1, "column": 1498 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 19, "column": 20 },
+          "generated": { "line": 1, "column": 1499 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "KEYPRESS",
+          "original": { "line": 19, "column": 34 },
+          "generated": { "line": 1, "column": 1512 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 19, "column": 8 },
+          "generated": { "line": 1, "column": 1514 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 19, "column": 44 },
+          "generated": { "line": 1, "column": 1523 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 19, "column": 53 },
+          "generated": { "line": 1, "column": 1532 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 19, "column": 57 },
+          "generated": { "line": 1, "column": 1536 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 19, "column": 70 },
+          "generated": { "line": 1, "column": 1548 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "toggleMenu",
+          "original": { "line": 19, "column": 75 },
+          "generated": { "line": 1, "column": 1553 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 21, "column": 8 },
+          "generated": { "line": 1, "column": 1566 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 21, "column": 8 },
+          "generated": { "line": 1, "column": 1568 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 21, "column": 8 },
+          "generated": { "line": 1, "column": 1576 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 21, "column": 8 },
+          "generated": { "line": 1, "column": 1590 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 21, "column": 8 },
+          "generated": { "line": 1, "column": 1595 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 21, "column": 8 },
+          "generated": { "line": 1, "column": 1600 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 23, "column": 8 },
+          "generated": { "line": 1, "column": 1622 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 23, "column": 8 },
+          "generated": { "line": 1, "column": 1624 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 23, "column": 8 },
+          "generated": { "line": 1, "column": 1632 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 23, "column": 8 },
+          "generated": { "line": 1, "column": 1646 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 23, "column": 8 },
+          "generated": { "line": 1, "column": 1650 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 23, "column": 8 },
+          "generated": { "line": 1, "column": 1655 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 23, "column": 17 },
+          "generated": { "line": 1, "column": 1664 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 23, "column": 17 },
+          "generated": { "line": 1, "column": 1666 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 23, "column": 17 },
+          "generated": { "line": 1, "column": 1674 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 23, "column": 17 },
+          "generated": { "line": 1, "column": 1688 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 23, "column": 17 },
+          "generated": { "line": 1, "column": 1695 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 23, "column": 17 },
+          "generated": { "line": 1, "column": 1700 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 23, "column": 8 },
+          "generated": { "line": 1, "column": 1705 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 23, "column": 35 },
+          "generated": { "line": 1, "column": 1712 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 23, "column": 35 },
+          "generated": { "line": 1, "column": 1714 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 23, "column": 35 },
+          "generated": { "line": 1, "column": 1722 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 23, "column": 35 },
+          "generated": { "line": 1, "column": 1736 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 23, "column": 35 },
+          "generated": { "line": 1, "column": 1745 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 23, "column": 35 },
+          "generated": { "line": 1, "column": 1750 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 23, "column": 8 },
+          "generated": { "line": 1, "column": 1760 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 26, "column": 10 },
+          "generated": { "line": 1, "column": 1774 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 26, "column": 10 },
+          "generated": { "line": 1, "column": 1777 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 26, "column": 10 },
+          "generated": { "line": 1, "column": 1779 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 26, "column": 10 },
+          "generated": { "line": 1, "column": 1787 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 26, "column": 10 },
+          "generated": { "line": 1, "column": 1801 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 26, "column": 10 },
+          "generated": { "line": 1, "column": 1806 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 27, "column": 12 },
+          "generated": { "line": 1, "column": 1811 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 27, "column": 12 },
+          "generated": { "line": 1, "column": 1813 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 27, "column": 12 },
+          "generated": { "line": 1, "column": 1821 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 27, "column": 12 },
+          "generated": { "line": 1, "column": 1835 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 27, "column": 12 },
+          "generated": { "line": 1, "column": 1840 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 27, "column": 12 },
+          "generated": { "line": 1, "column": 1845 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 28, "column": 12 },
+          "generated": { "line": 1, "column": 1854 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 28, "column": 12 },
+          "generated": { "line": 1, "column": 1856 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 28, "column": 12 },
+          "generated": { "line": 1, "column": 1864 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 28, "column": 12 },
+          "generated": { "line": 1, "column": 1878 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 28, "column": 12 },
+          "generated": { "line": 1, "column": 1883 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "original": { "line": 28, "column": 12 },
+          "generated": { "line": 1, "column": 1888 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1903 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1905 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1908 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1916 }
+        },
+        {
+          "source": "components/examples/component/index.js",
+          "name": "Component",
+          "original": { "line": 11, "column": 21 },
+          "generated": { "line": 1, "column": 1924 }
+        }
+      ],
+      "sources": {
+        "components/examples/component/index.js": "/* @flow */\n\nimport React from 'react';\n\nimport KeyHandler, {KEYPRESS} from '../../../../lib';\n\ntype State = {\n  showMenu: boolean,\n};\n\nexport default class Component extends React.Component<{||}, State> {\n  state: State = { showMenu: false };\n\n  render() {\n    const { showMenu } = this.state;\n\n    return (\n      <div>\n        <KeyHandler keyEventName={KEYPRESS} keyValue=\"s\" onKeyHandle={this.toggleMenu} />\n\n        <h2>Component example:</h2>\n\n        <p>Press <code>s</code> to <strong>toggle</strong> the menu.</p>\n\n        {showMenu &&\n          <ol>\n            <li>hello</li>\n            <li>world</li>\n          </ol>\n        }\n      </div>\n    );\n  }\n\n  toggleMenu = (event: KeyboardEvent) => {\n    event.preventDefault();\n\n    this.setState({ showMenu: !this.state.showMenu });\n  };\n}\n"
+      },
+      "lineCount": null
+    }
+  },
+  "hash": "64ad40a6e97a861ba006ae46ce5b0445",
+  "cacheData": { "env": {} }
+}

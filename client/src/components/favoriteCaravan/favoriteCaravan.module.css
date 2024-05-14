@@ -15,31 +15,6 @@
   border-radius: 12px;
 }
 
-.heartIcon-div {
-  background-color: #fff;
-  width: 30px;
-  height: 30px;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-}
-
-.heartIcon {
-  position: absolute;
-  font-size: 18px;
-  color: #ff385c;
-  transition: 0.1s all ease-in;
-}
-
-.heartIcon-div:hover .heartIcon {
-  color: #ff385c;
-  transform: scale(1.1);
-}
-
 .caravans-info {
   display: flex;
   justify-content: space-between;
