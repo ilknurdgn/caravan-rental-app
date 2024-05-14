@@ -86,7 +86,11 @@ exports.getBookings = async (req, res) => {
     for (let rental of rentals) {
       const currentDate = new Date();
 
-      if (currentDate > rental.endDate && rental.status !== 'completed') {
+      if (
+        currentDate > rental.endDate &&
+        rental.status !== 'completed' &&
+        rental.status !== 'cancelled'
+      ) {
         rental.status = 'completed';
 
         await rental.save();
@@ -103,18 +107,45 @@ exports.getBookings = async (req, res) => {
 exports.cancelBooking = async (req, res) => {
   try {
     const rentalId = req.params.id;
-    const rental = await Rental.findOneAndUpdate(
-      { _id: rentalId },
-      { status: 'cancelled' },
-      { new: true }
-    );
+
+    let rental = await Rental.findById(rentalId);
 
     if (!rental) {
       return res.status(404).json({ message: 'Rental not found!' });
     }
 
+    if (rental.status === 'completed') {
+      return res
+        .status(409)
+        .json({ message: 'Rental is complete, cannot be canceled' });
+    } else if (rental.status === 'cancelled') {
+      return res.status(409).json({ message: 'Rental is already cancelled!' });
+    }
+
+    rental = await Rental.findOneAndUpdate(
+      { _id: rentalId },
+      { status: 'cancelled' },
+      { new: true }
+    );
+
+    const caravan = await Caravan.findById(rental.caravanId);
+
+    caravan.notAvailableDates.map((notAvailableDate) => {
+      if (
+        notAvailableDate.start.getTime() === rental.startDate.getTime() &&
+        notAvailableDate.end.getTime() === rental.endDate.getTime()
+      ) {
+        const index = caravan.notAvailableDates.indexOf(notAvailableDate);
+        if (index > -1) {
+          caravan.notAvailableDates.splice(index, 1);
+        }
+        caravan.save();
+      }
+    });
+
     res.status(200).json(rental);
   } catch (error) {
     res.status(500).json(error);
+    console.log(error);
   }
 };
