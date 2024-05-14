@@ -23,6 +23,7 @@ import Write from './pages/write/Write';
 import Profile from './pages/Profile/Profile';
 import PersonalInformation from './pages/PersonalInformation/PersonalInformation';
 import RegisteredCards from './pages/RegisteredCards/RegisteredCards';
+import Payment from './pages/payment/Payment';
 
 function App() {
   const { user } = useContext(Context);
@@ -51,9 +52,9 @@ function App() {
           <Route path='/blogs' element={<Blogs />} />
           <Route path='/blog/:id' element={<SingleBlog />} />
           <Route path='/blog/write' element={<Write />} />
+          <Route path='/payment/:id' element={<Payment />} />
         </Routes>
       </BrowserRouter>
-
       <Footer />
     </div>
   );

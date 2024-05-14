@@ -15,7 +15,7 @@ import { MdExpandMore } from 'react-icons/md';
 import Comments from '../../components/comments/Comments';
 import { addDays, differenceInDays } from 'date-fns';
 import styles from './singleCaravan.module.css';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { color } from '@mui/system';
 import dayjs from 'dayjs';
 import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
@@ -286,9 +286,11 @@ const SingleCaravan = () => {
               </div>
             </div>
             <div className={styles.button}>
-              <button className={styles['reservation-button']} type='submit'>
-                Devam et
-              </button>
+              <Link to={`/payment/${caravanData?._id}`}>
+                <button className={styles['reservation-button']} type='submit'>
+                  Devam et
+                </button>
+              </Link>
               <span>Henüz ücretlendirilmeyeceksiniz</span>
             </div>
             <div className={styles['caravan-payment']}>
