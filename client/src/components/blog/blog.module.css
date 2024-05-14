@@ -32,6 +32,7 @@
   text-overflow: ellipsis; /* Metni kes ve üç nokta (...) ile göster */
   white-space: nowrap; /* Metni tek bir satırda göster */
   max-height: 2em; /* İlk iki satırı göster */
+  height: -webkit-fill-available;
 }
 
 .down-section {
