@@ -5,6 +5,14 @@ import { FaCreditCard } from 'react-icons/fa6';
 import { GiCampingTent } from 'react-icons/gi';
 import Blog from '../../components/blog/Blog';
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { FreeMode, Pagination, Navigation } from 'swiper/modules';
+import './styles.css';
+
 const Home = () => {
   return (
     <div className={styles.container}>
@@ -87,10 +95,38 @@ const Home = () => {
         <span className={styles.dec}>
           VANCA ekibinden ve kullanıcılarımızdan paylaşılan blog yazılarımız.
         </span>
+
         <div className={styles.blogs}>
+          <Swiper
+            slidesPerView={3}
+            spaceBetween={-24}
+            freeMode={true}
+            pagination={{
+              clickable: true,
+            }}
+            navigation={true}
+            modules={[FreeMode, Pagination, Navigation]}
+            className='mySwiper'
+          >
+            <SwiperSlide>
+              <Blog />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Blog />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Blog />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Blog />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Blog />
+            </SwiperSlide>
+          </Swiper>
+          {/* <Blog />
           <Blog />
-          <Blog />
-          <Blog />
+          <Blog /> */}
         </div>
       </div>
     </div>

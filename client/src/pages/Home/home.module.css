@@ -144,6 +144,8 @@
 }
 
 .blogs {
+  width: 1280px;
+  height: 100vh;
   display: flex;
   justify-content: center;
   gap: 16px;
