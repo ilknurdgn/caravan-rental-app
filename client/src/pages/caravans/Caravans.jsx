@@ -28,6 +28,7 @@ const Caravans = () => {
           `/caravan/?page=${page}&limit=${caravansPerPage}`
         );
         setFetch(res.data);
+        console.log(res.data);
         setTotalCaravans(res.data.caravans);
         window.scrollTo(0, 0);
         setTimeout(() => setIsLoading(false), 1000);
@@ -63,9 +64,9 @@ const Caravans = () => {
         <div className={styles['caravans-container']}>
           {/* Sayfa başına karavan sayısı */}
           <span className={styles.result}>
-            {totalCaravans.length > 20
+            {fetch.totalCaravans > 20
               ? "20'den fazla karavan"
-              : totalCaravans.length + ' karavan bulundu'}
+              : fetch.totalCaravans + ' Karavan Bulundu'}
           </span>
           <div className={styles.caravans}>
             {totalCaravans.map((caravan, index) => (
