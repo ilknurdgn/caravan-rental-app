@@ -1,0 +1,49 @@
+.container {
+  max-width: 800px;
+  width: 100%;
+  height: calc(100vh - 300px);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.userName {
+  font-weight: 600;
+}
+
+.email {
+}
+
+.title {
+  margin-bottom: 40px;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.card {
+  width: calc(100% / 2 - 10px);
+  height: 174px;
+  border: 1px solid #f7f7f7;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  cursor: pointer;
+}
+
+.icon {
+  margin-bottom: 16px;
+  width: 32px;
+  height: 32px;
+}
+
+.cardTitle {
+}
+
+.text {
+  color: #717171;
+}
