@@ -25,21 +25,23 @@ const Payment = () => {
   console.log(caravan);
 
   return (
-    <div className={styles.paymentContainer}>
+    <div className={`${styles.paymentContainer} fadeIn`}>
       <div className={styles.payInfo}>
-        <span className={styles.pageTitle}>
+        <div className={styles.pageTitle}>
           <Link to={`/caravan/${caravan._id}`}>
-            <MdKeyboardArrowLeft />
+            <MdKeyboardArrowLeft className={styles.backIcon} />
           </Link>
-          Onay ve Ödeme
-        </span>
+          <span className={styles.titleText}> Onay ve Ödeme</span>
+        </div>
         <span className={styles.subtitle}>Karavan Seyehatiniz</span>
         <div className={styles.reservation}>
           <div className={styles.leftSide}>
             <span className={styles.datesText}>Tarihler</span>
             <span className={styles.dates}>35 Mart - 29 Nisan (!!!)</span>
           </div>
-          <div className={styles.rightSide}>Düzenle</div>
+          <Link to={`/caravan/${caravan._id}`}>
+            <div className={styles.rightSide}>Düzenle</div>
+          </Link>
         </div>
         <div className={styles['payment-line']}></div>
 

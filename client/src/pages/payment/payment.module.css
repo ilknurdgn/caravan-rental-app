@@ -15,11 +15,21 @@
   font-size: 30px;
   font-weight: 500;
   margin-bottom: 30px;
+  width: 100%;
+}
+
+.backIcon {
+  color: #000;
 }
 
 .subtitle {
   font-size: 24px;
   margin-left: 30px;
+}
+
+.titleText {
+  flex: 1;
+  margin-bottom: 10px;
 }
 
 .reservation {
