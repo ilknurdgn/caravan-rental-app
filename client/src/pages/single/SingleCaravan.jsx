@@ -24,7 +24,11 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateRangeCalendar } from '@mui/x-date-pickers-pro/DateRangeCalendar';
 // import { trTR } from '@mui/lab/locale'; // Türkçe dil desteği
 import { LuDot } from 'react-icons/lu';
+import { LicenseInfo } from '@mui/x-license';
 
+LicenseInfo.setLicenseKey(
+  'e0d9bb8070ce0054c9d9ecb6e82cb58fTz0wLEU9MzI0NzIxNDQwMDAwMDAsUz1wcmVtaXVtLExNPXBlcnBldHVhbCxLVj0y'
+);
 const SingleCaravan = () => {
   const { id } = useParams(); //url'den id alır
   const [state, setState] = useState([]);
