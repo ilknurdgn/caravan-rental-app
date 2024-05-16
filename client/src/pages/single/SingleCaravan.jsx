@@ -44,6 +44,7 @@ const SingleCaravan = () => {
   const [endDay, setEndDay] = useState([]);
 
   const [showSelectedDateRange, setShowSelectedDateRange] = useState(false);
+  const [share, setShare] = useState(false);
 
   useEffect(() => {
     // Sayfa yüklendiğinde sayfanın en başına git
