@@ -337,7 +337,7 @@ const SingleCaravan = () => {
       {share && (
         <>
           <div onClick={dontShareHandle} className={styles.overlay}></div>
-          <div className={styles.sharePage}>
+          <div className={`${styles.sharePage} fadeIn`}>
             <RxCross1 onClick={dontShareHandle} className={styles.cross} />
             <SharePage />
           </div>
