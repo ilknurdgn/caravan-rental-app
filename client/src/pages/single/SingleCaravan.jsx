@@ -25,6 +25,8 @@ import { DateRangeCalendar } from '@mui/x-date-pickers-pro/DateRangeCalendar';
 // import { trTR } from '@mui/lab/locale'; // Türkçe dil desteği
 import { LuDot } from 'react-icons/lu';
 import { LicenseInfo } from '@mui/x-license';
+import SharePage from '../../components/sharePage/SharePage';
+import { RxCross1 } from 'react-icons/rx';
 
 LicenseInfo.setLicenseKey(
   'e0d9bb8070ce0054c9d9ecb6e82cb58fTz0wLEU9MzI0NzIxNDQwMDAwMDAsUz1wcmVtaXVtLExNPXBlcnBldHVhbCxLVj0y'
@@ -122,13 +124,19 @@ const SingleCaravan = () => {
     }, 1000); // 1 saniye
   };
 
-  console.log(caravanData);
+  const clickShareHandle = () => {
+    setShare(true);
+  };
+
+  const dontShareHandle = () => {
+    setShare(false);
+  };
 
   return (
     <div className={`${styles['single-container']} fadeIn`}>
       <div className={styles['caravan-info']}>
         <div className={styles.icons}>
-          <div className={styles['right-side']}>
+          <div className={styles['right-side']} onClick={clickShareHandle}>
             <IoMdShare className={styles.shareIcon} />
             <p>Paylaş</p>
           </div>
@@ -325,6 +333,16 @@ const SingleCaravan = () => {
       <div className={styles.line}></div>
       {/* COMMENT SECTION */}
       <Comments />
+
+      {share && (
+        <>
+          <div onClick={dontShareHandle} className={styles.overlay}></div>
+          <div className={styles.sharePage}>
+            <RxCross1 onClick={dontShareHandle} className={styles.cross} />
+            <SharePage />
+          </div>
+        </>
+      )}
     </div>
   );
 };
