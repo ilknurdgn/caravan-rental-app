@@ -66,7 +66,7 @@
 .caravan-images {
   width: 1280px;
   display: flex;
-  gap: 12px;
+  gap: 7px;
 }
 
 img {
@@ -74,8 +74,8 @@ img {
 }
 
 .main-image {
-  width: 580px;
-  height: 412px;
+  width: 620px;
+  height: 410px;
   object-fit: cover;
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
@@ -83,12 +83,12 @@ img {
 
 .images-container {
   display: grid;
-  grid-template-columns: repeat(2, 350px);
-  gap: 12px;
+  grid-template-columns: repeat(2, 320px);
+  gap: 7px;
 }
 
 .images {
-  width: 350px;
+  width: 320px;
   height: 200px;
   object-fit: cover;
 }
