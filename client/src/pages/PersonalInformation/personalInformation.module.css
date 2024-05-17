@@ -1,0 +1,116 @@
+.container {
+  max-width: 800px;
+  width: 100%;
+  /* height: calc(100vh - 300px); */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 66px 0;
+}
+
+.navigationPath {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 5px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  /* color: rgb(72, 72, 72); */
+}
+
+.infos {
+  padding: 0 8px;
+  max-width: 600px;
+  width: 100%;
+}
+
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #ebebeb;
+  padding: 24px 0;
+  color: #222222;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.content {
+  margin-top: 4px;
+  color: #6a6a6a;
+}
+
+.inputContainer {
+  display: flex;
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.inputContainer input {
+  position: relative;
+  font-size: 16px;
+  border-style: none;
+  outline: none;
+}
+
+.inputContent {
+  border: 1px solid #cbcbcb;
+  border-radius: 10px;
+  padding: 6px 12px;
+  flex: 1;
+}
+
+.ad {
+  font-size: 12px;
+  color: #6a6a6a;
+}
+
+.button {
+  color: #008489;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+}
+
+.saveButton {
+  padding: 14px 24px;
+  background-color: #222;
+  width: min-content; /* içindeki content kadar yer kapla*/
+  color: #fff;
+  margin-top: 5px;
+  border-radius: 10px;
+}
+
+.passwordInputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 24px 0;
+}
+
+.passwordInputContainer input {
+  position: relative;
+  font-size: 16px;
+  border-style: none;
+  outline: none;
+}
+
+.passwordInput {
+}
+
+.passworSaveButton {
+  padding: 14px 24px;
+  background-color: #222;
+  width: min-content; /*içindeki content kadar yer kapla */
+  height: min-content;
+  color: #fff;
+  background-color: #008489;
+  margin-top: 5px;
+  border-radius: 10px;
+}
