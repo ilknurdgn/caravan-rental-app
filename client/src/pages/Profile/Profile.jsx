@@ -39,9 +39,8 @@ const Profile = () => {
         <span className={styles.userName}>Test Test </span>
         <span className={styles.email}>test@test.com</span>
       </div>
-      <div>
-        <h2 className={styles.title}>Hesap</h2>
-      </div>
+
+      <span className={styles.title}>Hesap</span>
 
       <div className={styles.cards}>
         {pageInfos.map((item) => {
