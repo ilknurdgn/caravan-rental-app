@@ -20,23 +20,19 @@ const Caravans = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { user } = useContext(Context);
   const userId = user._id;
-
-  //   const [currentPage, setCurrentPage] = useState(1);
-  //   const navigate = useNavigate();
-  //   const { search } = useLocation();
-  //   const queryParams = new URLSearchParams(search);
-  //   const [prevPagination, setPrevPagination] = useState(null);
+  const [location, setLocation] = useState('');
 
   useEffect(() => {
     const getSingleCaravan = async () => {
       setIsLoading(true);
       try {
         const res = await axios.get(
-          `/caravan/?page=${page}&limit=${caravansPerPage}`
+          `/caravan/?page=${page}&limit=${caravansPerPage}&location=${location}`
         );
         setFetch(res.data);
         console.log(res.data);
         setTotalCaravans(res.data.caravans);
+        setLocation();
         window.scrollTo(0, 0);
         setTimeout(() => setIsLoading(false), 1000);
       } catch (error) {
