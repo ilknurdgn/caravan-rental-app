@@ -1,0 +1,152 @@
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.firstSection {
+  height: calc(100vh - 64px);
+  width: 100%;
+  position: relative;
+  background-image: url('/public/images/home-page-image.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-position-x: 0;
+  background-position-y: -40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  border: 1px solid #dddddd;
+  border-radius: 50px;
+  padding: 5px 0;
+}
+
+.selecterContent {
+  display: flex;
+  /* gap: 100px; */
+}
+
+.item {
+  padding: 0px 24px;
+  border-right: 1px solid #dddddd;
+}
+
+.item:last-child {
+  border-right: none;
+}
+
+.searchTitles {
+  font-size: 16px;
+}
+
+.input {
+  border: none;
+  /* width: 130px; */
+}
+
+.iconContainer {
+  font-size: 60px;
+  display: flex;
+  align-items: center;
+  color: #ff385c;
+}
+
+.secondSection {
+  height: calc(100vh - 64px);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9f9f7;
+}
+
+.secondSectionTitle {
+  margin-bottom: 30px;
+  font-size: 40px;
+}
+
+.text {
+  width: 834px;
+  text-align: center;
+}
+
+.icons {
+  display: flex;
+  margin-top: 60px;
+}
+
+.secondIconContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: calc(1280px / 3);
+  border-right: 1px solid #d4d4d2;
+  padding: 0 20px 0 20px;
+}
+
+.secondIconContainer:last-child {
+  border-right: none;
+}
+
+.icon {
+  height: 100px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  color: #446851;
+  /* animation: qode-in-out 1s both cubic-bezier(0.45, 0, 0.55, 1); */
+}
+
+.stepNumber {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+  color: #484848;
+}
+
+.stepText {
+  font-style: italic;
+  font-size: 15px;
+  color: #484848;
+}
+
+.thirdSection {
+  height: calc(100vh - 64px);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.thirdSectionTitle {
+  margin-bottom: 30px;
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.dec {
+  color: #717171;
+}
+
+.blogs {
+  width: 1280px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}

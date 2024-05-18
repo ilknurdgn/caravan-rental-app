@@ -7,13 +7,17 @@
 }
 
 .logo {
-  color: #446851;
+  color: #ff385c;
 }
 
 .nav-center {
   display: flex;
   font-weight: 500;
   gap: 100px;
+}
+
+.nav-center li {
+  cursor: pointer;
 }
 
 .nav-end {
