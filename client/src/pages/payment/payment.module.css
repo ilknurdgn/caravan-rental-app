@@ -1,0 +1,32 @@
+.payContainer {
+  width: 1280px;
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+.paymentText {
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.pageTitle {
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+  font-weight: 500;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.backIcon {
+  color: #000;
+}
+
+.subtitle {
+  font-size: 24px;
+  margin-left: 30px;
+}
+
+.titleText {
+  flex: 1;
+  margin-bottom: 10px;
+}

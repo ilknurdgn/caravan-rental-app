@@ -31,7 +31,7 @@ const Approval = () => {
           <Link to={`/caravan/${caravan._id}`}>
             <MdKeyboardArrowLeft className={styles.backIcon} />
           </Link>
-          <span className={styles.titleText}> Onay ve Ödeme</span>
+          <span className={styles.titleText}> Onay </span>
         </div>
         <span className={styles.subtitle}>Karavan Seyehatiniz</span>
         <div className={styles.reservation}>
