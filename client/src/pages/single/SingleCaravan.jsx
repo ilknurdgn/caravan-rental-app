@@ -318,7 +318,7 @@ const SingleCaravan = () => {
               </div>
             </div>
             <div className={styles.button}>
-              <Link to={`/payment/${caravanData?._id}`}>
+              <Link to={`/approval/${caravanData?._id}`}>
                 <button
                   onClick={reservationHandler}
                   className={styles['reservation-button']}

@@ -1,0 +1,204 @@
+.paymentContainer {
+  width: 1280px;
+  height: calc(100vh - 515px);
+  display: flex;
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+
+.payInfo {
+  flex: 2;
+}
+.pageTitle {
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+  font-weight: 500;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.backIcon {
+  color: #000;
+}
+
+.subtitle {
+  font-size: 24px;
+  margin-left: 30px;
+}
+
+.titleText {
+  flex: 1;
+  margin-bottom: 10px;
+}
+
+.reservation {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 30px;
+  margin-top: 20px;
+  width: 500px;
+  height: 100px;
+  font-size: 18px;
+}
+
+.leftSide {
+  display: flex;
+  flex-direction: column;
+}
+
+.datesText {
+  margin-bottom: 20px;
+}
+
+.payButton {
+  width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 30px;
+  height: 50px;
+  position: relative;
+  color: #fff;
+  outline: none;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  background: linear-gradient(
+    90deg,
+    rgba(253, 54, 91, 1) 0%,
+    rgba(240, 41, 94, 1) 35%,
+    rgba(216, 6, 101, 1) 100%
+  );
+}
+
+.payButton:hover {
+  background: linear-gradient(
+    90deg,
+    rgb(253, 43, 82) 0%,
+    rgb(235, 29, 84) 35%,
+    rgb(206, 1, 93) 100%
+  );
+}
+
+.icon {
+  position: absolute;
+  left: 20px;
+  top: 17px;
+  font-size: 16px;
+}
+.pay {
+  text-decoration: none;
+  color: #fff;
+}
+
+.rightSide {
+  cursor: pointer;
+  text-decoration: underline;
+  color: #222;
+}
+
+.payment-line {
+  width: 600px;
+  margin: 30px 0;
+  display: flex;
+  align-items: center;
+  border: 1px solid #e6e6e6;
+}
+
+.payDetails {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 2;
+  margin-left: 30px;
+  border-radius: 12px;
+}
+
+.caravanConatiner {
+  width: 500px;
+  height: 320px;
+  border: 2px solid #e6e6e6;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 0px 19px -3px rgba(0, 0, 0, 0.1);
+}
+
+.totalPrice {
+  display: flex;
+  justify-content: space-between;
+  width: 400px;
+}
+
+.topSide {
+  display: flex;
+}
+
+.info {
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 30px;
+}
+
+.title {
+  font-weight: 500;
+}
+
+.details {
+  color: #717171;
+}
+
+.dateOf {
+  color: #717171;
+}
+
+.image {
+  width: 300px;
+  height: 150px;
+}
+
+.star {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.startIcon {
+  margin-bottom: 4px;
+  margin-right: 5px;
+}
+
+.image > img {
+  width: 200px;
+  height: 150px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.line {
+  width: 450px;
+  margin: 30px 0;
+  display: flex;
+  align-items: center;
+  border: 1px solid #e6e6e6;
+}
+
+.bottomSide {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+}
+
+.detailText {
+  margin-bottom: 20px;
+}
+
+.priceDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.price {
+}
