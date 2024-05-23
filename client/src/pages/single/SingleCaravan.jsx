@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { DateRangePicker } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // ana css dosyası
 import 'react-date-range/dist/theme/default.css'; // tema css dosyası
@@ -27,6 +27,8 @@ import { LuDot } from 'react-icons/lu';
 import { LicenseInfo } from '@mui/x-license';
 import SharePage from '../../components/sharePage/SharePage';
 import { RxCross1 } from 'react-icons/rx';
+import { Context } from '../../context/Contex';
+import Cookies from 'universal-cookie';
 
 LicenseInfo.setLicenseKey(
   'e0d9bb8070ce0054c9d9ecb6e82cb58fTz0wLEU9MzI0NzIxNDQwMDAwMDAsUz1wcmVtaXVtLExNPXBlcnBldHVhbCxLVj0y'
@@ -47,16 +49,13 @@ const SingleCaravan = () => {
 
   const [showSelectedDateRange, setShowSelectedDateRange] = useState(false);
   const [share, setShare] = useState(false);
-
-  useEffect(() => {
-    // Sayfa yüklendiğinde sayfanın en başına git
-    window.scrollTo(0, 0);
-  }, []); // Boş bağımlılık dizisi, yalnızca bileşen yüklendiğinde bir kere çalışmasını sağlar
+  const { user } = useContext(Context);
 
   useEffect(() => {
     const getSingleCaravan = async () => {
       try {
         const res = await axios.get(`/caravan/${id}`);
+        window.scrollTo(0, 0);
         setCaravanData(res.data);
       } catch (error) {
         console.error('Error fetching caravan data: ', error);
@@ -121,7 +120,7 @@ const SingleCaravan = () => {
     // 1 saniye sonra showSelectedDateRange state'ini false olarak güncelle
     setTimeout(() => {
       setShowSelectedDateRange(false);
-    }, 1000); // 1 saniye
+    }, 1000);
   };
 
   const clickShareHandle = () => {
@@ -130,6 +129,26 @@ const SingleCaravan = () => {
 
   const dontShareHandle = () => {
     setShare(false);
+  };
+
+  const startDate = selectedDate[0];
+  const endDate = selectedDate[1];
+
+  const reservationHandler = async () => {
+    const reservationData = {
+      userId: user._id,
+      caravanId: caravanData._id,
+      startDate: startDate + 1,
+      endDate: endDate,
+      totalPrice: `${caravanData?.dailyPrice * days}`,
+    };
+
+    try {
+      const response = await axios.post('/rental/booking/', reservationData);
+      console.log(response.data);
+    } catch (error) {
+      console.log('Error creating reservation: ', error);
+    }
   };
 
   return (
@@ -300,7 +319,11 @@ const SingleCaravan = () => {
             </div>
             <div className={styles.button}>
               <Link to={`/payment/${caravanData?._id}`}>
-                <button className={styles['reservation-button']} type='submit'>
+                <button
+                  onClick={reservationHandler}
+                  className={styles['reservation-button']}
+                  type='submit'
+                >
                   Devam et
                 </button>
               </Link>

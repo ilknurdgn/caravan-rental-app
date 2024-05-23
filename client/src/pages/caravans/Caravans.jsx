@@ -27,7 +27,7 @@ const Caravans = () => {
       setIsLoading(true);
       try {
         const res = await axios.get(
-          `/caravan/?page=${page}&limit=${caravansPerPage}&location=${location}`
+          `/caravan/?page=${page}&limit=${caravansPerPage}`
         );
         setFetch(res.data);
         console.log(res.data);
