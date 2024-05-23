@@ -74,7 +74,7 @@ const SingleCaravan = () => {
       const endDate = selectedDate[1];
       setEndDay(endDate.format('DD/MM/YYYY'));
       //tarih aralığındaki gün sayısını hesaplar:
-      const days = endDate.diff(startDate, 'day'); // Tarih aralığındaki gün sayısını dayjs ile hesapla
+      const days = endDate.diff(startDate, 'day') + 1; // Tarih aralığındaki gün sayısını dayjs ile hesapla
       setDays(days);
       // String formatında tarih aralığını ve gün sayısını ayarlar
       setSelectedDateRangeString(
