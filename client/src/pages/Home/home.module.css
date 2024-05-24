@@ -150,3 +150,127 @@
   justify-content: center;
   gap: 16px;
 }
+
+.aiContainer {
+  width: max-content;
+  position: fixed;
+  bottom: 60px;
+  right: 30px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.aiContainer:hover .aiTitle {
+  color: #ff385c;
+  opacity: 1;
+}
+
+.aiTitle {
+  opacity: 0; /* Başlangıçta görünmez yapın */
+  transition: opacity 0.3s ease;
+  top: 100px;
+}
+
+.ai {
+  background-color: #fff;
+  box-shadow: 0 5px 10px 0 rgb(0, 0, 0, 0.2);
+  /* border: 2px solid #ff385c; */
+  border-radius: 50%;
+  z-index: 9;
+  /* margin-bottom: 50px;
+  margin-top: 50px; */
+  cursor: pointer;
+  height: 72px;
+  width: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: all 0.04s ease-in-out;
+}
+
+.ai:hover {
+  border: 2px solid #ff385c;
+}
+
+.ai img {
+  width: 100%;
+  height: 100%;
+  /* object-fit: cover; */
+}
+
+.viewPageContainer {
+  position: relative;
+  background: #ebebeb;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2392156863);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  width: 800px;
+  height: 800px;
+  overflow: hidden;
+}
+
+.closeButton {
+  /* border: 1px solid black; */
+  background-color: #ff385c;
+  border: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.closeIcon {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.closeButton:hover {
+  transition: all 0.3s ease-in-out;
+}
+
+.viewContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.viewText {
+  font-size: 16px;
+}
+
+.tinyContainer {
+  width: 600px;
+}
+
+.tinyTitle {
+  font-size: 32px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  font-weight: 500;
+}
+
+iframe {
+  width: 100%;
+  height: 500px;
+}
