@@ -27,10 +27,16 @@
   scroll-behavior: smooth;
 }
 
+a {
+  color: black;
+  text-decoration: none;
+}
+
 .main {
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin-top: 64px;
 }
 
 @keyframes fadeIn {
