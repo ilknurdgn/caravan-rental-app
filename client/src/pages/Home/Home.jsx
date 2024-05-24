@@ -12,8 +12,60 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { FreeMode, Pagination, Navigation } from 'swiper/modules';
 import './styles.css';
+import { useState } from 'react';
+import { IoIosClose } from 'react-icons/io';
 
 const Home = () => {
+  const [click, setClick] = useState(false);
+
+  const handleClick = () => {
+    setClick(true);
+    console.log('açıldı');
+  };
+
+  const handleClose = () => {
+    setClick(false);
+    console.log('kapandı');
+  };
+
+  const Tiny = () => {
+    return (
+      <div className={styles.tinyContainer}>
+        {/* <div className={styles.tinyTitle}>
+          <span>VANCA AI</span>
+        </div> */}
+        <iframe
+          loading='lazy'
+          className='rounded-sm w-full h-[600px]'
+          src='https://tiny.technology/vanca'
+          frameBorder='0'
+          title='Vanca AI'
+        ></iframe>
+      </div>
+    );
+  };
+
+  const ViewPage = ({ handleClose }) => {
+    return (
+      <div className={styles.viewPageContainer}>
+        <div>
+          <div className={styles.tinyTitle}>
+            <span>VANCA AI</span>
+          </div>
+          <button className={styles.closeButton}>
+            <IoIosClose className={styles.closeIcon} onClick={handleClose} />
+          </button>
+        </div>
+        <button className={styles.closeButton}>
+          <IoIosClose className={styles.closeIcon} onClick={handleClose} />
+        </button>
+        <div className={styles.viewContent}>
+          <Tiny />
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.firstSection}>
@@ -129,6 +181,13 @@ const Home = () => {
           <Blog /> */}
         </div>
       </div>
+      <div className={styles.aiContainer} onClick={handleClick}>
+        <div className={styles.ai}>
+          <img src='/images/logo.jpg' alt='' />
+        </div>
+        <div className={styles.aiTitle}>VANCA AI</div>
+      </div>
+      {click && <ViewPage handleClose={handleClose} />}
     </div>
   );
 };

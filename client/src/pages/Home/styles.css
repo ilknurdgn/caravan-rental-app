@@ -48,8 +48,6 @@
 }
 
 .swiper-slide {
-  text-align: center;
-  font-size: 18px;
   background: #fff;
   display: flex;
   justify-content: center;
@@ -63,7 +61,7 @@
   border-radius: 50%;
   border: 1px solid black;
   position: absolute;
-  top: 55%;
+  top: 60%;
   transform: translateY(-50%);
   z-index: 1000;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
