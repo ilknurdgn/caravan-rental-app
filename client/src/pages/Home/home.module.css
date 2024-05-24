@@ -133,7 +133,7 @@
 }
 
 .thirdSectionTitle {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   font-size: 40px;
   display: flex;
   justify-content: center;
@@ -145,7 +145,7 @@
 
 .blogs {
   width: 1280px;
-  height: 100vh;
+  height: 60vh;
   display: flex;
   justify-content: center;
   gap: 16px;
