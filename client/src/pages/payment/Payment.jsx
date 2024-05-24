@@ -26,6 +26,7 @@ const Payment = () => {
     { id: 2, name: 'Garanti Bankası kartım (Mastercard)' },
     { id: 3, name: 'İş Bankası kartım (Visa)' },
     { id: 4, name: 'Akbank kartım (Mastercard)' },
+    { id: 5, name: 'Denizbank kartım ' },
   ];
 
   const handlePay = () => {
