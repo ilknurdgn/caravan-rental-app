@@ -2,6 +2,9 @@
   width: 1280px;
   margin-top: 50px;
   margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .paymentText {
   font-size: 30px;
@@ -29,4 +32,169 @@
 .titleText {
   flex: 1;
   margin-bottom: 10px;
+}
+
+.payChoose {
+  background-color: #fafafa;
+  padding: 30px 35px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom: 2px solid #ff385c;
+}
+
+.payChoose > span {
+  font-size: 24px;
+  color: #ff385c;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.option {
+  display: flex;
+  flex-direction: column;
+  margin: 30px 0;
+  padding: 20px 15px;
+}
+.selectedIcon {
+  color: #ff385c;
+}
+
+.option > span {
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid #cfcdcd;
+  width: 450px;
+}
+
+.optionDetails {
+  font-size: 22px;
+}
+
+.cardInfo {
+  margin: 12px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.addCard {
+  color: #8a8a8a;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.2s all ease-in-out;
+}
+
+.addCard:hover {
+  color: #000;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 350px);
+  gap: 20px;
+  border: 1px solid #cfcdcd;
+  padding: 30px 30px;
+  width: auto;
+}
+
+.cardOptions {
+  display: flex;
+  align-items: center;
+  width: 350px;
+  height: 100px;
+  border: 1px solid #cfcdcd;
+  box-shadow: 0px 0px 19px -3px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 10px 12px;
+  gap: 20px;
+  cursor: pointer;
+  transition: 0.3s all ease-in-out;
+}
+
+.cardOptions:hover {
+  border: 1px solid #ff385c;
+}
+
+.selectedCard {
+  border: 1px solid #ff385c;
+}
+
+.customerInfo {
+  margin: 12px 0;
+}
+
+.text {
+  color: #3e3e3e;
+  font-size: 18px;
+}
+
+.input {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #8a8a8a;
+  width: 300px;
+  font-size: 20px;
+  color: #3e3e3e;
+}
+.payButtonDiv {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.payButton {
+  margin-top: 30px;
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 12px;
+  color: #fff;
+  background: linear-gradient(
+    90deg,
+    rgba(253, 54, 91, 1) 0%,
+    rgba(240, 41, 94, 1) 35%,
+    rgba(216, 6, 101, 1) 100%
+  );
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  width: 350px;
+}
+
+.payButton:hover {
+  background: linear-gradient(
+    90deg,
+    rgb(253, 43, 82) 0%,
+    rgb(235, 29, 84) 35%,
+    rgb(206, 1, 93) 100%
+  );
+}
+
+.confirm {
+  position: fixed;
+  background-color: #fefefe;
+  width: 600px;
+  height: 200px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scaleY(0);
+  transform-origin: top;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  border-radius: 20px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
 }

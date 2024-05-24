@@ -54,7 +54,7 @@ function App() {
           <Route path='/blog/:id' element={<SingleBlog />} />
           <Route path='/blog/write' element={<Write />} />
           <Route path='/approval/:id' element={<Approval />} />
-          <Route path='/payment' element={<Payment />} />
+          <Route path='/payment/:id' element={<Payment />} />
         </Routes>
       </BrowserRouter>
       <Footer />

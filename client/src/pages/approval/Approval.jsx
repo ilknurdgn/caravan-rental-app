@@ -49,7 +49,7 @@ const Approval = () => {
           <span>
             <FaRegCircle className={styles.icon} />
           </span>
-          <Link className={styles.pay} to='/payment'>
+          <Link className={styles.pay} to={`/payment/${caravan._id}`}>
             <span className={styles.pay}>Onayla ve devam et</span>
           </Link>
         </button>
