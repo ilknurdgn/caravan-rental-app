@@ -7,18 +7,31 @@ import axios from 'axios';
 
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
+  const [page, setPage] = useState(1);
+  const [totalPage, setTotalPage] = useState();
+  const blogsPerPage = 4;
+
   useEffect(() => {
     const getBlogs = async () => {
       try {
-        const res = await axios.get('/blog/allBlogs');
+        const res = await axios.get(
+          `/blog/allBlogs/?page=${page}&limit=${blogsPerPage}`
+        );
         setBlogs(res.data.blogs);
         console.log(res.data);
+        setTotalPage(res.data.totalPage);
+        // console.log(res.data.blogs);
       } catch (err) {
         console.log(err);
       }
     };
     getBlogs();
-  }, []);
+  }, [page]);
+
+  const handlePageChange = (event, newPage) => {
+    setPage(newPage);
+  };
+
   console.log(blogs);
   return (
     <div className={styles.blogs}>
@@ -41,10 +54,12 @@ const Blogs = () => {
 
       <Pagination
         className={styles.pagination}
-        count='10'
+        count={totalPage}
         color='primary'
+        page={page}
         variant='outlined'
         size='large'
+        onChange={handlePageChange}
       />
     </div>
   );

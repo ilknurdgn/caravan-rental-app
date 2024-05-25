@@ -15,6 +15,12 @@ const Comment = ({ comment }) => {
     }
     return stars;
   };
+
+  const formatDate = (dateString) => {
+    const options = { day: '2-digit', month: 'long', year: 'numeric' };
+    const date = new Date(dateString);
+    return date.toLocaleDateString('tr-TR', options);
+  };
   return (
     <div className={styles.comment}>
       <div className={styles['user-info']}>
@@ -30,7 +36,7 @@ const Comment = ({ comment }) => {
             <div className={styles.name}>{comment.user}</div>
             <div className={styles.score}>{renderStars()}</div>
           </div>
-          <div className={styles.date}>{comment.createdAt}</div>
+          <div className={styles.date}>{formatDate(comment.createdAt)}</div>
         </div>
       </div>
       <div className={styles['user-text']}>{comment.text}</div>
