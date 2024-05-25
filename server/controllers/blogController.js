@@ -71,3 +71,22 @@ exports.getBlogs = async (req, res) => {
     res.status(500).json({ message: 'Blogs could not be get!', error });
   }
 };
+
+//GET SINGLE BLOG
+exports.getSingleBlog = async (req, res) => {
+  try {
+    const blogId = req.params.id;
+    const blog = await Blog.findById(blogId);
+
+    if (!blog) {
+      return res.status(404).json({ message: 'Blog not found!' });
+    }
+
+    blog.views = blog.views + 1;
+    await blog.save();
+
+    res.status(200).json(blog);
+  } catch (error) {
+    res.status(500).json({ message: 'Blog could not be get!' });
+  }
+};
