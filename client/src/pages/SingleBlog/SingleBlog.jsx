@@ -33,6 +33,16 @@ const SingleBlog = () => {
     setUpdateMode(true);
     setTitle(title);
   };
+
+  const deleteBlog = async () => {
+    try {
+      await axios.delete(`blog/delete/${id}`);
+      console.log('silindi');
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
   });
@@ -61,7 +71,7 @@ const SingleBlog = () => {
         <span onClick={update} className={styles.edit}>
           <CiEdit />
         </span>
-        <span className={styles.delete}>
+        <span onClick={deleteBlog} className={styles.delete}>
           <BsTrash3 />
         </span>
       </div>
