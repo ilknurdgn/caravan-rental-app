@@ -6,7 +6,7 @@ import { BsTrash3 } from 'react-icons/bs';
 import { CiEdit } from 'react-icons/ci';
 import { useLocation } from 'react-router-dom';
 
-const SingleBlog = ({ blogs }) => {
+const SingleBlog = () => {
   const [updateMode, setUpdateMode] = useState(false);
   const [title, setTitle] = useState('');
   const { state } = useLocation();

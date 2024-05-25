@@ -27,7 +27,7 @@ const Comments = () => {
     <div className={styles['comments-container']}>
       <div className={styles['total-rating']}>
         <IoMdStar className={styles.icon} />
-        <span>4.83 · 1,800 değerlendirme, 2 yorum</span>
+        <span>4.83 · 1,800 değerlendirme, {comments.length} yorum</span>
       </div>
       <div className={styles.comments}>
         {comments.map((comment, index) => (

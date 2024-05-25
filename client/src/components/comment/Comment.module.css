@@ -17,6 +17,7 @@
 
 .user {
   margin-left: 20px;
+  width: 100%;
 }
 
 .user > .name {
@@ -29,4 +30,16 @@
 
 .user-text {
   margin-top: 20px;
+}
+
+.userInfo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.starScore {
+  color: #ffc100;
+}
+.starNotScore {
+  color: #d8d8d8;
 }
