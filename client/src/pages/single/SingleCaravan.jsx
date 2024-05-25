@@ -145,12 +145,12 @@ const SingleCaravan = () => {
       totalPrice: `${caravanData?.dailyPrice * days}`,
     };
 
-    // try {
-    //   const response = await axios.post('/rental/booking/', reservationData);
-    //   console.log(response.data);
-    // } catch (error) {
-    //   console.log('Error creating reservation: ', error);
-    // }
+    try {
+      const response = await axios.post('/rental/booking/', reservationData);
+      console.log(response.data);
+    } catch (error) {
+      console.log('Error creating reservation: ', error);
+    }
   };
 
   return (
