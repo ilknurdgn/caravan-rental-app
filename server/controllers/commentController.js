@@ -111,13 +111,29 @@ exports.getComments = async (req, res) => {
     const caravan = await Caravan.findById(caravanId);
 
     if (!caravan) {
-      res.status(404).json({ message: 'Caravan not found!' });
+      return res.status(404).json({ message: 'Caravan not found!' });
     }
 
     const allComments = await Comment.find({ caravan: caravanId });
 
     res.status(200).json(allComments);
   } catch (error) {
-    res.status(500).json({ message: 'Comments could mot be get!', error });
+    res.status(500).json({ message: 'Comments could not be get!', error });
+  }
+};
+
+//GET SINGLE COMMENT
+exports.getSingleComment = async (req, res) => {
+  try {
+    const commentId = req.params.id;
+    const comment = await Comment.findById(commentId);
+
+    if (!comment) {
+      return res.status(404).json({ message: 'Comment not found!' });
+    }
+
+    res.status(200).json(comment);
+  } catch (error) {
+    res.status(500).json({ message: 'Comment could not be get! ' });
   }
 };
