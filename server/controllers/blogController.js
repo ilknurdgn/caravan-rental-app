@@ -63,8 +63,8 @@ exports.delete = async (req, res) => {
 
 //GET ALL BLOGS
 exports.getBlogs = async (req, res) => {
-  const page = req.body.page;
-  const limit = req.body.limit;
+  const page = req.query.page;
+  const limit = req.query.limit;
   try {
     const totalBlog = await Blog.countDocuments();
     const totalPage = Math.ceil(totalBlog / limit);
