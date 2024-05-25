@@ -4,15 +4,30 @@ import { FaRegCalendarAlt } from 'react-icons/fa';
 import { MdOutlineRemoveRedEye } from 'react-icons/md';
 import { BsTrash3 } from 'react-icons/bs';
 import { CiEdit } from 'react-icons/ci';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
+import axios from 'axios';
 
 const SingleBlog = () => {
   const [updateMode, setUpdateMode] = useState(false);
   const [title, setTitle] = useState('');
+  const [blog, setBlog] = useState([]);
   const { state } = useLocation();
-  console.log(state);
+  const { id } = useParams();
   //const { state } = props.location;
   // const { name, age } = state;
+
+  useEffect(() => {
+    const getBlog = async () => {
+      try {
+        const res = await axios.get(`/blog/singleBlog/${id}`);
+        setBlog(res.data);
+        console.log(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getBlog();
+  }, []);
 
   const update = () => {
     setUpdateMode(true);
@@ -39,7 +54,7 @@ const SingleBlog = () => {
           autoFocus
         />
       ) : (
-        <span className={styles.title}>{state.title}</span>
+        <span className={styles.title}>{blog.title}</span>
       )}
 
       <div className={styles.update}>
@@ -60,11 +75,11 @@ const SingleBlog = () => {
         <div className={styles.items}>
           <span className={styles.item}>
             <MdOutlineRemoveRedEye />
-            {state.views}
+            {blog.views}
           </span>
           <span className={styles.item}>
             <FaRegCalendarAlt />
-            {formatDate(state.createdAt)}
+            {formatDate(blog.createdAt)}
           </span>
         </div>
 
@@ -73,8 +88,8 @@ const SingleBlog = () => {
             <textarea type='text' className={styles.singlePostDescInput} />
           ) : (
             <div>
-              <span className={styles.subtitle}>{state.title}</span>
-              <p className={styles['blog-entry']}>{state.desc}</p>
+              <span className={styles.subtitle}>{blog.title}</span>
+              <p className={styles['blog-entry']}>{blog.desc}</p>
             </div>
           )}
           {updateMode && (

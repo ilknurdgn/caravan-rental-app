@@ -28,7 +28,7 @@ const Blog = ({ blog }) => {
       <div className={styles['down-section']}>
         <span>{formatDate(blog.createdAt)}</span>
 
-        <Link to={`/blog/${blog._id}`} state={blog} className={styles.more}>
+        <Link to={`/blog/${blog._id}`} className={styles.more}>
           DEVAMI <FaArrowRightLong />
         </Link>
       </div>
