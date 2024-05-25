@@ -15,6 +15,7 @@ exports.add = async (req, res) => {
 
     const objectId = req.user._id;
     const userId = objectId.toString();
+    const user = await User.findById(userId);
 
     const rental = await Rental.findOne({
       userId: userId,
@@ -29,9 +30,10 @@ exports.add = async (req, res) => {
     }
 
     const newComment = new Comment({
-      user: userId,
+      user: user.firstName + ' ' + user.lastName,
       caravan: caravanId,
       text: req.body.text,
+      score: req.body.score,
     });
 
     const comment = await newComment.save();
@@ -114,11 +116,28 @@ exports.getComments = async (req, res) => {
       return res.status(404).json({ message: 'Caravan not found!' });
     }
 
-    const allComments = await Comment.find({ caravan: caravanId });
+    const totalEvaluation = await Comment.find({ caravan: caravanId });
 
-    res.status(200).json(allComments);
+    const comments = await Comment.find({
+      caravan: caravanId,
+      text: { $ne: null },
+    });
+
+    const totalScore = totalEvaluation.reduce(
+      (sum, comment) => sum + comment.score,
+      0
+    );
+    const averageScore = totalScore / totalEvaluation.length;
+
+    res.status(200).json({
+      comments,
+      totalComment: comments.length,
+      averageScore,
+      totalEvaluation: totalEvaluation.length,
+    });
   } catch (error) {
-    res.status(500).json({ message: 'Comments could not be get!', error });
+    res.status(500).json({ message: 'Comments could not be get!' });
+    console.log(error);
   }
 };
 
