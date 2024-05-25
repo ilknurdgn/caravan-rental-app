@@ -14,6 +14,9 @@ const commentSchema = new mongoose.Schema(
     },
     text: {
       type: String,
+    },
+    score: {
+      type: Number,
       required: true,
     },
   },
