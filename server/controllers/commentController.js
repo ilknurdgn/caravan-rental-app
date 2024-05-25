@@ -74,3 +74,32 @@ exports.update = async (req, res) => {
     res.status(500).json({ message: 'Comment could not be updated', error });
   }
 };
+
+// DELETE COMMENT
+exports.delete = async (req, res) => {
+  try {
+    const commentId = req.params.id;
+    const comment = await Comment.findById(commentId);
+
+    if (!comment) {
+      return res.status(403).json({ message: 'Comment not found!' });
+    }
+
+    const objectId = req.user._id;
+    const userId = objectId.toString();
+
+    if (!comment.user.equals(userId)) {
+      return res
+        .status(403)
+        .json({ message: 'You are not authorized to delete this comment' });
+    }
+
+    await Comment.findByIdAndDelete(commentId);
+
+    res.status(200).json({ message: 'Your comment deleted.' });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: 'Your comment could not be deleted', error });
+  }
+};
