@@ -60,3 +60,14 @@ exports.delete = async (req, res) => {
     res.status(500).json({ message: 'Blog could not be deleted.', error });
   }
 };
+
+//GET ALL BLOGS
+exports.getBlogs = async (req, res) => {
+  try {
+    const blogs = await Blog.find();
+
+    res.status(200).json(blogs);
+  } catch (error) {
+    res.status(500).json({ message: 'Blogs could not be get!', error });
+  }
+};
