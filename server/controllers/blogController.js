@@ -63,10 +63,17 @@ exports.delete = async (req, res) => {
 
 //GET ALL BLOGS
 exports.getBlogs = async (req, res) => {
+  const page = req.body.page;
+  const limit = req.body.limit;
   try {
-    const blogs = await Blog.find();
+    const totalBlog = await Blog.countDocuments();
+    const totalPage = Math.ceil(totalBlog / limit);
 
-    res.status(200).json(blogs);
+    const blogs = await Blog.find()
+      .skip((page - 1) * limit)
+      .limit(limit);
+
+    res.status(200).json({ blogs, totalPage, currentPage: page });
   } catch (error) {
     res.status(500).json({ message: 'Blogs could not be get!', error });
   }
