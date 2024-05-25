@@ -27,36 +27,36 @@ const Approval = () => {
 
   return (
     <div className={`${styles.paymentContainer} fadeIn`}>
-      <div className={styles.payInfo}>
-        <div className={styles.pageTitle}>
-          <Link to={`/caravan/${caravan._id}`}>
-            <MdKeyboardArrowLeft className={styles.backIcon} />
-          </Link>
-          <span className={styles.titleText}> Onay </span>
-        </div>
-        <span className={styles.subtitle}>Karavan Seyehatiniz</span>
-        <div className={styles.reservation}>
-          <div className={styles.leftSide}>
-            <span className={styles.datesText}>Tarihler</span>
-            <span className={styles.dates}>35 Mart - 29 Nisan (!!!)</span>
-          </div>
-          <Link to={`/caravan/${caravan._id}`}>
-            <div className={styles.rightSide}>Düzenle</div>
-          </Link>
-        </div>
-        <div className={styles['payment-line']}></div>
-
-        <button className={styles.payButton}>
-          <span>
-            <FaRegCircle className={styles.icon} />
-          </span>
-          <Link className={styles.pay} to={`/payment/${caravan._id}`}>
-            <span className={styles.pay}>Onayla ve devam et</span>
-          </Link>
-        </button>
+      <div className={styles.pageTitle}>
+        <Link to={`/caravan/${caravan._id}`}>
+          <MdKeyboardArrowLeft className={styles.backIcon} />
+        </Link>
+        <span className={styles.titleText}> Onay </span>
       </div>
-      <div className={styles.payDetails}>
-        <div className={styles.caravanConatiner}>
+      <div className={styles.infoDiv}>
+        <div className={styles.payInfo}>
+          <span className={styles.subtitle}>Karavan Seyehatiniz</span>
+          <div className={styles.reservation}>
+            <div className={styles.leftSide}>
+              <span className={styles.datesText}>Tarihler</span>
+              <span className={styles.dates}>35 Mart - 29 Nisan (!!!)</span>
+            </div>
+            <Link to={`/caravan/${caravan._id}`}>
+              <div className={styles.rightSide}>Düzenle</div>
+            </Link>
+          </div>
+          <div className={styles['payment-line']}></div>
+
+          <button className={styles.payButton}>
+            <span>
+              <FaRegCircle className={styles.icon} />
+            </span>
+            <Link className={styles.pay} to={`/payment/${caravan._id}`}>
+              <span className={styles.pay}>Onayla ve devam et</span>
+            </Link>
+          </button>
+        </div>
+        <div className={styles.payDetails}>
           <div className={styles.topSide}>
             <div className={styles.image}>
               <img

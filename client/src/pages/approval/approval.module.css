@@ -2,6 +2,8 @@
   width: 1280px;
   height: calc(100vh - 515px);
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   margin-top: 50px;
   margin-bottom: 100px;
 }
@@ -81,6 +83,10 @@
   );
 }
 
+.infoDiv {
+  display: flex;
+}
+
 .icon {
   position: absolute;
   left: 20px;
@@ -107,16 +113,9 @@
 }
 
 .payDetails {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: 2;
   margin-left: 30px;
   border-radius: 12px;
-}
-
-.caravanConatiner {
-  width: 500px;
+  width: 480px;
   height: 320px;
   border: 2px solid #e6e6e6;
   padding: 20px;
