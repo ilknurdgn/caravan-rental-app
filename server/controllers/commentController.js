@@ -103,3 +103,21 @@ exports.delete = async (req, res) => {
       .json({ message: 'Your comment could not be deleted', error });
   }
 };
+
+//GET ALL COMMENTS
+exports.getComments = async (req, res) => {
+  try {
+    const caravanId = req.params.id;
+    const caravan = await Caravan.findById(caravanId);
+
+    if (!caravan) {
+      res.status(404).json({ message: 'Caravan not found!' });
+    }
+
+    const allComments = await Comment.find({ caravan: caravanId });
+
+    res.status(200).json(allComments);
+  } catch (error) {
+    res.status(500).json({ message: 'Comments could mot be get!', error });
+  }
+};
