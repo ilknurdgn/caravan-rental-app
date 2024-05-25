@@ -8,12 +8,18 @@ import { useParams } from 'react-router-dom';
 const Comments = () => {
   const { id } = useParams(); //url'den id alır
   const [comments, setComments] = useState([]);
+  const [totalComments, setTotalComments] = useState([]);
+  const [averageScore, setAverageScore] = useState([]);
+  const [totalEvaluation, setTotalEvaluation] = useState([]);
 
   useEffect(() => {
     const getComments = async () => {
       try {
         const res = await axios.get(`/comment/getComments/${id}`);
-        setComments(res.data);
+        setComments(res.data.comments);
+        setTotalComments(res.data.totalComments);
+        setAverageScore(res.data.averageScore);
+        setTotalEvaluation(res.data.totalEvaluation);
         console.log(res.data);
       } catch (error) {
         console.log(error);
@@ -27,7 +33,11 @@ const Comments = () => {
     <div className={styles['comments-container']}>
       <div className={styles['total-rating']}>
         <IoMdStar className={styles.icon} />
-        <span>4.83 · 1,800 değerlendirme, {comments.length} yorum</span>
+        <span>
+          {' '}
+          {averageScore} , {totalEvaluation} değerlendirme · {comments.length}{' '}
+          yorum
+        </span>
       </div>
       <div className={styles.comments}>
         {comments.map((comment, index) => (
