@@ -4,6 +4,7 @@ import { TbUserEdit } from 'react-icons/tb';
 import { FaRegCreditCard } from 'react-icons/fa6';
 import { FaRegPaste } from 'react-icons/fa6';
 import { FaRegAddressCard } from 'react-icons/fa6';
+import { Link } from 'react-router-dom';
 
 const pageInfos = [
   {
@@ -11,6 +12,7 @@ const pageInfos = [
     icon: <TbUserEdit className={styles.icon} />,
     title: 'Kişisel Bilgiler',
     text: 'Kişisel bilgilerinizi ve size nasıl ulaşabileceğimizi seçin',
+    url: '/profile/personal-information',
   },
   {
     id: 2,
@@ -46,13 +48,15 @@ const Profile = () => {
         {pageInfos.map((item) => {
           return (
             <div className={styles.card}>
-              <div>{item.icon}</div>
-              <div className={styles.cardTitle}>
-                <h4>{item.title}</h4>
-              </div>
-              <div className={styles.text}>
-                <p>{item.text}</p>
-              </div>
+              <Link to={item.url}>
+                <div>{item.icon}</div>
+                <div className={styles.cardTitle}>
+                  <h4>{item.title}</h4>
+                </div>
+                <div className={styles.text}>
+                  <p>{item.text}</p>
+                </div>
+              </Link>
             </div>
           );
         })}
