@@ -1,6 +1,7 @@
 .comment {
   display: flex;
   flex-direction: column;
+  width: 600px;
 }
 .user-info {
   display: flex;

@@ -14,10 +14,14 @@
 }
 
 .comments {
-  margin-top: 20px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 390px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  /* grid-template-columns: repeat(2, 1fr); */
+}
+
+.commentContainer {
 }
 
 .showBtn {
