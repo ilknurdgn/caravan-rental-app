@@ -24,3 +24,22 @@ exports.add = async (req, res) => {
       .json({ message: 'New blog post could not be added!', error });
   }
 };
+
+//UPDATE BLOG
+exports.update = async (req, res) => {
+  try {
+    const blogId = req.params.id;
+
+    const updatedBlog = await Blog.findByIdAndUpdate(
+      blogId,
+      {
+        $set: req.body,
+      },
+      { new: true }
+    );
+
+    res.status(200).json({ message: 'Blog updated', updatedBlog: updatedBlog });
+  } catch (error) {
+    res.status(500).json({ message: 'Blog could not be updated', error });
+  }
+};
