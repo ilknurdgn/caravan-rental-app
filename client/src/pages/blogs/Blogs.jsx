@@ -9,7 +9,7 @@ const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState();
-  const blogsPerPage = 4;
+  const blogsPerPage = 6;
 
   useEffect(() => {
     const getBlogs = async () => {

@@ -18,7 +18,7 @@ const Write = () => {
       const addBlog = {
         title: title,
         desc: description,
-        // photo: file,
+        photo: file,
       };
       try {
         const response = await axios.post('/blog/add/', addBlog);
