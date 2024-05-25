@@ -2,9 +2,24 @@ import styles from './blogs.module.css';
 import Blog from '../../components/blog/Blog';
 import Pagination from '@mui/material/Pagination';
 import { createTheme } from '@mui/material/styles';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const Blogs = () => {
+  const [blogs, setBlogs] = useState([]);
+  useEffect(() => {
+    const getBlogs = async () => {
+      try {
+        const res = await axios.get('/blog/allBlogs');
+        setBlogs(res.data);
+        console.log(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getBlogs();
+  }, []);
+  console.log(blogs);
   return (
     <div className={styles.blogs}>
       <div className={styles['main-image']}>
@@ -16,14 +31,11 @@ const Blogs = () => {
           VANCA ekibinden ve kullanıcılarımızdan paylaşılan blog yazılarımız.
         </span>
         <div className={styles['blogs-container']}>
-          <Blog />
-          <Blog />
-          <Blog />
-          <Blog />
-          <Blog />
-          <Blog />
-          <Blog />
-          <Blog />
+          {blogs.map((blog, index) => (
+            <div className={styles.blogsInside} key={index}>
+              <Blog blogs={blogs} blog={blog} />
+            </div>
+          ))}
         </div>
       </div>
 

@@ -1,18 +1,26 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './singleBlog.module.css';
 import { FaRegCalendarAlt } from 'react-icons/fa';
 import { MdOutlineRemoveRedEye } from 'react-icons/md';
 import { BsTrash3 } from 'react-icons/bs';
 import { CiEdit } from 'react-icons/ci';
-const SingleBlog = () => {
+import { useLocation } from 'react-router-dom';
+
+const SingleBlog = ({ blogs }) => {
   const [updateMode, setUpdateMode] = useState(false);
   const [title, setTitle] = useState('');
-  const [blog, setBlog] = useState('');
+  const { state } = useLocation();
+  console.log(state);
+  //const { state } = props.location;
+  // const { name, age } = state;
 
   const update = () => {
     setUpdateMode(true);
     setTitle(title);
   };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
 
   return (
     <div className={styles['single-blog']}>
@@ -25,7 +33,7 @@ const SingleBlog = () => {
           autoFocus
         />
       ) : (
-        <span className={styles.title}>Neden VANCA?</span>
+        <span className={styles.title}>{state.title}</span>
       )}
 
       <div className={styles.update}>
@@ -46,11 +54,11 @@ const SingleBlog = () => {
         <div className={styles.items}>
           <span className={styles.item}>
             <MdOutlineRemoveRedEye />
-            1996
+            {state.views}
           </span>
           <span className={styles.item}>
             <FaRegCalendarAlt />
-            13 Mayıs 2023
+            {state.updatedAt}
           </span>
         </div>
 
@@ -59,48 +67,8 @@ const SingleBlog = () => {
             <textarea type='text' className={styles.singlePostDescInput} />
           ) : (
             <div>
-              <span className={styles.subtitle}>
-                Neden LUX’dan karavan kiralamalısınız?
-              </span>
-              <p className={styles['blog-entry']}>
-                Karavan seyahati, özgürlük, macera ve keyif dolu anlarla dolu
-                bir deneyim sunar. Ancak, seyahat deneyiminizi unutulmaz kılmak
-                için doğru ekipmana sahip olmanız önemlidir. İşte bu noktada,
-                LUX Karavan Kiralama hizmeti devreye giriyor ve size unutulmaz
-                bir karavan macerası sunuyor. Peki, neden LUX'dan karavan
-                kiralamanız gerektiğini merak ediyor musunuz? İşte cevabı:
-                <br /> Kalite ve Konfor <br /> LUX, kaliteli ve konforlu
-                karavanlar sunar. Her detay özenle düşünülerek tasarlanmıştır ve
-                karavanlarımızda ihtiyacınız olan her şeyi bulabilirsiniz. Rahat
-                yataklar, mutfak ekipmanları, temiz banyo olanakları ve daha
-                fazlasıyla donatılmış karavanlarımızla konforlu bir seyahat
-                deneyimi yaşarsınız. <br /> Çeşitlilik ve Seçenekler <br /> LUX,
-                farklı ihtiyaçlara ve tercihlere hitap eden geniş bir karavan
-                filosuna sahiptir. Tek kişilik gezilerden aile tatillerine kadar
-                her türlü seyahat için uygun karavan seçenekleri mevcuttur. Size
-                en uygun olanı seçme özgürlüğüne sahipsiniz. <br /> Güvenlik ve
-                Bakım <br /> LUX, müşterilerinin güvenliğini ve memnuniyetini ön
-                planda tutar. Karavanlarımız düzenli olarak bakım ve temizlikten
-                geçer, böylece güvenli ve sağlıklı bir seyahat deneyimi
-                yaşamanızı sağlarız. Ayrıca, herhangi bir sorunla
-                karşılaştığınızda 7/24 müşteri desteği sunarız. <br /> Esneklik
-                ve Özgürlük <br /> LUX karavan kiralama hizmeti, size seyahat
-                planlarınızda esneklik ve özgürlük sunar. Kendi hızınızda ve
-                istediğiniz rotada seyahat edebilir, dilediğiniz zaman durup
-                dinlenebilir veya yeni yerler keşfedebilirsiniz. Karavanınızı
-                istediğiniz gibi kişiselleştirebilir ve kendi eviniz gibi
-                hissedebilirsiniz. <br /> Uygun Fiyatlar
-                <br /> LUX, kaliteli bir karavan deneyimi sunarken uygun
-                fiyatlarla hizmet verir. Karavan kiralama ücretleri, seyahat
-                süresine ve tercih ettiğiniz karavan modeline göre değişebilir,
-                ancak genel olarak uygun ve rekabetçi fiyatlar sunarız. Sonuç
-                olarak, LUX'dan karavan kiralamanız size unutulmaz bir seyahat
-                deneyimi sunar. Kaliteli ve konforlu karavanlarımız, geniş
-                seçeneklerimiz, güvenliğimiz ve uygun fiyatlarımızla size
-                mükemmel bir karavan macerası yaşatmak için buradayız. Şimdi,
-                hayalinizdeki karavan tatiline bir adım daha yakınsınız. LUX ile
-                bugün rezervasyon yapın ve unutulmaz bir maceraya adım atın!
-              </p>
+              <span className={styles.subtitle}>{state.title}</span>
+              <p className={styles['blog-entry']}>{state.desc}</p>
             </div>
           )}
           {updateMode && (
