@@ -9,6 +9,7 @@ const caravanRoute = require('./routes/caravanRoute');
 const favoriteCaravansRoute = require('./routes/favoriteCaravansRoute');
 const rentalRoute = require('./routes/rentalRoute');
 const commentRoute = require('./routes/commentRoute');
+const blogRoute = require('./routes/blogRoute');
 
 dotenv.config();
 app.use(express.json());
@@ -27,6 +28,7 @@ app.use('/api/caravan', caravanRoute);
 app.use('/api/favorites', favoriteCaravansRoute);
 app.use('/api/rental', rentalRoute);
 app.use('/api/comment', commentRoute);
+app.use('/api/blog', blogRoute);
 
 app.listen('8000', () => {
   console.log('Backend is running.');
