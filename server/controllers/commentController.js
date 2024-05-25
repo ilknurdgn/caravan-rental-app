@@ -15,6 +15,7 @@ exports.add = async (req, res) => {
 
     const objectId = req.user._id;
     const userId = objectId.toString();
+    const user = await User.findById(userId);
 
     const rental = await Rental.findOne({
       userId: userId,
@@ -29,7 +30,7 @@ exports.add = async (req, res) => {
     }
 
     const newComment = new Comment({
-      user: userId,
+      user: user.firstName + ' ' + user.lastName,
       caravan: caravanId,
       text: req.body.text,
     });
@@ -115,10 +116,13 @@ exports.getComments = async (req, res) => {
     }
 
     const allComments = await Comment.find({ caravan: caravanId });
+    const totalComment = await Comment.countDocuments({ caravan: caravanId });
+    console.log(totalComment);
 
-    res.status(200).json(allComments);
+    res.status(200).json({ allComments, totalComment });
   } catch (error) {
-    res.status(500).json({ message: 'Comments could not be get!', error });
+    res.status(500).json({ message: 'Comments could not be get!' });
+    console.log(error);
   }
 };
 
