@@ -11,6 +11,7 @@ const Comments = () => {
   const [totalComments, setTotalComments] = useState([]);
   const [averageScore, setAverageScore] = useState([]);
   const [totalEvaluation, setTotalEvaluation] = useState([]);
+  const [visibleComments, setVisibleComments] = useState(4);
 
   useEffect(() => {
     const getComments = async () => {
@@ -27,20 +28,25 @@ const Comments = () => {
     };
     getComments();
   }, []);
-  console.log(comments);
-  console.log(id);
+
+  const loadMoreComments = () => {
+    setVisibleComments((prevVisibleComments) => prevVisibleComments + 4);
+  };
+
+  const showLessComments = () => {
+    setVisibleComments(4);
+  };
   return (
     <div className={styles['comments-container']}>
       <div className={styles['total-rating']}>
         <IoMdStar className={styles.icon} />
         <span>
-          {' '}
           {averageScore} , {totalEvaluation} değerlendirme · {comments.length}{' '}
           yorum
         </span>
       </div>
       <div className={styles.comments}>
-        {comments.map((comment, index) => (
+        {comments.slice(0, visibleComments).map((comment, index) => (
           <div key={index} className={styles.commentContainer}>
             <Comment comment={comment} />
           </div>
@@ -48,7 +54,15 @@ const Comments = () => {
       </div>
 
       <div className={styles.showBtn}>
-        <button> 1,800 değerlendirmenin tümünü göster</button>
+        {visibleComments < comments.length ? (
+          <button className={styles.btn} onClick={loadMoreComments}>
+            Daha fazla yorum göster
+          </button>
+        ) : (
+          <button className={styles.btn} onClick={showLessComments}>
+            Daha az göster
+          </button>
+        )}
       </div>
     </div>
   );
