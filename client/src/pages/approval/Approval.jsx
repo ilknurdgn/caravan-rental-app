@@ -5,10 +5,11 @@ import { IoMdStar } from 'react-icons/io';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const Approval = () => {
   const [caravan, setCaravan] = useState([]);
-  const { id } = useParams(); //url'den id alır
+  const { id } = useParams();
 
   useEffect(() => {
     const getSingleCaravan = async () => {

@@ -29,11 +29,13 @@ import SharePage from '../../components/sharePage/SharePage';
 import { RxCross1 } from 'react-icons/rx';
 import { Context } from '../../context/Contex';
 import Cookies from 'universal-cookie';
+import { useReservation } from '../../context/Contex';
 
 LicenseInfo.setLicenseKey(
   'e0d9bb8070ce0054c9d9ecb6e82cb58fTz0wLEU9MzI0NzIxNDQwMDAwMDAsUz1wcmVtaXVtLExNPXBlcnBldHVhbCxLVj0y'
 );
 const SingleCaravan = () => {
+  const { reservationData, dispatch } = useReservation();
   const { id } = useParams(); //url'den id alır
   const [state, setState] = useState([]);
   const [isFavorited, setIsFavorited] = useState(false);
@@ -143,12 +145,12 @@ const SingleCaravan = () => {
       totalPrice: `${caravanData?.dailyPrice * days}`,
     };
 
-    try {
-      const response = await axios.post('/rental/booking/', reservationData);
-      console.log(response.data);
-    } catch (error) {
-      console.log('Error creating reservation: ', error);
-    }
+    // try {
+    //   const response = await axios.post('/rental/booking/', reservationData);
+    //   console.log(response.data);
+    // } catch (error) {
+    //   console.log('Error creating reservation: ', error);
+    // }
   };
 
   return (
@@ -318,7 +320,14 @@ const SingleCaravan = () => {
               </div>
             </div>
             <div className={styles.button}>
-              <Link to={`/approval/${caravanData?._id}`}>
+              <Link
+                to={{
+                  pathname: `/approval/${caravanData?._id}`,
+                  state: {
+                    reservationData: reservationData,
+                  },
+                }}
+              >
                 <button
                   onClick={reservationHandler}
                   className={styles['reservation-button']}

@@ -1,9 +1,16 @@
-import { Children, createContext, useEffect, useReducer } from 'react';
+import {
+  Children,
+  createContext,
+  useEffect,
+  useReducer,
+  useContext,
+} from 'react';
 import Reducer from './Reducer';
 const INITIAL_STATE = {
   user: JSON.parse(localStorage.getItem('user')) || null,
   isFetching: false,
   error: false,
+  reservationData: null, // Yeni eklenen rezervasyon bilgileri
 };
 
 export const Context = createContext(INITIAL_STATE);
@@ -21,6 +28,7 @@ export const ContextProvider = ({ children }) => {
         user: state.user,
         isFetching: state.isFetching,
         error: state.error,
+        reservationData: state.reservationData, // Yeni eklenen rezervasyon bilgileri
         dispatch,
       }}
     >
@@ -28,3 +36,4 @@ export const ContextProvider = ({ children }) => {
     </Context.Provider>
   );
 };
+export const useReservation = () => useContext(Context);

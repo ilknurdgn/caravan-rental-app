@@ -29,124 +29,109 @@
   margin-left: 30px;
 }
 
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
 .titleText {
   flex: 1;
   margin-bottom: 10px;
 }
 
-.payChoose {
-  background-color: #fafafa;
-  padding: 30px 35px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  border-bottom: 2px solid #ff385c;
-}
-
-.payChoose > span {
-  font-size: 24px;
-  color: #ff385c;
-  font-weight: 500;
-  margin-bottom: 10px;
-}
-
-.option {
-  display: flex;
-  flex-direction: column;
-  margin: 30px 0;
-  padding: 20px 15px;
-}
-.selectedIcon {
-  color: #ff385c;
-}
-
-.option > span {
-  font-size: 24px;
-  cursor: pointer;
+.chooseCard {
   display: flex;
   align-items: center;
-  gap: 12px;
-  border-bottom: 1px solid #cfcdcd;
-  width: 450px;
-}
-
-.optionDetails {
-  font-size: 22px;
-}
-
-.cardInfo {
-  margin: 12px 0;
-  display: flex;
-  justify-content: space-between;
-}
-
-.addCard {
-  color: #8a8a8a;
-  font-size: 18px;
-  cursor: pointer;
-  transition: 0.2s all ease-in-out;
-}
-
-.addCard:hover {
-  color: #000;
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(3, 350px);
-  gap: 20px;
-  border: 1px solid #cfcdcd;
-  padding: 30px 30px;
-  width: auto;
-}
-
-.cardOptions {
-  display: flex;
-  align-items: center;
-  width: 350px;
-  height: 100px;
-  border: 1px solid #cfcdcd;
-  box-shadow: 0px 0px 19px -3px rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
-  padding: 10px 12px;
-  gap: 20px;
-  cursor: pointer;
-  transition: 0.3s all ease-in-out;
-}
-
-.cardOptions:hover {
-  border: 1px solid #ff385c;
-}
-
-.selectedCard {
-  border: 1px solid #ff385c;
-}
-
-.customerInfo {
-  margin: 12px 0;
-}
-
-.text {
-  color: #3e3e3e;
-  font-size: 18px;
-}
-
-.input {
-  outline: none;
-  border: none;
-  border-bottom: 1px solid #8a8a8a;
-  width: 300px;
   font-size: 20px;
-  color: #3e3e3e;
+  border: 1px solid #d8d8d8;
+  width: 650px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  gap: 10px;
+  margin-bottom: 10px;
+  color: #484848;
 }
-.payButtonDiv {
-  width: 100%;
+
+.cardIcon {
+  font-size: 26px;
+}
+
+.formGroup {
+  border: 1px solid #d8d8d8;
+  border-radius: 12px;
+  color: #484848;
+  width: 650px;
+  padding: 3px 5px;
+  margin-bottom: 10px;
   display: flex;
+  flex-direction: column;
+}
+
+input {
+  border: none;
+  outline: none;
+  font-size: 20px;
+  height: 50px;
+  padding: 2px 3px;
+}
+
+.cardNumber {
+  width: 630px;
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.cardBottom {
+  display: flex;
+}
+
+.expiryDate {
+  width: 315px;
+  border-right: 1px solid #d8d8d8;
+}
+
+.cvv {
+  width: 315px;
+}
+.cardInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.postalCode {
+  border: 1px solid #d8d8d8;
+  border-radius: 12px;
+  padding: 5px 8px;
+  width: 650px;
+}
+
+select {
+  outline: none;
+  font-size: 20px;
+  height: 50px;
+  border-radius: 12px;
+  border: none;
+  color: #484848;
+}
+
+label {
+  color: #484848;
+}
+
+.line {
+  width: 630px;
+  border: 1px solid #e6e6e6;
+}
+
+.buttonDiv {
+  width: 100%;
   align-items: center;
   justify-content: center;
 }
+
 .payButton {
-  margin-top: 30px;
+  width: 650px;
+  height: 50px;
   border: none;
   outline: none;
   padding: 10px;
@@ -160,7 +145,6 @@
   );
   cursor: pointer;
   transition: 0.3s ease-in-out;
-  width: 350px;
 }
 
 .payButton:hover {
@@ -173,20 +157,111 @@
 }
 
 .confirm {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  justify-content: center;
   position: fixed;
-  background-color: #fefefe;
-  width: 600px;
-  height: 200px;
+  background-color: #fff;
+  width: 500px;
+  height: 150px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scaleY(0);
   transform-origin: top;
   z-index: 1000;
+  border-radius: 12px;
+}
+
+.payDetails {
+  display: flex;
+  justify-content: center;
+  border-radius: 12px;
+}
+
+.caravanConatiner {
+  width: 500px;
+  height: 320px;
+  border: 2px solid #e6e6e6;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 0px 19px -3px rgba(0, 0, 0, 0.1);
+}
+
+.totalPrice {
+  display: flex;
+  justify-content: space-between;
+  width: 400px;
+}
+
+.topSide {
+  display: flex;
+}
+
+.info {
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 30px;
+}
+
+.title {
+  font-weight: 500;
+}
+
+.details {
+  color: #717171;
+}
+
+.dateOf {
+  color: #717171;
+}
+
+.image {
+  width: 300px;
+  height: 150px;
+}
+
+.star {
+  margin-top: 10px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 30px;
-  border-radius: 20px;
+}
+
+.startIcon {
+  margin-bottom: 4px;
+  margin-right: 5px;
+}
+
+.image > img {
+  width: 200px;
+  height: 150px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.caravanLine {
+  width: 450px;
+  margin: 30px 0;
+  display: flex;
+  align-items: center;
+  border: 1px solid #e6e6e6;
+}
+
+.bottomSide {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+}
+
+.detailText {
+  margin-bottom: 20px;
+}
+
+.priceDetails {
+  display: flex;
+  flex-direction: column;
 }
 
 .overlay {
