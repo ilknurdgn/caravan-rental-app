@@ -12,7 +12,6 @@ const SingleBlog = () => {
   const [updateMode, setUpdateMode] = useState(false);
   const [title, setTitle] = useState('');
   const [blog, setBlog] = useState([]);
-  const [isDelete, setIsDelete] = useState(false);
   const { state } = useLocation();
   const { id } = useParams();
   const navigate = useNavigate();
@@ -35,16 +34,11 @@ const SingleBlog = () => {
   };
 
   const deleteBlog = async () => {
-    setIsDelete(true);
     try {
       await axios.delete(`/blog/delete/${id}/`);
-      setTimeout(() => {
-        navigate('/blogs');
-        setIsDelete(false);
-      }, 3000);
+      navigate('/blogs');
     } catch (err) {
       console.log(err);
-      setIsDelete(false);
     }
   };
 
@@ -59,66 +53,60 @@ const SingleBlog = () => {
   };
 
   return (
-    <>
-      {isDelete ? (
-        <DeleteLoading />
+    <div className={styles['single-blog']}>
+      {updateMode ? (
+        <input
+          type='text'
+          value={title}
+          className={styles.singlePostTitleInput}
+          onChange={(e) => setTitle(e.target.value)}
+          autoFocus
+        />
       ) : (
-        <div className={styles['single-blog']}>
-          {updateMode ? (
-            <input
-              type='text'
-              value={title}
-              className={styles.singlePostTitleInput}
-              onChange={(e) => setTitle(e.target.value)}
-              autoFocus
-            />
-          ) : (
-            <span className={styles.title}>{blog.title}</span>
-          )}
-
-          <div className={styles.update}>
-            <span onClick={update} className={styles.edit}>
-              <CiEdit />
-            </span>
-            <span onClick={deleteBlog} className={styles.delete}>
-              <BsTrash3 />
-            </span>
-          </div>
-          <div className={styles['blog-container']}>
-            <img
-              className={styles.image}
-              src="https://plus.unsplash.com/premium_photo-1681884705028-fe0dc759406a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'"
-              alt=''
-            />
-
-            <div className={styles.items}>
-              <span className={styles.item}>
-                <MdOutlineRemoveRedEye />
-                {blog.views}
-              </span>
-              <span className={styles.item}>
-                <FaRegCalendarAlt />
-                {formatDate(blog.createdAt)}
-              </span>
-            </div>
-
-            <div className={styles['blog-content']}>
-              {updateMode ? (
-                <textarea type='text' className={styles.singlePostDescInput} />
-              ) : (
-                <div>
-                  <span className={styles.subtitle}>{blog.title}</span>
-                  <p className={styles['blog-entry']}>{blog.desc}</p>
-                </div>
-              )}
-              {updateMode && (
-                <button className={styles.updateButton}>Update</button>
-              )}
-            </div>
-          </div>
-        </div>
+        <span className={styles.title}>{blog.title}</span>
       )}
-    </>
+
+      <div className={styles.update}>
+        <span onClick={update} className={styles.edit}>
+          <CiEdit />
+        </span>
+        <span onClick={deleteBlog} className={styles.delete}>
+          <BsTrash3 />
+        </span>
+      </div>
+      <div className={styles['blog-container']}>
+        <img
+          className={styles.image}
+          src="https://plus.unsplash.com/premium_photo-1681884705028-fe0dc759406a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'"
+          alt=''
+        />
+
+        <div className={styles.items}>
+          <span className={styles.item}>
+            <MdOutlineRemoveRedEye />
+            {blog.views}
+          </span>
+          <span className={styles.item}>
+            <FaRegCalendarAlt />
+            {formatDate(blog.createdAt)}
+          </span>
+        </div>
+
+        <div className={styles['blog-content']}>
+          {updateMode ? (
+            <textarea type='text' className={styles.singlePostDescInput} />
+          ) : (
+            <div>
+              <span className={styles.subtitle}>{blog.title}</span>
+              <p className={styles['blog-entry']}>{blog.desc}</p>
+            </div>
+          )}
+          {updateMode && (
+            <button className={styles.updateButton}>Update</button>
+          )}
+        </div>
+      </div>
+    </div>
   );
 };
 
