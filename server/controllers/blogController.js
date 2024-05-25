@@ -43,3 +43,20 @@ exports.update = async (req, res) => {
     res.status(500).json({ message: 'Blog could not be updated', error });
   }
 };
+
+// DELETE BLOG
+exports.delete = async (req, res) => {
+  try {
+    const blogId = req.params.id;
+    const blog = await Blog.findById(blogId);
+
+    if (!blog) {
+      return res.status(404).json('Blog not found!');
+    }
+
+    await Blog.findByIdAndDelete(blogId);
+    res.status(200).json('Blog has been deleted');
+  } catch (error) {
+    res.status(500).json({ message: 'Blog could not be deleted.', error });
+  }
+};
