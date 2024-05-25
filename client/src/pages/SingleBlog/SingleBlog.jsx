@@ -22,6 +22,12 @@ const SingleBlog = () => {
     window.scrollTo(0, 0);
   });
 
+  const formatDate = (dateString) => {
+    const options = { day: '2-digit', month: 'long', year: 'numeric' };
+    const date = new Date(dateString);
+    return date.toLocaleDateString('tr-TR', options);
+  };
+
   return (
     <div className={styles['single-blog']}>
       {updateMode ? (
@@ -58,7 +64,7 @@ const SingleBlog = () => {
           </span>
           <span className={styles.item}>
             <FaRegCalendarAlt />
-            {state.updatedAt}
+            {formatDate(state.createdAt)}
           </span>
         </div>
 

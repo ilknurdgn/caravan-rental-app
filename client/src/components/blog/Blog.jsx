@@ -7,6 +7,11 @@ const Blog = ({ blog }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   });
+  const formatDate = (dateString) => {
+    const options = { day: '2-digit', month: 'long', year: 'numeric' };
+    const date = new Date(dateString);
+    return date.toLocaleDateString('tr-TR', options);
+  };
   return (
     <Link
       to={`/blog/${blog._id}`}
@@ -21,7 +26,7 @@ const Blog = ({ blog }) => {
       />
       <p className={styles['blog-text']}> {blog.desc}</p>
       <div className={styles['down-section']}>
-        <span>{blog.createdAt}</span>
+        <span>{formatDate(blog.createdAt)}</span>
 
         <Link to={`/blog/${blog._id}`} state={blog} className={styles.more}>
           DEVAMI <FaArrowRightLong />
