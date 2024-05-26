@@ -1,0 +1,158 @@
+.card {
+  width: calc(100% / 3 - 30px);
+  height: 174px;
+  border: 1px solid #f7f7f7;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  /* display: flex;
+    flex-direction: column;
+    justify-content: center; */
+  position: relative;
+}
+
+.dotIconContainer {
+  display: flex;
+}
+
+.dotIcon {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+}
+
+.modal {
+  width: 200px;
+  height: 100px;
+  background-color: #fff;
+  position: absolute;
+  right: 5px;
+  top: 40px;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.16);
+  border: 1px solid #dddddd;
+}
+
+.modalItem {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  font-size: 14px;
+}
+
+.modalItem:hover,
+.modalItem a:hover {
+  color: #ff385c;
+  transition: all 0.2s ease-in-out;
+}
+
+.modalIcon {
+  margin-right: 8px;
+  color: #ff385c;
+}
+
+.cardInfo {
+  margin-top: 40px;
+}
+
+.cardTitle {
+  margin-bottom: 25px;
+  font-size: 18px;
+}
+
+.cardNumber {
+  font-size: 16px;
+}
+
+.cardHolderName {
+  font-size: 14px;
+  color: #646464;
+}
+
+.isSureToDeleteContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.48);
+  z-index: 1001;
+}
+
+.isSureToDelete {
+  width: 470px;
+  height: 368px;
+  border: 1px solid #646464;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 72px;
+  background-color: #ffffff;
+  position: absolute;
+  z-index: 999;
+  border-radius: 8px;
+  border: solid 1px #e5e5e5;
+}
+
+.warningIconContainer {
+  margin-bottom: 24px;
+}
+
+.warningIcon {
+  color: rgb(212, 11, 11);
+  width: 50px;
+  height: 50px;
+}
+
+.warningText {
+  font-size: 16px;
+  color: #646464;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 16px;
+}
+
+.cancelIcon,
+.deleteButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  cursor: pointer;
+  outline: none;
+  padding: 8px;
+  height: 48px;
+  min-width: 160px;
+  border: 2px solid rgb(204, 204, 204);
+  background-color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.deleteButton {
+  background-color: rgb(240, 21, 11);
+  color: #fff;
+  border-color: rgb(240, 21, 11);
+}
+
+.deleteButton:hover {
+  background-color: rgb(212, 11, 11);
+  border-color: rgb(212, 11, 11);
+  transition: all 150ms ease 0s;
+}
