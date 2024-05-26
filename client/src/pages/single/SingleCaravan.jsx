@@ -317,18 +317,7 @@ const SingleCaravan = () => {
                 </div>
               </div>
             </div>
-            {/* <Link
-                to={`/approval/${caravanData?._id}`}
-                state={{ startDate, endDate, days }}
-              >
-              <button
-                onClick={clickHandler}
-                className={styles['reservation-button']}
-                type='submit'
-              >
-                Devam et
-              </button>
-              </Link> */}
+
             <div className={styles.button}>
               {!selectedDate[0] || !selectedDate[1] ? (
                 <div className={styles.disabled}>
