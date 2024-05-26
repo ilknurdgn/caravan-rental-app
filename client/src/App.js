@@ -25,6 +25,7 @@ import PersonalInformation from './pages/PersonalInformation/PersonalInformation
 import RegisteredCards from './pages/RegisteredCards/RegisteredCards';
 
 function App() {
+  console.log('deneme');
   const { user } = useContext(Context);
   return (
     <div className='main'>
