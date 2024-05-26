@@ -1,13 +1,15 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import styles from './payment.module.css';
 import { MdKeyboardArrowLeft } from 'react-icons/md';
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { GrRadialSelected } from 'react-icons/gr';
 import Confirm from '../../components/confirm/Confirm';
-import { useReservation } from '../../context/Contex';
+import { Context, useReservation } from '../../context/Contex';
 import { CiCreditCard1 } from 'react-icons/ci';
 import { FaLock } from 'react-icons/fa';
 import { IoMdStar } from 'react-icons/io';
+import dayjs from 'dayjs';
+import axios from 'axios';
 
 const Payment = () => {
   const { reservationData } = useReservation();
@@ -16,13 +18,19 @@ const Payment = () => {
   const [selectedCard, setSelectedCard] = useState(null);
   const [cardData, setCardData] = useState([]);
   const [payState, setPayState] = useState(false);
-  console.log(reservationData);
-
   const [cardNumber, setCardNumber] = useState('');
   const [expiryDate, setExpiryDate] = useState('');
   const [cvv, setCvv] = useState('');
   const [postalCode, setPostalCode] = useState('');
   const [country, setCountry] = useState('Türkiye');
+  const { id } = useParams();
+  const { user } = useContext(Context);
+  const { state } = useLocation();
+  const [caravanData, setCaravanData] = useState(null);
+  const { startDate, endDate, days } = state || {};
+  const start = startDate ? dayjs(startDate.$d) : null;
+  const end = endDate ? dayjs(endDate.$d) : null;
+  dayjs.locale('tr');
 
   // users click payment = option
   const handleOptionClick = (option) => {
@@ -33,25 +41,54 @@ const Payment = () => {
     setSelectedCard(card === selectedCard ? null : card);
   };
 
-  const mockCardData = [
-    { id: 1, name: 'Ziraat Bankası kartım (Visa)' },
-    { id: 2, name: 'Garanti Bankası kartım (Mastercard)' },
-    { id: 3, name: 'İş Bankası kartım (Visa)' },
-    { id: 4, name: 'Akbank kartım (Mastercard)' },
-    { id: 5, name: 'Denizbank kartım ' },
-  ];
-
   const handlePay = () => {
     setPayState(true);
     setTimeout(() => {
       setPayState(false);
-      navigate('/');
+      // navigate('/');
     }, 3000);
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    handlePay();
+    try {
+      await reservationHandler();
+      handlePay();
+    } catch (error) {
+      console.error('Error making reservation: ', error);
+    }
+  };
+  useEffect(() => {
+    const getSingleCaravan = async () => {
+      try {
+        const res = await axios.get(`/caravan/${id}`);
+        setCaravanData(res.data);
+        console.log(res.data);
+      } catch (error) {
+        console.error('Error fetching caravan data: ', error);
+      }
+    };
+    getSingleCaravan();
+  }, []);
+
+  dayjs.locale('tr');
+
+  const reservationHandler = async () => {
+    try {
+      const startDatePlusOne = start.add(1, 'day');
+      const reservationData = {
+        userId: user._id,
+        caravanId: id,
+        startDate: startDatePlusOne.toDate(),
+        endDate: end.toDate(),
+        totalPrice: caravanData?.dailyPrice * days,
+      };
+
+      const response = await axios.post('/rental/booking/', reservationData);
+      console.log('Reservation successful:', response.data);
+    } catch (error) {
+      console.error('Error creating reservation:', error);
+    }
   };
 
   return (
@@ -129,7 +166,11 @@ const Payment = () => {
             </div>
           </div>
           <div className={styles.buttonDiv}>
-            <button type='submit' className={styles.payButton}>
+            <button
+              onClick={reservationHandler}
+              type='submit'
+              className={styles.payButton}
+            >
               Ödeme Yap
             </button>
           </div>
@@ -146,13 +187,19 @@ const Payment = () => {
               </div>
               <div className={styles.info}>
                 <span className={styles.title}>
-                  {/* {caravan.type} - {caravan.location} */}
+                  {caravanData?.type} - {caravanData?.location}
                 </span>
                 <span className={styles.details}>
-                  {/* {caravan.maxGuests} kişilik · {caravan.yearOfManufacture}{' '} */}
-                  yapımı
+                  {caravanData?.maxGuests} kişilik ·{' '}
+                  {caravanData?.yearOfManufacture} Yapımı
                 </span>
-                <span className={styles.dateOf}>3 gece · 19-23 Nis (!!!)</span>
+                <span className={styles.dateOf}>
+                  {' '}
+                  {days} gün ·{' '}
+                  {startDate && end
+                    ? `${start.format('DD MMM')} - ${end.format('DD MMM')}`
+                    : 'Tarih seçilmedi'}
+                </span>
                 <span className={styles.star}>
                   <IoMdStar className={styles.startIcon} /> 4.97
                 </span>
@@ -164,7 +211,7 @@ const Payment = () => {
                 <span className={styles.detailText}>Fiyat ayrıntıları</span>
                 <div className={styles.totalPrice}>
                   <span>Toplam (TRY)</span>
-                  {/* <span> {caravan.dailyPrice}₺ x gün sayısı!!</span> */}
+                  {caravanData?.dailyPrice * days}₺
                 </div>
               </div>
             </div>

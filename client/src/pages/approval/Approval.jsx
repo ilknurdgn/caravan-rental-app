@@ -6,10 +6,14 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import dayjs from 'dayjs';
+import 'dayjs/locale/tr';
 
 const Approval = () => {
   const [caravan, setCaravan] = useState([]);
   const { id } = useParams();
+  const { state } = useLocation();
+  console.log(state);
 
   useEffect(() => {
     const getSingleCaravan = async () => {
@@ -23,7 +27,10 @@ const Approval = () => {
     getSingleCaravan();
   }, []);
 
-  console.log(caravan);
+  const { startDate, endDate, days } = state || {};
+  const start = startDate ? dayjs(startDate.$d) : null;
+  const end = endDate ? dayjs(endDate.$d) : null;
+  dayjs.locale('tr');
 
   return (
     <div className={`${styles.paymentContainer} fadeIn`}>
@@ -39,7 +46,13 @@ const Approval = () => {
           <div className={styles.reservation}>
             <div className={styles.leftSide}>
               <span className={styles.datesText}>Tarihler</span>
-              <span className={styles.dates}>35 Mart - 29 Nisan (!!!)</span>
+              <span className={styles.dates}>
+                {startDate && end
+                  ? `${start.format('DD MMMM YYYY')} - ${end.format(
+                      'DD MMMM YYYY'
+                    )}`
+                  : 'Tarih seçilmedi'}
+              </span>
             </div>
             <Link to={`/caravan/${caravan._id}`}>
               <div className={styles.rightSide}>Düzenle</div>
@@ -51,7 +64,11 @@ const Approval = () => {
             <span>
               <FaRegCircle className={styles.icon} />
             </span>
-            <Link className={styles.pay} to={`/payment/${caravan._id}`}>
+            <Link
+              className={styles.pay}
+              to={`/payment/${caravan._id}`}
+              state={{ startDate, endDate, days }}
+            >
               <span className={styles.pay}>Onayla ve devam et</span>
             </Link>
           </button>
@@ -71,7 +88,12 @@ const Approval = () => {
               <span className={styles.details}>
                 {caravan.maxGuests} kişilik · {caravan.yearOfManufacture} yapımı
               </span>
-              <span className={styles.dateOf}>3 gece · 19-23 Nis (!!!)</span>
+              <span className={styles.dateOf}>
+                {days} gece · {''}
+                {startDate && end
+                  ? `${start.format('DD MMM')} - ${end.format('DD MMM')}`
+                  : 'Tarih seçilmedi'}
+              </span>
               <span className={styles.star}>
                 <IoMdStar className={styles.startIcon} /> 4.97
               </span>
@@ -83,7 +105,7 @@ const Approval = () => {
               <span className={styles.detailText}>Fiyat ayrıntıları</span>
               <div className={styles.totalPrice}>
                 <span>Toplam (TRY)</span>
-                <span> {caravan.dailyPrice}₺ x gün sayısı!!</span>
+                <span> {caravan.dailyPrice * days}₺</span>
               </div>
             </div>
           </div>

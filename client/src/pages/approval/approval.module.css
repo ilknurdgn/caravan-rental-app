@@ -49,6 +49,11 @@
   flex-direction: column;
 }
 
+.dates {
+  display: flex;
+  flex-direction: column;
+}
+
 .datesText {
   margin-bottom: 20px;
 }

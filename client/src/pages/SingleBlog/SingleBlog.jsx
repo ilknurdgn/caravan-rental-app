@@ -48,7 +48,6 @@ const SingleBlog = () => {
   const update = async () => {
     try {
       await axios.put(`/blog/update/${id}`, { title, desc });
-      console.log('oldu tatlım');
       setUpdateMode(false);
       setBlog({ ...blog, title, desc });
     } catch (err) {

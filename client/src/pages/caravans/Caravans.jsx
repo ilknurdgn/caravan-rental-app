@@ -21,6 +21,7 @@ const Caravans = () => {
   const { user } = useContext(Context);
   const userId = user._id;
   const [location, setLocation] = useState('');
+  console.log(user);
 
   useEffect(() => {
     const getSingleCaravan = async () => {

@@ -52,6 +52,7 @@ const SingleCaravan = () => {
   const [showSelectedDateRange, setShowSelectedDateRange] = useState(false);
   const [share, setShare] = useState(false);
   const { user } = useContext(Context);
+  dayjs.locale('tr');
 
   useEffect(() => {
     const getSingleCaravan = async () => {
@@ -135,23 +136,6 @@ const SingleCaravan = () => {
 
   const startDate = selectedDate[0];
   const endDate = selectedDate[1];
-
-  const reservationHandler = async () => {
-    const reservationData = {
-      userId: user._id,
-      caravanId: caravanData._id,
-      startDate: startDate + 1,
-      endDate: endDate,
-      totalPrice: `${caravanData?.dailyPrice * days}`,
-    };
-
-    try {
-      const response = await axios.post('/rental/booking/', reservationData);
-      console.log(response.data);
-    } catch (error) {
-      console.log('Error creating reservation: ', error);
-    }
-  };
 
   return (
     <div className={`${styles['single-container']} fadeIn`}>
@@ -321,18 +305,10 @@ const SingleCaravan = () => {
             </div>
             <div className={styles.button}>
               <Link
-                to={{
-                  pathname: `/approval/${caravanData?._id}`,
-                  state: {
-                    reservationData: reservationData,
-                  },
-                }}
+                to={`/approval/${caravanData?._id}`}
+                state={{ startDate, endDate, days }}
               >
-                <button
-                  onClick={reservationHandler}
-                  className={styles['reservation-button']}
-                  type='submit'
-                >
+                <button className={styles['reservation-button']} type='submit'>
                   Devam et
                 </button>
               </Link>
