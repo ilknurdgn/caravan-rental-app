@@ -1,6 +1,26 @@
 import React from 'react';
 import styles from './Comment.module.css';
-const Comment = () => {
+import { FaStar } from 'react-icons/fa';
+import { FaRegStar } from 'react-icons/fa';
+const Comment = ({ comment }) => {
+  const { score, text, createdAt } = comment;
+  const renderStars = () => {
+    const stars = [];
+    for (let i = 1; i <= 5; i++) {
+      if (i <= score) {
+        stars.push(<FaStar key={i} className={styles.starScore} />);
+      } else {
+        stars.push(<FaStar key={i} className={styles.starNotScore} />);
+      }
+    }
+    return stars;
+  };
+
+  const formatDate = (dateString) => {
+    const options = { day: '2-digit', month: 'long', year: 'numeric' };
+    const date = new Date(dateString);
+    return date.toLocaleDateString('tr-TR', options);
+  };
   return (
     <div className={styles.comment}>
       <div className={styles['user-info']}>
@@ -12,13 +32,14 @@ const Comment = () => {
           />
         </div>
         <div className={styles.user}>
-          <div className={styles.name}>Mikasa</div>
-          <div className={styles.date}>3 Nisan 2023</div>
+          <div className={styles.userInfo}>
+            <div className={styles.name}>{comment.user}</div>
+            <div className={styles.score}>{renderStars()}</div>
+          </div>
+          <div className={styles.date}>{formatDate(comment.createdAt)}</div>
         </div>
       </div>
-      <div className={styles['user-text']}>
-        Çok güzel,temiz bir karavandı. Kesinlikle tavsiye ederim!
-      </div>
+      <div className={styles['user-text']}>{comment.text}</div>
     </div>
   );
 };

@@ -1,0 +1,45 @@
+.shareContainer {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cross {
+  font-size: 24px;
+  cursor: pointer;
+}
+.title {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.social {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.social > li {
+  border: 1px solid #efefef;
+  border-radius: 20px;
+  width: 200px;
+  padding: 8px;
+  box-shadow: 0px 0px 19px -3px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: 0.3s all ease-in-out;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.social > li:hover {
+  transform: scale(1.02);
+}
+
+.linkCopied {
+  position: absolute;
+  bottom: 20px;
+  color: #ff385c;
+  font-size: 16px;
+  font-weight: 500;
+}

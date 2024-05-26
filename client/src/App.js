@@ -23,6 +23,8 @@ import Write from './pages/write/Write';
 import Profile from './pages/Profile/Profile';
 import PersonalInformation from './pages/PersonalInformation/PersonalInformation';
 import RegisteredCards from './pages/RegisteredCards/RegisteredCards';
+import Approval from './pages/approval/Approval';
+import Payment from './pages/payment/Payment';
 
 function App() {
   console.log('deneme');
@@ -52,9 +54,10 @@ function App() {
           <Route path='/blogs' element={<Blogs />} />
           <Route path='/blog/:id' element={<SingleBlog />} />
           <Route path='/blog/write' element={<Write />} />
+          <Route path='/approval/:id' element={<Approval />} />
+          <Route path='/payment/:id' element={<Payment />} />
         </Routes>
       </BrowserRouter>
-
       <Footer />
     </div>
   );

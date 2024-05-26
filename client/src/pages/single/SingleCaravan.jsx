@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { DateRangePicker } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // ana css dosyası
 import 'react-date-range/dist/theme/default.css'; // tema css dosyası
@@ -15,7 +15,7 @@ import { MdExpandMore } from 'react-icons/md';
 import Comments from '../../components/comments/Comments';
 import { addDays, differenceInDays } from 'date-fns';
 import styles from './singleCaravan.module.css';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { color } from '@mui/system';
 import dayjs from 'dayjs';
 import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
@@ -24,8 +24,18 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateRangeCalendar } from '@mui/x-date-pickers-pro/DateRangeCalendar';
 // import { trTR } from '@mui/lab/locale'; // Türkçe dil desteği
 import { LuDot } from 'react-icons/lu';
+import { LicenseInfo } from '@mui/x-license';
+import SharePage from '../../components/sharePage/SharePage';
+import { RxCross1 } from 'react-icons/rx';
+import { Context } from '../../context/Contex';
+import Cookies from 'universal-cookie';
+import { useReservation } from '../../context/Contex';
 
+LicenseInfo.setLicenseKey(
+  'e0d9bb8070ce0054c9d9ecb6e82cb58fTz0wLEU9MzI0NzIxNDQwMDAwMDAsUz1wcmVtaXVtLExNPXBlcnBldHVhbCxLVj0y'
+);
 const SingleCaravan = () => {
+  const { reservationData, dispatch } = useReservation();
   const { id } = useParams(); //url'den id alır
   const [state, setState] = useState([]);
   const [isFavorited, setIsFavorited] = useState(false);
@@ -40,16 +50,16 @@ const SingleCaravan = () => {
   const [endDay, setEndDay] = useState([]);
 
   const [showSelectedDateRange, setShowSelectedDateRange] = useState(false);
-
-  useEffect(() => {
-    // Sayfa yüklendiğinde sayfanın en başına git
-    window.scrollTo(0, 0);
-  }, []); // Boş bağımlılık dizisi, yalnızca bileşen yüklendiğinde bir kere çalışmasını sağlar
+  const [share, setShare] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
+  const { user } = useContext(Context);
+  dayjs.locale('tr');
 
   useEffect(() => {
     const getSingleCaravan = async () => {
       try {
         const res = await axios.get(`/caravan/${id}`);
+        window.scrollTo(0, 0);
         setCaravanData(res.data);
       } catch (error) {
         console.error('Error fetching caravan data: ', error);
@@ -68,7 +78,7 @@ const SingleCaravan = () => {
       const endDate = selectedDate[1];
       setEndDay(endDate.format('DD/MM/YYYY'));
       //tarih aralığındaki gün sayısını hesaplar:
-      const days = endDate.diff(startDate, 'day'); // Tarih aralığındaki gün sayısını dayjs ile hesapla
+      const days = endDate.diff(startDate, 'day') + 1; // Tarih aralığındaki gün sayısını dayjs ile hesapla
       setDays(days);
       // String formatında tarih aralığını ve gün sayısını ayarlar
       setSelectedDateRangeString(
@@ -114,16 +124,38 @@ const SingleCaravan = () => {
     // 1 saniye sonra showSelectedDateRange state'ini false olarak güncelle
     setTimeout(() => {
       setShowSelectedDateRange(false);
-    }, 1000); // 1 saniye
+    }, 1000);
   };
 
-  console.log(caravanData);
+  const clickShareHandle = () => {
+    setShare(true);
+  };
+
+  const dontShareHandle = () => {
+    setShare(false);
+  };
+
+  const startDate = selectedDate[0];
+  const endDate = selectedDate[1];
+
+  const clickHandler = () => {
+    setIsClicked(true);
+  };
+
+  useEffect(() => {
+    if (isClicked) {
+      const timeout = setTimeout(() => {
+        setIsClicked(false);
+      }, 3000);
+      return () => clearTimeout(timeout);
+    }
+  }, [isClicked]);
 
   return (
     <div className={`${styles['single-container']} fadeIn`}>
       <div className={styles['caravan-info']}>
         <div className={styles.icons}>
-          <div className={styles['right-side']}>
+          <div className={styles['right-side']} onClick={clickShareHandle}>
             <IoMdShare className={styles.shareIcon} />
             <p>Paylaş</p>
           </div>
@@ -285,10 +317,37 @@ const SingleCaravan = () => {
                 </div>
               </div>
             </div>
+
             <div className={styles.button}>
-              <button className={styles['reservation-button']} type='submit'>
-                Devam et
-              </button>
+              {!selectedDate[0] || !selectedDate[1] ? (
+                <div className={styles.disabled}>
+                  <button
+                    onClick={clickHandler}
+                    className={styles['reservation-button']}
+                    type='submit'
+                  >
+                    Devam et
+                  </button>
+                  {isClicked && (
+                    <span className={styles.warning}>
+                      Lütfen tarih aralığı seçiniz
+                    </span>
+                  )}
+                </div>
+              ) : (
+                <Link
+                  to={`/approval/${caravanData?._id}`}
+                  state={{ startDate, endDate, days }}
+                >
+                  <button
+                    className={styles['reservation-button']}
+                    type='submit'
+                  >
+                    Devam et
+                  </button>
+                </Link>
+              )}
+
               <span>Henüz ücretlendirilmeyeceksiniz</span>
             </div>
             <div className={styles['caravan-payment']}>
@@ -318,6 +377,16 @@ const SingleCaravan = () => {
       <div className={styles.line}></div>
       {/* COMMENT SECTION */}
       <Comments />
+
+      {share && (
+        <>
+          <div onClick={dontShareHandle} className={styles.overlay}></div>
+          <div className={`${styles.sharePage} slideInFromBottom`}>
+            <RxCross1 onClick={dontShareHandle} className={styles.cross} />
+            <SharePage />
+          </div>
+        </>
+      )}
     </div>
   );
 };

@@ -1,11 +1,13 @@
 .comments-container {
-  margin: 30px 0;
+  margin-top: 80px;
+  margin-bottom: 100px;
 }
 
 .total-rating {
   font-size: 20px;
   display: flex;
   align-items: center;
+  margin-bottom: 30px;
 }
 
 .icon {
@@ -14,10 +16,11 @@
 }
 
 .comments {
-  margin-top: 20px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 390px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 50px;
+  /* grid-template-columns: repeat(2, 1fr); */
 }
 
 .showBtn {
@@ -35,4 +38,10 @@
   background-color: transparent;
   font-weight: 500;
   cursor: pointer;
+  transition: 0.2s all ease-in-out;
+  width: 250px;
+}
+
+.showBtn > button:hover {
+  background-color: #f7f7f7;
 }

@@ -1,17 +1,58 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './singleBlog.module.css';
 import { FaRegCalendarAlt } from 'react-icons/fa';
 import { MdOutlineRemoveRedEye } from 'react-icons/md';
 import { BsTrash3 } from 'react-icons/bs';
 import { CiEdit } from 'react-icons/ci';
+import { useLocation, useParams, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
 const SingleBlog = () => {
   const [updateMode, setUpdateMode] = useState(false);
   const [title, setTitle] = useState('');
-  const [blog, setBlog] = useState('');
+  const [desc, setDesc] = useState('');
+  const [blog, setBlog] = useState([]);
+  const { state } = useLocation();
+  const { id } = useParams();
+  const navigate = useNavigate();
 
-  const update = () => {
-    setUpdateMode(true);
-    setTitle(title);
+  const formatDate = (dateString) => {
+    const options = { day: '2-digit', month: 'long', year: 'numeric' };
+    const date = new Date(dateString);
+    return date.toLocaleDateString('tr-TR', options);
+  };
+
+  useEffect(() => {
+    const getBlog = async () => {
+      try {
+        const res = await axios.get(`/blog/singleBlog/${id}`);
+        setBlog(res.data);
+        setTitle(res.data.title);
+        setDesc(res.data.desc);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getBlog();
+  }, []);
+
+  const deleteBlog = async () => {
+    try {
+      await axios.delete(`/blog/delete/${id}/`);
+      navigate('/blogs');
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const update = async () => {
+    try {
+      await axios.put(`/blog/update/${id}`, { title, desc });
+      setUpdateMode(false);
+      setBlog({ ...blog, title, desc });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -25,14 +66,14 @@ const SingleBlog = () => {
           autoFocus
         />
       ) : (
-        <span className={styles.title}>Neden VANCA?</span>
+        <span className={styles.title}>{blog.title}</span>
       )}
 
       <div className={styles.update}>
-        <span onClick={update} className={styles.edit}>
+        <span onClick={() => setUpdateMode(true)} className={styles.edit}>
           <CiEdit />
         </span>
-        <span className={styles.delete}>
+        <span onClick={deleteBlog} className={styles.delete}>
           <BsTrash3 />
         </span>
       </div>
@@ -46,65 +87,32 @@ const SingleBlog = () => {
         <div className={styles.items}>
           <span className={styles.item}>
             <MdOutlineRemoveRedEye />
-            1996
+            {blog.views}
           </span>
           <span className={styles.item}>
             <FaRegCalendarAlt />
-            13 Mayıs 2023
+            {formatDate(blog.createdAt)}
           </span>
         </div>
 
         <div className={styles['blog-content']}>
           {updateMode ? (
-            <textarea type='text' className={styles.singlePostDescInput} />
+            <textarea
+              value={desc}
+              onChange={(e) => setDesc(e.target.value)}
+              type='text'
+              className={styles.singlePostDescInput}
+            />
           ) : (
             <div>
-              <span className={styles.subtitle}>
-                Neden LUX’dan karavan kiralamalısınız?
-              </span>
-              <p className={styles['blog-entry']}>
-                Karavan seyahati, özgürlük, macera ve keyif dolu anlarla dolu
-                bir deneyim sunar. Ancak, seyahat deneyiminizi unutulmaz kılmak
-                için doğru ekipmana sahip olmanız önemlidir. İşte bu noktada,
-                LUX Karavan Kiralama hizmeti devreye giriyor ve size unutulmaz
-                bir karavan macerası sunuyor. Peki, neden LUX'dan karavan
-                kiralamanız gerektiğini merak ediyor musunuz? İşte cevabı:
-                <br /> Kalite ve Konfor <br /> LUX, kaliteli ve konforlu
-                karavanlar sunar. Her detay özenle düşünülerek tasarlanmıştır ve
-                karavanlarımızda ihtiyacınız olan her şeyi bulabilirsiniz. Rahat
-                yataklar, mutfak ekipmanları, temiz banyo olanakları ve daha
-                fazlasıyla donatılmış karavanlarımızla konforlu bir seyahat
-                deneyimi yaşarsınız. <br /> Çeşitlilik ve Seçenekler <br /> LUX,
-                farklı ihtiyaçlara ve tercihlere hitap eden geniş bir karavan
-                filosuna sahiptir. Tek kişilik gezilerden aile tatillerine kadar
-                her türlü seyahat için uygun karavan seçenekleri mevcuttur. Size
-                en uygun olanı seçme özgürlüğüne sahipsiniz. <br /> Güvenlik ve
-                Bakım <br /> LUX, müşterilerinin güvenliğini ve memnuniyetini ön
-                planda tutar. Karavanlarımız düzenli olarak bakım ve temizlikten
-                geçer, böylece güvenli ve sağlıklı bir seyahat deneyimi
-                yaşamanızı sağlarız. Ayrıca, herhangi bir sorunla
-                karşılaştığınızda 7/24 müşteri desteği sunarız. <br /> Esneklik
-                ve Özgürlük <br /> LUX karavan kiralama hizmeti, size seyahat
-                planlarınızda esneklik ve özgürlük sunar. Kendi hızınızda ve
-                istediğiniz rotada seyahat edebilir, dilediğiniz zaman durup
-                dinlenebilir veya yeni yerler keşfedebilirsiniz. Karavanınızı
-                istediğiniz gibi kişiselleştirebilir ve kendi eviniz gibi
-                hissedebilirsiniz. <br /> Uygun Fiyatlar
-                <br /> LUX, kaliteli bir karavan deneyimi sunarken uygun
-                fiyatlarla hizmet verir. Karavan kiralama ücretleri, seyahat
-                süresine ve tercih ettiğiniz karavan modeline göre değişebilir,
-                ancak genel olarak uygun ve rekabetçi fiyatlar sunarız. Sonuç
-                olarak, LUX'dan karavan kiralamanız size unutulmaz bir seyahat
-                deneyimi sunar. Kaliteli ve konforlu karavanlarımız, geniş
-                seçeneklerimiz, güvenliğimiz ve uygun fiyatlarımızla size
-                mükemmel bir karavan macerası yaşatmak için buradayız. Şimdi,
-                hayalinizdeki karavan tatiline bir adım daha yakınsınız. LUX ile
-                bugün rezervasyon yapın ve unutulmaz bir maceraya adım atın!
-              </p>
+              <span className={styles.subtitle}>{blog.title}</span>
+              <p className={styles['blog-entry']}>{blog.desc}</p>
             </div>
           )}
           {updateMode && (
-            <button className={styles.updateButton}>Update</button>
+            <button onClick={update} className={styles.updateButton}>
+              Update
+            </button>
           )}
         </div>
       </div>
