@@ -1,12 +1,7 @@
 .container {
   max-width: 800px;
   width: 100%;
-  /* height: calc(100vh - 300px); */
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 66px 0;
+  margin: 90px 0;
 }
 
 .navigationPath {

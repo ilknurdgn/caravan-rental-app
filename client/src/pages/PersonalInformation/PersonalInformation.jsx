@@ -49,7 +49,7 @@ const PersonalInformation = () => {
   return (
     <div className={styles.container}>
       <div className={styles.navigationPath}>
-        <span>Hesap</span>
+        <a href='/profile'>Hesap</a>
         <span>&gt;</span>
         <span>Kişisel Bilgiler</span>
       </div>
