@@ -20,6 +20,9 @@ import Favorites from './pages/favorites/Favorites';
 import Blogs from './pages/blogs/Blogs';
 import SingleBlog from './pages/SingleBlog/SingleBlog';
 import Write from './pages/write/Write';
+import Profile from './pages/Profile/Profile';
+import PersonalInformation from './pages/PersonalInformation/PersonalInformation';
+import RegisteredCards from './pages/RegisteredCards/RegisteredCards';
 
 function App() {
   const { user } = useContext(Context);
@@ -31,6 +34,15 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/profile' element={<Profile />} />
+          <Route
+            path='/profile/personal-information'
+            element={<PersonalInformation />}
+          />
+          <Route
+            path='/profile/registered-cards'
+            element={<RegisteredCards />}
+          />
           <Route path='/about' element={<About />} />
           <Route path='/how-to-rent' element={<HowToRent />} />
           <Route path='/caravans' element={<Caravans />} />
