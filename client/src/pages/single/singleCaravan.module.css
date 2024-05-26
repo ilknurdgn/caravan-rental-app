@@ -198,7 +198,7 @@ img {
   position: sticky;
   top: 20px;
   width: 370px;
-  height: 520px;
+  height: 550px;
   border: 2px solid #e6e6e6;
   border-radius: 12px;
   padding: 15px 10px;
@@ -313,6 +313,18 @@ img {
     rgba(216, 6, 101, 1) 100%
   );
   cursor: pointer;
+}
+
+.disabled {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.warning {
+  color: #ff385c;
+  font-weight: 500;
 }
 
 .reservation-button:hover {

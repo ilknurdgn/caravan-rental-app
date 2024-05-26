@@ -51,6 +51,7 @@ const SingleCaravan = () => {
 
   const [showSelectedDateRange, setShowSelectedDateRange] = useState(false);
   const [share, setShare] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
   const { user } = useContext(Context);
   dayjs.locale('tr');
 
@@ -136,6 +137,19 @@ const SingleCaravan = () => {
 
   const startDate = selectedDate[0];
   const endDate = selectedDate[1];
+
+  const clickHandler = () => {
+    setIsClicked(true);
+  };
+
+  useEffect(() => {
+    if (isClicked) {
+      const timeout = setTimeout(() => {
+        setIsClicked(false);
+      }, 3000);
+      return () => clearTimeout(timeout);
+    }
+  }, [isClicked]);
 
   return (
     <div className={`${styles['single-container']} fadeIn`}>
@@ -303,15 +317,48 @@ const SingleCaravan = () => {
                 </div>
               </div>
             </div>
-            <div className={styles.button}>
-              <Link
+            {/* <Link
                 to={`/approval/${caravanData?._id}`}
                 state={{ startDate, endDate, days }}
               >
-                <button className={styles['reservation-button']} type='submit'>
-                  Devam et
-                </button>
-              </Link>
+              <button
+                onClick={clickHandler}
+                className={styles['reservation-button']}
+                type='submit'
+              >
+                Devam et
+              </button>
+              </Link> */}
+            <div className={styles.button}>
+              {!selectedDate[0] || !selectedDate[1] ? (
+                <div className={styles.disabled}>
+                  <button
+                    onClick={clickHandler}
+                    className={styles['reservation-button']}
+                    type='submit'
+                  >
+                    Devam et
+                  </button>
+                  {isClicked && (
+                    <span className={styles.warning}>
+                      Lütfen tarih aralığı seçiniz
+                    </span>
+                  )}
+                </div>
+              ) : (
+                <Link
+                  to={`/approval/${caravanData?._id}`}
+                  state={{ startDate, endDate, days }}
+                >
+                  <button
+                    className={styles['reservation-button']}
+                    type='submit'
+                  >
+                    Devam et
+                  </button>
+                </Link>
+              )}
+
               <span>Henüz ücretlendirilmeyeceksiniz</span>
             </div>
             <div className={styles['caravan-payment']}>
