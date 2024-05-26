@@ -9,6 +9,7 @@ import { Link, useParams, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import Loading from '../../components/loading/Loading';
 import { Context } from '../../context/Contex';
+import { useNavigate } from 'react-router-dom';
 
 const Caravans = () => {
   const [totalCaravans, setTotalCaravans] = useState([]);
@@ -19,6 +20,8 @@ const Caravans = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { user } = useContext(Context);
   const userId = user._id;
+  const [location, setLocation] = useState('');
+  console.log(user);
 
   useEffect(() => {
     const getSingleCaravan = async () => {
@@ -30,6 +33,7 @@ const Caravans = () => {
         setFetch(res.data);
         console.log(res.data);
         setTotalCaravans(res.data.caravans);
+        setLocation();
         window.scrollTo(0, 0);
         setTimeout(() => setIsLoading(false), 1000);
       } catch (error) {

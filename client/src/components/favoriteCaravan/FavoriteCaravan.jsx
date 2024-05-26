@@ -18,7 +18,6 @@ const FavoriteCaravan = ({ caravan }) => {
           <span>
             {caravan.maxGuests} Kişilik · {caravan.yearOfManufacture} yapımı
           </span>
-          <span>3 gece · 19-23 Nis</span>
           <p className={styles.price}>{caravan.dailyPrice}₺ gece</p>
         </div>
         <div className={styles.rating}>

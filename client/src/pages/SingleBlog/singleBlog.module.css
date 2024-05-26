@@ -8,8 +8,9 @@
 }
 
 .title {
-  margin-top: 35px;
+  margin-top: 60px;
   font-size: 36px;
+  color: #222;
 }
 
 .blog-container {
@@ -59,6 +60,9 @@
 
 .blog-entry {
   margin-top: 10px;
+  font-size: 20px;
+  width: 1000px;
+  text-align: left;
 }
 
 br {
@@ -85,15 +89,16 @@ br {
 }
 
 .singlePostTitleInput {
-  margin-top: 20px;
+  margin-top: 60px;
   border: none;
   height: 50px;
   background-color: transparent;
   border-bottom: 1px solid #dfdfdf;
   width: 1000px;
   outline: none;
-  font-size: 30px;
+  font-size: 36px;
   text-align: center;
+  color: #504c4c;
 }
 
 .singlePostDescInput {
@@ -102,9 +107,10 @@ br {
   padding: 20px;
   background-color: transparent;
   width: 1000px;
-  min-height: 1000px;
+  min-height: 500px;
   outline: none;
   color: #504c4c;
+  font-size: 20px;
 }
 
 .updateButton {
