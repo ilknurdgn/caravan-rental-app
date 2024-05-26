@@ -6,32 +6,35 @@ import { BsTrash3 } from 'react-icons/bs';
 import { CiEdit } from 'react-icons/ci';
 import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import DeleteLoading from '../../components/deleteLoading/DeleteLoading';
 
 const SingleBlog = () => {
   const [updateMode, setUpdateMode] = useState(false);
   const [title, setTitle] = useState('');
+  const [desc, setDesc] = useState('');
   const [blog, setBlog] = useState([]);
   const { state } = useLocation();
   const { id } = useParams();
   const navigate = useNavigate();
+
+  const formatDate = (dateString) => {
+    const options = { day: '2-digit', month: 'long', year: 'numeric' };
+    const date = new Date(dateString);
+    return date.toLocaleDateString('tr-TR', options);
+  };
 
   useEffect(() => {
     const getBlog = async () => {
       try {
         const res = await axios.get(`/blog/singleBlog/${id}`);
         setBlog(res.data);
+        setTitle(res.data.title);
+        setDesc(res.data.desc);
       } catch (err) {
         console.log(err);
       }
     };
     getBlog();
   }, []);
-
-  const update = () => {
-    setUpdateMode(true);
-    setTitle(title);
-  };
 
   const deleteBlog = async () => {
     try {
@@ -42,14 +45,15 @@ const SingleBlog = () => {
     }
   };
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  });
-
-  const formatDate = (dateString) => {
-    const options = { day: '2-digit', month: 'long', year: 'numeric' };
-    const date = new Date(dateString);
-    return date.toLocaleDateString('tr-TR', options);
+  const update = async () => {
+    try {
+      await axios.put(`/blog/update/${id}`, { title, desc });
+      console.log('oldu tatlım');
+      setUpdateMode(false);
+      setBlog({ ...blog, title, desc });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -67,7 +71,7 @@ const SingleBlog = () => {
       )}
 
       <div className={styles.update}>
-        <span onClick={update} className={styles.edit}>
+        <span onClick={() => setUpdateMode(true)} className={styles.edit}>
           <CiEdit />
         </span>
         <span onClick={deleteBlog} className={styles.delete}>
@@ -94,7 +98,12 @@ const SingleBlog = () => {
 
         <div className={styles['blog-content']}>
           {updateMode ? (
-            <textarea type='text' className={styles.singlePostDescInput} />
+            <textarea
+              value={desc}
+              onChange={(e) => setDesc(e.target.value)}
+              type='text'
+              className={styles.singlePostDescInput}
+            />
           ) : (
             <div>
               <span className={styles.subtitle}>{blog.title}</span>
@@ -102,7 +111,9 @@ const SingleBlog = () => {
             </div>
           )}
           {updateMode && (
-            <button className={styles.updateButton}>Update</button>
+            <button onClick={update} className={styles.updateButton}>
+              Update
+            </button>
           )}
         </div>
       </div>
