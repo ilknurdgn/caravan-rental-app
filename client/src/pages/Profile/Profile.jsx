@@ -19,6 +19,7 @@ const pageInfos = [
     icon: <FaRegCreditCard className={styles.icon} />,
     title: 'Kayıtlı Kartlar',
     text: 'Kaydettiğiniz kartları bu kısımda bulabilirsiniz.',
+    url: '/profile/registered-cards',
   },
   {
     id: 1,

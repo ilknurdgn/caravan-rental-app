@@ -1,11 +1,8 @@
 .container {
   max-width: 800px;
   width: 100%;
-  height: calc(100vh - 300px);
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  height: calc(100vh - 364px);
+  margin-top: 90px;
 }
 
 .userName {
@@ -19,6 +16,7 @@
   margin-bottom: 40px;
   font-size: 32px;
   font-weight: 700;
+  display: inline-block;
 }
 
 .cards {
