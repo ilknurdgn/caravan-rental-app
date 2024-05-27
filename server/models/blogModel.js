@@ -2,9 +2,13 @@ const mongoose = require('mongoose');
 
 const blogSchema = new mongoose.Schema(
   {
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      require: true,
+    },
     user: {
       type: String,
-      required: true,
     },
     title: {
       type: String,

@@ -9,6 +9,7 @@ exports.add = async (req, res) => {
     const user = await User.findById(userId);
 
     const newBlog = new Blog({
+      userId: userId,
       user: user.firstName + ' ' + user.lastName,
       title: req.body.title,
       desc: req.body.desc,
