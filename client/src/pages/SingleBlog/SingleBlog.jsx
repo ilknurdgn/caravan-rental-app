@@ -71,7 +71,7 @@ const SingleBlog = () => {
         <span className={styles.title}>{blog.title}</span>
       )}
 
-      {blog._id == user._id && (
+      {blog._userId == user._id && (
         <div className={styles.update}>
           <span onClick={() => setUpdateMode(true)} className={styles.edit}>
             <CiEdit />

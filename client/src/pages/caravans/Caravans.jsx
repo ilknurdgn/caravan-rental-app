@@ -19,8 +19,9 @@ const Caravans = () => {
   const caravansPerPage = 9;
   const [isLoading, setIsLoading] = useState(false);
   const { user } = useContext(Context);
-  const userId = user._id;
+
   const [location, setLocation] = useState('');
+  const navigate = useNavigate();
   console.log(user);
 
   useEffect(() => {
@@ -51,7 +52,7 @@ const Caravans = () => {
   const addFavoriteCaravans = async (caravanId) => {
     try {
       await axios.post(`/favorites/add`, {
-        userId: userId,
+        userId: user._id,
         caravanId: caravanId,
       });
       setFavorites({ ...favorites, [caravanId]: true });
@@ -84,10 +85,17 @@ const Caravans = () => {
                 </Link>
                 {/* Favori kısmı */}
                 <div
-                  onClick={() => addFavoriteCaravans(caravan._id)}
+                  onClick={() => {
+                    if (user && user._id) {
+                      addFavoriteCaravans(caravan._id);
+                    } else {
+                      // Kullanıcı giriş yapmamışsa login sayfasına yönlendir
+                      navigate('/login');
+                    }
+                  }}
                   className={styles['heartIcon-div']}
                 >
-                  {favorites[caravan._id] ? (
+                  {user && user._id && favorites[caravan._id] ? (
                     <FaHeart className={styles.favHeartIcon} />
                   ) : (
                     <FaRegHeart className={styles.heartIcon} />
