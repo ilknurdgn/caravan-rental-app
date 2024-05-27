@@ -43,7 +43,6 @@ const SingleCaravan = () => {
   const [selectedDate, setSelectedDate] = useState([null, null]);
   //kullanıcının seçtiği tarih aralığınu tutar
   //başta herhangi bir tarih yok -> null
-
   const [selectedDateRangeString, setSelectedDateRangeString] = useState('');
   const [days, setDays] = useState(0);
   const [startDay, setStartDay] = useState([]);
@@ -125,8 +124,24 @@ const SingleCaravan = () => {
     setTimeout(() => {
       setShowSelectedDateRange(false);
     }, 1000);
-  };
 
+    // Yeni tarih aralığını kontrol et
+    if (newDate[0] && newDate[1]) {
+      const isAnyUnavailable = disabledDates.some((dateRange) => {
+        // Seçilen tarih aralığı içinde müsait olmayan bir gün var mı?
+        return (
+          isDateInRange(dateRange.start, newDate[0], newDate[1]) ||
+          isDateInRange(dateRange.end, newDate[0], newDate[1])
+        );
+      });
+
+      // Eğer müsait olmayan bir gün seçildiyse, uyarı göster
+      if (isAnyUnavailable) {
+        // Seçilen tarihleri sıfırla
+        setSelectedDate([null, null]);
+      }
+    }
+  };
   const clickShareHandle = () => {
     setShare(true);
   };

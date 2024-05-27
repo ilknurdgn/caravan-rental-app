@@ -53,7 +53,7 @@ const Payment = () => {
     setPayState(true);
     setTimeout(() => {
       setPayState(false);
-      // navigate('/');
+      navigate(`/caravan/${id}`);
     }, 3000);
   };
 
