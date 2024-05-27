@@ -26,6 +26,7 @@ import RegisteredCards from './pages/RegisteredCards/RegisteredCards';
 import Approval from './pages/approval/Approval';
 import Payment from './pages/payment/Payment';
 import RentalHistory from './pages/RentalHistory/RentalHistory';
+import LicenseInfo from './pages/LicenseInfo/LicenseInfo';
 
 function App() {
   const { user } = useContext(Context);
@@ -47,6 +48,7 @@ function App() {
             element={<RegisteredCards />}
           />
           <Route path='/profile/rental-history' element={<RentalHistory />} />
+          <Route path='/profile/license-info' element={<LicenseInfo />} />
           <Route path='/about' element={<About />} />
           <Route path='/how-to-rent' element={<HowToRent />} />
           <Route path='/caravans' element={<Caravans />} />
