@@ -7,7 +7,6 @@ import { TiWarning } from 'react-icons/ti';
 
 const RegisteredSingleCard = ({ item }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const buttonRef = useRef(null);
   const [isSureToDelete, setIsSureToDelete] = useState(false);
 
   const handleDeleteCancel = () => {
