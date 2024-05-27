@@ -3,12 +3,36 @@ import { TfiWorld } from 'react-icons/tfi';
 import { FaHeart } from 'react-icons/fa';
 import { FaUserCircle } from 'react-icons/fa';
 import { BsThreeDots } from 'react-icons/bs';
-import { useState } from 'react';
 import { MdOutlineAccountBox } from 'react-icons/md';
 import { IoIosLogOut } from 'react-icons/io';
+import React, { useState, useRef, useEffect } from 'react';
 
 const Navbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const modalRef = useRef(null);
+  const buttonRef = useRef(null);
+
+  const handleClickOutside = (event) => {
+    if (
+      modalRef.current &&
+      !modalRef.current.contains(event.target) &&
+      buttonRef.current &&
+      !buttonRef.current.contains(event.target)
+    ) {
+      setIsModalOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isModalOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isModalOpen]);
 
   return (
     <div className={styles.container}>
@@ -54,12 +78,12 @@ const Navbar = () => {
             </div>
           </ul>
           {isModalOpen && (
-            <div className={styles.modal}>
-              <div className={styles.modalItem}>
+            <div className={styles.modal} ref={modalRef}>
+              <div className={styles.modalItem} ref={buttonRef}>
                 <MdOutlineAccountBox className={styles.icon} />
                 <a href='/profile'>Hesabım</a>
               </div>
-              <div className={styles.modalItem}>
+              <div className={styles.modalItem} ref={buttonRef}>
                 <IoIosLogOut className={styles.icon} />
                 Çıkış Yap
               </div>

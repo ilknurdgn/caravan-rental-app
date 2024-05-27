@@ -17,8 +17,14 @@
   gap: 40px;
 }
 
-.img {
+.imgContainer {
   flex: 1;
+}
+
+.img {
+  width: 500px;
+  height: 333px;
+  object-fit: cover;
 }
 
 .text {

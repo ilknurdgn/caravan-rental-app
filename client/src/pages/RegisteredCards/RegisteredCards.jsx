@@ -153,11 +153,9 @@ const RegisteredCards = () => {
     console.log('İÇERDEEEE allCards:', allCards);
   };
 
-  console.log('KART NUMARASI:', cardNumber);
-  console.log('expiryDate:', expiryDate);
-  console.log('cvv:', cvv);
-  console.log('cardTitle:', cardTitle);
-  console.log('allCards', allCards);
+  const handleDeleteCard = (id) => {
+    setAllCards((prevCards) => prevCards.filter((card) => card.id !== id));
+  };
   return (
     <div className={styles.container}>
       {createNewCard ? (
@@ -312,7 +310,12 @@ const RegisteredCards = () => {
 
           <div className={styles.cards}>
             {allCards.map((item) => {
-              return <RegisteredSingleCard item={item} />;
+              return (
+                <RegisteredSingleCard
+                  item={item}
+                  onDelete={() => handleDeleteCard(item.id)}
+                />
+              );
             })}
             <div
               className={styles.addNewCard}

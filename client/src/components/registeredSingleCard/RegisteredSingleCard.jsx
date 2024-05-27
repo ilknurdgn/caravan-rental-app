@@ -5,7 +5,7 @@ import { IoTrashOutline } from 'react-icons/io5';
 import { PiCardsLight } from 'react-icons/pi';
 import { TiWarning } from 'react-icons/ti';
 
-const RegisteredSingleCard = ({ item }) => {
+const RegisteredSingleCard = ({ item, onDelete }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSureToDelete, setIsSureToDelete] = useState(false);
 
@@ -14,7 +14,7 @@ const RegisteredSingleCard = ({ item }) => {
   };
 
   const handleDeleteCard = () => {
-    // Kartı silme işlemi burada gerçekleştirilecek
+    onDelete();
     setIsSureToDelete(false);
   };
 
@@ -27,9 +27,7 @@ const RegisteredSingleCard = ({ item }) => {
         <HiOutlineDotsVertical
           className={styles.dotIcon}
           onClick={(e) => {
-            if (isModalOpen === false) {
-              setIsModalOpen(true);
-            }
+            setIsModalOpen(!isModalOpen);
           }}
         />
       </div>

@@ -5,7 +5,7 @@ const HowToRent = () => {
     <div className={styles.container}>
       <h1 className={styles.title}>Nasıl Kiralanır?</h1>
       <p>
-        LUX olarak siz değerli misafirlerimizin konforu ve memnuniyeti için
+        VANCA olarak siz değerli misafirlerimizin konforu ve memnuniyeti için
         buradayız. Karavan deneyiminizi en iyi şekilde yaşamınızı sağlamakiçin
         sürekli çalışıyor ve size en kaliteli hizmeti sunmayı amaçlıyoruz.
       </p>
@@ -15,7 +15,7 @@ const HowToRent = () => {
         </div>
         <p className={styles.text}>
           <h2 className={styles.subtitle}>Garantili Rezervasyon ve Ödeme</h2>
-          Garantili Rezervasyon ile, Lux’un onayladığı sigortalı araçlarımızı
+          Garantili Rezervasyon ile, VANCA’nın onayladığı sigortalı araçlarımızı
           güvenli ödeme sistemleri ile kolayca kiralayabilirsiniz. Ödemenizi
           yaptıktan sonra, rezervasyonunuzu istediğiniz zaman iptal
           edebilirsiniz.
@@ -24,7 +24,7 @@ const HowToRent = () => {
 
       <p>
         Üyelik bedeli veya ek hizmet bedeli gibi ekstralarla uğraşmak
-        istemiyoruz. Lux olarak, size en uygun fiyatlarla kaliteli hizmet
+        istemiyoruz. VANCA olarak, size en uygun fiyatlarla kaliteli hizmet
         sunmayı amaçlıyoruz.
       </p>
 
