@@ -93,17 +93,6 @@ const Caravans = () => {
     }
   };
 
-  const deleteFavoriteCaravan = async (caravanId) => {
-    try {
-      await axios.delete(`/favorites/delete`, {
-        data: { caravanId: caravanId },
-      });
-      setFavorites({ ...favorites, [caravanId]: false });
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   return (
     <>
       {isLoading ? (

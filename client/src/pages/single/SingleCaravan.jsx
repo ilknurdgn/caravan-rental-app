@@ -15,7 +15,7 @@ import { MdExpandMore } from 'react-icons/md';
 import Comments from '../../components/comments/Comments';
 import { addDays, differenceInDays } from 'date-fns';
 import styles from './singleCaravan.module.css';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { color } from '@mui/system';
 import dayjs from 'dayjs';
 import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
@@ -39,6 +39,8 @@ const SingleCaravan = () => {
   const { id } = useParams(); //url'den id alır
   const [state, setState] = useState([]);
   const [isFavorited, setIsFavorited] = useState(false);
+  const [favorites, setFavorites] = useState([]);
+
   const [caravanData, setCaravanData] = useState(null);
   const [selectedDate, setSelectedDate] = useState([null, null]);
   //kullanıcının seçtiği tarih aralığınu tutar
@@ -47,6 +49,7 @@ const SingleCaravan = () => {
   const [days, setDays] = useState(0);
   const [startDay, setStartDay] = useState([]);
   const [endDay, setEndDay] = useState([]);
+  const navigate = useNavigate();
 
   const [showSelectedDateRange, setShowSelectedDateRange] = useState(false);
   const [share, setShare] = useState(false);
@@ -166,6 +169,32 @@ const SingleCaravan = () => {
     }
   }, [isClicked]);
 
+  const toggleFavorites = async (caravanId) => {
+    if (!user || !user._id) {
+      navigate('/login');
+      return;
+    }
+
+    try {
+      let updatedFavorites = { ...favorites };
+      if (favorites[caravanId]) {
+        await axios.delete(`/favorites/delete`, {
+          data: { caravanId: caravanId },
+        });
+        delete updatedFavorites[caravanId];
+      } else {
+        await axios.post(`/favorites/add`, {
+          caravanId: caravanId,
+        });
+        updatedFavorites[caravanId] = true;
+      }
+      setFavorites(updatedFavorites);
+      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className={`${styles['single-container']} fadeIn`}>
       <div className={styles['caravan-info']}>
@@ -174,7 +203,10 @@ const SingleCaravan = () => {
             <IoMdShare className={styles.shareIcon} />
             <p>Paylaş</p>
           </div>
-          <div className={styles['right-side']}>
+          <div
+            className={styles['right-side']}
+            onClick={() => toggleFavorites(caravanData._id)}
+          >
             {isFavorited ? (
               <FaHeart
                 onClick={toggleFavorite}
