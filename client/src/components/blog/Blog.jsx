@@ -13,8 +13,8 @@ const Blog = ({ blog }) => {
     return date.toLocaleDateString('tr-TR', options);
   };
   return (
-    <Link
-      to={`/blog/${blog._id}`}
+    <a
+      href={`/blog/${blog._id}`}
       state={blog}
       className={styles['blog-container']}
     >
@@ -28,11 +28,11 @@ const Blog = ({ blog }) => {
       <div className={styles['down-section']}>
         <span>{formatDate(blog.createdAt)}</span>
 
-        <Link to={`/blog/${blog._id}`} className={styles.more}>
+        <a href={`/blog/${blog._id}`} className={styles.more}>
           DEVAMI <FaArrowRightLong />
-        </Link>
+        </a>
       </div>
-    </Link>
+    </a>
   );
 };
 
