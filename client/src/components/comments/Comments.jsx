@@ -17,9 +17,14 @@ const Comments = () => {
     const getComments = async () => {
       try {
         const res = await axios.get(`/comment/getComments/${id}`);
+        const score = res.data.averageScore;
+        if (isNaN(score)) {
+          setAverageScore(0);
+        } else {
+          setAverageScore(score);
+        }
         setComments(res.data.comments);
         setTotalComments(res.data.totalComments);
-        setAverageScore(res.data.averageScore);
         setTotalEvaluation(res.data.totalEvaluation);
         console.log(res.data);
       } catch (error) {

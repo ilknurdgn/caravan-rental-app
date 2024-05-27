@@ -1,10 +1,29 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './caravan.module.css';
 import { FaRegHeart } from 'react-icons/fa';
 import { FaStar } from 'react-icons/fa';
 import { FaHeart } from 'react-icons/fa';
+import axios from 'axios';
 
-const Caravan = (totalCaravans, setTotalCaravans) => {
+const Caravan = (totalCaravans) => {
+  const [averageScore, setAverageScore] = useState([]);
+
+  useEffect(() => {
+    const getComments = async () => {
+      try {
+        const res = await axios.get(
+          `/comment/getComments/${totalCaravans._id}`
+        );
+        const score = res.data.averageScore;
+        setAverageScore(score);
+        console.log(score);
+        console.log(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getComments();
+  }, []);
   return (
     <div className={styles.caravan}>
       <div className={styles['caravan-image']}>
@@ -19,7 +38,6 @@ const Caravan = (totalCaravans, setTotalCaravans) => {
             {totalCaravans.type}- {totalCaravans.location}
           </h4>
           <span>
-            {' '}
             {totalCaravans.maxGuests} kişilik ·{' '}
             {totalCaravans.yearOfManufacture} yapım
           </span>
@@ -27,8 +45,7 @@ const Caravan = (totalCaravans, setTotalCaravans) => {
           <p className={styles.price}> {totalCaravans.dailyPrice}₺ gün</p>
         </div>
         <div className={styles.rating}>
-          <FaStar className={styles.starIcon} />
-          4.97
+          <FaStar className={styles.starIcon} /> {averageScore}
         </div>
       </div>
     </div>

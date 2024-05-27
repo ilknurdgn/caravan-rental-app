@@ -32,6 +32,23 @@ const Approval = () => {
   const end = endDate ? dayjs(endDate.$d) : null;
   dayjs.locale('tr');
 
+  const [averageScore, setAverageScore] = useState([]);
+
+  useEffect(() => {
+    const getComments = async () => {
+      try {
+        const res = await axios.get(`/comment/getComments/${id}`);
+        const score = res.data.averageScore;
+        setAverageScore(score);
+        console.log(score);
+        console.log(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getComments();
+  }, []);
+
   return (
     <div className={`${styles.paymentContainer} fadeIn`}>
       <div className={styles.pageTitle}>
@@ -67,7 +84,7 @@ const Approval = () => {
             <Link
               className={styles.pay}
               to={`/payment/${caravan._id}`}
-              state={{ startDate, endDate, days }}
+              state={{ startDate, endDate, days, averageScore }}
             >
               <span className={styles.pay}>Onayla ve devam et</span>
             </Link>
@@ -95,7 +112,7 @@ const Approval = () => {
                   : 'Tarih seçilmedi'}
               </span>
               <span className={styles.star}>
-                <IoMdStar className={styles.startIcon} /> 4.97
+                <IoMdStar className={styles.startIcon} /> {averageScore}
               </span>
             </div>
           </div>

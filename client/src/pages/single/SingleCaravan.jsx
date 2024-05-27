@@ -241,13 +241,6 @@ const SingleCaravan = () => {
             </li>
           </ul>
 
-          <ul className={styles.review}>
-            <li>
-              <IoMdStar className={styles['star-icon']} /> 4,83 · 1,800
-              değerlendirme
-            </li>
-          </ul>
-
           <div className={styles.profile}>
             <div className={styles['profile-pic']}>
               <img

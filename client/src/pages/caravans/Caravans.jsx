@@ -54,7 +54,20 @@ const Caravans = () => {
       await axios.post(`/favorites/add`, {
         caravanId: caravanId,
       });
-      setFavorites({ ...favorites, [caravanId]: true });
+      if (!favorites[caravanId]) {
+        setFavorites({ ...favorites, [caravanId]: true });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const deleteFavoriteCaravan = async (caravanId) => {
+    try {
+      await axios.delete(`/favorites/delete`, {
+        data: { caravanId: caravanId },
+      });
+      setFavorites({ ...favorites, [caravanId]: false });
     } catch (err) {
       console.log(err);
     }
@@ -76,11 +89,7 @@ const Caravans = () => {
             {totalCaravans.map((caravan, index) => (
               <div className={styles.iconDiv} key={index}>
                 <Link className={styles.links} to={`/caravan/${caravan._id}`}>
-                  <Caravan
-                    totalCaravans={totalCaravans}
-                    setTotalCaravans={setTotalCaravans}
-                    {...caravan}
-                  />
+                  <Caravan totalCaravans={totalCaravans} {...caravan} />
                 </Link>
                 {/* Favori kısmı */}
                 <div
