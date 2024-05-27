@@ -26,12 +26,14 @@ const pageInfos = [
     icon: <FaRegPaste className={styles.icon} />,
     title: 'Kiralama Geçmişi',
     text: 'Kiralama bilgilerinize burdan ulaşabilirsiniz.',
+    url: '/profile/rental-history',
   },
   {
     id: 1,
     icon: <FaRegAddressCard className={styles.icon} />,
     title: 'Ehliyet Bilgileri',
     text: 'Ehliyet bilgilerinizi yükleyiniz.',
+    url: '/profile/license-info',
   },
 ];
 

@@ -15,7 +15,66 @@ import './styles.css';
 import { useState } from 'react';
 import { IoIosClose } from 'react-icons/io';
 
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { LocalizationProvider } from '@mui/x-date-pickers-pro';
+import { AdapterDayjs } from '@mui/x-date-pickers-pro/AdapterDayjs';
+import { DateRangeCalendar } from '@mui/x-date-pickers-pro/DateRangeCalendar';
+import { LicenseInfo } from '@mui/x-license';
+import dayjs from 'dayjs';
+import locations from '../../helpers/locations.json';
+
+LicenseInfo.setLicenseKey(
+  'e0d9bb8070ce0054c9d9ecb6e82cb58fTz0wLEU9MzI0NzIxNDQwMDAwMDAsUz1wcmVtaXVtLExNPXBlcnBldHVhbCxLVj0y'
+);
+
 const Home = () => {
+  const [isOpenDatePicker, setIsOpenDatePicker] = useState(false);
+  const [isOpenLocation, setIsOpenLocation] = useState(false);
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState('');
+  const [selectedCity, setSelectedCity] = useState('');
+  const [peopleCount, setPeopleCount] = useState('');
+
+  const formattedDate = (dateString) => {
+    // Gelen tarih string'ini Date nesnesine çeviriyoruz.
+    const date = new Date(dateString);
+
+    // Date nesnesini "Gün Ay, Yıl" formatına çeviriyoruz.
+    const formattedDate = date.toLocaleDateString('tr-TR', {
+      day: 'numeric', // Günü sayısal olarak alırız.
+      month: 'long', // Ay ismini uzun formatda alırız (Ocak, Şubat, ...)
+      year: 'numeric', // Yılı sayısal olarak alırız.
+    });
+    return formattedDate;
+  };
+
+  const handleDateChange = (newDate) => {
+    const startDate = newDate[0];
+    const endDate = newDate[1];
+    const updatedStartDate = dayjs(startDate).format('YYYY-MM-DD');
+    const updatedEndDate = dayjs(endDate).format('YYYY-MM-DD');
+
+    setStartDate(updatedStartDate);
+
+    if (newDate[1] !== null) {
+      setEndDate(updatedEndDate);
+    }
+  };
+
+  const handleLocation = () => {
+    setIsOpenDatePicker(false);
+    setIsOpenLocation(!isOpenLocation);
+  };
+
+  const handleDatePicker = () => {
+    setIsOpenLocation(false);
+    setIsOpenDatePicker(!isOpenDatePicker);
+  };
+
+  const handleSelectLocation = (e) => {
+    setSelectedCity(e.target.innerText);
+  };
+
   const [click, setClick] = useState(false);
 
   const handleClick = () => {
@@ -71,42 +130,81 @@ const Home = () => {
       <div className={styles.firstSection}>
         <div className={styles.search}>
           <div className={styles.selecterContent}>
-            <div className={styles.item}>
+            <div className={styles.item} onClick={handleLocation}>
               <h3 className={styles.searchTitles}>Konum</h3>
-              <input
-                className={styles.input}
-                type='text'
-                placeholder='Nereye gidiyorsun?'
-              />
+              <span className={styles.searchLabel}>
+                {selectedCity === '' ? 'Şehir Seçin' : selectedCity}
+              </span>
+              {isOpenLocation && (
+                <div className={styles.location}>
+                  <ul>
+                    {locations.map((city) => {
+                      return (
+                        <li
+                          onClick={handleSelectLocation}
+                          className={
+                            selectedCity === city.name
+                              ? styles.activeLocation
+                              : ''
+                          }
+                        >
+                          {city.name}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              )}
             </div>
-            <div className={styles.item}>
+            <div
+              className={styles.item}
+              onClick={() => {
+                handleDatePicker();
+              }}
+            >
               <h3 className={styles.searchTitles}>Alış Tarihi</h3>
-              <input
-                className={styles.input}
-                type='text'
-                placeholder='Tarih ekle'
-              />
+              <span className={`${styles.input} ${styles.searchLabel}`}>
+                {startDate !== null ? formattedDate(startDate) : 'Tarih Seçin'}
+              </span>
             </div>
-            <div className={styles.item}>
+            <div
+              className={styles.item}
+              onClick={() => {
+                handleDatePicker();
+              }}
+            >
               <h3 className={styles.searchTitles}>Teslim Tarihi</h3>
-              <input
-                className={styles.input}
-                type='text'
-                placeholder='Tarih ekle'
-              />
+              <span className={`${styles.input} ${styles.searchLabel}`}>
+                {endDate !== '' ? formattedDate(endDate) : 'Tarih Seçin'}
+              </span>
             </div>
             <div className={styles.item}>
               <h3 className={styles.searchTitles}>Kişi Sayısı</h3>
               <input
-                className={styles.input}
+                className={`${styles.input} ${styles.peopleCountInput}`}
                 type='text'
                 placeholder='Kişi sayısı ekle'
+                value={peopleCount}
+                onChange={(e) => setPeopleCount(e.target.value)}
               />
             </div>
           </div>
           <div className={styles.iconContainer}>
             <IoSearchCircleSharp />
           </div>
+
+          {isOpenDatePicker && (
+            <div className={styles.datePicker}>
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DemoContainer components={['DateRangeCalendar']}>
+                  <DateRangeCalendar
+                    disablePast
+                    onChange={handleDateChange}
+                  ></DateRangeCalendar>
+                </DemoContainer>
+              </LocalizationProvider>
+            </div>
+          )}
         </div>
       </div>
 
@@ -160,21 +258,11 @@ const Home = () => {
             modules={[FreeMode, Pagination, Navigation]}
             className='mySwiper'
           >
-            <SwiperSlide>
-              <Blog />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Blog />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Blog />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Blog />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Blog />
-            </SwiperSlide>
+            <SwiperSlide>{/* <Blog /> */}</SwiperSlide>
+            <SwiperSlide>{/* <Blog /> */}</SwiperSlide>
+            <SwiperSlide>{/* <Blog /> */}</SwiperSlide>
+            <SwiperSlide>{/* <Blog /> */}</SwiperSlide>
+            <SwiperSlide>{/* <Blog /> */}</SwiperSlide>
           </Swiper>
           {/* <Blog />
           <Blog />

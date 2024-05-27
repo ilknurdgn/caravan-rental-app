@@ -1,0 +1,24 @@
+.container {
+  max-width: 900px;
+  width: 100%;
+  margin: 90px 0;
+}
+
+.navigationPath {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 5px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  display: inline-block;
+}
+
+.RentalHistoryCards {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
