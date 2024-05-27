@@ -18,9 +18,6 @@ const Payment = () => {
   const [selectedCard, setSelectedCard] = useState(null);
   const [cardData, setCardData] = useState([]);
   const [payState, setPayState] = useState(false);
-  const [cardNumber, setCardNumber] = useState('');
-  const [expiryDate, setExpiryDate] = useState('');
-  const [cvv, setCvv] = useState('');
   const [postalCode, setPostalCode] = useState('');
   const [country, setCountry] = useState('Türkiye');
   const { id } = useParams();
@@ -31,6 +28,21 @@ const Payment = () => {
   const start = startDate ? dayjs(startDate.$d) : null;
   const end = endDate ? dayjs(endDate.$d) : null;
   dayjs.locale('tr');
+
+  //from sema
+  const [createNewCard, setCreateNewCard] = useState(false);
+  const [cardNumber, setCardNumber] = useState('');
+  const [expiryDate, setExpiryDate] = useState('');
+  const [fullname, setFullname] = useState('');
+  const [cvv, setCvv] = useState('');
+  const [cardTitle, setCardTitle] = useState('');
+
+  const [errors, setErrors] = useState({
+    cardNumber: '',
+    expiryDate: '',
+    fullname: '',
+    cvv: '',
+  });
 
   // users click payment = option
   const handleOptionClick = (option) => {
@@ -73,6 +85,99 @@ const Payment = () => {
 
   dayjs.locale('tr');
 
+  const handleBlur = (field) => {
+    validateField(field);
+  };
+
+  const validateField = (field) => {
+    let error = '';
+    switch (field) {
+      case 'cardTitle':
+        if (!cardTitle) {
+          error = 'Kartın adı boş bırakılamaz';
+        }
+        break;
+      case 'cardNumber':
+        if (!cardNumber) {
+          error = 'Kart numarası boş bırakılamaz';
+        } else if (cardNumber.replace(/\s/g, '').length !== 16) {
+          error = 'Kart numarası 16 haneli olmalıdır';
+        }
+        break;
+      case 'expiryDate':
+        if (!expiryDate) {
+          error = 'Son kullanma tarihi boş bırakılamaz';
+        } else if (!/^\d{2}\/\d{2}$/.test(expiryDate)) {
+          error = 'Son kullanma tarihi MM/YY formatında olmalıdır';
+        } else {
+          const [month, year] = expiryDate.split('/').map(Number);
+          const currentDate = new Date();
+          const currentMonth = currentDate.getMonth() + 1;
+          const currentYear = currentDate.getFullYear() % 100;
+          if (month < 1 || month > 12) {
+            error = 'Geçerli bir ay giriniz';
+          } else if (
+            year < currentYear ||
+            (year === currentYear && month < currentMonth)
+          ) {
+            error = 'Kartın son kullanma tarihi geçmiş';
+          }
+        }
+        break;
+      case 'fullname':
+        if (!fullname) {
+          error = 'Kart sahibinin adı boş bırakılamaz';
+        }
+        break;
+      case 'cvv':
+        if (!cvv) {
+          error = 'CVV boş bırakılamaz';
+        } else if (!/^\d{3}$/.test(cvv)) {
+          error = 'CVV 3 haneli olmalıdır';
+        }
+        break;
+      default:
+        break;
+    }
+    setErrors((prevErrors) => ({ ...prevErrors, [field]: error }));
+  };
+
+  const handleChangeCardNumber = (event) => {
+    const inputValue = event.target.value;
+    // Sadece sayısal karakterleri ve boşlukları al
+    const rawValue = inputValue.replace(/\s/g, '');
+    if (/^\d{0,19}$/.test(rawValue)) {
+      setCardNumber(formatCardNumber(rawValue));
+    }
+  };
+
+  const handleChangeExpiryDate = (event) => {
+    const inputValue = event.target.value;
+    const rawValue = inputValue.replace(/\D/g, ''); // Sadece sayısal karakterleri al
+    if (/^\d{0,4}$/.test(rawValue)) {
+      setExpiryDate(formatExpiryDate(rawValue));
+    }
+  };
+
+  const formatCardNumber = (value) => {
+    // Sadece sayısal karakterleri al
+    const numericValue = value.replace(/\D/g, '');
+    // Her 4 karakterde bir boşluk ekle
+    const formattedValue = numericValue.replace(/(\d{4})(?=\d)/g, '$1 ');
+    return formattedValue;
+  };
+
+  const formatExpiryDate = (value) => {
+    const numericValue = value.replace(/\D/g, '');
+    if (numericValue.length <= 4) {
+      if (numericValue.length === 3 && !numericValue.includes('/')) {
+        return numericValue.replace(/(\d{2})(\d{1})/, '$1/$2');
+      }
+      return numericValue.replace(/(\d{2})(\d{2})/, '$1/$2');
+    }
+    return numericValue.slice(0, 5); // Maksimum 5 karakter (MM/YY)
+  };
+
   const reservationHandler = async () => {
     try {
       const startDatePlusOne = start.add(1, 'day');
@@ -91,6 +196,12 @@ const Payment = () => {
     }
   };
 
+  const postCardInfos = async () => {
+    try {
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div className={`${styles.payContainer} fadeIn`}>
       <div className={styles.pageTitle}>
@@ -102,69 +213,95 @@ const Payment = () => {
 
       <div className={styles.container}>
         <form onSubmit={handleFormSubmit}>
-          <span className={styles.chooseCard}>
-            <CiCreditCard1 className={styles.cardIcon} /> Kredi veya banka kartı
-          </span>
-
-          <div className={styles.formGroup}>
-            {/* <label htmlFor='cardNumber'>Kart numarası</label> */}
-
-            <input
-              className={styles.cardNumber}
-              type='text'
-              id='cardNumber'
-              value={cardNumber}
-              onChange={(e) => setCardNumber(e.target.value)}
-              required
-              placeholder='Kart Numarası'
-            />
-            <div className={styles.cardBottom}>
+          {/* semadan gelenler */}
+          <div className={styles.newCardInfos}>
+            <div className={styles.newCardInfo}>
+              <div className={styles.newCardTitle}>Kartın Adı</div>
               <input
-                className={styles.expiryDate}
-                placeholder='Son Kullanma Tarihi'
-                id='expiryDate'
-                value={expiryDate}
-                onChange={(e) => setExpiryDate(e.target.value)}
+                className={styles.newCardInput}
+                placeholder='Kart adını yazınız'
                 type='text'
-                required
-              />
+                value={cardTitle}
+                onChange={(e) => {
+                  setCardTitle(e.target.value);
+                }}
+                onBlur={() => handleBlur('cardTitle')}
+              ></input>
+              {errors.cardTitle && (
+                <span className={styles.error}>{errors.cardTitle}</span>
+              )}
+            </div>
+            <div className={styles.newCardInfo}>
+              <div className={styles.newCardTitle}>Kart numarası</div>
               <input
-                className={styles.cvv}
-                id='cvv'
-                value={cvv}
-                onChange={(e) => setCvv(e.target.value)}
-                placeholder='CVV'
+                className={styles.newCardInput}
+                placeholder='•••• •••• •••• ••••'
+                inputMode='numeric'
                 type='text'
-                required
-              />
+                maxLength='19'
+                value={cardNumber}
+                onChange={handleChangeCardNumber}
+                onBlur={() => handleBlur('cardNumber')}
+              ></input>
+              {errors.cardNumber && (
+                <span className={styles.error}>{errors.cardNumber}</span>
+              )}
+            </div>
+
+            <div className={styles.newCardInfo}>
+              <div className={styles.newCardTitle}>Kart üzerindeki isim</div>
+              <input
+                className={styles.newCardInput}
+                placeholder='Kart sahibinin adı ve soyadı'
+                value={fullname}
+                onChange={(e) => setFullname(e.target.value)}
+                onBlur={() => handleBlur('fullname')}
+              ></input>
+              {errors.fullname && (
+                <span className={styles.error}>{errors.fullname}</span>
+              )}
+            </div>
+
+            <div className={styles.newCardInfo}>
+              <div className={styles.newCardContent}>
+                <div className={styles.newCardItem}>
+                  <div className={styles.newCardTitle}>Son Kullanma Tarihi</div>
+                  <input
+                    className={`${styles.newCardInput} , ${styles.inputExpiryDate}`}
+                    placeholder='Ay / Yıl'
+                    inputMode='numeric'
+                    type='text'
+                    value={expiryDate}
+                    onChange={handleChangeExpiryDate}
+                    onBlur={() => handleBlur('expiryDate')}
+                  ></input>
+                  {errors.expiryDate && (
+                    <span className={styles.error}>{errors.expiryDate}</span>
+                  )}
+                </div>
+
+                <div className={styles.newCardItem}>
+                  <div
+                    className={`${styles.newCardTitle} , ${styles.inputCvv}`}
+                  >
+                    Güvenlik kodu
+                  </div>
+                  <input
+                    className={styles.newCardInput}
+                    placeholder='CVV'
+                    value={cvv}
+                    maxLength='3'
+                    onChange={(e) => setCvv(e.target.value)}
+                    onBlur={() => handleBlur('cvv')}
+                  ></input>
+                  {errors.cvv && (
+                    <span className={styles.error}>{errors.cvv}</span>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
 
-          <div className={styles.cardInfo}>
-            <input
-              className={styles.postalCode}
-              type='text'
-              id='postalCode'
-              value={postalCode}
-              onChange={(e) => setPostalCode(e.target.value)}
-              required
-              placeholder='Posta Kodu'
-            />
-
-            <div className={styles.formGroup}>
-              <label htmlFor='country'>Ülke/bölge</label>
-              <div className={styles.line}></div>
-
-              <select
-                id='country'
-                value={country}
-                onChange={(e) => setCountry(e.target.value)}
-                required
-              >
-                <option value='Türkiye'>Türkiye</option>
-              </select>
-            </div>
-          </div>
           <div className={styles.buttonDiv}>
             <button
               onClick={reservationHandler}
