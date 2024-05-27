@@ -20,7 +20,7 @@ const Login = () => {
       });
       dispatch({ type: 'LOGIN_SUCCESS', payload: res.data });
       console.log('giriş yaptın');
-      // navigate('/');
+      navigate('/');
     } catch (err) {
       dispatch({ type: 'LOGIN_FAILURE' });
     }
