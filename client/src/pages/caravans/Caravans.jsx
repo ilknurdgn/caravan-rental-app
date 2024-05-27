@@ -32,8 +32,10 @@ const Caravans = () => {
       setIsLoading(true);
       try {
         const res = await axios.get(
-          `/caravan/?page=${page}&limit=${caravansPerPage}&location=${selectedCity}&start=${startDate}&end=${endDate}&maxGuests=${peopleCount}`
+          `/caravan/?page=${page}&limit=${caravansPerPage}`
         );
+
+        // `/caravan/?page=${page}&limit=${caravansPerPage}&location=${selectedCity}&start=${startDate}&end=${endDate}&maxGuests=${peopleCount}`
 
         setFetch(res.data);
         console.log(res.data);
@@ -56,6 +58,11 @@ const Caravans = () => {
     getSingleCaravan();
   }, [page]);
 
+  useEffect(() => {
+    const savedFavorites = JSON.parse(localStorage.getItem('favorites')) || {};
+    setFavorites(savedFavorites);
+  }, []);
+
   const handlePageChange = (event, newPage) => {
     setPage(newPage);
   };
@@ -67,23 +74,20 @@ const Caravans = () => {
     }
 
     try {
+      let updatedFavorites = { ...favorites };
       if (favorites[caravanId]) {
         await axios.delete(`/favorites/delete`, {
           data: { caravanId: caravanId },
         });
-        setFavorites((prevFavorites) => ({
-          ...prevFavorites,
-          [caravanId]: false,
-        }));
+        delete updatedFavorites[caravanId];
       } else {
         await axios.post(`/favorites/add`, {
           caravanId: caravanId,
         });
-        setFavorites((prevFavorites) => ({
-          ...prevFavorites,
-          [caravanId]: true,
-        }));
+        updatedFavorites[caravanId] = true;
       }
+      setFavorites(updatedFavorites);
+      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
     } catch (err) {
       console.log(err);
     }
