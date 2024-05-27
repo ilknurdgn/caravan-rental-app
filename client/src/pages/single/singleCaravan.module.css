@@ -93,10 +93,10 @@ img {
   object-fit: cover;
 }
 
-.images-container:nth-child(2) {
+.images-container img:nth-child(2) {
   border-top-right-radius: 12px;
 }
-.images-container:nth-child(2) {
+.images-container img:nth-child(4) {
   border-bottom-right-radius: 12px;
 }
 
