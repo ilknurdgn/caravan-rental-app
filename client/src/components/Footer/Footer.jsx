@@ -5,16 +5,15 @@ import { FaInstagramSquare } from 'react-icons/fa';
 import { FaSquareXTwitter } from 'react-icons/fa6';
 import styles from './footer.module.css';
 import About from '../../pages/About/About';
-import { Link } from 'react-router-dom';
 const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.infos}>
         <ul>
           <li className={styles.content}>VANCA</li>
-          <Link to='/about'>
+          <a href='/about'>
             <li>Hakkımızda</li>
-          </Link>
+          </a>
           <li>İletişim</li>
           <li>Hukuk Politikası</li>
           <li>KVKK </li>
@@ -23,19 +22,19 @@ const Footer = () => {
 
         <ul>
           <li className={styles.content}>Sık Sorulan Sorular</li>
-          <Link to='/blogs'>
+          <a href='/blogs'>
             <li>Karavan Blog</li>
-          </Link>
-          <Link to='/how-to-rent'>
+          </a>
+          <a href='/how-to-rent'>
             <li>Nasıl Kiralanır?</li>
-          </Link>
+          </a>
         </ul>
 
         <ul>
           <li className={styles.content}>Karavanlar</li>
-          <Link to='/caravans'>
+          <a href='/caravans'>
             <li>Tüm Karavanlar</li>
-          </Link>
+          </a>
         </ul>
 
         <ul>
