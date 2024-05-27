@@ -18,8 +18,6 @@ const Payment = () => {
   const [selectedCard, setSelectedCard] = useState(null);
   const [cardData, setCardData] = useState([]);
   const [payState, setPayState] = useState(false);
-  const [postalCode, setPostalCode] = useState('');
-  const [country, setCountry] = useState('Türkiye');
   const { id } = useParams();
   const { user } = useContext(Context);
   const { state } = useLocation();
@@ -28,8 +26,6 @@ const Payment = () => {
   const start = startDate ? dayjs(startDate.$d) : null;
   const end = endDate ? dayjs(endDate.$d) : null;
   dayjs.locale('tr');
-
-  //from sema
   const [createNewCard, setCreateNewCard] = useState(false);
   const [cardNumber, setCardNumber] = useState('');
   const [expiryDate, setExpiryDate] = useState('');
@@ -61,15 +57,6 @@ const Payment = () => {
     }, 3000);
   };
 
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await reservationHandler();
-      handlePay();
-    } catch (error) {
-      console.error('Error making reservation: ', error);
-    }
-  };
   useEffect(() => {
     const getSingleCaravan = async () => {
       try {
@@ -178,6 +165,17 @@ const Payment = () => {
     return numericValue.slice(0, 5); // Maksimum 5 karakter (MM/YY)
   };
 
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await reservationHandler();
+      await postCardInfos();
+      handlePay();
+    } catch (error) {
+      console.error('Error making reservation: ', error);
+    }
+  };
+
   const reservationHandler = async () => {
     try {
       const startDatePlusOne = start.add(1, 'day');
@@ -197,11 +195,32 @@ const Payment = () => {
   };
 
   const postCardInfos = async () => {
+    const paymentData = {
+      price: caravanData?.dailyPrice * days,
+      paidPrice: caravanData?.dailyPrice * days,
+      paymentCard: {
+        cardHolderName: fullname,
+        cardNumber: cardNumber.replace(/\s/g, ''),
+        expireMonth: expiryDate.split('/')[0],
+        expireYear: expiryDate.split('/')[1],
+        cvc: cvv,
+        registerCard: '0',
+      },
+      buyer: {
+        name: user?.firstName,
+        surname: user.lastName,
+        email: user?.email,
+      },
+    };
     try {
+      const response = await axios.post('/payment/createPayment', paymentData);
+      console.log('Payment response:', response.data);
     } catch (err) {
       console.log(err);
     }
+    console.log(paymentData);
   };
+
   return (
     <div className={`${styles.payContainer} fadeIn`}>
       <div className={styles.pageTitle}>
@@ -213,7 +232,6 @@ const Payment = () => {
 
       <div className={styles.container}>
         <form onSubmit={handleFormSubmit}>
-          {/* semadan gelenler */}
           <div className={styles.newCardInfos}>
             <div className={styles.newCardInfo}>
               <div className={styles.newCardTitle}>Kartın Adı</div>
