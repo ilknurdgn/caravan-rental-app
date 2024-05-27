@@ -7,7 +7,7 @@
   border-radius: 12px;
   padding: 10px 50px 10px 30px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  cursor: pointer;
+  position: relative;
 }
 
 .imgContainer {
@@ -57,6 +57,23 @@
   font-weight: 500;
 }
 
+.stateContainer {
+}
+
+.cancelButton {
+  background-color: #b30000;
+  color: #fff;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 20px;
+  position: absolute;
+  top: 10px;
+  right: 55px;
+  cursor: pointer;
+}
+
 .cancelled {
   color: #b30000;
 }
@@ -67,4 +84,83 @@
 
 .ongoing {
   color: #ffc94a;
+}
+
+.isSureToDeleteContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.48);
+  z-index: 1001;
+}
+
+.isSureToDelete {
+  width: 470px;
+  height: 368px;
+  border: 1px solid #646464;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 72px;
+  background-color: #ffffff;
+  position: absolute;
+  z-index: 999;
+  border-radius: 8px;
+  border: solid 1px #e5e5e5;
+}
+
+.warningIconContainer {
+  margin-bottom: 24px;
+}
+
+.warningIcon {
+  color: rgb(212, 11, 11);
+  width: 50px;
+  height: 50px;
+}
+
+.warningText {
+  font-size: 16px;
+  color: #646464;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 16px;
+}
+
+.cancelIcon,
+.deleteButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  cursor: pointer;
+  outline: none;
+  padding: 8px;
+  height: 48px;
+  min-width: 160px;
+  border: 2px solid rgb(204, 204, 204);
+  background-color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.deleteButton {
+  background-color: rgb(240, 21, 11);
+  color: #fff;
+  border-color: rgb(240, 21, 11);
+}
+
+.deleteButton:hover {
+  background-color: rgb(212, 11, 11);
+  border-color: rgb(212, 11, 11);
+  transition: all 150ms ease 0s;
 }
