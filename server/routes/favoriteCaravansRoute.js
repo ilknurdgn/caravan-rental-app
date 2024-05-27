@@ -1,10 +1,12 @@
 const router = require('express').Router();
 const favoriteCaravanController = require('../controllers/favoriteCaravanController');
+const authMiddleware = require('../middlewares/authMiddleware');
 
-router.post('/add', favoriteCaravanController.add);
-router.delete('/delete', favoriteCaravanController.delete);
+router.post('/add', authMiddleware, favoriteCaravanController.add);
+router.delete('/delete', authMiddleware, favoriteCaravanController.delete);
 router.get(
-  '/favoriteCaravansList/:id',
+  '/favoriteCaravansList',
+  authMiddleware,
   favoriteCaravanController.favoriteCaravansList
 );
 
