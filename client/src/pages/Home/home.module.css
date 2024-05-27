@@ -21,6 +21,7 @@
 }
 
 .search {
+  width: 840px;
   position: absolute;
   top: 35%;
   left: 50%;
@@ -33,14 +34,80 @@
   padding: 5px 0;
 }
 
+.datePicker {
+  width: 75%;
+  position: absolute;
+  top: 80px;
+  left: 35px;
+  background-color: #ffffff;
+  border-radius: 32px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
 .selecterContent {
   display: flex;
+  width: calc(100% - 60px);
+}
+
+.location {
+  width: 250px;
+  height: 400px;
+  overflow-y: scroll;
+  background-color: #fff;
+  position: absolute;
+  top: 80px;
+  left: 0;
+  border-top-left-radius: 32px;
+  border-bottom-left-radius: 32px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+.location ul {
+  display: flex;
+  flex-direction: column;
+}
+
+.location ul li {
+  cursor: pointer;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 12px 32px;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.location ul li:hover {
+  background-color: #f3f3ee;
+}
+
+.activeLocation {
+  background-color: #ff385c;
+  color: #fff;
+}
+
+.activeLocation:hover {
+  background-color: rgba(255, 56, 92, 0.9) !important;
+}
+
+.peopleCountInput::placeholder,
+.searchLabel {
+  color: gray;
+  font-size: 14px;
+}
+
+.selecterContent {
+  display: flex;
+  width: calc(100% - 60px);
+  height: 48px;
   /* gap: 100px; */
 }
 
 .item {
   padding: 0px 24px;
   border-right: 1px solid #dddddd;
+  cursor: pointer;
+  flex: 1;
 }
 
 .item:last-child {
@@ -54,6 +121,7 @@
 .input {
   border: none;
   /* width: 130px; */
+  outline: none;
 }
 
 .iconContainer {
