@@ -158,9 +158,7 @@ br {
 }
 
 .blog-entry::first-letter {
-  font-size: 1.5em; /* İlk harfi büyüt */
-  font-weight: bold; /* İlk harfi kalın yap */
-  float: left; /* Sol tarafa yasla */
-  margin-left: 12px; /* Sağ tarafına boşluk bırak */
-  line-height: 1; /* Satır yüksekliğini ayarla */
+  margin-left: 20px;
+  font-size: 30px;
+  font-weight: 500;
 }
