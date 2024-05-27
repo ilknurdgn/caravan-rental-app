@@ -24,7 +24,7 @@ const Favorites = () => {
     setIsLoading(true);
     const getFavoriteCaravans = async () => {
       const res = await axios.get(
-        `/favorites/favoriteCaravansList/${userId}/?page=${page}&limit=${caravansPerPage}`
+        `/favorites/favoriteCaravansList/?page=${page}&limit=${caravansPerPage}`
       );
       setFavoriteCaravans(res.data);
       // console.log(res.data);
@@ -39,7 +39,7 @@ const Favorites = () => {
   const deleteFavoriteCaravan = async (caravanId) => {
     try {
       await axios.delete(`/favorites/delete`, {
-        data: { userId: userId, caravanId: caravanId },
+        data: { caravanId: caravanId },
       });
       window.location.replace('/favorites');
     } catch (err) {

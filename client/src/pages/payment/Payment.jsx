@@ -180,7 +180,6 @@ const Payment = () => {
     try {
       const startDatePlusOne = start.add(1, 'day');
       const reservationData = {
-        userId: user._id,
         caravanId: id,
         startDate: startDatePlusOne.toDate(),
         endDate: end.toDate(),

@@ -52,7 +52,6 @@ const Caravans = () => {
   const addFavoriteCaravans = async (caravanId) => {
     try {
       await axios.post(`/favorites/add`, {
-        userId: user._id,
         caravanId: caravanId,
       });
       setFavorites({ ...favorites, [caravanId]: true });
