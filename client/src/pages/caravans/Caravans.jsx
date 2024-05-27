@@ -24,16 +24,27 @@ const Caravans = () => {
   const navigate = useNavigate();
   console.log(user);
 
+  const { state } = useLocation();
+  const { selectedCity, startDate, endDate, peopleCount } = state || {};
+
   useEffect(() => {
     const getSingleCaravan = async () => {
       setIsLoading(true);
       try {
         const res = await axios.get(
-          `/caravan/?page=${page}&limit=${caravansPerPage}`
+          `/caravan/?page=${page}&limit=${caravansPerPage}&location=${selectedCity}&start=${startDate}&end=${endDate}&maxGuests=${peopleCount}`
         );
+
         setFetch(res.data);
         console.log(res.data);
         setTotalCaravans(res.data.caravans);
+
+        // Favori durumu güncelleniyor
+        const favs = {};
+        res.data.caravans.forEach((caravan) => {
+          favs[caravan._id] = caravan.isFavorite;
+        });
+        setFavorites(favs);
         setLocation();
         window.scrollTo(0, 0);
         setTimeout(() => setIsLoading(false), 1000);
@@ -49,13 +60,29 @@ const Caravans = () => {
     setPage(newPage);
   };
 
-  const addFavoriteCaravans = async (caravanId) => {
+  const toggleFavorite = async (caravanId) => {
+    if (!user || !user._id) {
+      navigate('/login');
+      return;
+    }
+
     try {
-      await axios.post(`/favorites/add`, {
-        caravanId: caravanId,
-      });
-      if (!favorites[caravanId]) {
-        setFavorites({ ...favorites, [caravanId]: true });
+      if (favorites[caravanId]) {
+        await axios.delete(`/favorites/delete`, {
+          data: { caravanId: caravanId },
+        });
+        setFavorites((prevFavorites) => ({
+          ...prevFavorites,
+          [caravanId]: false,
+        }));
+      } else {
+        await axios.post(`/favorites/add`, {
+          caravanId: caravanId,
+        });
+        setFavorites((prevFavorites) => ({
+          ...prevFavorites,
+          [caravanId]: true,
+        }));
       }
     } catch (err) {
       console.log(err);
@@ -93,14 +120,7 @@ const Caravans = () => {
                 </Link>
                 {/* Favori kısmı */}
                 <div
-                  onClick={() => {
-                    if (user && user._id) {
-                      addFavoriteCaravans(caravan._id);
-                    } else {
-                      // Kullanıcı giriş yapmamışsa login sayfasına yönlendir
-                      navigate('/login');
-                    }
-                  }}
+                  onClick={() => toggleFavorite(caravan._id)}
                   className={styles['heartIcon-div']}
                 >
                   {user && user._id && favorites[caravan._id] ? (
