@@ -89,7 +89,7 @@ const Approval = () => {
                 {caravan.maxGuests} kişilik · {caravan.yearOfManufacture} yapımı
               </span>
               <span className={styles.dateOf}>
-                {days} gece · {''}
+                {days} gün · {''}
                 {startDate && end
                   ? `${start.format('DD MMM')} - ${end.format('DD MMM')}`
                   : 'Tarih seçilmedi'}
