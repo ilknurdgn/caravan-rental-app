@@ -49,6 +49,7 @@
 }
 
 .inputContainer input {
+  width: 100%;
   position: relative;
   font-size: 16px;
   border-style: none;
@@ -81,6 +82,7 @@
   color: #fff;
   margin-top: 5px;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .passwordInputContainer {
@@ -101,9 +103,9 @@
 }
 
 .passworSaveButton {
+  width: max-content;
   padding: 14px 24px;
   background-color: #222;
-  width: min-content; /*içindeki content kadar yer kapla */
   height: min-content;
   color: #fff;
   background-color: #008489;
