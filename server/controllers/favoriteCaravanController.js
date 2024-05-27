@@ -5,12 +5,7 @@ const FavoriteCaravan = require('../models/favoriteCaravanModel');
 // Add favorite caravan
 exports.add = async (req, res) => {
   try {
-    const userId = req.body.userId;
-    const user = await User.findById(userId);
-
-    if (!user) {
-      return res.status(404).json({ message: 'User not found' });
-    }
+    const userId = req.user._id.toString();
 
     const caravanId = req.body.caravanId;
     const caravan = await Caravan.findById(caravanId);
@@ -48,12 +43,7 @@ exports.add = async (req, res) => {
 // DELETE FAVORİTE CARAVAN
 exports.delete = async (req, res) => {
   try {
-    const userId = req.body.userId;
-    const user = await User.findById(userId);
-
-    if (!user) {
-      return res.status(404).json({ message: 'User not found' });
-    }
+    const userId = req.user._id.toString();
 
     const caravanId = req.body.caravanId;
     const caravan = await Caravan.findById(caravanId);
@@ -88,12 +78,7 @@ exports.favoriteCaravansList = async (req, res) => {
   const limit = req.query.limit;
 
   try {
-    const userId = req.params.id;
-    const user = await User.findById(userId);
-
-    if (!user) {
-      return res.status(404).json({ message: 'User not found' });
-    }
+    const userId = req.user._id.toString();
 
     const data = await FavoriteCaravan.findOne({
       user: userId,
@@ -114,7 +99,7 @@ exports.favoriteCaravansList = async (req, res) => {
 
     res.status(200).json({
       caravans,
-      totalPage,
+      totalPage: totalPage,
       currentPage: page,
       totalCaravan: caravansId.length,
     });
