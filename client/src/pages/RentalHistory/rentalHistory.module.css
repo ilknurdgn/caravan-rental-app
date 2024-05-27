@@ -1,11 +1,6 @@
 .container {
   max-width: 900px;
   width: 100%;
-  height: calc(100vh - 200px);
-  margin: 0 auto;
-  /* display: flex;
-    flex-direction: column;
-    justify-content: center; */
   margin: 90px 0;
 }
 
@@ -20,4 +15,10 @@
   font-weight: 700;
   margin-bottom: 40px;
   display: inline-block;
+}
+
+.RentalHistoryCards {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
