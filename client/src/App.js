@@ -32,8 +32,8 @@ function App() {
   const { user } = useContext(Context);
   return (
     <div className='main'>
-      <Navbar />
       <BrowserRouter>
+        <Navbar />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/register' element={<Register />} />
@@ -60,8 +60,8 @@ function App() {
           <Route path='/approval/:id' element={<Approval />} />
           <Route path='/payment/:id' element={<Payment />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
-      <Footer />
     </div>
   );
 }
