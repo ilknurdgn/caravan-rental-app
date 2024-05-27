@@ -5,12 +5,7 @@ const Caravan = require('../models/caravanModel');
 // ADD BOOKING
 exports.booking = async (req, res) => {
   try {
-    const userId = req.body.userId;
-    const user = await User.findById(userId);
-
-    if (!user) {
-      return res.status(404).json({ message: 'User not found!' });
-    }
+    const userId = req.user._id.toString();
 
     const caravanId = req.body.caravanId;
     const caravan = await Caravan.findById(caravanId);
@@ -74,12 +69,7 @@ exports.getSingleBooking = async (req, res) => {
 // GET ALL BOOKINGS
 exports.getBookings = async (req, res) => {
   try {
-    const userId = req.body.userId;
-    const user = await User.findById(userId);
-
-    if (!user) {
-      return res.status(404).json({ message: 'User not found!' });
-    }
+    const userId = req.user._id.toString();
 
     const rentals = await Rental.find({ userId: userId });
 
@@ -138,8 +128,8 @@ exports.cancelBooking = async (req, res) => {
         const index = caravan.notAvailableDates.indexOf(notAvailableDate);
         if (index > -1) {
           caravan.notAvailableDates.splice(index, 1);
+          caravan.save();
         }
-        caravan.save();
       }
     });
 
