@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import styles from './singleBlog.module.css';
 import { FaRegCalendarAlt } from 'react-icons/fa';
 import { MdOutlineRemoveRedEye } from 'react-icons/md';
@@ -6,6 +6,7 @@ import { BsTrash3 } from 'react-icons/bs';
 import { CiEdit } from 'react-icons/ci';
 import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { Context } from '../../context/Contex';
 
 const SingleBlog = () => {
   const [updateMode, setUpdateMode] = useState(false);
@@ -15,6 +16,7 @@ const SingleBlog = () => {
   const { state } = useLocation();
   const { id } = useParams();
   const navigate = useNavigate();
+  const { user } = useContext(Context);
 
   const formatDate = (dateString) => {
     const options = { day: '2-digit', month: 'long', year: 'numeric' };
@@ -54,29 +56,9 @@ const SingleBlog = () => {
       console.log(err);
     }
   };
-
+  console.log(blog);
   return (
     <div className={styles['single-blog']}>
-      {updateMode ? (
-        <input
-          type='text'
-          value={title}
-          className={styles.singlePostTitleInput}
-          onChange={(e) => setTitle(e.target.value)}
-          autoFocus
-        />
-      ) : (
-        <span className={styles.title}>{blog.title}</span>
-      )}
-
-      <div className={styles.update}>
-        <span onClick={() => setUpdateMode(true)} className={styles.edit}>
-          <CiEdit />
-        </span>
-        <span onClick={deleteBlog} className={styles.delete}>
-          <BsTrash3 />
-        </span>
-      </div>
       <div className={styles['blog-container']}>
         <img
           className={styles.image}
@@ -84,15 +66,49 @@ const SingleBlog = () => {
           alt=''
         />
 
+        {updateMode ? (
+          <input
+            type='text'
+            value={title}
+            className={styles.singlePostTitleInput}
+            onChange={(e) => setTitle(e.target.value)}
+            autoFocus
+          />
+        ) : (
+          <div className={styles.contain}>
+            <div>
+              <span className={styles.title}>{blog.title}</span>
+            </div>
+            {blog.userId == user._id && (
+              <div className={styles.update}>
+                <span
+                  onClick={() => setUpdateMode(true)}
+                  className={styles.edit}
+                >
+                  <CiEdit />
+                </span>
+                <span onClick={deleteBlog} className={styles.delete}>
+                  <BsTrash3 />
+                </span>
+              </div>
+            )}
+          </div>
+        )}
+
         <div className={styles.items}>
-          <span className={styles.item}>
-            <MdOutlineRemoveRedEye />
-            {blog.views}
-          </span>
-          <span className={styles.item}>
-            <FaRegCalendarAlt />
-            {formatDate(blog.createdAt)}
-          </span>
+          <div className={styles.author}>
+            <span> Yazar : {blog.user}</span>
+          </div>
+          <div className={styles.info}>
+            <span className={styles.item}>
+              <FaRegCalendarAlt />
+              {formatDate(blog.createdAt)}
+            </span>
+            <span className={styles.item}>
+              <MdOutlineRemoveRedEye />
+              {blog.views}
+            </span>
+          </div>
         </div>
 
         <div className={styles['blog-content']}>
@@ -105,7 +121,6 @@ const SingleBlog = () => {
             />
           ) : (
             <div>
-              <span className={styles.subtitle}>{blog.title}</span>
               <p className={styles['blog-entry']}>{blog.desc}</p>
             </div>
           )}
