@@ -42,7 +42,7 @@ exports.booking = async (req, res) => {
 exports.getSingleBooking = async (req, res) => {
   try {
     const rentalId = req.params.id;
-    const rental = await Rental.findById(rentalId);
+    const rental = await Rental.findById(rentalId).populate('caravanId');
 
     if (!rental) {
       return res.status(404).json({ message: 'Rental not found!' });
@@ -71,7 +71,7 @@ exports.getBookings = async (req, res) => {
   try {
     const userId = req.user._id.toString();
 
-    const rentals = await Rental.find({ userId: userId });
+    const rentals = await Rental.find({ userId: userId }).populate('caravanId');
 
     for (let rental of rentals) {
       const currentDate = new Date();
