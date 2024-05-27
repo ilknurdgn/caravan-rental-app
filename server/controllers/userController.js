@@ -3,47 +3,39 @@ const User = require('../models/userModel');
 
 //UPDATE
 exports.update = async (req, res) => {
-  if (req.body.userId === req.params.id) {
-    if (req.body.password) {
-      const salt = await bcrypt.genSalt(10);
-      req.body.password = await bcrypt.hash(req.body.password, salt);
-    }
+  const userId = req.user._id.toString();
 
-    try {
-      const updatedUser = await User.findByIdAndUpdate(
-        req.params.id,
-        {
-          $set: req.body,
-        },
-        { new: true }
-      );
+  if (req.body.password) {
+    const salt = await bcrypt.genSalt(10);
+    req.body.password = await bcrypt.hash(req.body.password, salt);
+  }
 
-      res.status(200).json(updatedUser);
-    } catch (error) {
-      res.status(500).json(error);
-    }
-  } else {
-    res.status(401).json('You can update only your account!');
-    console.log(req.bodyuserId);
+  try {
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      {
+        $set: req.body,
+      },
+      { new: true }
+    );
+
+    res.status(200).json(updatedUser);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: 'User information could not be updated', error });
   }
 };
 
 //DELETE
 exports.delete = async (req, res) => {
-  if (req.body.userId === req.params.id) {
-    try {
-      const user = await User.findById(req.params.id);
-      try {
-        await User.findByIdAndDelete(req.params.id);
-        res.status(200).json('User has been deleted.');
-      } catch (error) {
-        res.status(500).json(error);
-      }
-    } catch (error) {
-      res.status(404).json('User not found');
-    }
-  } else {
-    res.status(401).json('You can delete only account!');
+  const userId = req.user._id.toString();
+
+  try {
+    await User.findByIdAndDelete(userId);
+    res.status(200).json('User has been deleted.');
+  } catch (error) {
+    res.status(500).json({ message: 'User could not be deleted.', error });
   }
 };
 
@@ -55,6 +47,6 @@ exports.getUser = async (req, res) => {
 
     res.status(200).json(others);
   } catch (error) {
-    res.status(500).json(error);
+    res.status(500).json({ message: 'User not found!', error });
   }
 };
