@@ -126,4 +126,14 @@
   padding: 10px 16px;
   border-radius: 12px;
   background-color: #fff4f6;
+  width: auto;
+}
+
+.errorIcon {
+  font-size: 20px;
+}
+
+.deneme {
+  display: flex;
+  align-items: center;
 }
