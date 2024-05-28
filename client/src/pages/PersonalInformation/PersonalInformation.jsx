@@ -48,9 +48,11 @@ const PersonalInformation = () => {
         lastName: surname,
       });
       setUserData({ name, surname });
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }
+    setIsActiveName(false);
   };
 
   const handleSubmitEmail = async () => {
@@ -62,6 +64,7 @@ const PersonalInformation = () => {
     } catch (error) {
       console.log(error);
     }
+    setIsActiveMail(false);
   };
 
   const handleVisibleName = (e) => {
