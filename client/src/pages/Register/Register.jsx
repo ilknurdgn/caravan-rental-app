@@ -102,10 +102,10 @@ const Register = () => {
         </form>
         {error && (
           <span className={styles.error}>
-            <div className={styles.deneme}>
+            <div className={styles.errorDiv}>
               <RiErrorWarningLine className={styles.errorIcon} />
             </div>
-            <div className={styles.deneme}>
+            <div className={styles.errorDiv}>
               <span>{errorMessage}</span>
             </div>
           </span>

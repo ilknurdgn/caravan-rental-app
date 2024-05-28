@@ -92,12 +92,12 @@ const Login = () => {
         {showErrors && emailError && (
           <p className={styles.errorText}>
             {' '}
-            <RiErrorWarningLine /> {emailError}
+            <RiErrorWarningLine className={styles.errorIcon} /> {emailError}
           </p>
         )}
         {showErrors && passwordError && (
           <p className={styles.errorText}>
-            <RiErrorWarningLine /> {passwordError}
+            <RiErrorWarningLine className={styles.errorIcon} /> {passwordError}
           </p>
         )}
       </div>
