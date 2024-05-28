@@ -15,7 +15,7 @@ import { MdExpandMore } from 'react-icons/md';
 import Comments from '../../components/comments/Comments';
 import { addDays, differenceInDays } from 'date-fns';
 import styles from './singleCaravan.module.css';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { color } from '@mui/system';
 import dayjs from 'dayjs';
 import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
@@ -37,7 +37,6 @@ LicenseInfo.setLicenseKey(
 const SingleCaravan = () => {
   const { reservationData, dispatch } = useReservation();
   const { id } = useParams(); //url'den id alır
-  const [state, setState] = useState([]);
   const [isFavorited, setIsFavorited] = useState(false);
   const [favorites, setFavorites] = useState([]);
 
@@ -56,6 +55,9 @@ const SingleCaravan = () => {
   const [isClicked, setIsClicked] = useState(false);
   const { user } = useContext(Context);
   dayjs.locale('tr');
+
+  const { state } = useLocation();
+  const { peopleCount } = state || {};
 
   useEffect(() => {
     const getSingleCaravan = async () => {
@@ -278,13 +280,6 @@ const SingleCaravan = () => {
             </li>
           </ul>
 
-          <ul className={styles.review}>
-            <li>
-              <IoMdStar className={styles['star-icon']} /> 4,83 · 1,800
-              değerlendirme
-            </li>
-          </ul>
-
           <div className={styles.profile}>
             <div className={styles['profile-pic']}>
               <img
@@ -352,10 +347,6 @@ const SingleCaravan = () => {
               <p className={styles.price}>
                 {caravanData?.dailyPrice}₺<span>{days} gün</span>
               </p>
-              <p className={styles['total-rating']}>
-                <IoMdStar className={styles.icon} />
-                4.83 · 1,800 değerlendirme
-              </p>
             </div>
             <div className={styles['check-container']}>
               <div className={styles.reservation}>
@@ -372,7 +363,7 @@ const SingleCaravan = () => {
                 <div className={styles.guest}>
                   <div className={styles['select-guests']}>
                     <span>MİSAFİR</span>
-                    <span>1 misafir</span>
+                    <span> {caravanData?.maxGuests} misafir</span>
                   </div>
                   <div className={styles.moreIcon}>
                     {' '}
