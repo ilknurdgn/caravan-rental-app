@@ -24,17 +24,30 @@ const Caravans = () => {
   const navigate = useNavigate();
   console.log(user);
 
+  const { state } = useLocation();
+  const { selectedCity, startDate, endDate, peopleCount } = state || {};
+
+  //add to local
+  useEffect(() => {
+    const savedFavorites = JSON.parse(localStorage.getItem('favorites')) || {};
+    setFavorites(savedFavorites);
+  }, []);
+
   useEffect(() => {
     const getSingleCaravan = async () => {
       setIsLoading(true);
       try {
         const res = await axios.get(
-          `/caravan/?page=${page}&limit=${caravansPerPage}`
+          `/caravan/?page=${page}&limit=${caravansPerPage}&location=${selectedCity}&start=${startDate}&end=${endDate}&maxGuests=${peopleCount}`
         );
+
+        const fetchedCaravans = res.data.caravans.map((caravan) => ({
+          ...caravan,
+          isFavorite: !!favorites[caravan._id],
+        }));
+
         setFetch(res.data);
-        console.log(res.data);
-        setTotalCaravans(res.data.caravans);
-        setLocation();
+        setTotalCaravans(fetchedCaravans);
         window.scrollTo(0, 0);
         setTimeout(() => setIsLoading(false), 1000);
       } catch (error) {
@@ -43,18 +56,42 @@ const Caravans = () => {
       }
     };
     getSingleCaravan();
-  }, [page]);
+  }, [page, favorites]);
 
   const handlePageChange = (event, newPage) => {
     setPage(newPage);
   };
 
-  const addFavoriteCaravans = async (caravanId) => {
+  const toggleFavorite = async (caravanId) => {
+    if (!user || !user._id) {
+      navigate('/login');
+      return;
+    }
+
     try {
-      await axios.post(`/favorites/add`, {
-        caravanId: caravanId,
+      let updatedFavorites = { ...favorites };
+      let updatedCaravans = totalCaravans.map((caravan) => {
+        if (caravan._id === caravanId) {
+          return { ...caravan, isFavorite: !caravan.isFavorite };
+        }
+        return caravan;
       });
-      setFavorites({ ...favorites, [caravanId]: true });
+
+      if (favorites[caravanId]) {
+        await axios.delete(`/favorites/delete`, {
+          data: { caravanId: caravanId },
+        });
+        delete updatedFavorites[caravanId];
+      } else {
+        await axios.post(`/favorites/add`, {
+          caravanId: caravanId,
+        });
+        updatedFavorites[caravanId] = true;
+      }
+
+      setFavorites(updatedFavorites);
+      setTotalCaravans(updatedCaravans);
+      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
     } catch (err) {
       console.log(err);
     }
@@ -75,23 +112,16 @@ const Caravans = () => {
           <div className={styles.caravans}>
             {totalCaravans.map((caravan, index) => (
               <div className={styles.iconDiv} key={index}>
-                <Link className={styles.links} to={`/caravan/${caravan._id}`}>
-                  <Caravan
-                    totalCaravans={totalCaravans}
-                    setTotalCaravans={setTotalCaravans}
-                    {...caravan}
-                  />
+                <Link
+                  className={styles.links}
+                  to={`/caravan/${caravan._id}`}
+                  state={{ startDate, endDate, peopleCount }}
+                >
+                  <Caravan totalCaravans={totalCaravans} {...caravan} />
                 </Link>
                 {/* Favori kısmı */}
                 <div
-                  onClick={() => {
-                    if (user && user._id) {
-                      addFavoriteCaravans(caravan._id);
-                    } else {
-                      // Kullanıcı giriş yapmamışsa login sayfasına yönlendir
-                      navigate('/login');
-                    }
-                  }}
+                  onClick={() => toggleFavorite(caravan._id)}
                   className={styles['heartIcon-div']}
                 >
                   {user && user._id && favorites[caravan._id] ? (

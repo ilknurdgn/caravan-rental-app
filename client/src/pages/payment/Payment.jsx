@@ -33,6 +33,8 @@ const Payment = () => {
   const [cvv, setCvv] = useState('');
   const [cardTitle, setCardTitle] = useState('');
 
+  console.log(state);
+
   const [errors, setErrors] = useState({
     cardNumber: '',
     expiryDate: '',
@@ -353,9 +355,6 @@ const Payment = () => {
                   {startDate && end
                     ? `${start.format('DD MMM')} - ${end.format('DD MMM')}`
                     : 'Tarih seçilmedi'}
-                </span>
-                <span className={styles.star}>
-                  <IoMdStar className={styles.startIcon} /> 4.97
                 </span>
               </div>
             </div>
