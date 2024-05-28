@@ -41,6 +41,22 @@ const Favorites = () => {
       await axios.delete(`/favorites/delete`, {
         data: { caravanId: caravanId },
       });
+      // LocalStorage'dan favori karavanı kaldır
+      const savedFavorites =
+        JSON.parse(localStorage.getItem('favorites')) || {};
+      delete savedFavorites[caravanId];
+      localStorage.setItem('favorites', JSON.stringify(savedFavorites));
+
+      // Favori karavanlar listesini güncelle
+      setCaravans(caravans.filter((caravan) => caravan._id !== caravanId));
+      setFavoriteCaravans((prevFavorites) => ({
+        ...prevFavorites,
+        caravans: prevFavorites.caravans.filter(
+          (caravan) => caravan._id !== caravanId
+        ),
+        totalCaravan: prevFavorites.totalCaravan - 1,
+      }));
+
       window.location.replace('/favorites');
     } catch (err) {
       console.log(err);

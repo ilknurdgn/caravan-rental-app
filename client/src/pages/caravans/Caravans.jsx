@@ -41,17 +41,13 @@ const Caravans = () => {
           `/caravan/?page=${page}&limit=${caravansPerPage}&location=${selectedCity}&start=${startDate}&end=${endDate}&maxGuests=${peopleCount}`
         );
 
-        setFetch(res.data);
-        console.log(res.data);
-        setTotalCaravans(res.data.caravans);
+        const fetchedCaravans = res.data.caravans.map((caravan) => ({
+          ...caravan,
+          isFavorite: !!favorites[caravan._id],
+        }));
 
-        // Favori durumu güncelleniyor
-        const favs = {};
-        res.data.caravans.forEach((caravan) => {
-          favs[caravan._id] = caravan.isFavorite;
-        });
-        setFavorites(favs);
-        setLocation();
+        setFetch(res.data);
+        setTotalCaravans(fetchedCaravans);
         window.scrollTo(0, 0);
         setTimeout(() => setIsLoading(false), 1000);
       } catch (error) {
@@ -60,7 +56,7 @@ const Caravans = () => {
       }
     };
     getSingleCaravan();
-  }, [page]);
+  }, [page, favorites]);
 
   const handlePageChange = (event, newPage) => {
     setPage(newPage);
@@ -74,6 +70,13 @@ const Caravans = () => {
 
     try {
       let updatedFavorites = { ...favorites };
+      let updatedCaravans = totalCaravans.map((caravan) => {
+        if (caravan._id === caravanId) {
+          return { ...caravan, isFavorite: !caravan.isFavorite };
+        }
+        return caravan;
+      });
+
       if (favorites[caravanId]) {
         await axios.delete(`/favorites/delete`, {
           data: { caravanId: caravanId },
@@ -85,7 +88,9 @@ const Caravans = () => {
         });
         updatedFavorites[caravanId] = true;
       }
+
       setFavorites(updatedFavorites);
+      setTotalCaravans(updatedCaravans);
       localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
     } catch (err) {
       console.log(err);
