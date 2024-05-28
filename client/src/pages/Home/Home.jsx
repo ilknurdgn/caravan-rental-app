@@ -12,7 +12,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { FreeMode, Pagination, Navigation } from 'swiper/modules';
 import './styles.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { IoIosClose } from 'react-icons/io';
 
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
@@ -22,6 +22,8 @@ import { DateRangeCalendar } from '@mui/x-date-pickers-pro/DateRangeCalendar';
 import { LicenseInfo } from '@mui/x-license';
 import dayjs from 'dayjs';
 import locations from '../../helpers/locations.json';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 LicenseInfo.setLicenseKey(
   'e0d9bb8070ce0054c9d9ecb6e82cb58fTz0wLEU9MzI0NzIxNDQwMDAwMDAsUz1wcmVtaXVtLExNPXBlcnBldHVhbCxLVj0y'
@@ -34,6 +36,26 @@ const Home = () => {
   const [endDate, setEndDate] = useState('');
   const [selectedCity, setSelectedCity] = useState('');
   const [peopleCount, setPeopleCount] = useState('');
+  const [blogs, setBlogs] = useState([]);
+  const limit = 5;
+
+  useEffect(() => {
+    const getBlog = async () => {
+      try {
+        const res = await axios.get(`/blog/allBlogs/?limit=${limit}`);
+        setBlogs(res.data.blogs);
+        console.log(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getBlog();
+  }, []);
+
+  const handleSearchClick = async () => {
+    try {
+    } catch (error) {}
+  };
 
   const formattedDate = (dateString) => {
     // Gelen tarih string'ini Date nesnesine çeviriyoruz.
@@ -189,9 +211,14 @@ const Home = () => {
               />
             </div>
           </div>
-          <div className={styles.iconContainer}>
-            <IoSearchCircleSharp />
-          </div>
+          <Link
+            to='/caravans'
+            state={{ selectedCity, startDate, endDate, peopleCount }}
+          >
+            <div className={styles.iconContainer}>
+              <IoSearchCircleSharp />
+            </div>
+          </Link>
 
           {isOpenDatePicker && (
             <div className={styles.datePicker}>
@@ -258,15 +285,12 @@ const Home = () => {
             modules={[FreeMode, Pagination, Navigation]}
             className='mySwiper'
           >
-            <SwiperSlide>{/* <Blog /> */}</SwiperSlide>
-            <SwiperSlide>{/* <Blog /> */}</SwiperSlide>
-            <SwiperSlide>{/* <Blog /> */}</SwiperSlide>
-            <SwiperSlide>{/* <Blog /> */}</SwiperSlide>
-            <SwiperSlide>{/* <Blog /> */}</SwiperSlide>
+            {blogs.map((blog, index) => (
+              <SwiperSlide key={index}>
+                <Blog blog={blog} />
+              </SwiperSlide>
+            ))}
           </Swiper>
-          {/* <Blog />
-          <Blog />
-          <Blog /> */}
         </div>
       </div>
       <div className={styles.aiContainer} onClick={handleClick}>

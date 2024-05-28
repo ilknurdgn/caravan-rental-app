@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import styles from './personalInformation.module.css';
 import { differenceInDays } from 'date-fns';
+import { Context } from './../../context/Contex';
+import axios from 'axios';
 
 const user = {
   _id: '1',
@@ -23,12 +25,44 @@ const PersonalInformation = () => {
   const [newPassword, setNewPassword] = useState('');
   const [newPasswordAgain, setNewPasswordAgain] = useState('');
 
-  console.log('name:', name);
-  console.log('surname:', surname);
-  console.log('email:', email);
-  console.log('phone:', phone);
-  console.log('newPassword:', newPassword);
-  console.log('newPasswordAgain:', newPasswordAgain);
+  const { user } = useContext(Context);
+
+  const [userData, setUserData] = useState([]);
+
+  useEffect(() => {
+    const getUser = async () => {
+      const res = await axios.get(`/user/${user._id}`);
+      setUserData(res.data);
+      setName(res.data.firstName);
+      setSurname(res.data.lastName);
+      setEmail(res.data.email);
+      console.log(res.data);
+    };
+    getUser();
+  }, []);
+
+  const handleSubmitName = async () => {
+    try {
+      await axios.put('/user/update', {
+        firstName: name,
+        lastName: surname,
+      });
+      setUserData({ name, surname });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleSubmitEmail = async () => {
+    try {
+      await axios.put('/user/update', {
+        email: email,
+      });
+      setUserData({ email });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleVisibleName = (e) => {
     if (isActiveName === false) {
@@ -103,10 +137,14 @@ const PersonalInformation = () => {
                   />
                 </div>
               </div>
-              <div className={styles.saveButton}>Kaydedin</div>
+              <div className={styles.saveButton} onClick={handleSubmitName}>
+                Kaydedin
+              </div>
             </div>
           ) : (
-            <span className={styles.content}>Test Test</span>
+            <span className={styles.content}>
+              {userData.firstName} {userData.lastName}
+            </span>
           )}
         </div>
         <div className={styles.infoContainer}>
@@ -132,10 +170,12 @@ const PersonalInformation = () => {
                 </div>
               </div>
 
-              <div className={styles.saveButton}>Kaydedin</div>
+              <div className={styles.saveButton} onClick={handleSubmitEmail}>
+                Kaydedin
+              </div>
             </div>
           ) : (
-            <span className={styles.content}>t*****t@gmail.com</span>
+            <span className={styles.content}>{userData.email}</span>
           )}
         </div>
 

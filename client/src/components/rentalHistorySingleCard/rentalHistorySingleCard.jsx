@@ -5,12 +5,12 @@ import { IoIosStar } from 'react-icons/io';
 import { TiWarning } from 'react-icons/ti';
 
 const status = {
-  ongoing: 'Devam Ediyor',
+  continues: 'Devam Ediyor',
   completed: 'Tamamlandı',
   cancelled: 'İptal Edildi',
 };
 
-const RentalHistorySingleCard = ({ item }) => {
+const RentalHistorySingleCard = ({ item, rental }) => {
   const [isSureToDelete, setIsSureToDelete] = useState(false);
 
   const handleDeleteCancel = () => {
@@ -18,8 +18,42 @@ const RentalHistorySingleCard = ({ item }) => {
   };
 
   const handleDeleteCard = () => {
-    item.state = 'cancelled';
+    rental.status = 'cancelled';
     setIsSureToDelete(false);
+  };
+
+  const handleDay = (startDate, endDate) => {
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    const timeDiff = Math.abs(end - start);
+    const dayDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+    return dayDiff;
+  };
+
+  const getDayFromDate = (dateString) => {
+    const parts = dateString.split('T')[0].split('-');
+    return parseInt(parts[2], 10);
+  };
+
+  const getMonthFromDate = (dateString) => {
+    const parts = dateString.split('T')[0].split('-');
+    const month = parseInt(parts[1], 10);
+    const monthNames = [
+      'Ocak',
+      'Şubat',
+      'Mart',
+      'Nisan',
+      'Mayıs',
+      'Haziran',
+      'Temmuz',
+      'Ağustos',
+      'Eylül',
+      'Ekim',
+      'Kasım',
+      'Aralık',
+    ];
+
+    return monthNames[month - 1];
   };
 
   return (
@@ -28,28 +62,29 @@ const RentalHistorySingleCard = ({ item }) => {
         <img src='/images/karavan.jpg' alt='' />
       </div>
       <div className={styles.infos}>
-        <div className={styles.infoTitle}>{item.title}</div>
+        <div className={styles.infoTitle}>{rental.caravanId.type}</div>
         <div className={styles.infoTexts}>
-          {item.peopleNumber}
+          {rental.caravanId.maxGuests} kişilik
           <LuDot className={styles.dotIcon} />
-          {item.year}
+          {rental.caravanId.yearOfManufacture} yapımı
         </div>
         <div className={styles.infoTexts}>
-          {item.day}
+          {handleDay(rental.startDate, rental.endDate)} gün
           <LuDot className={styles.dotIcon} />
-          {item.date}
+          {getDayFromDate(rental.startDate)} - {getDayFromDate(rental.endDate)}{' '}
+          {getMonthFromDate(rental.startDate)}
         </div>
-        <div className={styles.starContainer}>
+        {/* <div className={styles.starContainer}>
           <IoIosStar className={styles.starIcon} />
           <div>{item.star}</div>
-        </div>
+        </div> */}
       </div>
       <div className={styles.priceContainer}>
         <div>Toplam:</div>
-        <div className={styles.price}>{item.price}</div>
+        <div className={styles.price}>{rental.totalPrice}₺</div>
       </div>
       <div className={styles.stateContainer}>
-        {`${item.state}` === 'ongoing' && (
+        {`${rental.status}` === 'continues' && (
           <div
             className={styles.cancelButton}
             onClick={() => {
@@ -61,8 +96,8 @@ const RentalHistorySingleCard = ({ item }) => {
             İptal Et
           </div>
         )}
-        <div className={`${styles.state} ${styles[item.state]}`}>
-          {status[`${item.state}`]}
+        <div className={`${styles.state} ${styles[rental.status]}`}>
+          {status[`${rental.status}`]}
         </div>
       </div>
       {isSureToDelete && (

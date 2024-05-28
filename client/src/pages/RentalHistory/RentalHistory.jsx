@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './rentalHistory.module.css';
 import RentalHistorySingleCard from '../../components/rentalHistorySingleCard/RentalHistorySingleCard';
+import axios from 'axios';
 
 const pageInfos = [
   {
@@ -50,6 +51,22 @@ const pageInfos = [
 ];
 
 const RentalHistory = () => {
+  const [rentalHistory, setRentalHistory] = useState([]);
+  const [rentalHistoryInfos, setRentalHistoryInfos] = useState([]);
+
+  useEffect(() => {
+    const getRentalHistory = async () => {
+      const res = await axios.get('/rental/getBookings');
+      setRentalHistory(res.data);
+      console.log(res.data);
+
+      //   setRentalHistoryInfos(res.data.caravanId);
+      //   console.log(res.data);
+      //   console.log(res.data[1].caravanId.type);
+    };
+    getRentalHistory();
+  }, []);
+
   return (
     <div className={styles.container}>
       <div>
@@ -60,8 +77,10 @@ const RentalHistory = () => {
         </div>
         <span className={styles.title}>Kiralama Geçmişi</span>
         <div className={styles.RentalHistoryCards}>
-          {pageInfos.map((item) => {
-            return <RentalHistorySingleCard item={item} />;
+          {rentalHistory.map((rental, item) => {
+            // console.log(rental.caravanId.gear);
+
+            return <RentalHistorySingleCard item={item} rental={rental} />;
           })}
         </div>
       </div>
