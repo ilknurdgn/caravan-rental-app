@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styles from './profile.module.css';
 import { TbUserEdit } from 'react-icons/tb';
 import { FaRegCreditCard } from 'react-icons/fa6';
 import { FaRegPaste } from 'react-icons/fa6';
 import { FaRegAddressCard } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
+import { Context } from './../../context/Contex';
+import axios from 'axios';
 
 const pageInfos = [
   {
@@ -38,11 +40,25 @@ const pageInfos = [
 ];
 
 const Profile = () => {
+  const { user } = useContext(Context);
+
+  const [userData, setUserData] = useState([]);
+
+  useEffect(() => {
+    const getUser = async () => {
+      const res = await axios.get(`/user/${user._id}`);
+      setUserData(res.data);
+    };
+    getUser();
+  }, []);
+
   return (
     <div className={styles.container}>
       <div>
-        <span className={styles.userName}>Test Test </span>
-        <span className={styles.email}>test@test.com</span>
+        <span className={styles.userName}>
+          {userData.firstName} {userData.lastName}
+        </span>
+        <span className={styles.email}> {user.email}</span>
       </div>
 
       <span className={styles.title}>Hesap</span>
