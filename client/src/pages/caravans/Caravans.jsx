@@ -27,6 +27,12 @@ const Caravans = () => {
   const { state } = useLocation();
   const { selectedCity, startDate, endDate, peopleCount } = state || {};
 
+  //add to local
+  useEffect(() => {
+    const savedFavorites = JSON.parse(localStorage.getItem('favorites')) || {};
+    setFavorites(savedFavorites);
+  }, []);
+
   useEffect(() => {
     const getSingleCaravan = async () => {
       setIsLoading(true);
@@ -57,11 +63,6 @@ const Caravans = () => {
     };
     getSingleCaravan();
   }, [page]);
-
-  useEffect(() => {
-    const savedFavorites = JSON.parse(localStorage.getItem('favorites')) || {};
-    setFavorites(savedFavorites);
-  }, []);
 
   const handlePageChange = (event, newPage) => {
     setPage(newPage);
