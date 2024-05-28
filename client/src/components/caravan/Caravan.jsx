@@ -4,9 +4,14 @@ import { FaRegHeart } from 'react-icons/fa';
 import { FaStar } from 'react-icons/fa';
 import { FaHeart } from 'react-icons/fa';
 import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 
 const Caravan = (totalCaravans) => {
   const [averageScore, setAverageScore] = useState([]);
+  const [numberOfDays, setNumberOfDays] = useState();
+
+  const { state } = useLocation();
+  const { startDate, endDate } = state || {};
 
   useEffect(() => {
     const getComments = async () => {
@@ -24,6 +29,16 @@ const Caravan = (totalCaravans) => {
     };
     getComments();
   }, []);
+
+  useEffect(() => {
+    if (startDate && endDate) {
+      const start = new Date(startDate);
+      const end = new Date(endDate);
+      const diffTime = Math.abs(end - start);
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      setNumberOfDays(diffDays);
+    }
+  }, [startDate, endDate]);
   return (
     <div className={styles.caravan}>
       <div className={styles['caravan-image']}>
@@ -41,7 +56,13 @@ const Caravan = (totalCaravans) => {
             {totalCaravans.maxGuests} kişilik ·{' '}
             {totalCaravans.yearOfManufacture} yapım
           </span>
-          <span>3 gece · 19-23 Nis</span>
+
+          {startDate && endDate && (
+            <span>
+              {numberOfDays} gün · {startDate} {endDate}
+            </span>
+          )}
+
           <p className={styles.price}> {totalCaravans.dailyPrice}₺ gün</p>
         </div>
         <div className={styles.rating}>

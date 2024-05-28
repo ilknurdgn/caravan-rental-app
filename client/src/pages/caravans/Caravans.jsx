@@ -38,10 +38,8 @@ const Caravans = () => {
       setIsLoading(true);
       try {
         const res = await axios.get(
-          `/caravan/?page=${page}&limit=${caravansPerPage}`
+          `/caravan/?page=${page}&limit=${caravansPerPage}&location=${selectedCity}&start=${startDate}&end=${endDate}&maxGuests=${peopleCount}`
         );
-
-        // `/caravan/?page=${page}&limit=${caravansPerPage}&location=${selectedCity}&start=${startDate}&end=${endDate}&maxGuests=${peopleCount}`
 
         setFetch(res.data);
         console.log(res.data);
@@ -109,7 +107,11 @@ const Caravans = () => {
           <div className={styles.caravans}>
             {totalCaravans.map((caravan, index) => (
               <div className={styles.iconDiv} key={index}>
-                <Link className={styles.links} to={`/caravan/${caravan._id}`}>
+                <Link
+                  className={styles.links}
+                  to={`/caravan/${caravan._id}`}
+                  state={{ startDate, endDate, peopleCount }}
+                >
                   <Caravan totalCaravans={totalCaravans} {...caravan} />
                 </Link>
                 {/* Favori kısmı */}
