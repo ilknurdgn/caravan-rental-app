@@ -63,6 +63,10 @@ const SingleCaravan = () => {
         const res = await axios.get(`/caravan/${id}`);
         window.scrollTo(0, 0);
         setCaravanData(res.data);
+        const storedFavorites =
+          JSON.parse(localStorage.getItem('favorites')) || {};
+        setFavorites(storedFavorites);
+        setIsFavorited(!!storedFavorites[res.data._id]);
       } catch (error) {
         console.error('Error fetching caravan data: ', error);
       }
@@ -190,6 +194,7 @@ const SingleCaravan = () => {
       }
       setFavorites(updatedFavorites);
       localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+      setIsFavorited(!isFavorited);
     } catch (err) {
       console.log(err);
     }
