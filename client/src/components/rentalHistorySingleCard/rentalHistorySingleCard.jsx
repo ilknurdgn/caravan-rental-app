@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './rentalHistorySingleCard.module.css';
 import { LuDot } from 'react-icons/lu';
-import { IoIosStar } from 'react-icons/io';
+// import { IoIosStar } from 'react-icons/io';
 import { TiWarning } from 'react-icons/ti';
 
 const status = {

@@ -55,6 +55,18 @@
   cursor: pointer;
 }
 
+.login {
+  border: 1px solid #d5d5d0;
+  border-radius: 25px;
+  width: 80px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff !important;
+  background-color: #ff385c;
+}
+
 .user {
   display: flex;
   align-items: center;

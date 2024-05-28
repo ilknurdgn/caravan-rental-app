@@ -5,12 +5,44 @@ import { FaUserCircle } from 'react-icons/fa';
 import { BsThreeDots } from 'react-icons/bs';
 import { MdOutlineAccountBox } from 'react-icons/md';
 import { IoIosLogOut } from 'react-icons/io';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { Context } from '../../context/Contex';
 
 const Navbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const modalRef = useRef(null);
   const buttonRef = useRef(null);
+  const navigate = useNavigate();
+  const { user, dispatch } = useContext(Context);
+
+  const [userInfo, setUserInfo] = useState([]);
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        const res = await axios.get(`/user/user._id`);
+        setUserInfo(res.data);
+        console.log(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getUser();
+  }, []);
+
+  const handleLogout = () => {
+    // Tarayıcıdaki token'ı silme
+    document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    // localStorage'daki kullanıcıyı silme
+    localStorage.removeItem('user');
+    // Kullanıcı durumunu güncelleme
+    dispatch({ type: 'LOGOUT' });
+    // Giriş sayfasına yönlendirme
+    navigate('/login');
+    window.location.reload();
+    setIsModalOpen(false);
+  };
 
   const handleClickOutside = (event) => {
     if (
@@ -63,19 +95,27 @@ const Navbar = () => {
             <li className={styles.world}>
               <TfiWorld />
             </li>
-            <div
-              className={styles.user}
-              onClick={() => {
-                setIsModalOpen(!isModalOpen);
-              }}
-            >
-              <li>
-                <BsThreeDots className={styles.dots} />
-              </li>
-              <li>
-                <FaUserCircle className={styles.circle} />
-              </li>
-            </div>
+            {!user || !user._id ? (
+              <div>
+                <a href='login' className={styles.login}>
+                  Login
+                </a>
+              </div>
+            ) : (
+              <div
+                className={styles.user}
+                onClick={() => {
+                  setIsModalOpen(!isModalOpen);
+                }}
+              >
+                <li>
+                  <BsThreeDots className={styles.dots} />
+                </li>
+                <li>
+                  <FaUserCircle className={styles.circle} />
+                </li>
+              </div>
+            )}
           </ul>
           {isModalOpen && (
             <div className={styles.modal} ref={modalRef}>
@@ -83,7 +123,11 @@ const Navbar = () => {
                 <MdOutlineAccountBox className={styles.icon} />
                 <a href='/profile'>Hesabım</a>
               </div>
-              <div className={styles.modalItem} ref={buttonRef}>
+              <div
+                className={styles.modalItem}
+                ref={buttonRef}
+                onClick={handleLogout}
+              >
                 <IoIosLogOut className={styles.icon} />
                 Çıkış Yap
               </div>
