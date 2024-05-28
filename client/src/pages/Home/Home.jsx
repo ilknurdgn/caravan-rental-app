@@ -52,10 +52,10 @@ const Home = () => {
     getBlog();
   }, []);
 
-  const handleSearchClick = async () => {
-    try {
-    } catch (error) {}
-  };
+  //   const handleSearchClick = async () => {
+  //     try {
+  //     } catch (error) {}
+  //   };
 
   const formattedDate = (dateString) => {
     // Gelen tarih string'ini Date nesnesine çeviriyoruz.
