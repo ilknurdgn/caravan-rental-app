@@ -19,11 +19,7 @@ const Blog = ({ blog }) => {
       className={styles['blog-container']}
     >
       <span className={styles.title}>{blog.title}</span>
-      <img
-        className={styles.image}
-        src='https://plus.unsplash.com/premium_photo-1681884705028-fe0dc759406a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-        alt=''
-      />
+      <img className={styles.image} src={blog.photo} alt='' />
       <p className={styles['blog-text']}> {blog.desc}</p>
       <div className={styles['down-section']}>
         <span>{formatDate(blog.createdAt)}</span>

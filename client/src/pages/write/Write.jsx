@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import styles from './write.module.css';
 import { RiImageAddLine } from 'react-icons/ri';
 import { Context } from '../../context/Contex';
@@ -11,9 +11,22 @@ const Write = () => {
   const [file, setFile] = useState(null);
   const [blog, setBlog] = useState();
   const { user } = useContext(Context);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    if (error) {
+      const timer = setTimeout(() => setError(''), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [error]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!file) {
+      setError('Lütfen bir fotoğraf seçin.');
+      return;
+    }
     const postBlog = async () => {
       const addBlog = {
         title: title,
@@ -46,7 +59,13 @@ const Write = () => {
           <label className={styles.fileInput} htmlFor='fileInput'>
             <RiImageAddLine /> Fotoğraf ekle
           </label>
-          <input type='file' id='fileInput' style={{ display: 'none' }} />
+          <input
+            type='file'
+            id='fileInput'
+            onChange={(e) => setFile(e.target.files[0])}
+            style={{ display: 'none' }}
+            className={styles.file}
+          />
         </div>
         <div className={styles.writeFormGroup}>
           <textarea
@@ -56,7 +75,7 @@ const Write = () => {
             onChange={(e) => setDescription(e.target.value)}
           ></textarea>
         </div>
-
+        {error && <div className={styles.error}>{error}</div>}
         <button className={styles.writeSubmit} type='submit'>
           Yayınla
         </button>
