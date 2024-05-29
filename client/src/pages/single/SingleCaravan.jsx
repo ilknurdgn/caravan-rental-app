@@ -208,7 +208,6 @@ const SingleCaravan = () => {
       console.log(err);
     }
   };
-  console.log(caravanData);
 
   return (
     <div className={`${styles['single-container']} fadeIn`}>
@@ -287,9 +286,8 @@ const SingleCaravan = () => {
           </ul>
 
           <div className={styles.profile}>
-            <div className={styles['profile-pic']}>
-              <CgProfile className={styles.userProfile} />
-            </div>
+            <CgProfile className={styles.userProfile} />
+
             <div className={styles.owner}>
               Karavan Sahibi: {caravanData?.owner}
             </div>
@@ -393,7 +391,11 @@ const SingleCaravan = () => {
                 </div>
               ) : (
                 <Link
-                  to={`/approval/${caravanData?._id}`}
+                  to={
+                    user && user._id
+                      ? `/approval/${caravanData?._id}`
+                      : '/login'
+                  } // Kullanıcı giriş yapmışsa veya yapmamışsa uygun yönlendirmeyi yap
                   state={{ startDate, endDate, days }}
                 >
                   <button
@@ -404,7 +406,6 @@ const SingleCaravan = () => {
                   </button>
                 </Link>
               )}
-
               <span>Henüz ücretlendirilmeyeceksiniz</span>
             </div>
             <div className={styles['caravan-payment']}>

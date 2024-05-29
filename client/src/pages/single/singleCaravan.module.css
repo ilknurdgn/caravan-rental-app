@@ -156,8 +156,6 @@ img {
 .owner-profile-pic {
   width: 67px;
   height: 65px;
-  object-fit: cover;
-  border-radius: 50%;
 }
 
 .owner {
