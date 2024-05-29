@@ -15,7 +15,7 @@ import { MdExpandMore } from 'react-icons/md';
 import Comments from '../../components/comments/Comments';
 import { addDays, differenceInDays } from 'date-fns';
 import styles from './singleCaravan.module.css';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { color } from '@mui/system';
 import dayjs from 'dayjs';
 import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
@@ -30,6 +30,10 @@ import { RxCross1 } from 'react-icons/rx';
 import { Context } from '../../context/Contex';
 import Cookies from 'universal-cookie';
 import { useReservation } from '../../context/Contex';
+import { CgProfile } from 'react-icons/cg';
+import { GoDotFill } from 'react-icons/go';
+import { MdOutlineNavigateNext } from 'react-icons/md';
+import { GrFormPrevious } from 'react-icons/gr';
 
 LicenseInfo.setLicenseKey(
   'e0d9bb8070ce0054c9d9ecb6e82cb58fTz0wLEU9MzI0NzIxNDQwMDAwMDAsUz1wcmVtaXVtLExNPXBlcnBldHVhbCxLVj0y'
@@ -37,7 +41,6 @@ LicenseInfo.setLicenseKey(
 const SingleCaravan = () => {
   const { reservationData, dispatch } = useReservation();
   const { id } = useParams(); //url'den id alır
-  const [state, setState] = useState([]);
   const [isFavorited, setIsFavorited] = useState(false);
   const [favorites, setFavorites] = useState([]);
 
@@ -56,6 +59,13 @@ const SingleCaravan = () => {
   const [isClicked, setIsClicked] = useState(false);
   const { user } = useContext(Context);
   dayjs.locale('tr');
+
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [lightboxImage, setLightboxImage] = useState('');
+  const [lightboxImageIndex, setLightboxImageIndex] = useState(0);
+
+  const { state } = useLocation();
+  const { peopleCount } = state || {};
 
   useEffect(() => {
     const getSingleCaravan = async () => {
@@ -84,7 +94,7 @@ const SingleCaravan = () => {
       const endDate = selectedDate[1];
       setEndDay(endDate.format('DD/MM/YYYY'));
       //tarih aralığındaki gün sayısını hesaplar:
-      const days = endDate.diff(startDate, 'day') + 1; // Tarih aralığındaki gün sayısını dayjs ile hesapla
+      const days = endDate.diff(startDate, 'day'); // Tarih aralığındaki gün sayısını dayjs ile hesapla
       setDays(days);
       // String formatında tarih aralığını ve gün sayısını ayarlar
       setSelectedDateRangeString(
@@ -109,7 +119,7 @@ const SingleCaravan = () => {
     })) || [];
 
   disabledDates.forEach((date) => {
-    date.start.setDate(date.start.getDate() - 1);
+    date.start.setDate(date.start.getDate());
   });
 
   const isDisabledDate = (date) => {
@@ -124,6 +134,11 @@ const SingleCaravan = () => {
   };
 
   const handleDateChange = (newDate) => {
+    // Eğer seçilen tarihler aynı günse, seçilen tarih aralığını sıfırla
+    if (newDate[0] && newDate[1] && newDate[0].isSame(newDate[1], 'day')) {
+      setSelectedDate([null, null]);
+      return;
+    }
     setSelectedDate(newDate);
     setShowSelectedDateRange(true);
 
@@ -200,6 +215,31 @@ const SingleCaravan = () => {
     }
   };
 
+  //LIGHTBOX
+
+  const openLightbox = (imageSrc) => {
+    setLightboxImage(imageSrc);
+    setIsLightboxOpen(true);
+  };
+
+  const closeLightbox = () => {
+    setIsLightboxOpen(false);
+  };
+
+  const showNextImage = () => {
+    setLightboxImageIndex((prevIndex) =>
+      prevIndex === caravanData.photos.length - 1 ? 0 : prevIndex + 1
+    );
+    setLightboxImage(caravanData.photos[lightboxImageIndex]);
+  };
+
+  const showPrevImage = () => {
+    setLightboxImageIndex((prevIndex) =>
+      prevIndex === 0 ? caravanData.photos.length - 1 : prevIndex - 1
+    );
+    setLightboxImage(caravanData.photos[lightboxImageIndex]);
+  };
+
   return (
     <div className={`${styles['single-container']} fadeIn`}>
       <div className={styles['caravan-info']}>
@@ -227,37 +267,65 @@ const SingleCaravan = () => {
           </div>
         </div>
       </div>
-
       <div className={styles['caravan-images']}>
         <img
+          onClick={() => openLightbox(caravanData?.photos[0])}
           className={styles['main-image']}
-          src='https://images.unsplash.com/photo-1592351763700-b9b35a6465ea?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+          src={caravanData?.photos[0]}
           alt=''
         />
         <div className={styles['images-container']}>
           <img
+            onClick={() => openLightbox(caravanData?.photos[1])}
             className={styles['images']}
-            src='https://images.unsplash.com/photo-1592351763700-b9b35a6465ea?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+            src={caravanData?.photos[1]}
             alt=''
           />
           <img
+            onClick={() => openLightbox(caravanData?.photos[2])}
             className={styles['images']}
-            src='https://images.unsplash.com/photo-1592351763700-b9b35a6465ea?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+            src={caravanData?.photos[2]}
             alt=''
           />
           <img
+            onClick={() => openLightbox(caravanData?.photos[3])}
             className={styles['images']}
-            src='https://images.unsplash.com/photo-1592351763700-b9b35a6465ea?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+            src={caravanData?.photos[3]}
             alt=''
           />
           <img
+            onClick={() => openLightbox(caravanData?.photos[4])}
             className={styles['images']}
-            src='https://images.unsplash.com/photo-1592351763700-b9b35a6465ea?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+            src={caravanData?.photos[4]}
             alt=''
           />
         </div>
       </div>
 
+      {isLightboxOpen && (
+        <div
+          className={styles.imagesOverlay}
+          // onClick={closeLightbox}
+        >
+          <div className={styles.imagesDiv}>
+            <span className={styles.prev} onClick={showPrevImage}>
+              <GrFormPrevious />
+            </span>
+            <img
+              className={styles.lightboxImage}
+              src={lightboxImage}
+              alt='Lightbox'
+            />
+            <span className={styles.close} onClick={closeLightbox}>
+              &times;
+            </span>
+
+            <span className={styles.next} onClick={showNextImage}>
+              <MdOutlineNavigateNext />
+            </span>
+          </div>
+        </div>
+      )}
       <div className={styles['description-section']}>
         <div className={styles['caravan-left-side']}>
           <span>
@@ -278,21 +346,9 @@ const SingleCaravan = () => {
             </li>
           </ul>
 
-          <ul className={styles.review}>
-            <li>
-              <IoMdStar className={styles['star-icon']} /> 4,83 · 1,800
-              değerlendirme
-            </li>
-          </ul>
-
           <div className={styles.profile}>
-            <div className={styles['profile-pic']}>
-              <img
-                className={styles['owner-profile-pic']}
-                src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-                alt=''
-              />
-            </div>
+            <CgProfile className={styles.userProfile} />
+
             <div className={styles.owner}>
               Karavan Sahibi: {caravanData?.owner}
             </div>
@@ -302,11 +358,10 @@ const SingleCaravan = () => {
 
           <div className={styles.description}>
             <span>AÇIKLAMA</span>
-            <ul>
+            <ul className={styles.ulCaravanDesc}>
               {caravanData?.description.map((desc, index) => (
                 <li key={index} className={styles.caravanDesc}>
-                  {' '}
-                  <LuDot /> {desc}
+                  <span className={styles.bulletPoint}>•</span> {desc}
                 </li>
               ))}
             </ul>
@@ -315,9 +370,10 @@ const SingleCaravan = () => {
           <div className={styles.line}></div>
 
           <div className={styles.calendar}>
-            {/* Tarih seçiniz yazısı */}
             {!selectedDate[0] && !selectedDate[1] && (
-              <div className={styles.selectedDateRange}>Tarih seçiniz</div>
+              <div className={styles.selectedDateRange}>
+                Tarih aralığı seçiniz
+              </div>
             )}
 
             {/* Tarihlerin yer alacağı bölüm */}
@@ -352,10 +408,6 @@ const SingleCaravan = () => {
               <p className={styles.price}>
                 {caravanData?.dailyPrice}₺<span>{days} gün</span>
               </p>
-              <p className={styles['total-rating']}>
-                <IoMdStar className={styles.icon} />
-                4.83 · 1,800 değerlendirme
-              </p>
             </div>
             <div className={styles['check-container']}>
               <div className={styles.reservation}>
@@ -372,7 +424,7 @@ const SingleCaravan = () => {
                 <div className={styles.guest}>
                   <div className={styles['select-guests']}>
                     <span>MİSAFİR</span>
-                    <span>1 misafir</span>
+                    <span> {caravanData?.maxGuests} misafir</span>
                   </div>
                   <div className={styles.moreIcon}>
                     {' '}
@@ -400,7 +452,11 @@ const SingleCaravan = () => {
                 </div>
               ) : (
                 <Link
-                  to={`/approval/${caravanData?._id}`}
+                  to={
+                    user && user._id
+                      ? `/approval/${caravanData?._id}`
+                      : '/login'
+                  } // Kullanıcı giriş yapmışsa veya yapmamışsa uygun yönlendirmeyi yap
                   state={{ startDate, endDate, days }}
                 >
                   <button
@@ -411,7 +467,6 @@ const SingleCaravan = () => {
                   </button>
                 </Link>
               )}
-
               <span>Henüz ücretlendirilmeyeceksiniz</span>
             </div>
             <div className={styles['caravan-payment']}>
@@ -437,11 +492,9 @@ const SingleCaravan = () => {
           </div>
         </div>
       </div>
-
       <div className={styles.line}></div>
       {/* COMMENT SECTION */}
       <Comments />
-
       {share && (
         <>
           <div onClick={dontShareHandle} className={styles.overlay}></div>

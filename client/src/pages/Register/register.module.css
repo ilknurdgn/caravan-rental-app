@@ -117,10 +117,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
   gap: 5px;
-  color: #f22b5d;
-  background: #f8f6f6d2;
-  padding: 10px 0;
+  margin-top: 20px;
+  border: 1px solid #d0021b;
+  font-weight: 420;
+  color: #d0021b;
+  text-align: center;
+  padding: 10px 16px;
   border-radius: 12px;
+  background-color: #fff4f6;
+  width: auto;
+}
+
+.errorIcon {
+  font-size: 20px;
+}
+
+.errorDiv {
+  display: flex;
+  align-items: center;
 }

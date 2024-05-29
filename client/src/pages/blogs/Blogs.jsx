@@ -2,14 +2,19 @@ import styles from './blogs.module.css';
 import Blog from '../../components/blog/Blog';
 import Pagination from '@mui/material/Pagination';
 import { createTheme } from '@mui/material/styles';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
+import { FaPencilAlt } from 'react-icons/fa';
+import { Link, useNavigate } from 'react-router-dom';
+import { Context } from '../../context/Contex';
 
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState();
   const blogsPerPage = 6;
+  const { user } = useContext(Context);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getBlogs = async () => {
@@ -32,6 +37,14 @@ const Blogs = () => {
     setPage(newPage);
   };
 
+  const handleWrite = () => {
+    if (!user || !user._id) {
+      navigate('/login');
+    } else {
+      navigate('/blog/write');
+    }
+  };
+
   console.log(blogs);
   return (
     <div className={styles.blogs}>
@@ -50,6 +63,13 @@ const Blogs = () => {
             </div>
           ))}
         </div>
+      </div>
+
+      <div className={styles.writeContainer} onClick={handleWrite}>
+        <div className={styles.writeCircle}>
+          <FaPencilAlt className={styles.writeIcon} />
+        </div>
+        <div className={styles.writeTitle}>Sen de yaz..</div>
       </div>
 
       <Pagination
