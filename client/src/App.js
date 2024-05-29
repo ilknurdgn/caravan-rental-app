@@ -32,8 +32,8 @@ function App() {
   const { user } = useContext(Context);
   return (
     <div className='main'>
-      <Navbar />
       <BrowserRouter>
+        <Navbar />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/register' element={<Register />} />
