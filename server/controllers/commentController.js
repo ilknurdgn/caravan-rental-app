@@ -123,12 +123,18 @@ exports.getComments = async (req, res) => {
       text: { $ne: null },
     });
 
-    const totalScore = totalEvaluation.reduce(
-      (sum, comment) => sum + comment.score,
-      0
-    );
-    const average = totalScore / totalEvaluation.length;
-    const result = Number.isInteger(average) ? average : average.toFixed(2);
+    let result;
+    if (totalEvaluation == 0) {
+      result = 0;
+    } else {
+      const totalScore = totalEvaluation.reduce(
+        (sum, comment) => sum + comment.score,
+        0
+      );
+
+      const average = totalScore / totalEvaluation.length;
+      result = Number.isInteger(average) ? average : average.toFixed(2);
+    }
 
     res.status(200).json({
       comments,
