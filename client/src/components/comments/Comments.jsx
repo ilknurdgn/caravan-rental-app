@@ -58,17 +58,19 @@ const Comments = () => {
         ))}
       </div>
 
-      <div className={styles.showBtn}>
-        {visibleComments < comments.length ? (
-          <button className={styles.btn} onClick={loadMoreComments}>
-            Daha fazla yorum göster
-          </button>
-        ) : (
-          <button className={styles.btn} onClick={showLessComments}>
-            Daha az göster
-          </button>
-        )}
-      </div>
+      {comments.length > 0 && (
+        <div className={styles.showBtn}>
+          {visibleComments < comments.length ? (
+            <button className={styles.btn} onClick={loadMoreComments}>
+              Daha fazla yorum göster
+            </button>
+          ) : (
+            <button className={styles.btn} onClick={showLessComments}>
+              Daha az göster
+            </button>
+          )}
+        </div>
+      )}
     </div>
   );
 };
