@@ -32,6 +32,8 @@ import Cookies from 'universal-cookie';
 import { useReservation } from '../../context/Contex';
 import { CgProfile } from 'react-icons/cg';
 import { GoDotFill } from 'react-icons/go';
+import { MdOutlineNavigateNext } from 'react-icons/md';
+import { GrFormPrevious } from 'react-icons/gr';
 
 LicenseInfo.setLicenseKey(
   'e0d9bb8070ce0054c9d9ecb6e82cb58fTz0wLEU9MzI0NzIxNDQwMDAwMDAsUz1wcmVtaXVtLExNPXBlcnBldHVhbCxLVj0y'
@@ -57,6 +59,10 @@ const SingleCaravan = () => {
   const [isClicked, setIsClicked] = useState(false);
   const { user } = useContext(Context);
   dayjs.locale('tr');
+
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [lightboxImage, setLightboxImage] = useState('');
+  const [lightboxImageIndex, setLightboxImageIndex] = useState(0);
 
   const { state } = useLocation();
   const { peopleCount } = state || {};
@@ -209,6 +215,31 @@ const SingleCaravan = () => {
     }
   };
 
+  //LIGHTBOX
+
+  const openLightbox = (imageSrc) => {
+    setLightboxImage(imageSrc);
+    setIsLightboxOpen(true);
+  };
+
+  const closeLightbox = () => {
+    setIsLightboxOpen(false);
+  };
+
+  const showNextImage = () => {
+    setLightboxImageIndex((prevIndex) =>
+      prevIndex === caravanData.photos.length - 1 ? 0 : prevIndex + 1
+    );
+    setLightboxImage(caravanData.photos[lightboxImageIndex]);
+  };
+
+  const showPrevImage = () => {
+    setLightboxImageIndex((prevIndex) =>
+      prevIndex === 0 ? caravanData.photos.length - 1 : prevIndex - 1
+    );
+    setLightboxImage(caravanData.photos[lightboxImageIndex]);
+  };
+
   return (
     <div className={`${styles['single-container']} fadeIn`}>
       <div className={styles['caravan-info']}>
@@ -238,33 +269,63 @@ const SingleCaravan = () => {
       </div>
       <div className={styles['caravan-images']}>
         <img
+          onClick={() => openLightbox(caravanData?.photos[0])}
           className={styles['main-image']}
           src={caravanData?.photos[0]}
           alt=''
         />
         <div className={styles['images-container']}>
           <img
+            onClick={() => openLightbox(caravanData?.photos[1])}
             className={styles['images']}
             src={caravanData?.photos[1]}
             alt=''
           />
           <img
+            onClick={() => openLightbox(caravanData?.photos[2])}
             className={styles['images']}
             src={caravanData?.photos[2]}
             alt=''
           />
           <img
+            onClick={() => openLightbox(caravanData?.photos[3])}
             className={styles['images']}
             src={caravanData?.photos[3]}
             alt=''
           />
           <img
+            onClick={() => openLightbox(caravanData?.photos[4])}
             className={styles['images']}
             src={caravanData?.photos[4]}
             alt=''
           />
         </div>
       </div>
+
+      {isLightboxOpen && (
+        <div
+          className={styles.imagesOverlay}
+          // onClick={closeLightbox}
+        >
+          <div className={styles.imagesDiv}>
+            <span className={styles.prev} onClick={showPrevImage}>
+              <GrFormPrevious />
+            </span>
+            <img
+              className={styles.lightboxImage}
+              src={lightboxImage}
+              alt='Lightbox'
+            />
+            <span className={styles.close} onClick={closeLightbox}>
+              &times;
+            </span>
+
+            <span className={styles.next} onClick={showNextImage}>
+              <MdOutlineNavigateNext />
+            </span>
+          </div>
+        </div>
+      )}
       <div className={styles['description-section']}>
         <div className={styles['caravan-left-side']}>
           <span>

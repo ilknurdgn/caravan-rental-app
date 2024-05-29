@@ -180,6 +180,7 @@ img {
 }
 
 .caravanDesc {
+  width: 800px;
   display: flex;
   margin-top: 12px;
 }
@@ -421,4 +422,63 @@ img {
 
 .cross:hover {
   transform: scale(0.7);
+}
+
+.imagesOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightboxImage {
+  width: 1000px;
+  height: 600px;
+  object-fit: contain;
+}
+
+.imagesDiv {
+  position: relative;
+}
+
+.close {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  position: absolute;
+  color: #fff;
+  z-index: 1001;
+  top: -70px;
+  right: -200px;
+}
+
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  color: #fff;
+  font-size: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1001;
+  user-select: none;
+}
+
+.prev {
+  left: -80px;
+}
+
+.next {
+  right: -80px;
 }
