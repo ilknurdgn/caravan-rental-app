@@ -473,6 +473,10 @@ img {
   transform: translateY(-50%);
   z-index: 1001;
   user-select: none;
+  background-color: #383636a0;
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
 }
 
 .prev {

@@ -23,10 +23,10 @@ const Register = () => {
     }
 
     // Şifre uzunluğu ve karmaşıklık kontrolü
-    const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{10,}$/;
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/;
     if (!passwordRegex.test(password)) {
       setErrorMessage(
-        'Şifreniz en az 10 karakter olmalı, en az 1 büyük harf, en az 1 küçük harf ve en az 1 rakam içermelidir.'
+        'Şifreniz en az 8 karakter olmalı, en az 1 büyük harf, en az 1 küçük harf ve en az 1 rakam içermelidir.'
       );
       setError(true);
       return;
