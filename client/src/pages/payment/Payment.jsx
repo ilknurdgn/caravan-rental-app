@@ -180,10 +180,9 @@ const Payment = () => {
 
   const reservationHandler = async () => {
     try {
-      const startDatePlusOne = start.add(1, 'day');
       const reservationData = {
         caravanId: id,
-        startDate: startDatePlusOne.toDate(),
+        startDate: start.toDate(),
         endDate: end.toDate(),
         totalPrice: caravanData?.dailyPrice * days,
       };

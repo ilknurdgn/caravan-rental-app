@@ -86,7 +86,7 @@ const SingleCaravan = () => {
       const endDate = selectedDate[1];
       setEndDay(endDate.format('DD/MM/YYYY'));
       //tarih aralığındaki gün sayısını hesaplar:
-      const days = endDate.diff(startDate, 'day') + 1; // Tarih aralığındaki gün sayısını dayjs ile hesapla
+      const days = endDate.diff(startDate, 'day'); // Tarih aralığındaki gün sayısını dayjs ile hesapla
       setDays(days);
       // String formatında tarih aralığını ve gün sayısını ayarlar
       setSelectedDateRangeString(
@@ -111,7 +111,7 @@ const SingleCaravan = () => {
     })) || [];
 
   disabledDates.forEach((date) => {
-    date.start.setDate(date.start.getDate() - 1);
+    date.start.setDate(date.start.getDate());
   });
 
   const isDisabledDate = (date) => {
@@ -126,6 +126,11 @@ const SingleCaravan = () => {
   };
 
   const handleDateChange = (newDate) => {
+    // Eğer seçilen tarihler aynı günse, seçilen tarih aralığını sıfırla
+    if (newDate[0] && newDate[1] && newDate[0].isSame(newDate[1], 'day')) {
+      setSelectedDate([null, null]);
+      return;
+    }
     setSelectedDate(newDate);
     setShowSelectedDateRange(true);
 
@@ -310,9 +315,10 @@ const SingleCaravan = () => {
           <div className={styles.line}></div>
 
           <div className={styles.calendar}>
-            {/* Tarih seçiniz yazısı */}
             {!selectedDate[0] && !selectedDate[1] && (
-              <div className={styles.selectedDateRange}>Tarih seçiniz</div>
+              <div className={styles.selectedDateRange}>
+                Tarih aralığı seçiniz
+              </div>
             )}
 
             {/* Tarihlerin yer alacağı bölüm */}
