@@ -30,6 +30,8 @@ import { RxCross1 } from 'react-icons/rx';
 import { Context } from '../../context/Contex';
 import Cookies from 'universal-cookie';
 import { useReservation } from '../../context/Contex';
+import { CgProfile } from 'react-icons/cg';
+import { GoDotFill } from 'react-icons/go';
 
 LicenseInfo.setLicenseKey(
   'e0d9bb8070ce0054c9d9ecb6e82cb58fTz0wLEU9MzI0NzIxNDQwMDAwMDAsUz1wcmVtaXVtLExNPXBlcnBldHVhbCxLVj0y'
@@ -206,6 +208,7 @@ const SingleCaravan = () => {
       console.log(err);
     }
   };
+  console.log(caravanData);
 
   return (
     <div className={`${styles['single-container']} fadeIn`}>
@@ -234,37 +237,35 @@ const SingleCaravan = () => {
           </div>
         </div>
       </div>
-
       <div className={styles['caravan-images']}>
         <img
           className={styles['main-image']}
-          src='https://images.unsplash.com/photo-1592351763700-b9b35a6465ea?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+          src={caravanData?.photos[0]}
           alt=''
         />
         <div className={styles['images-container']}>
           <img
             className={styles['images']}
-            src='https://images.unsplash.com/photo-1592351763700-b9b35a6465ea?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+            src={caravanData?.photos[1]}
             alt=''
           />
           <img
             className={styles['images']}
-            src='https://images.unsplash.com/photo-1592351763700-b9b35a6465ea?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+            src={caravanData?.photos[2]}
             alt=''
           />
           <img
             className={styles['images']}
-            src='https://images.unsplash.com/photo-1592351763700-b9b35a6465ea?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+            src={caravanData?.photos[3]}
             alt=''
           />
           <img
             className={styles['images']}
-            src='https://images.unsplash.com/photo-1592351763700-b9b35a6465ea?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+            src={caravanData?.photos[4]}
             alt=''
           />
         </div>
       </div>
-
       <div className={styles['description-section']}>
         <div className={styles['caravan-left-side']}>
           <span>
@@ -287,11 +288,7 @@ const SingleCaravan = () => {
 
           <div className={styles.profile}>
             <div className={styles['profile-pic']}>
-              <img
-                className={styles['owner-profile-pic']}
-                src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-                alt=''
-              />
+              <CgProfile className={styles.userProfile} />
             </div>
             <div className={styles.owner}>
               Karavan Sahibi: {caravanData?.owner}
@@ -302,11 +299,10 @@ const SingleCaravan = () => {
 
           <div className={styles.description}>
             <span>AÇIKLAMA</span>
-            <ul>
+            <ul className={styles.ulCaravanDesc}>
               {caravanData?.description.map((desc, index) => (
                 <li key={index} className={styles.caravanDesc}>
-                  {' '}
-                  <LuDot /> {desc}
+                  <span className={styles.bulletPoint}>•</span> {desc}
                 </li>
               ))}
             </ul>
@@ -434,11 +430,9 @@ const SingleCaravan = () => {
           </div>
         </div>
       </div>
-
       <div className={styles.line}></div>
       {/* COMMENT SECTION */}
       <Comments />
-
       {share && (
         <>
           <div onClick={dontShareHandle} className={styles.overlay}></div>

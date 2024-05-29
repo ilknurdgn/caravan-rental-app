@@ -142,10 +142,15 @@ img {
 }
 
 .profile {
-  margin-top: 30px;
   display: flex;
-  gap: 10px;
   align-items: center;
+  margin-top: 30px;
+  gap: 10px;
+}
+
+.userProfile {
+  font-size: 30px;
+  color: #3e3e3e;
 }
 
 .owner-profile-pic {
@@ -178,7 +183,18 @@ img {
 
 .caravanDesc {
   display: flex;
-  align-items: center;
+  margin-top: 12px;
+}
+
+.bulletPoint {
+  margin-right: 0.2rem;
+  color: #000;
+}
+
+.ulCaravanDesc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .calendar {
   margin-top: 30px;
