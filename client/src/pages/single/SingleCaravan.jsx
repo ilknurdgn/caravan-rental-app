@@ -119,7 +119,8 @@ const SingleCaravan = () => {
     })) || [];
 
   disabledDates.forEach((date) => {
-    date.start.setDate(date.start.getDate());
+    date.start.setDate(date.start.getDate() - 1);
+    date.end.setDate(date.end.getDate() - 1);
   });
 
   const isDisabledDate = (date) => {
