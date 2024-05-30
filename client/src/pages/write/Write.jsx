@@ -23,20 +23,36 @@ const Write = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!file) {
-      setError('Lütfen bir fotoğraf seçin.');
-      return;
-    }
     const postBlog = async () => {
       const addBlog = {
         title: title,
         desc: description,
-        photo: file,
       };
+
+      if (!file) {
+        setError('Lütfen bir fotoğraf seçin.');
+        return;
+      }
+
+      if (file) {
+        const data = new FormData();
+        const filename = Date.now() + file.name;
+        data.append('name', filename);
+        data.append('file', file);
+        addBlog.photo = file;
+      }
+
       try {
-        const response = await axios.post('/blog/add/', addBlog);
+        const response = await axios.post('/blog/add', addBlog, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
         setBlog(response.data._id);
         console.log(response.data.title);
+        console.log(response.data.photo);
+
+        console.log(response.data);
         window.location.replace(`${response.data._id}`);
       } catch (err) {
         console.log(err);
