@@ -5,15 +5,19 @@ import axios from 'axios';
 
 const RentalHistory = () => {
   const [rentalHistory, setRentalHistory] = useState([]);
+  const [cancelledReservationId, setCancelledReservationId] = useState(null);
 
   useEffect(() => {
     const getRentalHistory = async () => {
-      const res = await axios.get('/rental/getBookings');
-      setRentalHistory(res.data);
-      console.log(res.data);
+      try {
+        const res = await axios.get('/rental/getBookings');
+        setRentalHistory(res.data);
+      } catch (error) {
+        console.error('Kiralama geçmişi alınamadı:', error);
+      }
     };
     getRentalHistory();
-  }, []);
+  }, [cancelledReservationId]);
 
   return (
     <div className={styles.container}>
@@ -25,11 +29,14 @@ const RentalHistory = () => {
         </div>
         <span className={styles.title}>Kiralama Geçmişi</span>
         <div className={styles.RentalHistoryCards}>
-          {rentalHistory.map((rental, item) => {
-            // console.log(rental.caravanId.gear);
+          {rentalHistory
+            .slice()
+            .reverse()
+            .map((rental, item) => {
+              // console.log(rental.caravanId.gear);
 
-            return <RentalHistorySingleCard item={item} rental={rental} />;
-          })}
+              return <RentalHistorySingleCard item={item} rental={rental} />;
+            })}
         </div>
       </div>
     </div>

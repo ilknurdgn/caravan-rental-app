@@ -1,13 +1,14 @@
 .container {
-  width: 892px;
+  width: 900px;
   height: 190px;
   display: flex;
   align-items: center;
-  gap: 90px;
+  /* gap: 90px; */
   border-radius: 12px;
   padding: 10px 50px 10px 30px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   position: relative;
+  justify-content: space-between;
 }
 
 .imgContainer {
@@ -70,7 +71,21 @@
   padding: 5px 20px;
   position: absolute;
   top: 10px;
-  right: 55px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.evaluateButton {
+  background-color: #ff385c;
+  color: #fff;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 20px;
+  position: absolute;
+  top: 10px;
+  right: 20px;
   cursor: pointer;
 }
 
@@ -163,4 +178,99 @@
   background-color: rgb(212, 11, 11);
   border-color: rgb(212, 11, 11);
   transition: all 150ms ease 0s;
+}
+
+.isCommentModalOpenContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.48);
+  z-index: 1001;
+}
+
+.isCommentModalOpen {
+  width: 470px;
+  height: 368px;
+  border: 1px solid #646464;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #ffffff;
+  position: absolute;
+  z-index: 999;
+  border-radius: 8px;
+  border: solid 1px #e5e5e5;
+  position: relative;
+}
+
+.closeIconContainer {
+}
+
+.closeIcon {
+  color: #ff385c;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.commentTitle {
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.starContainer {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: start;
+  cursor: pointer;
+  gap: 2px;
+}
+
+.star {
+  margin: 0 1px;
+  cursor: pointer;
+}
+
+.yellowStar {
+  color: #ffc100;
+  cursor: pointer;
+}
+
+.starIcon {
+  cursor: pointer;
+  color: #d8d8d8;
+}
+
+.commentInput {
+  width: 400px;
+  height: 100px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  background-color: #fbfbfb;
+  color: #444444;
+  align-items: center;
+  font-size: 14px;
+  border: 1px solid #e5e5e5;
+  padding: 10px;
+  outline: none;
+  resize: none;
+}
+
+.commentButton {
+  background-color: #ff385c;
+  color: #fff;
+  border-radius: 5px;
+  padding: 5px 20px;
+  cursor: pointer;
+  border-style: none;
 }
