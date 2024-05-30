@@ -10,6 +10,7 @@ import { FaLock } from 'react-icons/fa';
 import { IoMdStar } from 'react-icons/io';
 import dayjs from 'dayjs';
 import axios from 'axios';
+import Error from '../../components/error/Error';
 
 const Payment = () => {
   const { reservationData } = useReservation();
@@ -32,6 +33,9 @@ const Payment = () => {
   const [fullname, setFullname] = useState('');
   const [cvv, setCvv] = useState('');
   const [cardTitle, setCardTitle] = useState('');
+  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  //   const [status, setStatus] = useState('');
 
   console.log(state);
 
@@ -49,14 +53,6 @@ const Payment = () => {
 
   const handleCardClick = (card) => {
     setSelectedCard(card === selectedCard ? null : card);
-  };
-
-  const handlePay = () => {
-    setPayState(true);
-    setTimeout(() => {
-      setPayState(false);
-      navigate(`/caravan/${id}`);
-    }, 3000);
   };
 
   useEffect(() => {
@@ -169,10 +165,18 @@ const Payment = () => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+
     try {
-      await reservationHandler();
-      await postCardInfos();
-      handlePay();
+      const status = await postCardInfos();
+
+      console.log(status);
+
+      if (status === 'success') {
+        reservationHandler();
+        handlePay();
+      } else {
+        handleError();
+      }
     } catch (error) {
       console.error('Error making reservation: ', error);
     }
@@ -180,10 +184,12 @@ const Payment = () => {
 
   const reservationHandler = async () => {
     try {
+      const startDatePlusOne = start.add(1, 'day');
+      const endDatePlusOne = end.add(1, 'day');
       const reservationData = {
         caravanId: id,
-        startDate: start.toDate(),
-        endDate: end.toDate(),
+        startDate: startDatePlusOne,
+        endDate: endDatePlusOne,
         totalPrice: caravanData?.dailyPrice * days,
       };
 
@@ -215,10 +221,28 @@ const Payment = () => {
     try {
       const response = await axios.post('/payment/createPayment', paymentData);
       console.log('Payment response:', response.data);
+      setErrorMessage(response.data.errorMessage);
+      return response.data.status;
     } catch (err) {
       console.log(err);
+      handleError();
     }
     console.log(paymentData);
+  };
+
+  const handlePay = () => {
+    setPayState(true);
+    setTimeout(() => {
+      setPayState(false);
+      navigate(`/caravan/${id}`);
+    }, 3000);
+  };
+
+  const handleError = () => {
+    setError(true);
+    setTimeout(() => {
+      setError(false);
+    }, 3000);
   };
 
   return (
@@ -321,11 +345,7 @@ const Payment = () => {
           </div>
 
           <div className={styles.buttonDiv}>
-            <button
-              onClick={reservationHandler}
-              type='submit'
-              className={styles.payButton}
-            >
+            <button type='submit' className={styles.payButton}>
               Ödeme Yap
             </button>
           </div>
@@ -376,6 +396,14 @@ const Payment = () => {
           <div className={styles.overlay}></div>
           <div className={`${styles.confirm} slideInFromBottom`}>
             <Confirm />
+          </div>
+        </>
+      )}
+      {error && (
+        <>
+          <div className={styles.overlay}></div>
+          <div className={`${styles.confirm} slideInFromBottom`}>
+            <Error errorMessage={errorMessage} />
           </div>
         </>
       )}
