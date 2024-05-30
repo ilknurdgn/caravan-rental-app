@@ -25,6 +25,8 @@ const PersonalInformation = () => {
   const [newPassword, setNewPassword] = useState('');
   const [newPasswordAgain, setNewPasswordAgain] = useState('');
 
+  const [passwordsMatch, setPasswordsMatch] = useState(true);
+
   const { user } = useContext(Context);
 
   const [userData, setUserData] = useState([]);
@@ -61,10 +63,37 @@ const PersonalInformation = () => {
         email: email,
       });
       setUserData({ email });
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }
     setIsActiveMail(false);
+  };
+
+  const handleSubmitPhone = async () => {
+    try {
+      await axios.put('/user/update', {
+        phoneNumber: phone,
+      });
+      setUserData({ phone });
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
+    setIsActivePhone(false);
+  };
+
+  const handleSubmitPassword = async () => {
+    try {
+      await axios.put('/user/update', {
+        password: newPassword,
+      });
+      setUserData({ newPassword });
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
+    setIsActivePhone(false);
   };
 
   const handleVisibleName = (e) => {
@@ -198,15 +227,19 @@ const PersonalInformation = () => {
                   <input
                     type='text'
                     value={phone}
+                    inputMode='numeric'
+                    maxLength='11'
                     onChange={(e) => setPhone(e.target.value)}
                   />
                 </div>
               </div>
 
-              <div className={styles.saveButton}>Kaydedin</div>
+              <div className={styles.saveButton} onClick={handleSubmitPhone}>
+                Kaydedin
+              </div>
             </div>
           ) : (
-            <span className={styles.content}>---</span>
+            <span className={styles.content}>{userData.phoneNumber}</span>
           )}
         </div>
 
@@ -238,7 +271,12 @@ const PersonalInformation = () => {
                     <input
                       type='text'
                       value={newPassword}
-                      onChange={(e) => setNewPassword(e.target.value)}
+                      onChange={(e) => {
+                        const value = e.target.value;
+                        setNewPassword(value);
+                        setPasswordsMatch(value === newPassword);
+                        console.log(newPassword);
+                      }}
                     />
                   </div>
                 </div>
@@ -249,13 +287,22 @@ const PersonalInformation = () => {
                     <input
                       type='text'
                       value={newPasswordAgain}
-                      onChange={(e) => setNewPasswordAgain(e.target.value)}
+                      onChange={(e) => {
+                        const value = e.target.value;
+                        setNewPasswordAgain(value);
+                        setPasswordsMatch(value === newPassword);
+                        console.log(newPasswordAgain);
+                      }}
                     />
                   </div>
                 </div>
               </div>
 
-              <div className={styles.passworSaveButton}>
+              <div
+                className={styles.passworSaveButton}
+                disabled={!passwordsMatch}
+                onClick={handleSubmitPassword}
+              >
                 Parolayı Güncelleyin
               </div>
             </div>

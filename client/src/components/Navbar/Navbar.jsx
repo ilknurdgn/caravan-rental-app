@@ -21,7 +21,7 @@ const Navbar = () => {
   useEffect(() => {
     const getUser = async () => {
       try {
-        const res = await axios.get(`/user/user._id`);
+        const res = await axios.get(`/user/${user._id}`);
         setUserInfo(res.data);
         console.log(res.data);
       } catch (error) {
