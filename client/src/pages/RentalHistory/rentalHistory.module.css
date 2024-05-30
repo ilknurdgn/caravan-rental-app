@@ -2,6 +2,7 @@
   max-width: 900px;
   width: 100%;
   margin: 90px 0;
+  cursor: pointer;
 }
 
 .navigationPath {
