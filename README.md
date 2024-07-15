@@ -1,9 +1,8 @@
-<p style="">
-  <img alt="" src="../caravan-rental-app/client/public/images/vanca_logo.png" width="50px" style="vertical-align: middle; margin-right: 10px;">
-  <span style="vertical-align: middle; font-size: 24px; font-weight: bold;">Caravan Rental App</span>
-</p>
-<hr>
+<p align="center" style="padding: 10px">
+  <img alt="" src="https://github.com/user-attachments/assets/0c3bda37-2b93-4eea-ab72-eb5e3ce06410" width="150px"  />
+  
 
+# Caravan Rental App
 This application is a platform where users can filter, review and rent the caravans they want. Travel lovers can comment on the caravans they rent and share their experiences. In addition, users can interact with other travel enthusiasts through blog posts and cancel their reservations if necessary.
 
 ## 🛠️ Built With
@@ -31,3 +30,5 @@ This application is a platform where users can filter, review and rent the carav
 - Users can cancel their rental at any time.
 
 ## 📹 Project Video
+https://github.com/user-attachments/assets/499c2140-b5e0-46fa-b6fc-a58859962b6e
+
