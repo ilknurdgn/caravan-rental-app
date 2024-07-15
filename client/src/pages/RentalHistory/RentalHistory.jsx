@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './rentalHistory.module.css';
-import RentalHistorySingleCard from '../../components/rentalHistorySingleCard/RentalHistorySingleCard';
+import RentalHistorySingleCard from '../../components/rentalHistorySingleCard/rentalHistorySingleCard';
 import axios from 'axios';
 
 const RentalHistory = () => {
